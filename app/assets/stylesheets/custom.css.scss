@@ -1,0 +1,34 @@
+#main {
+  display: block;
+  padding-top: 100px;
+  h1 {
+    display: inline-block;
+    font-size: 90px;
+    padding: 0;
+  }
+
+  img {
+    vertical-align: text-bottom;
+  }
+
+  .description {
+    color: silver;
+    font-size: 30px;
+  }
+
+  .providers {
+    margin-top: 50px;
+    a {
+      width: 100px;
+    }
+  }
+}
+
+.tip {
+  margin: 20px 20px 20px 0px;
+  font-size: 12px;
+}
+
+.signout-link {
+  margin-left: 50px;
+}

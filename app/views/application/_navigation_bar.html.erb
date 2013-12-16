@@ -1,0 +1,11 @@
+<nav class='navbar navbar-default' role='navigation'>
+  <strong><%= link_to 'Play Hard Core', root_path, class: 'navbar-brand' %></strong>
+  <ul class='nav navbar-nav navbar-right'>
+    <li>
+      <p class='navbar-text'>
+        Hi <%= current_user.name %>!
+        <%= link_to 'Sign out', signout_path, class: 'navbar-link signout-link' %>
+      </p>
+    </li>
+  </ul>
+</nav>
