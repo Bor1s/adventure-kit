@@ -1,5 +1,6 @@
 class GenresController < ApplicationController
   before_action :authenticate
+  respond_to :html
 
   def index
     authorize! :read, Genre
@@ -7,24 +8,36 @@ class GenresController < ApplicationController
   end
 
   def show
+    @genre = Genre.find params[:id]
   end
 
   def new
+    authorize! :manage, Genre
     @genre = Genre.new
   end
 
   def create
-    @genre = Genre.new genre_params
+    @genre = Genre.create genre_params
     respond_with @genre
   end
 
   def edit
+    @genre = Genre.find params[:id]
+    authorize! :manage, @genre
   end
 
   def update
+    @genre = Genre.find params[:id]
+    authorize! :manage, @genre
+    @genre.update_attributes genre_params
+    respond_with @genre
   end
 
   def destroy
+    @genre = Genre.find params[:id]
+    authorize! :manage, @genre
+    @genre.destroy
+    respond_with @genre
   end
 
   private

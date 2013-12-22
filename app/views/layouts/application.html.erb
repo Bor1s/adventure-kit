@@ -3,7 +3,7 @@
 <head>
   <title>PlayhardCore</title>
   <link href='http://fonts.googleapis.com/css?family=Ubuntu&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
-  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
@@ -11,7 +11,16 @@
 <body>
 
 <%= render 'navigation_bar' if user_signed_in? %>
-<%= yield %>
+<div class='container'>
+  <div class='row'>
+    <div class='col-lg-9'>
+      <%= yield %>
+    </div>
+    <div class='col-lg-3'>
+      <%= yield :sidebar %>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>

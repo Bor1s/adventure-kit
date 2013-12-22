@@ -32,3 +32,9 @@
 .signout-link {
   margin-left: 50px;
 }
+
+// --- Errors ---
+
+.field_with_errors input {
+  background-color: #ffcccc;
+}

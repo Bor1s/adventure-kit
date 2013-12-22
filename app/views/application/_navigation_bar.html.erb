@@ -1,11 +1,26 @@
 <nav class='navbar navbar-default' role='navigation'>
-  <strong><%= link_to 'Play Hard Core', root_path, class: 'navbar-brand' %></strong>
-  <ul class='nav navbar-nav navbar-right'>
-    <li>
-      <p class='navbar-text'>
-        Hi <%= current_user.name %>!
-        <%= link_to 'Sign out', signout_path, class: 'navbar-link signout-link' %>
-      </p>
-    </li>
-  </ul>
+  <div class='navbar-header'>
+    <%= link_to 'Play Hard Core', root_path, class: 'navbar-brand' %>
+  </div>
+
+  <div class='collapse navbar-collapse'>
+    <ul class='nav navbar-nav'>
+      <li class='navbar-left'><%= link_to 'Genres', genres_path %></li>
+      <li class='navbar-left'><%= link_to 'Games', '#' %></li>
+      <li class='navbar-left'><%= link_to 'Masters', '#' %></li>
+    </ul>
+
+    <ul class='nav navbar-nav navbar-right'>
+      <li class='dropdown'>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.name %><b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Profile</a></li>
+          <li><a href="#">My Games</a></li>
+          <li><a href="#">My Genres</a></li>
+          <li class="divider"></li>
+          <li><%= link_to 'Sign out', signout_path %></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
 </nav>

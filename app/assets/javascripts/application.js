@@ -14,3 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).load(function(){
+  $('.dropdown-toggle').dropdown();
+});
+
