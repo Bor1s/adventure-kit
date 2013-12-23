@@ -1,5 +1,8 @@
 <div class='container'>
   <div class='row'>
+    <%= errors_for @genre %>
+  </div>
+  <div class='row'>
     <%= form_for @genre, html: { class: 'form-horizontal', role: 'form' } do |f| %>
       <div class="form-group">
         <%= f.text_field :title, class: 'form-control', placeholder: 'Genre Title' %>

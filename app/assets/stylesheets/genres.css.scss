@@ -1,3 +1,22 @@
 // Place all the styles related to the genres controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.genre:not(:first-child) {
+  margin-top: 3em;
+}
+
+.genre-title {
+  font-size: 2em;
+  a {
+    color: black;
+    font-weight: bold;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.genre-description {
+  line-height: 1.5em;
+}

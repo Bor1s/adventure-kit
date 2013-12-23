@@ -1,3 +1,7 @@
+body {
+  background-image: image-url('groovepaper.png');
+}
+
 #main {
   display: block;
   padding-top: 100px;
@@ -36,5 +40,4 @@
 // --- Errors ---
 
 .field_with_errors input {
-  background-color: #ffcccc;
 }

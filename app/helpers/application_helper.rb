@@ -21,4 +21,20 @@ module ApplicationHelper
   def regular_sidepanel
     content_tag :div, 'Your dashboard'
   end
+
+  def errors_for model
+    unless model.errors.empty?
+      html =<<-HTML
+        <div class='alert alert-danger alert-dismissable'>
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <ul>
+            #{model.errors.full_messages.map do |msg|
+              content_tag :li, msg
+            end.join}
+          </ul>
+        </div>
+      HTML
+      html.html_safe
+    end
+  end
 end
