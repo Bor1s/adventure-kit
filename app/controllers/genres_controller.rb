@@ -8,7 +8,8 @@ class GenresController < ApplicationController
   end
 
   def show
-    @genre = Genre.find params[:id]
+    genre = Genre.find params[:id]
+    @genre = GenrePresenter.new(genre).entry
   end
 
   def new

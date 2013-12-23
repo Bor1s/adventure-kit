@@ -8,9 +8,10 @@
 
 .genre-title {
   font-size: 2em;
+  color: black;
+  font-weight: bold;
   a {
     color: black;
-    font-weight: bold;
     &:hover {
       text-decoration: underline;
     }

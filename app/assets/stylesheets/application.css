@@ -11,7 +11,3 @@
  *= require_self
  *= require_tree .
  */
-
-body {
-  font-family: 'Lora', sans-serif !important;
-}

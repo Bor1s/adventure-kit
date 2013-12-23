@@ -1,13 +1,14 @@
-<nav class='navbar navbar-default' role='navigation'>
+<nav class='navbar navbar-default navbar-light' role='navigation'>
   <div class='navbar-header'>
     <%= link_to 'Play Hard Core', root_path, class: 'navbar-brand' %>
   </div>
 
   <div class='collapse navbar-collapse'>
     <ul class='nav navbar-nav'>
-      <li class='navbar-left <%= 'active' if current_page?(controller: 'genres') %>'><%= link_to 'Genres', genres_path %></li>
+      <li class='navbar-left <%= 'active' if current_page?(controller: 'genres', action: action_name) %>'><%= link_to 'Genres', genres_path %></li>
       <li class='navbar-left'><%= link_to 'Games', '#' %></li>
       <li class='navbar-left'><%= link_to 'Masters', '#' %></li>
+      <li class='navbar-left'><%= link_to 'Players', '#' %></li>
     </ul>
 
     <ul class='nav navbar-nav navbar-right'>

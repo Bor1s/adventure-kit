@@ -1,10 +1,14 @@
-<div class='container'>
-  <div class='row'>
-    <div class='col-lg-12'>
-      <p><%= @genre.title %><p>
+<%= content_for :sidebar do %>
+  <p>Total games in genre: <%= @genre.total_games %></p>
+  <p>Total players in genre: <%= @genre.total_players %></p>
+  <p>Games finished: <%= @genre.games_finished %></p>
+  <p>Games in progress: <%= @genre.games_in_progress %></p>
+<% end %>
 
-      <p><%= @genre.description %><p>
-    </div>
+<div class='row'>
+  <div class='col-lg-12'>
+    <p class='genre-title'><%= @genre.title %></p>
+    <p class='genre-description'><%= @genre.description %><p>
   </div>
 </div>
 
