@@ -6,6 +6,11 @@ class User
   field :name, type: String
   field :role, type: Integer
 
+  has_and_belongs_to_many :genres
+
+  scope :masters, ->() { where(role: 2) }
+  scope :players, ->() { where(role: 3) }
+
   def self.find_or_create_by_auth_hash(auth_hash)
     user = User.where(uid: auth_hash[:uid]).first
     if user

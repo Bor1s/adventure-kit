@@ -6,6 +6,7 @@ PlayhardCore::Application.routes.draw do
   get '/signout', to: 'sessions#destroy', as: :signout
 
   resources :genres
+  resources :masters, only: [:index]
   root 'genres#index'
 
   get '*path', to: 'application#routing_error_handler'

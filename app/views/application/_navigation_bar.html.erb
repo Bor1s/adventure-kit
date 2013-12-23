@@ -7,7 +7,7 @@
     <ul class='nav navbar-nav'>
       <li class='navbar-left <%= 'active' if current_page?(controller: 'genres', action: action_name) %>'><%= link_to 'Genres', genres_path %></li>
       <li class='navbar-left'><%= link_to 'Games', '#' %></li>
-      <li class='navbar-left'><%= link_to 'Masters', '#' %></li>
+      <li class='navbar-left <%= 'active' if current_page?(controller: 'masters') %>'><%= link_to 'Masters', masters_path %></li>
       <li class='navbar-left'><%= link_to 'Players', '#' %></li>
     </ul>
 

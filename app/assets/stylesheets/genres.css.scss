@@ -21,3 +21,21 @@
 .genre-description {
   line-height: 1.5em;
 }
+
+.genre-tag {
+  display: inline-block;
+  padding: 5px 5px;
+  background-color: #ddd;
+  margin: 0em 1em 0em 0em;
+  border-radius: 0.5em;
+  border: 1px solid #ccc;
+  &:hover {
+    background-color: #c7c7c7;
+    border-color: #bbb;
+    cursor: pointer;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
