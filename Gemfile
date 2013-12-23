@@ -30,6 +30,7 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+gem 'moped', github: 'mongoid/moped'
 gem 'mongoid', github: 'mongoid/mongoid'
 gem 'omniauth', '~> 1.1.4'
 gem 'omniauth-vkontakte', '~> 1.2.0'
