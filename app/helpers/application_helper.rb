@@ -37,4 +37,17 @@ module ApplicationHelper
       html.html_safe
     end
   end
+
+  def flash_messages
+    unless flash.empty?
+      msgs = flash.map {|name, msg| msg}.join(' ')
+      html =<<-HTML
+        <div class='alert alert-success alert-dismissable'>
+          #{msgs}
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        </div>
+      HTML
+      html.html_safe
+    end
+  end
 end

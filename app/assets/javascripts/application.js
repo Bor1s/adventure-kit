@@ -15,7 +15,6 @@
 //= require turbolinks
 //= require_tree .
 
-$(document).load(function(){
+$(function(){
   $('.dropdown-toggle').dropdown();
 });
-

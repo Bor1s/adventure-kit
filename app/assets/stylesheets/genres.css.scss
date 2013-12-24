@@ -25,17 +25,17 @@
 .genre-tag {
   display: inline-block;
   padding: 5px 5px;
-  background-color: #ddd;
+  background-color: #ccc;
   margin: 0em 1em 0em 0em;
   border-radius: 0.5em;
-  border: 1px solid #ccc;
+  border: 1px solid #e7e7e7;
   &:hover {
     background-color: #c7c7c7;
     border-color: #bbb;
     cursor: pointer;
   }
   a {
-    color: inherit;
+    color: #fff;
     text-decoration: none;
   }
 }

@@ -1,10 +1,14 @@
 class GenresController < ApplicationController
   before_action :authenticate
-  respond_to :html
+  respond_to :html, :json
 
   def index
     authorize! :read, Genre
-    @genres = Genre.all
+    @genres = Genre.where(title: /#{params[:q]}/i).all #TODO Slow requests. Rewrite!
+    respond_with @genres do |format|
+      format.json { render json: @genres.tokenize }
+      format.html
+    end
   end
 
   def show

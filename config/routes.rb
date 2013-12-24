@@ -7,6 +7,8 @@ PlayhardCore::Application.routes.draw do
 
   resources :genres
   resources :masters, only: [:index]
+  resource  :profile, only: [:edit, :update]
+
   root 'genres#index'
 
   get '*path', to: 'application#routing_error_handler'
