@@ -50,4 +50,8 @@ module ApplicationHelper
       html.html_safe
     end
   end
+
+  def current_tab? name
+    controller_name == name
+  end
 end
