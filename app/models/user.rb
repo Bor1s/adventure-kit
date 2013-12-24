@@ -23,7 +23,7 @@ class User
     if user
       user
     else
-      User.create(uid: auth_hash[:uid], name: auth_hash[:info][:first_name], vk_avatar: auth_hash[:info][:image])
+      User.create(uid: auth_hash[:uid], name: auth_hash[:info][:first_name], avatar: auth_hash[:info][:image])
     end
   end
 
