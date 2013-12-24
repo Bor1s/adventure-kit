@@ -43,14 +43,23 @@ body {
 }
 
 // --- Bootstrap Navabar ---
+.navbar {
+  margin-bottom: 5em;
+}
+
 .navbar-light {
   background-color: transparent;
+}
+
+.navbar-default .navbar-nav .navbar-left a:hover {
+  color: #2a6496;
 }
 
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
   background-color: transparent;
-  color: #990000;
-  text-shadow: 0px 0px 30px red;
+  color: #2a6496;
+  //text-shadow: 0px 0px 30px red;
+  border-bottom: 2px solid #2a6496;
 }
