@@ -1,6 +1,12 @@
-<div class='row genre'>
-  <div class='col-lg-12'>
-    <p class='master-name'><%= master.name %></p>
-    <p class='master-genres'><%= genres_tags(master.genres) %></p>
+<div class='row master'>
+  <div class='col-lg-2'>
+    <%= image_tag master.avatar, alt: master.name, class: 'img-thumbnail pull-right' %>
+  </div>
+
+  <div class='col-lg-10'>
+    <p class='name'><%= master.name %></p>
+    <p class='master-genres'>
+      <%= genres_tags(master.genres) %>
+    </p>
   </div>
 </div>

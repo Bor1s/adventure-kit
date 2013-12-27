@@ -4,7 +4,8 @@ class GenresController < ApplicationController
 
   def index
     authorize! :read, Genre
-    @genres = Genre.where(title: /#{params[:q]}/i).all #TODO Slow requests. Rewrite!
+    #NOTE: warning: #search method usually used by Search Engines
+    @genres = Genre.search(params[:q])
     respond_with @genres do |format|
       format.json { render json: @genres.tokenize }
       format.html

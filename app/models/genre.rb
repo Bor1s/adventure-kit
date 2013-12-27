@@ -13,4 +13,13 @@ class Genre
       {id: g.id.to_s, title: g.title}
     end
   end
+
+  def self.search string=nil
+    if string.present?
+      payload = Regexp.escape(string)
+      where(title: /#{payload}/i)
+    else
+      all
+    end
+  end
 end

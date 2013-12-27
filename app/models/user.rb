@@ -10,6 +10,7 @@ class User
   #Additional fields
   field :email, type: String
   field :avatar, type: String
+  field :avatar_original, type: String
   field :want_to_be_master, type: Mongoid::Boolean
   field :social_network_link, type: String
 
@@ -26,6 +27,7 @@ class User
     if user
       user.update_attributes(name: auth_hash[:info][:first_name],
                              avatar: auth_hash[:info][:image],
+                             avatar_original: auth_hash[:extra][:raw_info][:photo_big],
                              social_network_link: auth_hash[:info][:urls][:Vkontakte])
       user
     else
