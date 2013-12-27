@@ -30,10 +30,17 @@ class Ability
     # https://github.com/ryanb/cancan/wiki/Defining-Abilities
 
     user ||= User.new # guest user (not logged in)
-    if user.admin?
+    if user.admin? or user.god?
       can :manage, :all
     else
-      can :read, :all
+      can :read, [Genre, User]
     end
+
+    #if user.master?
+      #can :read, :all
+      #can [:create, :update, :destroy], Game do |game|
+        ##TODO check user is owner (look at GameRoom)
+      #end
+    #end
   end
 end
