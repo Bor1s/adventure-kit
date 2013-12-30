@@ -12,7 +12,8 @@
 <body>
 
 <%= render 'navigation_bar' if user_signed_in? %>
-<div class='container'>
+
+<main class='container'>
   <div class='row'>
     <div class='container'>
       <%= flash_messages %>
@@ -28,7 +29,9 @@
       </div>
     <% end %>
   </div>
-</div>
+</main>
+
+<%= render 'footer' if user_signed_in? %>
 
 </body>
 </html>

@@ -8,14 +8,14 @@
 <% if allowed_to_administrate? %>
   <div class='row'>
     <div class='col-lg-1'>
-      <%= button_to genre_path(genre), method: :delete, class: 'btn btn-sm btn-danger', confirm: 'Are you sure?' do %>
-        <i class='fa fa-trash-o'></i> Drop
+      <%= link_to edit_genre_path(genre), class: 'btn btn-sm btn-default' do %>
+        <i class='fa fa-pencil-square-o'></i> Edit
       <% end %>
     </div>
 
     <div class='col-lg-1'>
-      <%= link_to edit_genre_path(genre), class: 'btn btn-sm btn-warning' do %>
-        <i class='fa fa-pencil-square-o'></i> Edit
+      <%= button_to genre_path(genre), method: :delete, class: 'btn btn-sm btn-danger', confirm: 'Are you sure?' do %>
+        <i class='fa fa-trash-o'></i> Drop
       <% end %>
     </div>
   </div>

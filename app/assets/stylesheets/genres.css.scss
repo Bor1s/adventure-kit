@@ -11,9 +11,10 @@
   color: black;
   font-weight: bold;
   a {
-    color: black;
+    color: #5e5e5e;
     &:hover {
-      text-decoration: underline;
+      color: #333333;
+      text-decoration: none;
     }
   }
 }

@@ -11,7 +11,7 @@ module ApplicationHelper
     case controller_name
     when 'genres'
       content_tag :div do
-        link_to new_genre_path, class: 'btn btn-success' do
+        link_to new_genre_path, class: 'btn btn-primary' do
           content_tag :i, ' Genre', class: 'fa fa-plus'
         end
       end.html_safe
