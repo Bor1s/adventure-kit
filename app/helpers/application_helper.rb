@@ -3,8 +3,12 @@ module ApplicationHelper
     link_to image_tag(asset_path('vk_logo.jpg'), alt: 'Sign In via VK'), '/auth/vkontakte', class: 'thumbnail'
   end
 
-  def allowed_to_administrate?
-    can? :manage, :all
+  def allowed_to_manage_genre? genre
+    [:update, :destroy].any? {|ability| can?(ability, genre)}
+  end
+
+  def allowed_to_manage_game? game
+    [:update, :destroy].any? {|ability| can?(ability, game)}
   end
 
   def admin_sidepanel
@@ -12,6 +16,12 @@ module ApplicationHelper
     when 'genres'
       content_tag :div do
         link_to new_genre_path, class: 'pull-right btn btn-primary' do
+          content_tag :i, ' New', class: 'fa fa-plus'
+        end
+      end.html_safe
+    when 'games'
+      content_tag :div do
+        link_to new_game_path, class: 'pull-right btn btn-primary' do
           content_tag :i, ' New', class: 'fa fa-plus'
         end
       end.html_safe

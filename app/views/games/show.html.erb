@@ -1,0 +1,19 @@
+<%= content_for :sidebar do %>
+  <p>Total participants: <%= @game.players.count %></p>
+  <p>
+  <% if @game.subscribed? current_user %>
+    <%= link_to_unless current_user.creator?(@game), 'Unenroll', unenroll_game_path(@game), method: :delete, data: {confirm: 'Sure?'}, class: 'btn btn-lg btn-danger' do |name |%>
+    <% end %>
+  <% else %>
+    <%= link_to 'Take part', take_part_game_path(@game), class: 'btn btn-lg btn-warning' %>
+  <% end %>
+  </p>
+<% end %>
+
+<div class='row game'>
+  <div class='col-lg-12'>
+    <p class='title'><%= @game.title %></p>
+    <p class='description'><%= @game.description %><p>
+  </div>
+</div>
+

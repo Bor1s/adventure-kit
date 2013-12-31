@@ -1,0 +1,12 @@
+<p>
+  New game has been created:
+</p>
+
+<p>
+  <b><%= @game.title %><b><br />
+  <%= @game.description %>
+</p>
+
+<p>
+  <%= link_to 'Get more information', game_url(@game) %>
+</p>

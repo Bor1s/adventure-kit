@@ -6,6 +6,12 @@ PlayhardCore::Application.routes.draw do
   get '/signout', to: 'sessions#destroy', as: :signout
 
   resources :genres
+  resources :games do
+    member do
+      get :take_part
+      delete :unenroll
+    end
+  end
   resources :masters, only: [:index]
   resources :players, only: [:index]
   resource  :profile, only: [:edit, :update]

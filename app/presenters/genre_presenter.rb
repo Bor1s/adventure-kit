@@ -14,7 +14,7 @@ class GenrePresenter
 
     # Place presenter methods here
     def total_games
-      42
+      games.count
     end
 
     def total_players
@@ -22,11 +22,11 @@ class GenrePresenter
     end
 
     def games_finished
-      30
+      games.finished.count
     end
 
     def games_in_progress
-      12
+      games.pending.count
     end
   end
 end

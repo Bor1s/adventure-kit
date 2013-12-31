@@ -1,6 +1,6 @@
 class User
-  ROLES = { admin: 1, master: 2, player: 3, god: 777}
   include Mongoid::Document
+  ROLES = { admin: 1, master: 2, player: 3, god: 777}
 
   # Mandatory fields
   field :uid, type: String
@@ -16,6 +16,7 @@ class User
 
   has_and_belongs_to_many :genres
   has_many :approval_boxes, dependent: :delete
+  has_many :subscriptions, dependent: :delete
 
   validates :name, presence: true
 
@@ -56,5 +57,9 @@ class User
 
   def waiting_for_acceptance?
     ApprovalBox.where(user_id: self.id, approved: false).exists?
+  end
+
+  def creator? game
+    subscriptions.where(game_id: game.id, user_right: Subscription::RIGHTS[:master]).first.present?
   end
 end

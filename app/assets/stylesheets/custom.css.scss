@@ -23,7 +23,10 @@ footer {
 }
 
 // --- General ---
-.genre:not(:first-child), .master:not(:first-child), .player:not(:first-child) {
+.game:not(:first-child),
+.genre:not(:first-child),
+.master:not(:first-child),
+.player:not(:first-child) {
   margin-top: 3em;
 }
 

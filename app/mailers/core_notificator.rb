@@ -16,4 +16,22 @@ class CoreNotificator < ActionMailer::Base
 
     mail to: 'mastersergten@gmail.com', subject: 'Master downgrades to player!'
   end
+
+  def game_created payload
+    @user = payload[:user]
+    @game = payload[:game]
+    mail to: 'mastersergten@gmail.com', subject: 'New game created'
+  end
+
+  def join_game payload
+    @user = payload[:user]
+    @game = payload[:game]
+    mail to: 'mastersergten@gmail.com', subject: 'Player joins game'
+  end
+
+  def left_game payload
+    @user = payload[:user]
+    @game = payload[:game]
+    mail to: 'mastersergten@gmail.com', subject: 'Player left game'
+  end
 end

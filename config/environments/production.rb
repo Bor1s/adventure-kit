@@ -88,4 +88,6 @@ PlayhardCore::Application.configure do
     password:             'd3c0mpr3ss10n',
     authentication:       'plain',
     enable_starttls_auto: true }
+
+  config.action_mailer.default_url_options = { host: 'playhard.herokuapp.com' }
 end
