@@ -62,7 +62,7 @@ class GamesController < ApplicationController
 
   def unenroll
     @game = Game.find params[:id]
-    unless @user.creator? @game
+    unless current_user.creator? @game
       @game.redeem current_user
       payload = {game: @game, user: current_user}
       notifications.instrument('left_game', payload) do
