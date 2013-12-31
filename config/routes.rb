@@ -7,6 +7,7 @@ PlayhardCore::Application.routes.draw do
 
   resources :genres
   resources :masters, only: [:index]
+  resources :players, only: [:index]
   resource  :profile, only: [:edit, :update]
   resources :approvals, only: [:index, :update, :destroy]
 

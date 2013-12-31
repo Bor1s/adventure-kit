@@ -18,7 +18,7 @@ class GenrePresenter
     end
 
     def total_players
-      79
+      users.count
     end
 
     def games_finished
