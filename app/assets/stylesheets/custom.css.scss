@@ -22,6 +22,12 @@ footer {
   background-color: #e7e7e7;
 }
 
+// --- General ---
+.genre:not(:first-child), .master:not(:first-child), .player:not(:first-child) {
+  margin-top: 3em;
+}
+
+// --- Log In Page ---
 .signin {
   display: block;
   padding-top: 10em;
