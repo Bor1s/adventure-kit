@@ -4,7 +4,7 @@
 
 initTokenInput = ->
   input = $("#my-genres")
-  input.tokenInput("/genres", {prePopulate: input.data('pre'), propertyToSearch: 'title', preventDuplicates: 'true', theme: 'playhard'})
+  input.tokenInput("/genres", {prePopulate: input.data('pre'), propertyToSearch: 'title', preventDuplicates: 'true', theme: 'playhard', hintText: 'Начните вводить название жанра или системы ...', searchingText: 'Ищем ...', noResultsText: 'Ничего не найдено :('})
 
 $ ->
   initTokenInput()
