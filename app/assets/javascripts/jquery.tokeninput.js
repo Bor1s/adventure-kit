@@ -43,8 +43,8 @@ var DEFAULT_SETTINGS = {
     idPrefix: "token-input-",
 
 	// Formatters
-    resultsFormatter: function(item){ return "<li>" + item[this.propertyToSearch]+ "</li>" },
-    tokenFormatter: function(item) { return "<li><p>" + item[this.propertyToSearch] + "</p></li>" },
+    resultsFormatter: function(item){ return "<li>" + item[this.propertyToSearch]+ "</li>"; },
+    tokenFormatter: function(item) { return "<li><p>" + item[this.propertyToSearch] + "</p></li>"; },
 
 	// Callbacks
     onResult: null,
@@ -115,9 +115,9 @@ var methods = {
         return this;
     },
     get: function() {
-    	return this.data("tokenInputObject").getTokens();
-   	}
-}
+      return this.data("tokenInputObject").getTokens();
+    }
+};
 
 // Expose the .tokenInput function to jQuery as a plugin
 $.fn.tokenInput = function (method) {
@@ -343,7 +343,7 @@ $.TokenList = function (input, url_or_data, settings) {
     // The list to store the dropdown items in
     var dropdown = $("<div>")
         .addClass(settings.classes.dropdown)
-        .appendTo("body")
+        .insertAfter('.'+settings.classes.tokenList)
         .hide();
 
     // Magic element to help us resize the text input
@@ -389,11 +389,11 @@ $.TokenList = function (input, url_or_data, settings) {
                 delete_token($(this));
             }
         });
-    }
+    };
 
     this.add = function(item) {
         add_token(item);
-    }
+    };
 
     this.remove = function(item) {
         token_list.children("li").each(function() {
@@ -411,11 +411,11 @@ $.TokenList = function (input, url_or_data, settings) {
                 }
             }
         });
-    }
+    };
     
     this.getTokens = function() {
-   		return saved_tokens;
-   	}
+      return saved_tokens;
+    };
 
     //
     // Private functions
@@ -510,7 +510,7 @@ $.TokenList = function (input, url_or_data, settings) {
         }
 
         // Insert the new tokens
-        if(settings.tokenLimit == null || token_count < settings.tokenLimit) {
+        if(settings.tokenLimit === null || token_count < settings.tokenLimit) {
             insert_token(item);
             checkTokenLimit();
         }
@@ -630,10 +630,7 @@ $.TokenList = function (input, url_or_data, settings) {
     function show_dropdown() {
         dropdown
             .css({
-                position: "absolute",
-                top: $(token_list).offset().top + $(token_list).outerHeight(),
-                left: $(token_list).offset().left,
-                zindex: 999
+              zindex: 999
             })
             .show();
     }
