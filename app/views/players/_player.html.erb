@@ -1,9 +1,9 @@
 <div class='row player'>
-  <div class='col-lg-2'>
-    <%= image_tag player.avatar, alt: player.name, class: 'img-thumbnail pull-right' %>
+  <div class='col-md-1'>
+    <%= image_tag player.avatar, alt: player.name %>
   </div>
 
-  <div class='col-lg-10'>
+  <div class='col-md-11'>
     <p class='name'><%= player.name %></p>
     <p class='player-genres'>
       <%= genres_tags(player.genres) %>

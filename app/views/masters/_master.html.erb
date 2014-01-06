@@ -1,9 +1,9 @@
 <div class='row master'>
-  <div class='col-lg-2'>
-    <%= image_tag master.avatar, alt: master.name, class: 'img-thumbnail pull-right' %>
+  <div class='col-md-2'>
+    <%= image_tag master.avatar, alt: master.name %>
   </div>
 
-  <div class='col-lg-10'>
+  <div class='col-md-10'>
     <p class='name'><%= master.name %></p>
     <p class='master-genres'>
       <%= genres_tags(master.genres) %>

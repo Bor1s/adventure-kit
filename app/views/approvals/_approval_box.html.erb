@@ -1,12 +1,12 @@
 <div class='row approval'>
-  <div class='col-lg-5 col-lg-offset-2'>
+  <div class='col-md-5 col-md-offset-2'>
     <small class='text-muted'>
       <%= approval_box.created_at.to_s(:short) %>
     </small><br />
     <span class='text-danger'><%= approval_box.message %></span>
   </div>
 
-  <div class='col-lg-5'>
+  <div class='col-md-5'>
     <%= form_for approval_box, url: approval_path(approval_box.id), method: :patch, html: { class: 'form-horizontal', role: 'form' } do |f| %>
       <%= f.hidden_field :approved, value: true %>
       <div class="form-group">
