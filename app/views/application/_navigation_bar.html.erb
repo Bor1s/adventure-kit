@@ -13,7 +13,7 @@
 
     <ul class='nav navbar-nav navbar-right'>
       <li class='dropdown'>
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= image_tag current_user.avatar, class: 'img-rounded', size: '30x30' %>&nbsp;<b class="caret"></b></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= image_tag current_user.avatar, size: '30x30' %>&nbsp;<b class="caret"></b></a>
         <% if current_user.admin? %>
           <%= render 'admin_menu' %>
         <% elsif current_user.master? %>

@@ -4,7 +4,6 @@ html {
 
 body {
   background-image: image-url('groovepaper.png');
-  font-family: 'Lora', sans-serif !important;
   min-height: 100%;
   position: relative;
 }
@@ -20,6 +19,12 @@ footer {
   width: 100%;
   min-height: 10em;
   background-color: #e7e7e7;
+}
+
+img {
+  padding: 0.2em;
+  outline: 1px solid #dddddd;
+  background-color: #ffffff;
 }
 
 // --- General ---

@@ -17,6 +17,7 @@ class User
   has_and_belongs_to_many :genres
   has_many :approval_boxes, dependent: :delete
   has_many :subscriptions, dependent: :delete
+  has_many :comments, dependent: :delete
 
   validates :name, presence: true
 

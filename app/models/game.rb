@@ -8,6 +8,7 @@ class Game
 
   has_many :subscriptions, dependent: :delete
   has_and_belongs_to_many :genres
+  has_many :comments, dependent: :delete
 
   validates :title, presence: true
   validates :description, presence: true

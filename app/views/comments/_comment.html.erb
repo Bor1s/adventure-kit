@@ -1,0 +1,19 @@
+<div class='row'>
+  <div class='col-md-12'><hr /></div>
+</div>
+<div class='row'>
+  <div class='col-md-1'>
+    <%= image_tag comment.user.avatar %>
+  </div>
+  <div class='col-md-11'>
+    <small><strong><%= comment.user.name %></strong></small>
+    <p class='text-muted'>
+      <small><%= comment.created_at.try(:to_s, :short) %></small>
+    </p>
+  </div>
+</div>
+<div class='row'>
+  <div class='col-md-12'>
+    <p class='message'><%= comment.message %><p>
+  </div>
+</div>
