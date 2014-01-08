@@ -77,7 +77,7 @@ li.token-input-input-token-playhard {
 
 div.token-input-dropdown-playhard {
     position: relative;
-    width: 390px;
+    width: inherit;
     background-color: #fff;
     overflow: hidden;
     border-left: 1px solid #ccc;
