@@ -64,4 +64,15 @@ module ApplicationHelper
   def current_tab? name
     controller_name == name
   end
+
+  def tags(tags)
+    tags = tags.map do |t|
+      content_tag :div, class: 'genre-tag' do
+        content_tag :small do
+          link_to t.title, t
+        end
+      end
+    end
+    tags.join.html_safe
+  end
 end

@@ -9,6 +9,14 @@
     <%= link_to 'Take part', take_part_game_path(@game), class: 'btn btn-lg btn-warning' %>
   <% end %>
   </p>
+
+  <p>
+    Tagged:
+  </p>
+
+  <p>
+    <%= tags(@game.tags) %>
+  </p>
 <% end %>
 
 <%= errors_for @comment if @comment %>
