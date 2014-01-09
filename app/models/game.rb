@@ -7,6 +7,7 @@ class Game
   field :finished, type: Mongoid::Boolean, default: false
 
   has_many :subscriptions, dependent: :delete
+  has_and_belongs_to_many :tags
   has_and_belongs_to_many :genres
   has_many :comments, dependent: :delete
 

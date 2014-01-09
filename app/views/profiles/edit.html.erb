@@ -19,7 +19,7 @@
       </div>
 
       <div class="form-group">
-        <%= text_field_tag 'user[genres]', '', id: 'my-genres', data: {pre: @profile.genres.tokenize} %>
+        <%= text_field_tag 'user[tags]', '', id: 'tags', data: {pre: @profile.tags.tokenize} %>
       </div>
 
       <% unless current_user.admin? || current_user.god? %>

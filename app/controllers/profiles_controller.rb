@@ -20,12 +20,12 @@ class ProfilesController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :genres, :want_to_be_master)
+    params.require(:user).permit(:name, :email, :tags, :want_to_be_master)
   end
 
   def normalize_params parameters
-    genres = Genre.find parameters[:genres].split(',')
-    parameters[:genres] = genres
+    tags = Tag.find parameters[:tags].split(',')
+    parameters[:tags] = tags
     parameters
   end
 

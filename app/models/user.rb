@@ -14,6 +14,7 @@ class User
   field :want_to_be_master, type: Mongoid::Boolean
   field :social_network_link, type: String
 
+  has_and_belongs_to_many :tags
   has_and_belongs_to_many :genres
   has_many :approval_boxes, dependent: :delete
   has_many :subscriptions, dependent: :delete

@@ -19,7 +19,7 @@ class GamesController < ApplicationController
   end
 
   def create
-    @game = Game.create game_params
+    @game = Game.create normalize_params game_params
     if @game.valid?
       @game.subscribe(current_user, :master)
       payload = {game: @game, user: current_user}
@@ -38,7 +38,7 @@ class GamesController < ApplicationController
   def update
     @game = Game.find params[:id]
     authorize! :update, @game
-    @game.update_attributes game_params
+    @game.update_attributes normalize_params game_params
     respond_with @game
   end
 
@@ -76,7 +76,13 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit(:title, :description)
+    params.require(:game).permit(:title, :description, :tags)
+  end
+
+  def normalize_params parameters
+    tags = Tag.find parameters[:tags].split(',')
+    parameters[:tags] = tags
+    parameters
   end
 
   def notifications
