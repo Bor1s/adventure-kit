@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
   respond_to :html
 
   def create
+    authorize! :create, Comment
     @comment = @game.comments.build(comment_params)
     @comment.user = current_user
     if @comment.save
@@ -13,7 +14,14 @@ class CommentsController < ApplicationController
   end
 
   def update
-    #TODO
+    comment = @game.comments.find(params[:id])
+    authorize! :update, comment
+    if comment.update_attributes(comment_params)
+      status = 200
+    else
+      status = 422
+    end
+    render json: { message: comment_params[:message]}, status: status
   end
 
   def destroy

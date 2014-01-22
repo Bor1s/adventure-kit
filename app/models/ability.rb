@@ -37,14 +37,22 @@ class Ability
 
     if user.master?
       can :read, :all
-      can :create, Game
+      can :create, [Game, Comment]
       can [:update, :destroy], Game do |game|
         user.creator? game
+      end
+
+      can [:update, :destroy], Comment do |comment|
+        user.commenter? comment
       end
     end
 
     if user.player?
-      can :read, [Genre, User, Game]
+      can :read, [Genre, User, Game, Comment]
+      can :create, Comment
+      can [:update, :destroy], Comment do |comment|
+        user.commenter? comment
+      end
     end
   end
 end

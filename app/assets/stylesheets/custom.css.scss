@@ -18,13 +18,20 @@ footer {
   bottom: 0;
   width: 100%;
   min-height: 10em;
-  background-color: #e7e7e7;
+  background-color: #000;
+  border-top: 5px solid #ed9c28;
 }
 
 img {
   padding: 0.2em;
   outline: 1px solid #dddddd;
   background-color: #ffffff;
+}
+
+hr {
+  margin-top: 3em;
+  margin-bottom: 3em;
+  border-top: 1px solid #ddd;
 }
 
 // --- General ---

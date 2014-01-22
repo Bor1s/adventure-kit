@@ -6,7 +6,16 @@
   margin-top: 5em;
 }
 
-.message {
+.message, .message-editable {
   margin-top: 1.5em;
   white-space: pre-line;
+}
+
+.editable-comment {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.cancel-message, .save-message {
+  display: none;
 }

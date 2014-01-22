@@ -1,14 +1,13 @@
 <%= content_for :sidebar do %>
-  <p>Participants: <%= @game.players.count %></p>
-  <p>Comments: <%= @game.comments.count %></p>
-  <p>Tagged:</p>
-  <p><%= tags(@game.tags) %></p>
-  <p>
+  <p><strong>Participants:</strong> <%= @game.players.count %></p>
+  <p><strong>Comments:</strong> <%= @game.comments.count %></p>
+  <%= tags(@game.tags) %>
+  <p class='subscribe-button-container'>
     <% if @game.subscribed? current_user %>
       <%= link_to_unless current_user.creator?(@game), 'Leave Game', unenroll_game_path(@game), method: :delete, data: {confirm: 'Sure?'}, class: 'btn btn-danger' do |name| %>
       <% end %>
     <% else %>
-      <%= link_to 'Take part', take_part_game_path(@game), class: 'btn btn-lg btn-warning' %>
+      <%= link_to 'Take part', take_part_game_path(@game), class: 'btn btn-warning' %>
     <% end %>
   </p>
 <% end %>
@@ -22,5 +21,5 @@
   </div>
 </div>
 
-<%= render @game.comments %>
+<%= render partial: @game.comments.order_by(updated_at: :desc), spacer_template: 'comments/comment_spacer' %>
 <%= render 'games/comment_form' %>

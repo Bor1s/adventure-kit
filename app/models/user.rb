@@ -64,4 +64,8 @@ class User
   def creator? game
     subscriptions.where(game_id: game.id, user_right: Subscription::RIGHTS[:master]).first.present?
   end
+
+  def commenter? comment
+    comment.user == self
+  end
 end
