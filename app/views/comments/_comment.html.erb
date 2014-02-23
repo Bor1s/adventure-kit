@@ -1,28 +1,32 @@
-<div class='row'>
-  <div class='col-md-1'>
-    <%= image_tag comment.user.avatar %>
-  </div>
-  <div class='col-md-11'>
-    <small><strong><%= comment.user.name %></strong></small>
-    <span class='text-muted'>
-      <br />
-      <small><%= comment.created_at.try(:to_s, :short) %></small>
-      <br />
-    </span>
-  </div>
-</div>
-<div class='row'>
+<% unless comment.new_record? %>
   <div class='col-md-12'>
-    <% if current_user.id == comment.user.id %>
-      <p id='<%= comment.id.to_s %>' class='message-editable' contenteditable='true'>
-        <%= comment.message %>
-      </p>
-      <p>
-        <%= link_to 'Save', '#', class: 'btn btn-default save-message', data: {:'game-id' => comment.game.id.to_s, :'comment-id' => comment.id.to_s } %>
-        <%= link_to 'Cancel', '#', class: 'cancel-message', data: {:'comment-id' => comment.id.to_s } %>
-      </p>
-    <% else %>
-      <p class='message'><%= comment.message %></p>
-    <% end %>
+    <div id='comment_container_<%= comment.id.to_s %>' class='row'>
+      <div class='row'>
+        <div class='col-md-1'>
+          <%= image_tag comment.user.avatar %>
+        </div>
+        <div class='col-md-11'>
+          <small><strong><%= comment.user.name %></strong></small>
+          <span class='text-muted'>
+            <br />
+            <small><%= comment.created_at.try(:to_s, :short) %></small>
+            <br />
+          </span>
+        </div>
+      </div>
+
+      <div class='row'>
+        <div class='col-md-12'>
+          <% if current_user.id == comment.user.id %>
+            <article id='<%= comment.id.to_s %>'>
+              <%= comment.message %>
+              <%= render 'comments/manage_links', comment: comment %>
+            </article>
+          <% else %>
+            <p class='message'><%= comment.message %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+<% end %>

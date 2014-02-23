@@ -10,6 +10,7 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find params[:id]
+    @comment = @game.comments.build
     authorize! :read, @game
   end
 

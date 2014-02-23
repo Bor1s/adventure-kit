@@ -11,7 +11,7 @@ PlayhardCore::Application.routes.draw do
       get :take_part
       delete :unenroll
     end
-    resources :comments, only: [:create, :update, :destroy]
+    resources :comments, except: [:index, :new]
   end
   resources :masters, only: [:index]
   resources :players, only: [:index]

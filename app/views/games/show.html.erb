@@ -12,8 +12,6 @@
   </p>
 <% end %>
 
-<%= errors_for @comment if @comment %>
-
 <div class='row game'>
   <div class='col-md-12'>
     <p class='title'><%= @game.title %></p>
@@ -21,5 +19,10 @@
   </div>
 </div>
 
-<%= render partial: @game.comments.order_by(updated_at: :desc), spacer_template: 'comments/comment_spacer' %>
-<%= render 'games/comment_form' %>
+<div class='comments'>
+  <%= render partial: @game.comments %>
+</div>
+
+<div class='row'>
+<%= render 'comments/form' %>
+</div>
