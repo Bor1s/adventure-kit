@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.2'
+gem 'rails', '4.0.3'
 
 
 # Use SCSS for stylesheets
@@ -45,7 +45,7 @@ group :test, :development do
   gem 'shoulda-matchers'
   gem 'capybara'
   gem 'pry-rails'
-  gem 'pry-debugger'
+  #gem 'pry-debugger'
 end
 
 group :development do
