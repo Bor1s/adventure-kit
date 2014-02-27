@@ -15,15 +15,11 @@ module ApplicationHelper
     case controller_name
     when 'genres'
       content_tag :div do
-        link_to new_genre_path, class: 'btn btn-primary' do
-          content_tag :i, ' New', class: 'fa fa-plus'
-        end
+        link_to 'New', new_genre_path, class: 'btn btn-primary'
       end.html_safe
     when 'games'
       content_tag :div do
-        link_to new_game_path, class: 'btn btn-primary' do
-          content_tag :i, ' New', class: 'fa fa-plus'
-        end
+        link_to 'New', new_game_path, class: 'btn btn-primary'
       end.html_safe
     end
   end

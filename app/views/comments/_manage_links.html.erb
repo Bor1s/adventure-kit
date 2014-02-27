@@ -2,7 +2,7 @@
   <%= link_to edit_game_comment_path(@game, comment), data: {remote: true} do %>
     <i class='fa fa-pencil text-muted'></i>
   <% end %>
-  <%= link_to game_comment_path(@game, comment), method: :delete, data: {remote: true} do %>
+  <%= link_to game_comment_path(@game, comment), method: :delete, data: {remote: true, confirm: 'Are you sure?'} do %>
     <i class='fa fa-trash-o text-muted'></i>
   <% end %>
 </p>
