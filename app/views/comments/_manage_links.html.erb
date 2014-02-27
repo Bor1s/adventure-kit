@@ -1,4 +1,8 @@
-<p>
-  <%= link_to 'Edit', edit_game_comment_path(@game, comment), class: 'btn btn-default btn-sm', data: {remote: true} %>
-  <%= link_to 'Remove', game_comment_path(@game, comment), method: :delete, class: 'btn btn-danger btn-sm', data: {remote: true} %>
+<p class='links'>
+  <%= link_to edit_game_comment_path(@game, comment), data: {remote: true} do %>
+    <i class='fa fa-pencil text-muted'></i>
+  <% end %>
+  <%= link_to game_comment_path(@game, comment), method: :delete, data: {remote: true} do %>
+    <i class='fa fa-trash-o text-muted'></i>
+  <% end %>
 </p>

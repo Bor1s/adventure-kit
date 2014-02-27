@@ -1,6 +1,6 @@
 <% unless comment.new_record? %>
   <div class='col-md-12'>
-    <div id='comment_container_<%= comment.id.to_s %>' class='row'>
+    <div id='comment_<%= comment.id.to_s %>' class='row comment'>
       <div class='row'>
         <div class='col-md-1'>
           <%= image_tag comment.user.avatar %>
@@ -15,15 +15,15 @@
         </div>
       </div>
 
-      <div class='row'>
+      <div class='row '>
         <div class='col-md-12'>
           <% if current_user.id == comment.user.id %>
-            <article id='<%= comment.id.to_s %>'>
+            <article id='<%= comment.id.to_s %>' class='message'>
               <%= comment.message %>
               <%= render 'comments/manage_links', comment: comment %>
             </article>
           <% else %>
-            <p class='message'><%= comment.message %></p>
+            <article class='message'><%= comment.message %></article>
           <% end %>
         </div>
       </div>
