@@ -1,20 +1,14 @@
 <div class='row genre'>
   <div class='col-md-12'>
-    <p class='genre-title'><%= link_to genre.title, genre %></p>
-    <p class='genre-description'><%= genre.description %></p>
+    <p class='title'>
+      <%= link_to genre.title, genre %>
+      <aside>
+        <span class='text-muted'>
+          <%= genre.created_at.to_s(:short) %>
+        </span>
+        <%= render 'management_links', genre: genre if allowed_to_manage_genre?(genre) %>
+      </aside>
+    </p>
+    <p class='description'><%= genre.description %></p>
   </div>
 </div>
-
-<% if allowed_to_manage_genre? genre %>
-  <div class='row'>
-    <div class='col-md-2'>
-      <%= link_to edit_genre_path(genre), class: 'btn btn-sm btn-default' do %>
-        <i class='fa fa-pencil fa-lg'></i>
-      <% end %>
-
-      <%= link_to genre_path(genre), method: :delete, class: 'btn btn-sm btn-danger', confirm: 'Are you sure?' do %>
-        <i class='fa fa-trash-o fa-lg'></i>
-      <% end %>
-    </div>
-  </div>
-<% end %>

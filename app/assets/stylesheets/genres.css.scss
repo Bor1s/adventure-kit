@@ -2,10 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.genre-title {
-  font-size: 2em;
-  color: black;
-  font-weight: bold;
+.genre {
   a {
     color: #5e5e5e;
     &:hover {
@@ -13,28 +10,39 @@
       text-decoration: none;
     }
   }
-}
 
-.genre-description {
-  line-height: 1.5em;
-  white-space: pre-line;
-}
-
-.genre-tag {
-  display: inline-block;
-  padding: 1px 3px;
-  background-color: #eff2f7;
-  margin: 0em 0.5em 0em 0em;
-  border-radius: 0.3em;
-  border: 1px solid #ccd5e4;
-  &:hover {
-    background-color: #2a6496;
-    border-color: #3b5998;
-    color: #fff;
-    cursor: pointer;
+  aside a {
+    margin-left: 10px;
   }
-  a {
-    color: inherit;
-    text-decoration: none;
+
+  .title {
+    font-size: 2em;
+    color: black;
+    font-weight: bold;
+  }
+
+  .description {
+    line-height: 1.5em;
+    margin-top: 2em;
+    white-space: pre-line;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 1px 3px;
+    background-color: #eff2f7;
+    margin: 0em 0.5em 0em 0em;
+    border-radius: 0.3em;
+    border: 1px solid #ccd5e4;
+    &:hover {
+      background-color: #2a6496;
+      border-color: #3b5998;
+      color: #fff;
+      cursor: pointer;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
   }
 }
