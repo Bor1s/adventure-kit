@@ -1,20 +1,14 @@
 <div class='row game'>
   <div class='col-md-12'>
-    <p class='title'><%= link_to game.title, game %></p>
+    <p class='title'>
+      <%= link_to game.title, game %>
+      <aside>
+        <span class='text-muted'>
+          <%= game.created_at.to_s(:short) %>
+        </span>
+        <%= render 'management_links', game: game if allowed_to_manage_game?(game) %>
+      </aside>
+    </p>
     <p class='description'><%= game.description %></p>
   </div>
 </div>
-
-<% if allowed_to_manage_game? game %>
-  <div class='row'>
-    <div class='col-md-2'>
-      <%= link_to edit_game_path(game), class: 'btn btn-sm btn-default' do %>
-        <i class='fa fa-pencil fa-lg'></i>
-      <% end %>
-
-      <%= link_to game_path(game), method: :delete, class: 'btn btn-sm btn-danger', confirm: 'Are you sure?' do %>
-        <i class='fa fa-trash-o fa-lg'></i>
-      <% end %>
-    </div>
-  </div>
-<% end %>

@@ -7,20 +7,27 @@
     font-size: 2em;
     color: black;
     font-weight: bold;
-    a {
-      color: #5e5e5e;
-      &:hover {
-        color: #333333;
-        text-decoration: none;
-      }
-    }
   }
 
   .description {
     line-height: 1.5em;
     white-space: pre-line;
+    margin-top: 2em;
     margin-bottom: 3em;
   }
+
+  a {
+    color: #5e5e5e;
+    &:hover {
+      color: #333333;
+      text-decoration: none;
+    }
+  }
+
+  aside a {
+    margin-left: 10px;
+  }
+
 }
 
 .subscribe-button-container {
