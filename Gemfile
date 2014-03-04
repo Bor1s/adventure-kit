@@ -37,6 +37,7 @@ gem 'omniauth-vkontakte', '~> 1.2.0'
 gem 'cancan'
 gem 'kaminari'
 gem 'sidekiq'
+gem "select2-rails"
 
 group :test, :development do
   gem 'thin'

@@ -65,7 +65,9 @@ module ApplicationHelper
     tags = tags.map do |t|
       content_tag :div, class: 'genre-tag' do
         content_tag :small do
-          link_to t.title, t
+          #TODO create Tags routes; get rid of Genres as part of Tags
+          #link_to t.title, t
+          t.title
         end
       end
     end

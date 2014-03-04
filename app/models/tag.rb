@@ -11,7 +11,7 @@ class Tag
 
   def self.tokenize
     all.map do |g|
-      {id: g.id.to_s, title: g.title}
+      {id: g.id.to_s, text: g.title}
     end
   end
 

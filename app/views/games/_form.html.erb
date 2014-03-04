@@ -13,7 +13,7 @@
       </div>
 
       <div class="form-group">
-        <%= text_field_tag 'game[tags]', '', id: 'tags', data: {pre: @game.tags.tokenize} %>
+        <%= f.hidden_field :tag_ids, id: 'tags', data: {pre: @game.tags.tokenize}, style: 'width: 300px;' %>
       </div>
 
       <div class="form-group">
