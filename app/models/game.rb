@@ -40,4 +40,13 @@ class Game
   def subscribed? user
     subscriptions.where(user_id: user.id).first.present?
   end
+
+  def self.search tag_id=nil
+    if tag_id.present?
+      where(:tag_ids.in => [tag_id])
+    else
+      all
+    end
+  end
+
 end

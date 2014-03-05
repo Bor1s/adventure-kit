@@ -1,3 +1,4 @@
+#TODO Not used for now, maybe remove in future?
 class GenresController < ApplicationController
   before_action :authenticate
   respond_to :html, :json

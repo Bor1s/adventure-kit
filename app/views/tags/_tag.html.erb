@@ -1,0 +1,7 @@
+<%= link_to games_path(q: tag.id) do %>
+  <div class='tag text-muted'>
+    <span>x<%= tag.game_ids.count + tag.user_ids.count %></span>
+    <i class='fa fa-tags'></i>
+    <%= tag.title %>
+  </div>
+<% end %>

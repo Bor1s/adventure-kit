@@ -2,10 +2,11 @@
   <nav class='container navbar navbar-default navbar-light' role='navigation'>
 
     <ul class='nav navbar-nav toplinks'>
-      <li class='<%= current_tab?('games') ? 'active' : '' %>'><%= link_to 'Games', games_path %></li>
-      <li class='<%= current_tab?('genres') ? 'active' : '' %>'><%= link_to 'Genres', genres_path %></li>
-      <li class='<%= current_tab?('masters') ? 'active' : '' %>'><%= link_to 'Masters', masters_path %></li>
-      <li class='<%= current_tab?('players') ? 'active' : '' %>'><%= link_to 'Players', players_path %></li>
+      <li class='<%= current_tab?('games') ? 'active' : '' %>'><%= link_to 'Игры', games_path %></li>
+      <!--<li class='<%#= current_tab?('genres') ? 'active' : '' %>'><%#= link_to 'Жанры', genres_path %></li>-->
+      <li class='<%= current_tab?('tags') ? 'active' : '' %>'><%= link_to 'Метки', tags_path %></li>
+      <li class='<%= current_tab?('masters') ? 'active' : '' %>'><%= link_to 'Мастера', masters_path %></li>
+      <li class='<%= current_tab?('players') ? 'active' : '' %>'><%= link_to 'Игроки', players_path %></li>
     </ul>
 
     <ul class='nav navbar-nav navbar-right'>

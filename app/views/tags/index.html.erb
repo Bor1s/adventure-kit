@@ -1,0 +1,20 @@
+<% content_for :sidebar do %>
+  <aside>
+    <header>Список меток</header>
+    <article class='text-muted'>
+      Метка - это ярлык или кейворд, который категоризирует ваши игры. Нажав на метку вы найдете все игры относящиеся к ней.
+    </article>
+  </aside>
+<% end %>
+
+<div class='row tags'>
+  <div class='col-md-12'>
+    <%= render partial: 'tag', collection: @tags %>
+  </div>
+</div>
+<div class='row'>
+  <div class='col-md-12 text-center'>
+    <%= paginate @tags %>
+  </div>
+</div>
+

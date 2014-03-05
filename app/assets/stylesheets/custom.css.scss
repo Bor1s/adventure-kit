@@ -12,6 +12,12 @@ main {
   padding-bottom: 15em;
 }
 
+header {
+  margin-bottom: 1em;
+  border-bottom: 3px solid black;
+  font-size: 20px;
+}
+
 footer {
   position: absolute;
   bottom: 0;
@@ -109,6 +115,9 @@ img {
 
 .navbar a.profile-link {
   padding-top: 10px;
+  img {
+    margin-right: 10px;
+  }
 }
 
 // --- Alerts ---

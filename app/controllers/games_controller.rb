@@ -4,7 +4,7 @@ class GamesController < ApplicationController
 
   def index
     authorize! :read, Game
-    @games = Game.desc(:updated_at).all
+    @games = Game.search(params[:q]).desc(:updated_at)
     respond_with @games
   end
 
@@ -83,15 +83,14 @@ class GamesController < ApplicationController
   def normalize_params parameters
     tag_ids = parameters[:tag_ids].split(',')
     new_tags_titles, tag_ids = tag_ids.partition { |t| t.ends_with? '_new' }
-
+    parameters[:tag_ids] = tag_ids
     if new_tags_titles.present?
       new_tags = new_tags_titles.map do |title|
         Tag.where(title: title.chomp('_new')).first_or_create
       end
       parameters[:tag_ids] = tag_ids.concat(new_tags.map(&:id))
-    else
-      parameters[:tag_ids] = tag_ids
     end
+
     parameters
   end
 

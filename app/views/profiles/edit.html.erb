@@ -30,7 +30,7 @@
           </div>
 
           <div class="form-group">
-            <%= text_field_tag 'user[tags]', '', id: 'tags', data: {pre: @profile.tags.tokenize} %>
+            <%= f.hidden_field :tag_ids, id: 'tags', data: {pre: @profile.tags.tokenize}, style: 'width: 300px;' %>
           </div>
 
           <% unless current_user.admin? || current_user.god? %>

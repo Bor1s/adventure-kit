@@ -17,6 +17,7 @@ PlayhardCore::Application.routes.draw do
   resources :players, only: [:index]
   resource  :profile, only: [:edit, :update]
   resources :approvals, only: [:index, :update, :destroy]
+  resources :tags
 
   root 'games#index'
 

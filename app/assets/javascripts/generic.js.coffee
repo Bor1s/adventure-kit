@@ -10,7 +10,7 @@ initTokenInput = ->
     query: (query)->
       _data = results: []
       $.ajax
-        url: '/genres'
+        url: '/tags'
         dataType: 'json'
         data:
           q: query.term
