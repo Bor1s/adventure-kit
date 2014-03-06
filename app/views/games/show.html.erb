@@ -1,14 +1,22 @@
 <%= content_for :sidebar do %>
-  <p><strong>Participants:</strong> <%= @game.players.count %></p>
-  <p><strong>Comments:</strong> <%= @game.comments.count %></p>
-  <%= tags(@game.tags) %>
+  <aside>
+    <header>Инфоблок</header>
+    <article class='text-muted'>
+      <p>
+        Участники: <%= @game.players.count %><br />
+        Комментарии: <%= @game.comments.count %>
+      </p>
+    </article>
+  </aside>
+
+  <aside>
+    <header>Метки</header>
+    <article class='text-muted'>
+      <%= tags(@game.tags) %>
+    </article>
+  </aside>
   <p class='subscribe-button-container'>
-    <% if @game.subscribed? current_user %>
-      <%= link_to_unless current_user.creator?(@game), 'Leave Game', unenroll_game_path(@game), method: :delete, data: {confirm: 'Sure?'}, class: 'btn btn-danger' do |name| %>
-      <% end %>
-    <% else %>
-      <%= link_to 'Take part', take_part_game_path(@game), class: 'btn btn-warning' %>
-    <% end %>
+
   </p>
 <% end %>
 
@@ -18,6 +26,20 @@
     <p class='description'><%= @game.description %><p>
   </div>
 </div>
+
+<% unless current_user.creator?(@game) %>
+  <div class='row'>
+    <div class='col-md-offset-4 col-md-4'>
+      <article class='text-center decision'>
+        <% if @game.subscribed?(current_user) %>
+          <%= link_to 'покинуть игру', unenroll_game_path(@game), method: :delete, data: {confirm: 'Sure?'} %>
+        <% else %>
+          <%= link_to 'Принять участие', take_part_game_path(@game) %>
+        <% end %>
+      </article>
+    </div>
+  </div>
+<% end %>
 
 <div class='comments'>
   <%= render partial: @game.comments %>

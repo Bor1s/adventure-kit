@@ -57,7 +57,6 @@ class GamesController < ApplicationController
       CoreNotification.create(message: "#{current_user.name} now joining #{@game.title}")
     end
     @game.subscribe current_user
-    flash.notice = 'Now you are taking part in this game'
     redirect_to game_path(@game)
   end
 
@@ -69,7 +68,6 @@ class GamesController < ApplicationController
       notifications.instrument('left_game', payload) do
         CoreNotification.create(message: "#{current_user.name} left #{@game.title}")
       end
-      flash.notice = 'You left this game. Bye bye :('
     end
     redirect_to game_path(@game)
   end

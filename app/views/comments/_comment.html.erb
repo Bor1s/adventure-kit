@@ -5,26 +5,22 @@
         <div class='col-md-1'>
           <%= image_tag comment.user.avatar %>
         </div>
-        <div class='col-md-11'>
+        <div class='col-md-11 meta'>
           <small><strong><%= comment.user.name %></strong></small>
           <span class='text-muted'>
             <br />
             <small><%= comment.created_at.try(:to_s, :short) %></small>
             <br />
+            <% if current_user.id == comment.user.id %>
+              <%= render 'comments/manage_links', comment: comment %>
+            <% end %>
           </span>
         </div>
       </div>
 
-      <div class='row '>
+      <div class='row'>
         <div class='col-md-12'>
-          <% if current_user.id == comment.user.id %>
-            <article id='<%= comment.id.to_s %>' class='message'>
-              <%= comment.message %>
-              <%= render 'comments/manage_links', comment: comment %>
-            </article>
-          <% else %>
-            <article class='message'><%= comment.message %></article>
-          <% end %>
+          <article id="<%= comment.id.to_s %>" class='message'><%= comment.message %></article>
         </div>
       </div>
     </div>

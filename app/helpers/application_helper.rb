@@ -11,23 +11,6 @@ module ApplicationHelper
     [:update, :destroy].any? {|ability| can?(ability, game)}
   end
 
-  def admin_sidepanel
-    case controller_name
-    when 'genres'
-      content_tag :div do
-        link_to 'New', new_genre_path, class: 'btn btn-default'
-      end.html_safe
-    when 'games'
-      content_tag :div do
-        link_to 'New', new_game_path, class: 'btn btn-default'
-      end.html_safe
-    end
-  end
-
-  def regular_sidepanel
-    content_tag :div, 'Your dashboard'
-  end
-
   def errors_for model
     unless model.errors.empty?
       html =<<-HTML

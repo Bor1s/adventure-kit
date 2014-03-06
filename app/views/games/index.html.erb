@@ -1,8 +1,8 @@
 <% content_for :sidebar do %>
   <% if current_user.master? || current_user.admin? %>
-    <%= admin_sidepanel %>
+    <%= render 'admin_sidebar' %>
   <% else %>
-    <%= regular_sidepanel %>
+    <%= render 'regular_sidebar' %>
   <% end %>
 <% end %>
 

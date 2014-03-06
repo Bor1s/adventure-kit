@@ -1,5 +1,4 @@
 <% if @comment.valid? %>
   $("#<%= @comment.id.to_s %>").html("<%= j(@comment.message) %>");
-  $("#<%= @comment.id.to_s %>").append("<%= j(render 'manage_links', comment: @comment) %>");
 <% end %>
 

@@ -5,16 +5,17 @@
 .comments {
   .comment {
     margin-bottom: 4em;
-    padding: 1em;
-    background-color: white;
-    border: 1px solid #ddd;
+
+    .meta {
+      line-height: 1.28;
+    }
 
     .links {
       margin-top: 1em;
       text-align: center;
       a {
         text-decoration: none;
-        margin-right: 2em;
+        margin-right: 1em;
       }
     }
     .message {
