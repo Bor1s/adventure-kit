@@ -38,6 +38,16 @@ aside {
   margin-bottom: 3em;
 }
 
+aside {
+  ul {
+    padding: 0;
+  }
+}
+
+li {
+  list-style: none;
+}
+
 // --- General ---
 .game:not(:first-child),
 .genre:not(:first-child),

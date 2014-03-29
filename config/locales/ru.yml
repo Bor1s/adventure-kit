@@ -1,0 +1,7 @@
+ru:
+  dashboard:
+    index:
+      recruits: 'Рекруты'
+      no_recent_users: 'Нет новых рекрутов'
+      ago: ' назад'
+      top_games: 'Топ игр'

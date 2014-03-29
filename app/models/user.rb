@@ -1,6 +1,7 @@
 class User
   include Mongoid::Document
-  ROLES = { admin: 1, master: 2, player: 3, god: 777}
+  include Mongoid::Timestamps
+  ROLES = { admin: 1, master: 2, player: 3}
 
   # Mandatory fields
   field :uid, type: String
@@ -22,8 +23,9 @@ class User
 
   validates :name, presence: true
 
-  scope :masters, ->() { where(role: 2) }
-  scope :players, ->() { where(role: 3) }
+  scope :masters, -> { where(role: 2) }
+  scope :players, -> { where(role: 3) }
+  scope :recent, -> { where(:created_at.gte => (Time.zone.now - 3.days)) }
 
   def self.find_or_create_by_auth_hash(auth_hash)
     user = User.where(uid: auth_hash[:uid]).first
@@ -41,10 +43,6 @@ class User
     end
   end
 
-  def god?
-    role == 777
-  end
-
   def admin?
     role == 1
   end
@@ -55,6 +53,16 @@ class User
 
   def player?
     role == 3
+  end
+
+  def human_role
+    if admin?
+      'admin'
+    elsif master?
+      'master'
+    else
+      'player'
+    end
   end
 
   def waiting_for_acceptance?

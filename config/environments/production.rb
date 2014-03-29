@@ -90,4 +90,5 @@ PlayhardCore::Application.configure do
     enable_starttls_auto: true }
 
   config.action_mailer.default_url_options = { host: 'playhard.herokuapp.com' }
+  config.harvester.host = 'http://ph-harvester.herokuapp.com'
 end

@@ -48,5 +48,4 @@ class Game
       all
     end
   end
-
 end
