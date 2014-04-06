@@ -2,8 +2,8 @@
 <html>
 <head>
   <title>PlayhardCore</title>
-  <link href='http://fonts.googleapis.com/css?family=Lora&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <link href='http://fonts.googleapis.com/css?family=Lobster|Play&subset=cyrillic-ext,latin' rel='stylesheet' type='text/css'>
   <%= favicon_link_tag %>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
@@ -19,12 +19,12 @@
       <%= flash_messages %>
     </div>
 
-    <div class='col-md-<%= content_for?(:sidebar) ? '9' : '12' %>'>
+    <div class='col-md-<%= content_for?(:sidebar) ? '8' : '12' %>'>
       <%= yield %>
     </div>
 
     <% if content_for? :sidebar %>
-      <div class='col-md-3'>
+      <div class='col-md-3 col-md-offset-1'>
         <%= yield :sidebar %>
       </div>
     <% end %>

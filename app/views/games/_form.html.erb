@@ -1,24 +1,49 @@
-<div class='container'>
-  <div class='row'>
-    <%= errors_for @game %>
-  </div>
-  <div class='row'>
-    <%= form_for @game, html: { class: 'form-horizontal', role: 'form' } do |f| %>
-      <div class="form-group">
-        <%= f.text_field :title, class: 'form-control', placeholder: 'Genre Title' %>
-      </div>
+<div class='row'>
 
-      <div class="form-group">
-        <%= f.text_area :description, class: 'form-control', placeholder: 'Game Description', size: '50x10' %>
-      </div>
+  <%= form_for @game, html: { multipart: true, class: 'form-horizontal', role: 'form' } do |f| %>
+    <%#= errors_for @game %>
 
-      <div class="form-group">
-        <%= f.hidden_field :tag_ids, id: 'tags', data: {pre: @game.tags.tokenize}, style: 'width: 300px;' %>
+    <div class="form-group">
+      <div class='triada-header'>
+        <div class='col-md-4'></div>
+        <div class='col-md-4'><%= t('.general_info')%></div>
+        <div class='col-md-4'></div>
       </div>
+    </div>
 
-      <div class="form-group">
-        <%= f.submit class: 'btn btn-success' %>
+    <div class="form-group">
+      <%= f.text_field :title, class: 'form-control input-sm', placeholder: 'Genre Title' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.text_area :description, class: 'form-control input-sm', placeholder: 'Game Description', size: '50x10' %>
+    </div>
+
+    <div class="form-group tags">
+      <%= f.hidden_field :tag_ids, id: 'tags', data: {pre: @game.tags.tokenize}, style: 'width: 500px; font-size: 12px;' %>
+    </div>
+
+    <div class="form-group">
+      <div class='triada-header'>
+        <div class='col-md-4'></div>
+        <div class='col-md-4'><%= t('.events')%></div>
+        <div class='col-md-4'></div>
       </div>
-    <% end %>
-  </div>
+    </div>
+
+    <div class='events'>
+      <%= f.fields_for :events do |event| %>
+        <%= render 'event_fields', f: event %>
+      <% end %>
+    </div>
+
+    <div class="form-group">
+      <%= link_to_add_association f, :events,
+        data: {:'association-insertion-node' => '.events', :'association-insertion-method' => 'append'},
+        class: 'btn btn-sm btn-default' do %>
+        <i class='fa fa-plus'><%= t('.add_event') %></i>
+      <% end %>
+      <%= f.submit "#{t('.save')}", class: 'btn btn-success btn-sm' %>
+    </div>
+  <% end %>
 </div>

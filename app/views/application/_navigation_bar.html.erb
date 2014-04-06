@@ -13,12 +13,12 @@
       <li>
         <%= link_to edit_profile_path, class: 'profile-link' do %>
           <%= image_tag current_user.avatar, size: '30x30' %>
-          <%= current_user.name %>
+          <i class='fa fa-wrench'></i>
         <% end %>
       </li>
       <li>
         <%= link_to signout_path do %>
-          <i class='fa fa-sign-out'></i>
+          <i class='fa fa-power-off'></i>
         <% end %>
       </li>
     </ul>

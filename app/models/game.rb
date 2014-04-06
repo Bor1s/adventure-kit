@@ -10,12 +10,15 @@ class Game
   has_and_belongs_to_many :tags
   has_and_belongs_to_many :genres
   has_many :comments, dependent: :delete
+  has_many :events
 
   validates :title, presence: true
   validates :description, presence: true
 
   scope :finished, ->() { where(finished: true) }
   scope :pending, ->() { where(finished: false) }
+
+  accepts_nested_attributes_for :events, allow_destroy: true
 
   def subscribe user, role=:player
     unless subscribed? user

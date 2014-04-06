@@ -24,8 +24,6 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
-gem 'faraday'
-
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
@@ -39,6 +37,11 @@ gem 'cancan'
 gem 'kaminari'
 gem 'sidekiq'
 gem "select2-rails"
+gem 'faraday'
+gem 'mongoid-grid_fs', github: 'ahoward/mongoid-grid_fs'
+gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+gem 'mini_magick'
+gem 'cocoon'
 
 group :test, :development do
   gem 'thin'

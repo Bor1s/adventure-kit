@@ -17,18 +17,20 @@ class GamesController < ApplicationController
   def new
     authorize! :create, Game
     @game = Game.new
+    @game.events.build
   end
 
   def create
-    @game = Game.create normalize_params game_params
+    @game = Game.create normalize_params(game_params)
     if @game.valid?
       @game.subscribe(current_user, :master)
       payload = {game: @game, user: current_user}
       notifications.instrument('game_created', payload) do
         CoreNotification.create(message: "#{current_user.name} created #{@game.title}")
       end
+      location = edit_game_path(@game)
     end
-    respond_with @game
+    respond_with(@game, location: location)
   end
 
   def edit
@@ -40,7 +42,7 @@ class GamesController < ApplicationController
     @game = Game.find params[:id]
     authorize! :update, @game
     @game.update_attributes normalize_params game_params
-    respond_with @game
+    respond_with @game, location: edit_game_path(@game)
   end
 
   def destroy
@@ -75,7 +77,8 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit(:title, :description, :tag_ids)
+    params.require(:game).permit(:title, :description, :tag_ids,
+                                 events_attributes: [:title, :poster, :poster_cache, :description, :_destroy, :id, :remove_poster])
   end
 
   def normalize_params parameters

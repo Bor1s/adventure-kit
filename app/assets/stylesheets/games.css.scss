@@ -26,6 +26,11 @@
   aside a {
     margin-left: 10px;
   }
+
+}
+
+.tags {
+  margin-bottom: 3em;
 }
 
 .decision {
@@ -53,4 +58,26 @@
   &:hover {
     color: black
   }
+}
+
+.events {
+  textarea {
+    width: 300px;
+  }
+
+  div.links {
+  }
+
+  .nested-fields {
+    margin-top: 3em;
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  img.poster {
+    margin-right: 20px;
+  }
+
+  margin-bottom: 4em;
 }

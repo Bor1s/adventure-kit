@@ -1,7 +1,7 @@
 <div class='row'>
 
   <div class='col-md-3'>
-    <% if current_user.admin? || current_user.god? %>
+    <% if current_user.admin? %>
       <%= render 'admin_menu' %>
     <% else %>
       <%= render 'master_menu' %>
@@ -33,7 +33,7 @@
             <%= f.hidden_field :tag_ids, id: 'tags', data: {pre: @profile.tags.tokenize}, style: 'width: 300px;' %>
           </div>
 
-          <% unless current_user.admin? || current_user.god? %>
+          <% unless current_user.admin? %>
             <div class="form-group">
               <% if current_user.waiting_for_acceptance? %>
                 Please wait until we accept your master request
