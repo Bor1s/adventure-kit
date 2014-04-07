@@ -61,23 +61,28 @@
 }
 
 .events {
-  textarea {
+  margin-bottom: 4em;
+
+  textarea, input[type='text'] {
     width: 300px;
   }
 
-  div.links {
-  }
-
-  .nested-fields {
-    margin-top: 3em;
-    &:first-child {
-      margin-top: 0;
-    }
+  .input-group-btn {
+    width: 0;
   }
 
   img.poster {
     margin-right: 20px;
+    outline: 0;
   }
 
-  margin-bottom: 4em;
+  .remove-poster {
+    position: absolute;
+    top: 145px;
+    left: 10px;
+  }
+
+  .row {
+    margin-bottom: 5em;
+  }
 }

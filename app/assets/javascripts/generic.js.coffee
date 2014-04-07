@@ -21,7 +21,25 @@ initTokenInput = ->
 
   input.select2 'data', input.data('pre')
 
+initPicker = ->
+  $('.calendar').on 'click', (e)->
+    e.preventDefault()
+    _picker = $(this).parent().prev()
+    _picker.datetimepicker ->
+      lazyInit: true
+      lang: 'ru'
+      format: 'Y-m-d H:i'
+    _picker.datetimepicker('show')
+
+initCocoonPicker = ->
+  $('.events').on 'cocoon:after-insert', ->
+    initPicker()
+
 $ ->
   initTokenInput()
+  initPicker()
+  initCocoonPicker()
+
 $(document).on 'page:load', ->
   initTokenInput()
+

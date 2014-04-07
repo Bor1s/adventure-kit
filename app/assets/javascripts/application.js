@@ -15,8 +15,7 @@
 //= require select2
 //= require turbolinks
 //= require cocoon
+//= require jquery.datetimepicker
 //= require_tree .
 
-$(function(){
-  $('.dropdown-toggle').dropdown();
-});
+$('.dropdown-toggle').dropdown();
