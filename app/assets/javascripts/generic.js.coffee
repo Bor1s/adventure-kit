@@ -24,7 +24,9 @@ initTokenInput = ->
 initPicker = ->
   $('.calendar').on 'click', (e)->
     e.preventDefault()
-    _picker = $(this).parent().prev()
+    #HACK fix it!!!
+    _picker = $(this).parent().parent().find('.dtpicker')
+    console.log _picker
     _picker.datetimepicker ->
       lazyInit: true
       lang: 'ru'
