@@ -2,7 +2,7 @@
 <div class='nested-fields'>
   <div class='col-md-4'>
     <div class="form-group">
-      <%= image_tag(f.object.poster.medium.url, class: 'poster') %><br />
+      <%= image_tag(asset_path(f.object.poster.medium.url), class: 'poster') %><br />
       <% if f.object.poster? %>
         <%= f.label :remove_poster, class: 'checkbox-inline input-sm remove-poster' do %>
           <%= f.check_box :remove_poster %><%= t('.remove_poster') %>
