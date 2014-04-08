@@ -18,8 +18,9 @@ PlayhardCore::Application.routes.draw do
   resource  :profile, only: [:edit, :update]
   resources :approvals, only: [:index, :update, :destroy]
   resources :tags
+  resources :events
 
-  root 'dashboard#index'
+  root 'events#index'
 
   get '*path', to: 'application#routing_error_handler'
   # The priority is based upon order of creation: first created -> highest priority.

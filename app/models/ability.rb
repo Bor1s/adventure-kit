@@ -48,7 +48,7 @@ class Ability
     end
 
     if user.player?
-      can :read, [Genre, User, Game, Comment]
+      can :read, [Genre, User, Game, Comment, Event]
       can :create, Comment
       can [:update, :destroy], Comment do |comment|
         user.commenter? comment

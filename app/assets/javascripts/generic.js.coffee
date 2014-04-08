@@ -24,6 +24,7 @@ initTokenInput = ->
 initPicker = ->
   $('.calendar').on 'click', (e)->
     e.preventDefault()
+    e.stopPropagation()
     #HACK fix it!!!
     _picker = $(this).parent().parent().find('.dtpicker')
     console.log _picker

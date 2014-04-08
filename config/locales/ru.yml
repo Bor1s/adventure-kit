@@ -14,3 +14,10 @@ ru:
     event_fields:
       remove: ' Удалить'
       remove_poster: ' Удалить постер'
+  events:
+    index:
+      recruits: 'Рекруты'
+      top_games: 'Топ игр'
+    event:
+      go_to_game: 'перейти к игре'
+

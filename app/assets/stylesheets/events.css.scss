@@ -1,0 +1,55 @@
+// Place all the styles related to the events controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.game-event {
+  background-color: #eee;
+  margin-bottom: 3em;
+  height: 200px;
+
+  aside {
+    color: #fff;
+    position: relative;
+    background-color: #000;
+    top: -28px;
+    right: -33px;
+    margin: 0;
+    padding: 6px
+  }
+
+  .corner {
+    position: absolute;
+    top: 32px;
+    right: 0px;
+    width: 0; 
+    height: 0; 
+    border-left: 0px solid transparent;
+    border-right: 18px solid transparent;
+    border-top: 15px solid #a1a19f;
+  }
+  
+  .poster {
+    padding-left: 0px;
+  }
+
+  .body {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .header {
+    font-size: 1.5em;
+    color: #000;
+  }
+
+  .tag {
+    font-size: 10px;
+    margin: 2px;
+    display: inline-block;
+    border-radius: 3px;
+    padding: 2px 3px 2px 3px;
+    background-color: #000;
+    color: #fff;
+  }
+
+}

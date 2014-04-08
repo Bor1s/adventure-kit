@@ -1,0 +1,36 @@
+<% content_for :sidebar do %>
+  <%= render 'admin_sidebar' if current_user.master? || current_user.admin? %>
+  <aside>
+    <header><%= t('.top_games') %></header>
+    <article>
+      <ul class='list-unstyled'>
+        <% @top_games.each do |top_game| %>
+          <li>
+            <%= top_game.title %>
+            <small class='text-muted'>x <%= top_game.amount %></small>
+          </li>
+        <% end %>
+      </ul>
+    </article>
+  </aside>
+
+  <aside>
+    <header><%= t('.recruits') %></header>
+    <article>
+      <ul>
+        <% if @recent_users.present? %>
+          <% @recent_users.each do |user| %>
+            <li>
+              <%= user.name %> (<%= user.human_role %>)
+              <small class='text-muted'>- <%= distance_of_time_in_words_to_now(user.created_at) %> <%= t('.ago') %></small>
+            </li>
+          <% end %>
+        <% else %>
+          <%= t('.no_recent_users') %>
+        <% end %>
+      </ul>
+    </article>
+  </aside>
+<% end %>
+
+<%= render @events %>

@@ -46,10 +46,6 @@ aside {
   }
 }
 
-li {
-  list-style: none;
-}
-
 input[type='file'] {
   width: 300px;
 }
@@ -168,4 +164,9 @@ input[type='file'] {
     height: 1px;
     border-bottom: 1px solid #eee;
   }
+}
+
+// --- Required fileds ---
+.required, input:invalid, textarea:invalid {
+  background-color: #FCFDE8;
 }

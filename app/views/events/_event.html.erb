@@ -1,0 +1,24 @@
+<div class='row game-event'>
+  <div class='col-md-4 poster'>
+    <%= image_tag asset_path(event.poster.medium.url) %>
+  </div>
+
+  <div class='col-md-8 body'>
+    <aside class='pull-right'>
+      <i class='fa fa-clock-o'></i> <%= event.beginning_at.to_s(:short) %>
+      <div class='pull-right corner'></div>
+    </aside>
+
+    <p>
+      <%= link_to event.game.title.truncate(30), game_path(event.game), class: 'header' %>
+      <br />
+      <small class='text-muted'>By <%= event.game.master.name %></small>
+    </p>
+
+    <p><%= event.description.truncate(250) %></p>
+
+    <% event.game.tags.each do |tag| %>
+      <span class='tag'><%= tag.title %></span>
+    <% end %>
+  </div>
+</div>

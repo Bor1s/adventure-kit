@@ -1,6 +1,6 @@
 <%= content_for :sidebar do %>
   <aside>
-    <header>Инфоблок</header>
+    <header>Общее</header>
     <article class='text-muted'>
       <p>
         Участники: <%= @game.players.count %><br />
@@ -15,9 +15,13 @@
       <%= tags(@game.tags) %>
     </article>
   </aside>
-  <p class='subscribe-button-container'>
 
-  </p>
+  <% if current_user.creator?(@game) %>
+    <aside>
+      <header>Мастеру</header>
+      <p><%= link_to 'Редактировать игру', edit_game_path(@game), class: 'btn btn-success btn-xs' %></p>
+    </aside>
+  <% end %>
 <% end %>
 
 <div class='row game'>

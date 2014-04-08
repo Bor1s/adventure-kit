@@ -2,7 +2,7 @@
   <nav class='container navbar navbar-default navbar-light' role='navigation'>
 
     <ul class='nav navbar-nav toplinks'>
-      <li class='<%= current_tab?('games') ? 'active' : '' %>'><%= link_to 'Игры', games_path %></li>
+      <li class='<%= current_tab?('events') ? 'active' : '' %>'><%= link_to 'Игры', events_path %></li>
       <!--<li class='<%#= current_tab?('genres') ? 'active' : '' %>'><%#= link_to 'Жанры', genres_path %></li>-->
       <li class='<%= current_tab?('tags') ? 'active' : '' %>'><%= link_to 'Метки', tags_path %></li>
       <li class='<%= current_tab?('masters') ? 'active' : '' %>'><%= link_to 'Мастера', masters_path %></li>
@@ -13,7 +13,7 @@
       <li>
         <%= link_to edit_profile_path, class: 'profile-link' do %>
           <%= image_tag current_user.avatar, size: '30x30' %>
-          <i class='fa fa-wrench'></i>
+          <i class='fa fa-gears'></i>
         <% end %>
       </li>
       <li>

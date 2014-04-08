@@ -1,9 +1,5 @@
 <% content_for :sidebar do %>
-  <% if current_user.master? || current_user.admin? %>
-    <%= render 'admin_sidebar' %>
-  <% else %>
-    <%= render 'regular_sidebar' %>
-  <% end %>
+  <%= render 'admin_sidebar' if current_user.master? || current_user.admin? %>
 <% end %>
 
 <%= render @games %>
