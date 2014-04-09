@@ -1,6 +1,6 @@
-set :deploy_to, '/home/playhard/playhard_core'
+set :deploy_to, '/home/playhard/playhard-core'
 set :default_env, { path: "'/home/playhard/.rbenv/shims:/home/playhard/.rbenv/bin:/bin:/usr/bin'" }
-set :branch, :production
+#set :branch, :production
 
 # Simple Role Syntax
 # ==================

@@ -27,7 +27,7 @@ set :rbenv_ruby, '2.0.0-p353'
 
 # Default value for :linked_files is []
 # set :linked_files, %w{config/database.yml}
-set :linked_files, ['config/mongoid.yml']
+#set :linked_files, ['config/mongoid.yml']
 
 # Default value for linked_dirs is []
 # set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
