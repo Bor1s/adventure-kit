@@ -78,6 +78,8 @@ test:
 production:
   sessions:
     default:
-      uri: <%= ENV['MONGOHQ_URL'] %>
+      database: playhard_core_production
+      hosts:
+        - localhost:27017
       options:
         read: primary
