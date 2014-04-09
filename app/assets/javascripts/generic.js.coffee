@@ -2,6 +2,7 @@ initTokenInput = ->
   input = $("#tags")
   input.select2
     tokenSeparators: [' ']
+    placeholder: 'Один или больше тэгов, например (D&D4ed Fallout)'
     tags: true
     createSearchChoice: (term, data)->
       existing_term = data.filter (d)-> d.text == term
@@ -27,11 +28,9 @@ initPicker = ->
     e.stopPropagation()
     #HACK fix it!!!
     _picker = $(this).parent().parent().find('.dtpicker')
-    console.log _picker
-    _picker.datetimepicker ->
-      lazyInit: true
+    _picker.datetimepicker
       lang: 'ru'
-      format: 'Y-m-d H:i'
+      format: 'd-m-Y H:i'
     _picker.datetimepicker('show')
 
 initCocoonPicker = ->
@@ -45,4 +44,5 @@ $ ->
 
 $(document).on 'page:load', ->
   initTokenInput()
+  initPicker()
 

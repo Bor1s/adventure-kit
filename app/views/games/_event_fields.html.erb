@@ -18,7 +18,7 @@
 
     <div class="form-group">
       <div class="input-group">
-        <%= f.text_field :beginning_at, value: f.object.beginning_at.try(:to_s, :db), class: 'form-control input-sm dtpicker' %>
+        <%= f.text_field :beginning_at, value: f.object.beginning_at.try(:strftime, '%d-%m-%Y %H:%M'), class: 'form-control input-sm dtpicker' %>
         <span class="input-group-btn">
           <%= button_tag class: 'btn btn-default btn-sm calendar' do %>
             <i class='fa fa-calendar'></i>
