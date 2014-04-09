@@ -1,5 +1,5 @@
 if ENV['RAILS_ENV'] == 'production'
-  deploy_to = "/home/playhard/playhard_core"
+  deploy_to = "/home/playhard/playhard-core"
 end
 
 rails_root = "#{deploy_to}/current"
