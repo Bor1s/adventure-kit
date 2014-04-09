@@ -38,7 +38,6 @@ gem 'kaminari'
 gem 'sidekiq'
 gem "select2-rails"
 gem 'faraday'
-gem 'mongoid-grid_fs', github: 'ahoward/mongoid-grid_fs'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 gem 'mini_magick'
 gem 'cocoon'
@@ -66,7 +65,7 @@ gem 'rails_12factor', group: :production
 gem 'unicorn'
 
 # Use Capistrano for deployment
-# gem 'capistrano', group: :development
+gem 'capistrano', group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
