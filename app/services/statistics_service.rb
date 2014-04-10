@@ -15,6 +15,7 @@ class StatisticsService
 
   class << self
     def top_games 
+      #TODO refactor!
       response = Faraday.get "#{Rails.application.config.harvester.host}/games/top"
       data = JSON.parse(response.body)
       data.map do |d|
@@ -23,7 +24,7 @@ class StatisticsService
         if game.present?
           GameDecorator.new(game, d['amount'])
         end
-      end
+      end.compact
     end
   end
 end
