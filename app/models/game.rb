@@ -10,7 +10,7 @@ class Game
   has_and_belongs_to_many :tags
   has_and_belongs_to_many :genres
   has_many :comments, dependent: :delete
-  has_many :events
+  has_many :events, dependent: :delete
 
   validates :title, presence: true
   validates :description, presence: true
