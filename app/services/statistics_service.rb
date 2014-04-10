@@ -3,8 +3,8 @@ class StatisticsService
   class GameDecorator
     attr_reader :game, :amount
 
-    def initialize(id, amount)
-      @game = Game.find(id)
+    def initialize(game, amount)
+      @game = game
       @amount = amount.to_i
     end
 
@@ -18,7 +18,11 @@ class StatisticsService
       response = Faraday.get "#{Rails.application.config.harvester.host}/games/top"
       data = JSON.parse(response.body)
       data.map do |d|
-        GameDecorator.new(d['game']['$oid'].present? ? d['game']['$oid'] : d['game'], d['amount'])
+        id = d['game']['$oid'].present? ? d['game']['$oid'] : d['game']
+        game = Game.where(id: id).first
+        if game.present?
+          GameDecorator.new(game, d['amount'])
+        end
       end
     end
   end
