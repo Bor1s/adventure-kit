@@ -26,7 +26,6 @@ initPicker = ->
   $('.calendar').on 'click', (e)->
     e.preventDefault()
     e.stopPropagation()
-    #HACK fix it!!!
     _picker = $(this).parent().parent().find('.dtpicker')
     _picker.datetimepicker
       lang: 'ru'
@@ -35,6 +34,7 @@ initPicker = ->
 
 initCocoonPicker = ->
   $('.events').on 'cocoon:after-insert', ->
+    console.log 'cocoon insertion'
     initPicker()
 
 $ ->
@@ -45,4 +45,5 @@ $ ->
 $(document).on 'page:load', ->
   initTokenInput()
   initPicker()
+  initCocoonPicker()
 
