@@ -33,4 +33,6 @@ PlayhardCore::Application.configure do
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
+
+  config.harvester.host = 'http://localhost:3001'
 end

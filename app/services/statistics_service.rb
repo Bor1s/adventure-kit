@@ -1,30 +1,32 @@
 class StatisticsService
+  attr_reader :host
 
-  class GameDecorator
-    attr_reader :game, :amount
+  def initialize
+    @host = Rails.application.config.harvester.host
+  end
 
-    def initialize(game, amount)
-      @game = game
-      @amount = amount.to_i
-    end
-
-    def title
-      game.title
+  def connection
+    Faraday.new(url: host) do |faraday|
+      faraday.request  :url_encoded             # form-encode POST params
+      faraday.response :logger                  # log requests to STDOUT
+      faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
     end
   end
 
-  class << self
-    def top_games 
-      #TODO refactor!
-      response = Faraday.get "#{Rails.application.config.harvester.host}/games/top"
-      data = JSON.parse(response.body)
-      data.map do |d|
-        id = d['game']['$oid'].present? ? d['game']['$oid'] : d['game']
-        game = Game.where(id: id).first
-        if game.present?
-          GameDecorator.new(game, d['amount'])
-        end
-      end.compact
+  def top_games
+    response = connection.get('/games/top')
+    data = JSON.parse(response.body)
+    result = []
+    data.each do |d|
+      id = d['game']['$oid'].present? ? d['game']['$oid'] : d['game']
+      game = Game.where(id: id).first
+      if game.present?
+        decorator = GameDecorator.new(game)
+        decorator.amount = d['amount']
+        result << decorator
+      end
     end
+
+    result
   end
 end
