@@ -84,7 +84,7 @@ PlayhardCore::Application.configure do
     address:              'smtp.gmail.com',
     port:                 587,
     domain:               'example.com',
-    user_name:            'playhardrpg@gmail.com',
+    user_name:            'noreply.playhardrpg@gmail.com',
     password:             'd3c0mpr3ss10n',
     authentication:       'plain',
     enable_starttls_auto: true }
