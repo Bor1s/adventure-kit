@@ -24,7 +24,7 @@ class GamesController < ApplicationController
     @game = Game.create normalize_params(game_params)
     if @game.valid?
       @game.subscribe(current_user, :master)
-      payload = {game: @game, user: current_user}
+      payload = {game_id: @game.id, user_id: current_user.id}
       notifications.instrument('game_created', payload) do
         CoreNotification.create(message: "#{current_user.name} created #{@game.title}")
       end
@@ -54,7 +54,7 @@ class GamesController < ApplicationController
 
   def take_part
     @game = Game.find params[:id]
-    payload = {game: @game, user: current_user}
+    payload = {game_id: @game.id, user_id: current_user.id}
     notifications.instrument('join_game', payload) do
       CoreNotification.create(message: "#{current_user.name} now joining #{@game.title}")
     end
@@ -66,7 +66,7 @@ class GamesController < ApplicationController
     @game = Game.find params[:id]
     unless current_user.creator? @game
       @game.redeem current_user
-      payload = {game: @game, user: current_user}
+      payload = {game_id: @game.id, user_id: current_user.id}
       notifications.instrument('left_game', payload) do
         CoreNotification.create(message: "#{current_user.name} left #{@game.title}")
       end

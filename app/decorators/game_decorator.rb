@@ -9,4 +9,8 @@ class GameDecorator
   def title
     game.title
   end
+
+  def amount
+    @amount.to_i
+  end
 end
