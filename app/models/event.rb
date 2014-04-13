@@ -11,5 +11,5 @@ class Event
   validates :description, presence: true
   validates :beginning_at, presence: true
 
-  scope :for_week, -> { where(:beginning_at.gte => Time.now.beginning_of_day, :beginning_at.lte => Time.now.next_week) }
+  scope :for_week, -> { where(:beginning_at.gte => Time.now.beginning_of_day, :beginning_at.lte => (Time.now + 7.days)) }
 end
