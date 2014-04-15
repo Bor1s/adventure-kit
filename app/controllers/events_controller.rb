@@ -3,7 +3,7 @@ class EventsController < ApplicationController
   respond_to :html
 
   def index
-    authorize! :read, [Event, Game]
+    authorize! :read, Event
     service = StatisticsService.new
     @top_games = service.top_games
     @recent_users = User.recent
