@@ -3,11 +3,10 @@ class TagsController < ApplicationController
   respond_to :html
 
   def index
-    @tags = Tag.page(params[:page])
+    @tags = Tag.desc(:game_ids).page(params[:page])
     respond_with @tags do |format|
       format.html
       format.json do
-        #TODO Maybe restrict amount of output tags?
         render json: Tag.search(params[:q]).tokenize
       end
     end

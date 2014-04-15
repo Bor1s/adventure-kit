@@ -3,10 +3,11 @@ class EventsController < ApplicationController
   respond_to :html
 
   def index
-    authorize! :read, Event
+    authorize! :read, [Event, Game]
     service = StatisticsService.new
-    @events = Event.for_week.asc(:beginning_at)
-    @recent_users = User.recent
     @top_games = service.top_games
+    @recent_users = User.recent
+
+    @events = EventService.call(tag_id: params[:q])
   end
 end
