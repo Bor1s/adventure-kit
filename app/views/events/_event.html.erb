@@ -1,6 +1,10 @@
 <div class='row game-event'>
-  <div class='col-md-4 poster'>
-    <%= image_tag asset_path(event.poster.medium.url) %>
+  <div class='col-md-4 poster text-center'>
+    <% if event.poster? %>
+      <%= image_tag asset_path(event.poster.medium.url) %>
+    <% else %>
+      <i class='fa fa-picture-o fa-5x default-image'></i>
+    <% end %>
   </div>
 
   <div class='col-md-8 body'>
@@ -15,10 +19,12 @@
       <small class='text-muted'>By <%= event.game.master.name %></small>
     </p>
 
-    <p><%= event.description.truncate(250) %></p>
+    <p><%= event.description.truncate(240) %></p>
 
+    <div class='tag-container'>
     <% event.game.tags.each do |tag| %>
       <span class='tag'><%= tag.title %></span>
     <% end %>
+    </div>
   </div>
 </div>

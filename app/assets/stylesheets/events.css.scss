@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .game-event {
-  background-color: #eee;
+  background-color: #F7F7F7;
   margin-bottom: 3em;
   height: 200px;
 
@@ -42,6 +42,11 @@
     color: #000;
   }
 
+  .tag-container {
+    height: 3.3em;
+    overflow: hidden;
+  }
+
   .tag {
     font-size: 10px;
     margin: 2px;
@@ -49,6 +54,11 @@
     padding: 2px 3px 2px 3px;
     background-color: #000;
     color: #fff;
+  }
+
+  .default-image {
+    margin-top: 0.9em;
+    color: #ddd;
   }
 
 }

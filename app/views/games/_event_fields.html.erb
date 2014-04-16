@@ -1,11 +1,13 @@
 <div class='row nested-fields'>
-  <div class='col-md-4'>
+  <div class='col-md-4 text-center'>
     <div class="form-group">
-      <%= image_tag(asset_path(f.object.poster.medium.url), class: 'poster') %><br />
       <% if f.object.poster? %>
+        <%= image_tag(asset_path(f.object.poster.medium.url), class: 'poster') %><br />
         <%= f.label :remove_poster, class: 'checkbox-inline input-sm remove-poster' do %>
           <%= f.check_box :remove_poster %><%= t('.remove_poster') %>
         <% end %>
+      <% else %>
+        <i class='fa fa-picture-o fa-5x default-image'></i>
       <% end %>
     </div>
   </div>

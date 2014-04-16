@@ -1,5 +1,4 @@
 # encoding: utf-8
-
 class PosterUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
@@ -20,7 +19,7 @@ class PosterUploader < CarrierWave::Uploader::Base
   def default_url
     # For Rails 3.1+ asset pipeline compatibility:
     #"/images/fallback/" + [version_name, "default.png"].compact.join('_')
-    ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.jpg"].compact.join('_'))
+    ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
   end
 
   # Process files as they are uploaded:

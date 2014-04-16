@@ -2,7 +2,7 @@ initTokenInput = ->
   input = $("#tags")
   input.select2
     tokenSeparators: [' ']
-    placeholder: 'Один или больше тэгов, например (D&D4ed Fallout)'
+    placeholder: 'Один или больше тегов, например (D&D4ed Fallout)'
     tags: true
     createSearchChoice: (term, data)->
       existing_term = data.filter (d)-> d.text == term
