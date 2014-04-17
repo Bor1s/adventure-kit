@@ -1,7 +1,7 @@
 <% content_for :sidebar do %>
   <%= render 'admin_sidebar' if current_user.master? || current_user.admin? %>
   <aside>
-    <header><%= t('.top_games') %></header>
+    <header><i class='fa fa-trophy'></i> <%= t('.top_games') %></header>
     <article>
       <ul class='list-unstyled'>
         <% @top_games.each do |top_game| %>
@@ -15,9 +15,9 @@
   </aside>
 
   <aside>
-    <header><%= t('.recruits') %></header>
+    <header><i class='fa fa-users'></i> <%= t('.recruits') %></header>
     <article>
-      <ul>
+      <ul class='list-unstyled'>
         <% if @recent_users.present? %>
           <% @recent_users.each do |user| %>
             <li>

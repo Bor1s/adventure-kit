@@ -19,7 +19,7 @@ class PosterUploader < CarrierWave::Uploader::Base
   def default_url
     # For Rails 3.1+ asset pipeline compatibility:
     #"/images/fallback/" + [version_name, "default.png"].compact.join('_')
-    ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.jpg"].compact.join('_'))
+    ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
   end
 
   # Process files as they are uploaded:
@@ -36,6 +36,10 @@ class PosterUploader < CarrierWave::Uploader::Base
 
   version :medium do
     process :resize_to_fill => [250, 200]
+  end
+
+  version :slide do
+    process :resize_to_fill => [800, 600]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

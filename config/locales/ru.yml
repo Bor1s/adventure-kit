@@ -1,8 +1,18 @@
 ru:
+  navbar:
+    events: 'Игры'
+    tags: 'Теги'
+    masters: 'Игровые мастеры'
+    players: 'Игроки'
+
+  sidebar:
+    create_game_header: 'Создайте свою игру'
+    create_game_tip: 'Хотите создать и повести игру?'
+    create_game: 'Создать игру'
+
   dashboard:
     index:
       recruits: 'Рекруты'
-      no_recent_users: 'Нет новых рекрутов'
       ago: ' назад'
       top_games: 'Топ игр'
   games:
@@ -14,10 +24,20 @@ ru:
     event_fields:
       remove: ' Удалить'
       remove_poster: ' Удалить постер'
+    show:
+      comments: 'Комментарии: '
+      participants: 'Участники: '
+      master: 'Мастеру '
+      tags: 'Тэги '
+      edit_game: 'Редактировать'
+      leave_game: 'Покинуть игру'
+      take_part: 'Принять участие'
+      general: 'Общее'
   events:
     index:
       recruits: 'Рекруты'
       top_games: 'Топ игр'
+      no_recent_users: 'Нет новых рекрутов'
     event:
       go_to_game: 'перейти к игре'
 

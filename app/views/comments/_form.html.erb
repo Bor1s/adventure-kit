@@ -1,8 +1,8 @@
-<%= form_for [@game, @comment], data: {remote: true}, class: 'form-horizontal' do |f| %>
-  <div class="form-group">
-    <%= f.text_area :message, placeholder: 'Comment message', class: 'form-control', size: '5x5' %>
+<%= form_for [@game, @comment], data: {remote: true}, html: {role: 'form'} do |f| %>
+  <div class="form-group col-md-5">
+      <%= f.text_area :message, placeholder: 'Comment message', class: 'form-control', rows: 5 %>
   </div>
-  <div class="form-group">
-    <%= f.submit class: 'btn btn-default' %>
+  <div class="form-group col-md-12">
+      <%= f.submit class: 'btn btn-default btn-xs' %>
   </div>
 <% end %>

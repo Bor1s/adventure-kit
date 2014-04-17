@@ -9,7 +9,7 @@
 
   <div class='col-md-8 body'>
     <aside class='pull-right'>
-      <i class='fa fa-clock-o'></i> <%= event.beginning_at.to_s(:short) %>
+      <i class='fa fa-clock-o'></i> <%= l(event.beginning_at, format: :short) %>
       <div class='pull-right corner'></div>
     </aside>
 
@@ -22,9 +22,9 @@
     <p><%= event.description.truncate(240) %></p>
 
     <div class='tag-container'>
-    <% event.game.tags.each do |tag| %>
-      <span class='tag'><%= tag.title %></span>
-    <% end %>
+      <% event.game.tags.each do |tag| %>
+        <span class='tag'><%= tag.title %></span>
+      <% end %>
     </div>
   </div>
 </div>

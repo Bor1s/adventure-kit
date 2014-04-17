@@ -1,25 +1,29 @@
 <%= content_for :sidebar do %>
   <aside>
-    <header>Общее</header>
-    <article class='text-muted'>
+    <header><i class='fa fa-info-circle'></i> <%= t('.general') %></header>
+    <article>
       <p>
-        Участники: <%= @game.players.count %><br />
-        Комментарии: <%= @game.comments.count %>
+        <%= t('.participants') %> <%= @game.players.count %><br />
+        <%= t('.comments') %> <%= @game.comments.count %>
       </p>
     </article>
   </aside>
 
   <aside>
-    <header>Теги</header>
-    <article class='text-muted'>
-      <%= tags(@game.tags) %>
+    <header><i class='fa fa-tags'></i> <%= t('.tags') %></header>
+    <article>
+      <% @game.tags.each do |tag| %>
+        <span class='tag'>
+          <%= link_to tag.title, events_path(q: tag.id) %>
+        </span>
+      <% end %>
     </article>
   </aside>
 
   <% if current_user.creator?(@game) %>
     <aside>
-      <header>Мастеру</header>
-      <p><%= link_to 'Редактировать игру', edit_game_path(@game), class: 'btn btn-success btn-xs' %></p>
+      <header><i class='fa fa-eye'></i> <%= t('.master') %></header>
+      <p><%= link_to t('.edit_game'), edit_game_path(@game), class: 'btn btn-success btn-xs' %></p>
     </aside>
   <% end %>
 <% end %>
@@ -27,6 +31,7 @@
 <div class='row game'>
   <div class='col-md-12'>
     <p class='title'><%= @game.title %></p>
+    <p><%= render 'events_carousel' %></p>
     <p class='description'><%= @game.description %><p>
   </div>
 </div>
@@ -36,14 +41,24 @@
     <div class='col-md-offset-4 col-md-4'>
       <article class='text-center decision'>
         <% if @game.subscribed?(current_user) %>
-          <%= link_to 'покинуть игру', unenroll_game_path(@game), method: :delete, data: {confirm: 'Sure?'} %>
+          <%= link_to t('.leave_game'), unenroll_game_path(@game), method: :delete, data: {confirm: 'Sure?'} %>
         <% else %>
-          <%= link_to 'Принять участие', take_part_game_path(@game) %>
+          <%= link_to t('.take_part'), take_part_game_path(@game) %>
         <% end %>
       </article>
     </div>
   </div>
 <% end %>
+
+<div class="form-group">
+  <div class='triada-header'>
+    <div class='row'>
+      <div class='col-md-4'></div>
+      <div class='col-md-4'><%= t('.comments')%></div>
+      <div class='col-md-4'></div>
+    </div>
+  </div>
+</div>
 
 <div class='comments'>
   <%= render partial: @game.comments %>

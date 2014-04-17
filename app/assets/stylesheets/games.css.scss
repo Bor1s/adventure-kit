@@ -13,7 +13,7 @@
     line-height: 1.5em;
     white-space: pre-line;
     margin-top: 2em;
-    margin-bottom: 3em;
+    margin-bottom: 2em;
   }
 
   a {
@@ -87,5 +87,16 @@
   .default-image {
     margin-top: 0.6em;
     color: #ddd;
+  }
+}
+
+#events-carousel {
+  margin-bottom: 2em;
+
+  .carousel-control span {
+    position: absolute;
+    top: 48%;
+    z-index: 5;
+    display: inline-block;
   }
 }
