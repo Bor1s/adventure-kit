@@ -6,6 +6,15 @@
         <%= t('.participants') %> <%= @game.players.count %><br />
         <%= t('.comments') %> <%= @game.comments.count %>
       </p>
+      <p>
+        <% unless current_user.creator?(@game) %>
+          <% if @game.subscribed?(current_user) %>
+            <%= link_to t('.leave_game'), unenroll_game_path(@game), method: :delete, data: {confirm: 'Sure?'}, class: 'btn btn-danger btn-xs' %>
+          <% else %>
+            <%= link_to t('.take_part'), take_part_game_path(@game), class: 'btn btn-success btn-xs' %>
+          <% end %>
+        <% end %>
+      </p>
     </article>
   </aside>
 
@@ -35,20 +44,6 @@
     <p class='description'><%= @game.description %><p>
   </div>
 </div>
-
-<% unless current_user.creator?(@game) %>
-  <div class='row'>
-    <div class='col-md-offset-4 col-md-4'>
-      <article class='text-center decision'>
-        <% if @game.subscribed?(current_user) %>
-          <%= link_to t('.leave_game'), unenroll_game_path(@game), method: :delete, data: {confirm: 'Sure?'} %>
-        <% else %>
-          <%= link_to t('.take_part'), take_part_game_path(@game) %>
-        <% end %>
-      </article>
-    </div>
-  </div>
-<% end %>
 
 <div class="form-group">
   <div class='triada-header'>
