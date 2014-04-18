@@ -37,7 +37,8 @@ class Game
   end
 
   def players
-    User.where :id.in => subscriptions.map(&:user_id)
+    player_subscriptions = subscriptions.where(user_right: Subscription::RIGHTS[:player])
+    User.where :id.in => player_subscriptions.map(&:user_id)
   end
 
   def subscribed? user

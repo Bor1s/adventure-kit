@@ -17,5 +17,3 @@
 //= require cocoon
 //= require jquery.datetimepicker
 //= require_tree .
-
-$('.dropdown-toggle').dropdown();

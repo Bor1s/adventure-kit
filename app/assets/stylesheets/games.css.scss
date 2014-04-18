@@ -72,6 +72,7 @@
 
 #events-carousel {
   margin-bottom: 2em;
+  font-size: 18px;
 
   .carousel-control span {
     position: absolute;
@@ -79,4 +80,24 @@
     z-index: 5;
     display: inline-block;
   }
+}
+
+.master-ico {
+  position: relative;
+  img:hover {
+    outline: 1px solid #000;
+    cursor: pointer;
+  }
+}
+
+.master-ico::before {
+  content: 'DM';
+  text-align: center;
+  background-color: #000;
+  color: #fff;
+  position: absolute;
+  z-index: 5;
+  width: 50px;
+  height: 20px;
+  bottom: 0%;
 }

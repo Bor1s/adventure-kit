@@ -13,9 +13,9 @@
         <%= image_tag asset_path(event.poster.slide.url) %>
         <div class="carousel-caption">
           <p><%= event.description %></p>
-          <h4 class='pull-right'>
+          <h3 class='pull-right'>
             <%= l(event.beginning_at, format: :short) %>
-          </h4>
+          </h3>
         </div>
       </div>
     <% end %>

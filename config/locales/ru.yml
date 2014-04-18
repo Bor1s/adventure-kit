@@ -27,12 +27,14 @@ ru:
     show:
       comments: 'Комментарии: '
       participants: 'Участники: '
-      master: 'Мастеру '
+      for_master: 'Мастеру '
+      master: 'Мастер: '
       tags: 'Тэги '
       edit_game: 'Редактировать'
       leave_game: 'Покинуть игру'
       take_part: 'Принять участие'
       general: 'Общее'
+      players: 'Игроки: '
   events:
     index:
       recruits: 'Рекруты'

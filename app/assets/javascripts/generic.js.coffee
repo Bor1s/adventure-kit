@@ -38,11 +38,13 @@ initCocoonPicker = ->
     initPicker()
 
 $ ->
+  $('img').tooltip()
   initTokenInput()
   initPicker()
   initCocoonPicker()
 
 $(document).on 'page:load', ->
+  $('img').tooltip()
   initTokenInput()
   initPicker()
   initCocoonPicker()
