@@ -23,11 +23,12 @@ class User
 
   validates :name, presence: true
 
-  scope :masters, -> { where(role: 2) }
+  scope :masters, -> { where(:role.in => [1,2]) }
   scope :players, -> { where(role: 3) }
   scope :recent, -> { where(:created_at.gte => (Time.zone.now - 3.days)) }
 
   def self.find_or_create_by_auth_hash(auth_hash)
+    puts auth_hash
     user = User.where(uid: auth_hash[:uid]).first
     if user
       user.update_attributes(name: auth_hash[:info][:first_name],

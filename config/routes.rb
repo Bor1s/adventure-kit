@@ -16,8 +16,7 @@ PlayhardCore::Application.routes.draw do
     end
     resources :comments, except: [:index, :new]
   end
-  resources :masters, only: [:index]
-  resources :players, only: [:index]
+  resources :users, only: [:index]
   resource  :profile, only: [:edit, :update]
   resources :approvals, only: [:index, :update, :destroy]
   resources :tags

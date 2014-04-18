@@ -1,9 +1,9 @@
-class PlayersController < ApplicationController
+class UsersController < ApplicationController
   before_action :authenticate
   respond_to :html
 
   def index
     authorize! :read, User
-    @players = User.players.all
+    @users = User.asc(:created_at)
   end
 end

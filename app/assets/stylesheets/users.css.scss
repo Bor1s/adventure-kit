@@ -1,0 +1,25 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.user {
+  margin-bottom: 2em;
+  padding: 1em 0em;
+
+  &:nth-child(2n+1) {
+    background-color: #F7F7F7;
+  }
+
+  img {
+    border: 3px double #ddd;
+  }
+
+  a {
+    color: #000;
+    font-weight: bold;
+    &:hover {
+      opacity: 0.5;
+      text-decoration: none;
+    }
+  }
+}

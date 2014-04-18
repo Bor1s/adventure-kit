@@ -2,8 +2,7 @@ ru:
   navbar:
     events: 'Игры'
     tags: 'Теги'
-    masters: 'Игровые мастеры'
-    players: 'Игроки'
+    people: 'Люди'
 
   sidebar:
     create_game_header: 'Создайте свою игру'
@@ -15,6 +14,7 @@ ru:
       recruits: 'Рекруты'
       ago: ' назад'
       top_games: 'Топ игр'
+
   games:
     form:
       general_info: 'Общая информация'
@@ -35,6 +35,7 @@ ru:
       take_part: 'Принять участие'
       general: 'Общее'
       players: 'Игроки: '
+
   events:
     index:
       recruits: 'Рекруты'
@@ -43,3 +44,10 @@ ru:
     event:
       go_to_game: 'перейти к игре'
 
+  users:
+    index:
+      general: 'Общее'
+      total_masters: 'Всего мастеров: '
+      total_players: 'Всего игроков: '
+    user:
+      master: 'Мастер'

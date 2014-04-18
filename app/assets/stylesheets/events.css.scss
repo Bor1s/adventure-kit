@@ -39,7 +39,12 @@
 
   .header {
     font-size: 1.5em;
+    font-weight: bold;
     color: #000;
+    &:hover {
+      opacity: 0.3;
+      text-decoration: none;
+    }
   }
 
   .tag-container {

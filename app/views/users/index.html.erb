@@ -1,0 +1,11 @@
+<% content_for :sidebar do %>
+  <aside>
+    <header><i class='fa fa-users'></i> <%= t('.general') %></header>
+    <article>
+      <p><%= t('.total_masters') %><%= @users.masters.count %></p>
+      <p><%= t('.total_players') %><%= @users.players.count %></p>
+    </article>
+  </aside>
+<% end %>
+
+<%= render @users %>

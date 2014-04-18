@@ -1,0 +1,26 @@
+<div class='row user'>
+  <div class='col-md-1 avatar text-center'>
+    <% if user.avatar.present? %>
+      <%= link_to user.social_network_link, target: '_blank' do %>
+        <%= image_tag asset_path(user.avatar) %>
+      <% end %>
+    <% else %>
+      <i class='fa fa-picture-o default-image'></i>
+    <% end %>
+  </div>
+
+  <div class='col-md-3'>
+    <p>
+      <%= link_to user.name, user.social_network_link, target: '_blank' %><br />
+      <small><%= user.email %></small>
+    </p>
+  </div>
+
+  <div class='col-md-8'>
+    <div class='tag-container'>
+      <% user.tags.each do |tag| %>
+        <span class='tag'><%= tag.title %></span>
+      <% end %>
+    </div>
+  </div>
+</div>

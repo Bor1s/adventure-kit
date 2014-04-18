@@ -4,8 +4,7 @@
     <ul class='nav navbar-nav toplinks'>
       <li class='<%= current_tab?('events') ? 'active' : '' %>'><%= link_to t('navbar.events'), events_path %></li>
       <li class='<%= current_tab?('tags') ? 'active' : '' %>'><%= link_to t('navbar.tags'), tags_path %></li>
-      <li class='<%= current_tab?('masters') ? 'active' : '' %>'><%= link_to t('navbar.masters'), masters_path %></li>
-      <li class='<%= current_tab?('players') ? 'active' : '' %>'><%= link_to t('navbar.players'), players_path %></li>
+      <li class='<%= current_tab?('users') ? 'active' : '' %>'><%= link_to t('navbar.people'), users_path %></li>
     </ul>
 
     <ul class='nav navbar-nav navbar-right'>

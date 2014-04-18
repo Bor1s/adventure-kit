@@ -8,9 +8,7 @@
     text-decoration: none;
     &:hover {
       div {
-        background-color: #fff;
-        color: #000;
-        outline: 1px solid #000;
+        opacity: 0.4;
       }
     }
   }
