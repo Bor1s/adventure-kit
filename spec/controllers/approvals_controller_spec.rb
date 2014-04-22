@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe ApprovalController do
+describe ApprovalsController do
 
 end

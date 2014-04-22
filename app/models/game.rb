@@ -46,6 +46,7 @@ class Game
   end
 
   def self.search tag_id=nil
+    #TODO maybe remove
     if tag_id.present?
       where(:tag_ids.in => [tag_id])
     else

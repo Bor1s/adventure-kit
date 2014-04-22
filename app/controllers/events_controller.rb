@@ -8,6 +8,6 @@ class EventsController < ApplicationController
     @top_games = service.top_games
     @recent_users = User.recent
 
-    @events = EventService.call(tag_id: params[:q])
+    @events = EventService.call(tag_id: params[:tag], q: params[:q], page: params[:page])
   end
 end

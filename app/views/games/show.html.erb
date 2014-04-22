@@ -35,7 +35,7 @@
     <article>
       <% @game.tags.each do |tag| %>
         <span class='tag'>
-          <%= link_to tag.title, events_path(q: tag.id) %>
+          <%= link_to tag.title, events_path(tag: tag.id) %>
         </span>
       <% end %>
     </article>

@@ -1,6 +1,7 @@
 class Event
   include Mongoid::Document
   include Mongoid::Timestamps
+
   field :description, type: String
   field :beginning_at, type: DateTime
 
@@ -19,4 +20,9 @@ class Event
       all
     end
   }
+
+  #Using by Solr
+  def title
+    game.title
+  end
 end

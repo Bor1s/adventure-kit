@@ -14,7 +14,7 @@
     </aside>
 
     <p>
-      <%= link_to event.game.title.truncate(30), game_path(event.game), class: 'header' %>
+      <%= link_to event.game.title.truncate(35), game_path(event.game), class: 'header' %>
       <br />
       <small class='text-muted'>By <%= event.game.master.name %></small>
     </p>

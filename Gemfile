@@ -28,6 +28,7 @@ gem 'mini_magick'
 gem 'cocoon'
 gem 'sinatra', '>= 1.3.0', :require => nil #For Sidekiq WEB
 gem 'unicorn'
+gem 'rsolr'
 
 group :test, :development do
   gem 'thin'
@@ -36,6 +37,7 @@ group :test, :development do
   gem 'shoulda-matchers'
   gem 'capybara'
   gem 'pry-rails'
+  gem 'sunspot_solr'
   #gem 'pry-debugger'
 end
 
