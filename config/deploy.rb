@@ -63,43 +63,35 @@ namespace :deploy do
       end
     end
   end
+
+  desc 'Reindex solr'
+  task :reindex_solr do
+    within release_path do
+      with rails_env: fetch(:rails_env) do
+        warn 'Reindexing Solr ...'
+        execute :rake, "solr:reindex"
+      end
+    end 
+  end
  
-  namespace :solr do
-    %w[start stop].each do |command|
-      desc "#{command} solr"
-      task command do
-        on roles(:app) do
-          solr_pid = "#{shared_path}/pids/sunspot-solr.pid"
-          if command == "start" or (test "[ -f #{solr_pid} ]" and test "kill -0 $( cat #{solr_pid} )")
-            within current_path do
-              with rails_env: fetch(:stage) do
-                execute :rake, "sunspot:solr:#{command}"
-                execute :bundle, 'exec', 'sunspot-solr', command, "--port=8983 --data-directory=#{shared_path}/solr/data --pid-dir=#{shared_path}/pids"
-              end
-            end
-          end
-        end
+  desc 'Copy solr schema and config'
+  task :boot_solr do
+    within release_path do
+      solr_conf = release_path.join('config', 'solr', 'solrconfig.xml')
+      solr_schema = release_path.join('config', 'solr', 'schema.xml')
+      target = '/opt/solr/playhard/multicore/core0/conf'
+
+      if test "[[ -f #{solr_conf} && -f #{solr_schema} ]]"
+        execute :cp, solr_conf, target
+        execute :cp, solr_schema, target
+        execute 'sudo service tomcat6 stop && sudo service tomcat6 start'
+      else
+        msg = 'Solr configs are not found in app config folder!'
+        warn msg
+        fail Capistrano::FileNotFound, msg
       end
     end
   end
-    
-  desc "Restart solr"
-  task :restart do
-    invoke 'deploy:solr:stop'
-    invoke 'deploy:solr:start'
-
-    on roles(:app) do
-      within current_path do
-        with rails_env: fetch(:stage) do
-          warn 'Reindexing Solr ...'
-          execute :rake, "solr:reindex"
-        end
-      end
-    end
-  end
-  
-  after 'deploy:finished', 'deploy:solr:restart'
-
 
   desc 'Start applicaction'
   task :start do
@@ -136,5 +128,8 @@ namespace :deploy do
       # end
     end
   end
+
+  after 'deploy:finished', 'deploy:reindex_solr'
+  after 'deploy:reindex_solr', 'deploy:boot_solr'
 
 end
