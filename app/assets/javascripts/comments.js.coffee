@@ -7,3 +7,7 @@
 $ ->
   $("#new_comment").on "ajax:success", (e, data, status, xhr) ->
     $("#comment_message").val('')
+
+$(document).on 'page:load', ->
+  $("#new_comment").on "ajax:success", (e, data, status, xhr) ->
+    $("#comment_message").val('')
