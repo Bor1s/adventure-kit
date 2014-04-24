@@ -91,4 +91,5 @@ PlayhardCore::Application.configure do
 
   config.action_mailer.default_url_options = { host: 'playhard.com' }
   config.harvester.host = 'http://95.85.61.76:3001'
+  config.solr_url = "http://localhost:8080/solr/core0" #Watch at local Solr on production
 end

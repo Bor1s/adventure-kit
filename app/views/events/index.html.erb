@@ -7,7 +7,7 @@
         <% @top_games.each do |top_game| %>
           <li>
             <%= top_game.title %>
-            <small class='text-muted'>x <%= top_game.amount %></small>
+            <span class='counter pull-right'><%= top_game.amount %></span>
           </li>
         <% end %>
       </ul>

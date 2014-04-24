@@ -2,8 +2,10 @@
   <aside>
     <header><i class='fa fa-users'></i> <%= t('.general') %></header>
     <article>
-      <p><%= t('.total_masters') %><%= @users.masters.count %></p>
-      <p><%= t('.total_players') %><%= @users.players.count %></p>
+      <ul class='list-unstyled'>
+        <li><%= t('.total_masters') %><span class='counter pull-right'><%= @users.masters.count %></span></li>
+        <li><%= t('.total_players') %><span class='counter pull-right'><%= @users.players.count %></span></li>
+      </ul>
     </article>
   </aside>
 <% end %>

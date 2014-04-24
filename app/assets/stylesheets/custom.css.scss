@@ -43,6 +43,9 @@ aside {
 aside {
   ul {
     padding: 0;
+    li {
+      margin-bottom: 5px;
+    }
   }
 }
 
@@ -204,10 +207,10 @@ input[type='file'] {
 
 // --- General tag looking ---
 .tag {
-  font-size: 10px;
+  font-size: 12px;
   margin: 2px;
   display: inline-block;
-  padding: 2px 3px 2px 3px;
+  padding: 3px 4px 3px 4px;
   background-color: #000;
   color: #fff;
 
@@ -218,4 +221,13 @@ input[type='file'] {
       color: #e11012;
     }
   }
+}
+
+.counter {
+  background-color: #ddd;
+  color: #000;
+  padding: 3px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 10px;
 }

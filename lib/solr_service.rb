@@ -6,7 +6,7 @@ class SolrService
   attr_reader :search_result
 
   def initialize
-    @solr = RSolr.connect(url: "http://localhost:8080/solr/core0")
+    @solr = RSolr.connect(url: Rails.application.config.solr_url)
   end
 
   def add(document)
@@ -41,6 +41,11 @@ class SolrService
       end
 
       base.send(:after_create) do |document|
+        base.solr.add(document.solr_index_data)
+      end
+
+      base.send(:after_update) do |document|
+        base.solr.delete(document.id.to_s)
         base.solr.add(document.solr_index_data)
       end
 

@@ -3,9 +3,9 @@
     <%= link_to events_path, class: 'navbar-brand' do %>
       <%= image_tag asset_path('white.png'), size: '35x35' %>
     <% end %>
-    <%= form_tag '', role: 'search', class: 'navbar-form navbar-left', method: :get do %>
+    <%= form_tag '/events', role: 'search', class: 'navbar-form navbar-left', method: :get do %>
       <div class="form-group">
-        <input type='text' name='q' class="form-control input-xs" placeholder="Поиск">
+        <input type='text' name='q' class="form-control input-xs" placeholder="Поиск игр">
       </div>
     <% end %>
 

@@ -39,4 +39,5 @@ PlayhardCore::Application.configure do
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
 
   config.harvester.host = 'http://localhost:3001'
+  config.solr_url = "http://localhost:8982/solr/development"
 end
