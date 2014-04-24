@@ -37,7 +37,7 @@ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
 # Default value for keep_releases is 5
-set :keep_releases, 5
+set :keep_releases, 3
 
 namespace :deploy do
   def run_unicorn
@@ -64,15 +64,18 @@ namespace :deploy do
     end
   end
  
-  %w[solr_start solr_stop].each do |command|
-    desc "#{command} solr"
-    task command do
-      on roles(:app) do
-        solr_pid = "#{shared_path}/pids/sunspot-solr.pid"
-        if command == "start" or (test "[ -f #{solr_pid} ]" and test "kill -0 $( cat #{solr_pid} )")
-          within current_path do
-            with rails_env: fetch(:rails_env, 'production') do
-              execute :bundle, 'exec', 'sunspot-solr', command, "--port=8983 --data-directory=#{shared_path}/solr/data --pid-dir=#{shared_path}/pids"
+  namespace :solr do
+    %w[start stop].each do |command|
+      desc "#{command} solr"
+      task command do
+        on roles(:app) do
+          solr_pid = "#{shared_path}/pids/sunspot-solr.pid"
+          if command == "start" or (test "[ -f #{solr_pid} ]" and test "kill -0 $( cat #{solr_pid} )")
+            within current_path do
+              with rails_env: fetch(:stage) do
+                execute :rake, "sunspot:solr:#{command}"
+                execute :bundle, 'exec', 'sunspot-solr', command, "--port=8983 --data-directory=#{shared_path}/solr/data --pid-dir=#{shared_path}/pids"
+              end
             end
           end
         end
@@ -81,15 +84,21 @@ namespace :deploy do
   end
     
   desc "Restart solr"
-  task :solr_restart do
-    invoke 'solr_stop'
-    invoke 'solr_start'
+  task :restart do
+    invoke 'deploy:solr:stop'
+    invoke 'deploy:solr:start'
 
-    warn 'Reindexing Solr ...'
-    execute :rake, "solr:reindex"
+    on roles(:app) do
+      within current_path do
+        with rails_env: fetch(:stage) do
+          warn 'Reindexing Solr ...'
+          execute :rake, "solr:reindex"
+        end
+      end
+    end
   end
   
-  after 'deploy:finished', 'deploy:solr_restart'
+  after 'deploy:finished', 'deploy:solr:restart'
 
 
   desc 'Start applicaction'
