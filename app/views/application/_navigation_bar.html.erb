@@ -1,5 +1,11 @@
 <div class='topbar'>
   <nav class='container navbar navbar-default navbar-light' role='navigation'>
+    <%= link_to 'Play Hard', events_path, class: 'navbar-brand' %>
+    <%= form_tag '', role: 'search', class: 'navbar-form navbar-left', method: :get do %>
+      <div class="form-group">
+        <input type='text' name='q' class="form-control input-xs" placeholder="Поиск">
+      </div>
+    <% end %>
 
     <ul class='nav navbar-nav toplinks'>
       <li class='<%= current_tab?('events') ? 'active' : '' %>'><%= link_to t('navbar.events'), events_path %></li>

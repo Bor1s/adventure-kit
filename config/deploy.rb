@@ -81,6 +81,35 @@ namespace :deploy do
     end
   end
 
+  desc 'Reindex solr'
+  task :reindex_solr do
+    within release_path do
+      with rails_env: fetch(:rails_env) do
+        warn 'Reindexing Solr ...'
+        execute :rake, "solr:reindex"
+      end
+    end 
+  end
+
+  desc 'Copy solr schema and config'
+  task :boot_solr do
+    within release_path do
+      solr_conf = release_path.join('config', 'solr', 'solrconfig.xml')
+      solr_schema = release_path.join('config', 'solr', 'schema.xml')
+      target = '/usr/share/solr/conf'
+
+      if test "[[ -f #{solr_conf} && -f #{solr_schema} ]]"
+        execute :cp, solr_conf, target
+        execute :cp, solr_schema, target
+        execute 'sudo service tomcat6 stop && sudo service tomcat6 start'
+      else
+        msg = 'Solr configs are not found in app config folder!'
+        warn msg
+        fail Capistrano::FileNotFound, msg
+      end
+    end
+  end
+
   after :publishing, :restart
 
   after :restart, :clear_cache do
@@ -91,5 +120,8 @@ namespace :deploy do
       # end
     end
   end
+
+  after 'deploy:finished', 'deploy:reindex_solr'
+  after 'deploy:reindex_solr', 'deploy:boot_solr'
 
 end

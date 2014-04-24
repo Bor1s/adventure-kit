@@ -1,6 +1,7 @@
 class Event
   include Mongoid::Document
   include Mongoid::Timestamps
+  include SolrService::MongoidHooks
 
   field :description, type: String
   field :beginning_at, type: DateTime
@@ -24,5 +25,9 @@ class Event
   #Using by Solr
   def title
     game.title
+  end
+
+  def solr_index_data
+    {id: id, ctext: [title, description].join(' ')}
   end
 end
