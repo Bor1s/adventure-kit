@@ -6,7 +6,7 @@ class SolrService
   attr_reader :search_result
 
   def initialize
-    @solr = RSolr.connect(url: "http://localhost:8080/solr/#{Rails.env}")
+    @solr = RSolr.connect(url: "http://localhost:8983/solr/#{Rails.env}")
   end
 
   def add(document)
