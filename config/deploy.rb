@@ -62,7 +62,7 @@ namespace :deploy do
 
         solr_conf = release_path.join('config', 'solr', 'solrconfig.xml')
         solr_schema = release_path.join('config', 'solr', 'schema.xml')
-        target = '/usr/share/solr/conf'
+        target = '/etc/solr/conf'
 
         warn 'Checking solr conf files ...'
         if test "[[ -f #{solr_conf} && -f #{solr_schema} ]]"
