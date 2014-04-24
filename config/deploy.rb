@@ -56,40 +56,48 @@ namespace :deploy do
     end
   end
 
-  before :updated, :setup_solr_data_dir do
-    on roles(:app) do
-      unless test "[ -d #{shared_path}/solr/data ]"
-        execute :mkdir, "-p #{shared_path}/solr/data"
-      end
-    end
-  end
-
-  desc 'Reindex solr'
-  task :reindex_solr do
+  def reindex_solr
     within release_path do
       with rails_env: fetch(:rails_env) do
         warn 'Reindexing Solr ...'
         execute :rake, "solr:reindex"
       end
-    end 
+    end
   end
- 
-  desc 'Copy solr schema and config'
-  task :boot_solr do
+
+  def reboot_solr
     within release_path do
       solr_conf = release_path.join('config', 'solr', 'solrconfig.xml')
       solr_schema = release_path.join('config', 'solr', 'schema.xml')
       target = '/opt/solr/playhard/multicore/core0/conf'
 
+      warn 'Trying to copy configs ...'
       if test "[[ -f #{solr_conf} && -f #{solr_schema} ]]"
-        execute :cp, solr_conf, target
-        execute :cp, solr_schema, target
+        warn solr_conf
+        warn solr_schema
+        warn target
+        execute :cp, '-R', solr_conf, target
+        execute :cp, '-R', solr_schema, target
         execute 'sudo service tomcat6 stop && sudo service tomcat6 start'
       else
         msg = 'Solr configs are not found in app config folder!'
         warn msg
         fail Capistrano::FileNotFound, msg
       end
+    end
+  end
+
+  desc 'Reindex solr'
+  task :reindex_solr do
+    on roles(:app) do
+      reindex_solr
+    end
+  end
+ 
+  desc 'Copy solr schema and config'
+  task :reboot_solr do
+    on roles(:app) do
+      reboot_solr
     end
   end
 
@@ -129,7 +137,6 @@ namespace :deploy do
     end
   end
 
-  after 'deploy:finished', 'deploy:reindex_solr'
-  after 'deploy:reindex_solr', 'deploy:boot_solr'
-
+  before :finishing, :reboot_solr
+  after :finishing, :reindex_solr
 end
