@@ -28,7 +28,7 @@ footer {
   width: 100%;
   min-height: 10em;
   background-color: #000;
-  border-top: 5px solid #ff0000;
+  border-top: 3px solid #e11012;
 }
 
 img {
@@ -122,15 +122,21 @@ input[type='file'] {
 }
 
 .topbar {
-  height: 3.5em;
   background-color: black;
-  border-bottom: 2px solid #e7e7e7;
+  height: 3.5em;
+  border-bottom: 2px solid #e11012;
   margin-bottom: 5em;
+  input {
+    border: 1px solid #fff;
+  }
 }
 
 .navbar-brand {
-  padding-left: 0px;
+  padding: 6px 15px 6px 0px;
   margin-left: -15px;
+  img {
+    background-color: transparent;
+  }
 }
 
 .navbar-brand, .toplinks  {
@@ -140,20 +146,19 @@ input[type='file'] {
 .navbar-nav > li > a {
   color: white !important;
   background-color: inherit !important;
-  -webkit-transition: color 0.4s, text-shadow 0.4s;
+  -webkit-transition: color 0.4s; //, text-shadow 0.4s;
 }
 
 .navbar-nav > .active > a,
 .navbar-nav > li > a:hover {
   color: #e11012 !important;
-  text-shadow: 0px 0px 10px #ff0000;
+  //text-shadow: 0px 0px 15px #ff0000;
 }
 
 .navbar a.profile-link {
   padding-top: 12px;
   img {
     margin-top: -3px;
-    margin-right: 10px;
     border: 1px solid #ddd;
   }
 }

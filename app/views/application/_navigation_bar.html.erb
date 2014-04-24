@@ -1,6 +1,8 @@
 <div class='topbar'>
   <nav class='container navbar navbar-default navbar-light' role='navigation'>
-    <%= link_to 'Play Hard', events_path, class: 'navbar-brand' %>
+    <%= link_to events_path, class: 'navbar-brand' do %>
+      <%= image_tag asset_path('white.png'), size: '35x35' %>
+    <% end %>
     <%= form_tag '', role: 'search', class: 'navbar-form navbar-left', method: :get do %>
       <div class="form-group">
         <input type='text' name='q' class="form-control input-xs" placeholder="Поиск">
@@ -17,7 +19,7 @@
       <li>
         <%= link_to edit_profile_path, class: 'profile-link' do %>
           <%= image_tag current_user.avatar, size: '30x30' %>
-          <i class='fa fa-gears'></i>
+          <i class='fa fa-wrench'></i>
         <% end %>
       </li>
       <li>
