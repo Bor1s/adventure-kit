@@ -5,10 +5,8 @@
 .user {
   margin-bottom: 2em;
   padding: 1em 0em;
-
-  &:nth-child(2n+1) {
-    background-color: #F7F7F7;
-  }
+  box-shadow: 1px 1px 2px #ddd;
+  background-color: #F7F7F7;
 
   img {
     border: 3px double #ddd;

@@ -2,6 +2,42 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import 'common';
+
 .profile-avatar {
-  text-align: center;
+  outline: 1px solid #ccc;
+  padding: 2px;
+}
+
+.profile-menu {
+  padding-top: 10px;
+  background-color: #F7F7F7;
+  box-shadow: 1px 1px 2px #ddd;
+
+  a {
+    @include link;
+  }
+
+  li {
+    line-height: 2;
+  }
+
+  li.active {
+    a {
+      color: #e11012 !important;
+    }
+  }
+}
+
+.profile-header {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.bio {
+  margin: 0;
+  display: inline-block;
+  vertical-align: top;
+  padding-left: 10px;
+  font-size: 16px;
 }

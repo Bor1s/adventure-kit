@@ -2,6 +2,8 @@ class GamesController < ApplicationController
   before_action :authenticate
   respond_to :html
 
+  before_filter :extract_optional_params, only: [:new]
+
   def index
     authorize! :read, Game
     @games = Game.search(params[:q]).desc(:updated_at)
@@ -17,7 +19,7 @@ class GamesController < ApplicationController
   def new
     authorize! :create, Game
     @game = Game.new
-    @game.events.build
+    @game.events.build(optional_params)
   end
 
   def create
@@ -96,5 +98,19 @@ class GamesController < ApplicationController
 
   def notifications
     ActiveSupport::Notifications
+  end
+
+  def optional_params
+    @optional_params ||= {}
+  end
+
+  def extract_optional_params
+    if params[:date].present?
+      begin
+        optional_params.merge!({beginning_at: Date.parse(params[:date])})
+      rescue => e
+        warn "#{params[:date]} is not parsed properly!"
+      end
+    end
   end
 end

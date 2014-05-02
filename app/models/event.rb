@@ -30,4 +30,8 @@ class Event
   def solr_index_data
     {id: id, ctext: [title, description].join(' ')}
   end
+
+  def finished?
+    beginning_at < Time.now
+  end
 end

@@ -17,3 +17,5 @@
 //= require cocoon
 //= require jquery.datetimepicker
 //= require_tree .
+//= require highcharts
+//= require heatmap

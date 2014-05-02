@@ -17,7 +17,9 @@ PlayhardCore::Application.routes.draw do
     resources :comments, except: [:index, :new]
   end
   resources :users, only: [:index]
-  resource  :profile, only: [:edit, :update]
+  resource  :profile, only: [:edit, :update] do
+    get 'my_games'
+  end
   resources :approvals, only: [:index, :update, :destroy]
   resources :tags
   resources :events

@@ -29,4 +29,9 @@ class StatisticsService
 
     result
   end
+
+  def daily_events_amount
+    response = connection.get('/events/daily_amount')
+    data = JSON.parse(response.body)
+  end
 end

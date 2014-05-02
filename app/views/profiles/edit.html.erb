@@ -1,61 +1,36 @@
-<div class='row'>
-
-  <div class='col-md-3'>
-    <% if current_user.admin? %>
-      <%= render 'admin_menu' %>
-    <% else %>
-      <%= render 'master_menu' %>
-    <% end %>
-  </div>
-
-  <div class='col-md-9'>
-    <div class='row'>
-      <div class='col-lg-4 col-lg-offset-4'>
-        <%= errors_for @profile %>
-      </div>
+<div class='col-md-4 col-md-offset-1'>
+  <%= form_for @profile, url: profile_path, method: 'PATCH', html: { class: 'form-horizontal', role: 'form' } do |f| %>
+    <div class="form-group">
+      <%= image_tag @profile.avatar, class: 'profile-avatar' if @profile.avatar.present? %>
+      <aside class='bio'>
+        <%= @profile.name %><br />
+        <small><%= I18n.t("general.#{@profile.human_role}") %></small>
+      </aside>
     </div>
-    <div class='row'>
-      <div class='col-lg-4 col-lg-offset-4'>
-        <%= form_for @profile, url: profile_path, method: 'PATCH', html: { class: 'form-horizontal', role: 'form' } do |f| %>
-          <div class="form-group profile-avatar">
-            <%= image_tag @profile.avatar_original if @profile.avatar_original %>
-          </div>
 
-          <div class="form-group">
-            <%= f.text_field :name, class: 'form-control', placeholder: 'Name' %>
-          </div>
+    <div class="form-group">
+      <%= f.email_field :email, class: 'form-control input-sm', placeholder: 'youremail@example.com' %>
+    </div>
 
-          <div class="form-group">
-            <%= f.email_field :email, class: 'form-control', placeholder: 'youremail@example.com' %>
-          </div>
+    <div class="form-group">
+      <%= f.hidden_field :tag_ids, id: 'tags', data: {pre: @profile.tags.tokenize}, style: 'min-width: 390px; width: auto; font-size: 12px;' %>
+    </div>
 
-          <div class="form-group">
-            <%= f.hidden_field :tag_ids, id: 'tags', data: {pre: @profile.tags.tokenize}, style: 'width: 300px;' %>
-          </div>
-
-          <% unless current_user.admin? %>
-            <div class="form-group">
-              <% if current_user.waiting_for_acceptance? %>
-                Please wait until we accept your master request
-              <% else %>
-                <div class='checkbox'>
-                  <%= f.check_box :want_to_be_master %>
-                  <%= f.label :want_to_be_master %>
-                </div>
-              <% end %>
-            </div>
-          <% end %>
-
-          <div class="form-group">
-            <%= f.submit 'Update Profile', class: 'btn btn-success' %>
+    <% unless current_user.admin? %>
+      <div class="form-group">
+        <% if current_user.waiting_for_acceptance? %>
+          Please wait until we accept your master request
+        <% else %>
+          <div class='checkbox'>
+            <%= f.check_box :want_to_be_master %>
+            <%= f.label :want_to_be_master %>
           </div>
         <% end %>
       </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.submit t('.update'), class: 'btn btn-success btn-sm' %>
     </div>
-  </div>
-
+  <% end %>
 </div>
-
-
-
-

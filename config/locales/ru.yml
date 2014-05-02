@@ -1,4 +1,26 @@
 ru:
+  general:
+    games_heatmap: 'Карта игр'
+    day_names:
+      - Понедельник
+      - Вторник
+      - Среда
+      - Четверг
+      - Пятница
+      - Суббота
+      - Воскресенье
+    admin: 'Администратор'
+    player: 'Игрок'
+    master: 'Мастер'
+
+  application:
+    admin_menu:
+      profile: 'Профиль'
+      approval_list: 'Список на утверждение'
+      games_heatmap: 'Карта игр'
+      achivements: 'Достижения'
+      statistics: 'Статистика'
+
   navbar:
     events: 'Игры'
     tags: 'Теги'
@@ -43,6 +65,7 @@ ru:
       no_recent_users: 'Нет новых рекрутов'
     event:
       go_to_game: 'перейти к игре'
+      completed: 'Завершено'
 
   users:
     index:
@@ -55,3 +78,20 @@ ru:
   comments:
     form:
       your_comment: 'Ваш комментарий'
+
+  profiles:
+    edit:
+      update: 'Сохранить'
+
+  January: 'Январь'
+  February: 'Февраль'
+  March: 'Март'
+  April: 'Апрель'
+  May: 'Май'
+  June: 'Июнь'
+  July: 'Июль'
+  August: 'Август'
+  September: 'Сентябрь'
+  October: 'Октябрь'
+  November: 'Ноябрь'
+  December: 'Декабрь'

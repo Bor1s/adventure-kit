@@ -17,3 +17,5 @@
 .env
 /public/uploads
 /solr
+.DS_Store
+sunspot-solr.pid

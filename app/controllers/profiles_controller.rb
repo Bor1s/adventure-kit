@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
   before_action :authenticate
-  respond_to :html
+  respond_to :html, :js
 
   def edit
     @profile = current_user
@@ -10,10 +10,20 @@ class ProfilesController < ApplicationController
     @profile = current_user
     normalized_parameters = normalize_params user_params
     if @profile.update_attributes(normalized_parameters)
-      redirect_to edit_profile_path, notice: 'Done!'
+      redirect_to edit_profile_path
       notify_about_role_changes
     else
       render :edit
+    end
+  end
+
+  def my_games
+    respond_with @result do |format|
+      format.html
+      format.js do
+        service = GamesHeatmapService.new
+        render json: {data: service.data, title: I18n.t('general.games_heatmap'), days: I18n.t('general.day_names'), step: service.x_axis_step}
+      end
     end
   end
 
@@ -74,4 +84,5 @@ class ProfilesController < ApplicationController
   def going_to_become_player?
     current_user.master? and user_params[:want_to_be_master] == '0'
   end
+
 end
