@@ -9,10 +9,12 @@ loadChart = ->
       $('#container').highcharts
         chart:
           type: 'heatmap'
-          marginTop: 40
+          marginTop: 10
           marginBottom: 40
+          style:
+            fontFamily: 'Forum'
         title:
-          text: data.title
+          text: null
         xAxis:
           type: 'category'
           tickLength: 0
@@ -24,36 +26,55 @@ loadChart = ->
           lineWidth: 0
           title: null
           gridLineWidth: 0
-          offset: 10
+          offset: 0
         colorAxis:
-          minColor: '#FFFFFF'
-          maxColor: Highcharts.getOptions().colors[0]
+          min: 0,
+          minColor: '#FFFFFF',
+          maxColor: Highcharts.getOptions().colors[6]
         legend:
           align: 'right'
           layout: 'vertical'
           margin: 0
           verticalAlign: 'top'
-          y: 25
-          symbolHeight: 320
+          y: 10
         tooltip:
-          formatter: ->
-            "<b>#{this.point.name} #{this.point.day}</b><br />Игр: #{(this.point.value + 0)}<br />"
+          headerFormat: ''
+          pointFormat: "<b>{point.value} игр(ы)</b> на {point.day} {point.human_name}"
+          hideDelay: true
+          distance: 20
+          followPointer: true
         series: [{
-                borderWidth: 0.2,
-                data: data.data,
-                nullColor: '#fff',
-                events:
-                  click: (e) ->
-                    window.location.href = "/games/new?date=#{e.point._full_date}"
-                dataLabels: {
-                  enabled: true,
-                  color: '#000',
-                  style: {
-                    textShadow: 'none'
-                    fontSize: '9px'
-                  }
-                }
-            }]
+          data: data.data,
+          nullColor: '#fff',
+          borderColor: 'black',
+          borderWidth: 0.1,
+          allowPointSelect: true,
+          cursor: 'pointer',
+          states:
+            hover:
+              color: '#eee'
+            select:
+              color: '#e11012'
+          tooplit:
+            followPointer: true
+          point:
+            events:
+              select: (e) ->
+                lis = ""
+                for g in this.games
+                  lis += "<li>#{g.beginning_at} #{g.title}</li>"
+                link = "<p><a href='/games/new?date=#{this._full_date}' target='_blank'>Назначить игру</a></p>"
+                html = "<h5>#{this.day} #{this.human_name}</h5><ul class='list-unstyled'>#{lis}</ul>#{link}"
+                $('#day-info').html(html)
+          dataLabels: {
+            enabled: true,
+            color: '#000',
+            style: {
+              textShadow: 'none'
+              fontSize: '10px'
+            }
+          }
+        }]
 
 
 $ ->

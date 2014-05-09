@@ -22,7 +22,10 @@ class ProfilesController < ApplicationController
       format.html
       format.js do
         service = GamesHeatmapService.new
-        render json: {data: service.data, title: I18n.t('general.games_heatmap'), days: I18n.t('general.day_names'), step: service.x_axis_step}
+        render json: {data: service.data,
+                      title: I18n.t('general.games_heatmap'),
+                      days: I18n.t('general.day_names'),
+                      step: service.x_axis_step}
       end
     end
   end

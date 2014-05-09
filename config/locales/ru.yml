@@ -1,6 +1,7 @@
 ru:
   general:
     games_heatmap: 'Карта игр'
+    day_info: 'Информация на день'
     day_names:
       - Понедельник
       - Вторник

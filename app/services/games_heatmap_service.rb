@@ -12,12 +12,16 @@ class GamesHeatmapService
     column = 0
     date_range.each do |date|
       row = date.sunday? ? 6 : (date.wday-1)
+      daily_data = daily_events["#{date.mday}/#{date.month}"] || []
+      events_data = fetch_events_data(daily_data)
       @data << {x: column,
                 y: row,
                 day: date.mday,
                 name: I18n.t(Date::MONTHNAMES[date.month]),
                 _full_date: date.rfc2822,
-                value: daily_events["#{date.mday}/#{date.month}"]}
+                human_name: I18n.t("date.abbr_month_names")[date.month],
+                games: events_data,
+                value: daily_data.size}
       column += 1 if row == 6
     end
   end
@@ -29,6 +33,12 @@ class GamesHeatmapService
     # Set the step of showing labels on xAxis of highchart
     # depending on a week amount in current date range
     days.divmod(7)[1].present? ? 4 : 3
+  end
+
+  def fetch_events_data(event_ids)
+    Event.where(:id.in => event_ids).map do |event|
+      {title: event.game.title, beginning_at: I18n.l(event.beginning_at, format: :hm) }
+    end
   end
 
 end
