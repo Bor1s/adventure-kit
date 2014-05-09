@@ -70,7 +70,6 @@ input[type='file'] {
 
 // --- General ---
 .game:not(:first-child),
-.genre:not(:first-child),
 .master:not(:first-child),
 .player:not(:first-child) {
   margin-top: 3em;
@@ -237,4 +236,20 @@ input[type='file'] {
   border-radius: 5px;
   text-align: center;
   font-size: 10px;
+}
+
+.master-ico {
+  position: relative;
+}
+
+.master-ico::before {
+  content: 'GM';
+  text-align: center;
+  background-color: #000;
+  color: #fff;
+  position: absolute;
+  z-index: 5;
+  width: 50px;
+  height: 20px;
+  bottom: 0%;
 }

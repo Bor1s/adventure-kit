@@ -32,6 +32,7 @@ class SolrService
     @solr.delete_by_query '*:*'
   end
 
+  # Included class must define #solr_index_data method used by Solr
   module MongoidHooks
     def self.included(base)
       base.class_eval do

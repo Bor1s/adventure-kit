@@ -47,11 +47,14 @@
   .header {
     font-size: 1.5em;
     font-weight: bold;
-    @include link;
   }
 
   .tag-container {
     display: inline-block;
+  }
+
+  .default-image-container {
+    width: 125%;
   }
 
   .default-image {
@@ -74,5 +77,8 @@
       font-size: 20px;
     }
   }
+}
 
+.no-games {
+  font-size: 20px;
 }

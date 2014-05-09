@@ -48,7 +48,8 @@
   <% if current_user.creator?(@game) %>
     <aside>
       <header><i class='fa fa-eye'></i> <%= t('.for_master') %></header>
-      <p><%= link_to t('.edit_game'), edit_game_path(@game), class: 'btn btn-success btn-xs' %></p>
+      <p><%= link_to t('.edit_game'), edit_game_path(@game), class: 'btn btn-primary btn-xs' %></p>
+      <p><%= link_to t('games.form.remove'), game_path(@game), method: :delete, data: { confirm: t('general.remove_confirm') }, class: 'btn btn-danger btn-xs' %></p>
     </aside>
   <% end %>
 <% end %>

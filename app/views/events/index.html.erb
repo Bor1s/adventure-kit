@@ -21,8 +21,8 @@
         <% if @recent_users.present? %>
           <% @recent_users.each do |user| %>
             <li>
-              <%= user.name %> (<%= user.human_role %>)
-              <small class='text-muted'>- <%= distance_of_time_in_words_to_now(user.created_at) %> <%= t('.ago') %></small>
+              <%= user.name %>
+              <small class='text-muted'>- <%= distance_of_time_in_words_to_now(user.created_at) %></small>
             </li>
           <% end %>
         <% else %>
@@ -33,4 +33,8 @@
   </aside>
 <% end %>
 
-<%= render @events %>
+<% if @events.present? %>
+  <%= render @events %>
+<% else %>
+  <span class='no-games'><%= t('.no_games') %></span>
+<% end %>

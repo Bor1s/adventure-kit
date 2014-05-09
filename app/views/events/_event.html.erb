@@ -3,7 +3,9 @@
     <% if event.poster? %>
       <%= image_tag asset_path(event.poster.medium.url) %>
     <% else %>
-      <i class='fa fa-picture-o fa-5x default-image'></i>
+      <div class='text-center default-image-container'>
+        <i class='fa fa-picture-o fa-5x default-image'></i>
+      </div>
     <% end %>
     <% if event.finished? %>
       <div class='mask text-center'>

@@ -13,11 +13,11 @@
     </div>
 
     <div class="form-group">
-      <%= f.text_field :title, class: 'form-control input-sm', placeholder: 'Genre Title', required: true %>
+      <%= f.text_field :title, class: 'form-control input-sm', placeholder: t('.genre_title'), required: true %>
     </div>
 
     <div class="form-group">
-      <%= f.text_area :description, class: 'form-control input-sm', placeholder: 'Game Description', size: '50x10' %>
+      <%= f.text_area :description, class: 'form-control input-sm', placeholder: t('.game_description'), size: '50x10' %>
     </div>
 
     <div class="form-group tags">
@@ -44,7 +44,7 @@
       <%= link_to_add_association f, :events,
         data: {:'association-insertion-node' => '.events', :'association-insertion-method' => 'append'},
         class: 'btn btn-sm btn-default' do %>
-        <i class='fa fa-plus'><%= t('.add_event') %></i>
+        <i class='fa fa-bars'><%= t('.add_event') %></i>
       <% end %>
       <%= f.submit "#{t('.save')}", class: 'btn btn-success btn-sm' %>
     </div>

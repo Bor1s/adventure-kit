@@ -63,7 +63,7 @@ ru:
         few: около %{count} месяцев
         many: около %{count} месяцев
         one: около %{count} месяца
-        other: около %{count} месяца
+        other: около %{count} месяцев
       about_x_years:
         few: около %{count} лет
         many: около %{count} лет

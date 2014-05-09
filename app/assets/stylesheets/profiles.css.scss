@@ -14,17 +14,13 @@
   background-color: #F7F7F7;
   box-shadow: 1px 1px 2px #ddd;
 
-  a {
-    @include link;
-  }
-
   li {
     line-height: 2;
   }
 
   li.active {
     a {
-      color: #e11012 !important;
+      color: #000 !important;
     }
   }
 }

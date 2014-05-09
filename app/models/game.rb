@@ -8,9 +8,8 @@ class Game
 
   has_many :subscriptions, dependent: :delete
   has_and_belongs_to_many :tags
-  has_and_belongs_to_many :genres
   has_many :comments, dependent: :delete
-  has_many :events, dependent: :delete
+  has_many :events, dependent: :destroy #Need to affect Solr index
 
   validates :title, presence: true
   validates :description, presence: true
@@ -19,6 +18,14 @@ class Game
   scope :pending, ->() { where(finished: false) }
 
   accepts_nested_attributes_for :events, allow_destroy: true
+
+  # Force Solr to reindex
+  after_update do
+    events.each do |e|
+      e.class.solr.delete(e.id.to_s)
+      e.class.solr.add(e.solr_index_data)
+    end
+  end
 
   def subscribe user, role=:player
     unless subscribed? user

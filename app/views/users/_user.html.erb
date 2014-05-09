@@ -1,9 +1,9 @@
 <div class='row user'>
   <div class='col-md-1 avatar text-center'>
     <% if user.avatar.present? %>
-      <%= link_to user.social_network_link, target: '_blank' do %>
+      <p class='<%= 'master-ico' if user.master? || user.admin? %>'>
         <%= image_tag asset_path(user.avatar) %>
-      <% end %>
+      </p>
     <% else %>
       <i class='fa fa-picture-o default-image'></i>
     <% end %>
@@ -11,8 +11,13 @@
 
   <div class='col-md-3'>
     <p>
-      <%= link_to user.name, user.social_network_link, target: '_blank' %><br />
-      <small><%= user.email %></small>
+      <%= user.name %><br />
+      <small><%= user.email %></small><br />
+      <small>
+        <%= link_to user.social_network_link, target: '_blank' do %>
+          <i class='fa fa-vk'></i>
+        <% end %>
+      </small>
     </p>
   </div>
 

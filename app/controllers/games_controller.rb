@@ -4,12 +4,6 @@ class GamesController < ApplicationController
 
   before_filter :extract_optional_params, only: [:new]
 
-  def index
-    authorize! :read, Game
-    @games = Game.search(params[:q]).desc(:updated_at)
-    respond_with @games
-  end
-
   def show
     @game = Game.find params[:id]
     @comment = @game.comments.build

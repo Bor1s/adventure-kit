@@ -1,9 +1,0 @@
-<% content_for :sidebar do %>
-  <% if current_user.admin? %>
-    <%= admin_sidepanel %>
-  <% else %>
-    <%= regular_sidepanel %>
-  <% end %>
-<% end %>
-
-<%= render @genres %>

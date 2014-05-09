@@ -8,7 +8,6 @@ PlayhardCore::Application.routes.draw do
   get '/auth/failure', to: 'sessions#failure'
   get '/signout', to: 'sessions#destroy', as: :signout
 
-  resources :genres
   resources :games do
     member do
       get :take_part
