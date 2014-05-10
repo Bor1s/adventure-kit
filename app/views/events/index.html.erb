@@ -22,7 +22,7 @@
           <% @recent_users.each do |user| %>
             <li>
               <%= user.name %>
-              <small class='text-muted'>- <%= distance_of_time_in_words_to_now(user.created_at) %></small>
+              <small class='text-muted'>- <%= l(user.created_at, format: :short) %></small>
             </li>
           <% end %>
         <% else %>
