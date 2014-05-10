@@ -45,7 +45,7 @@ class GamesController < ApplicationController
     @game = Game.find params[:id]
     authorize! :destroy, @game
     @game.destroy
-    respond_with @game
+    respond_with @game, location: root_path
   end
 
   def take_part
