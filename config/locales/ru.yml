@@ -54,7 +54,7 @@ ru:
       add_event: ' Добавить сессию'
       save: 'Сохранить'
       remove: 'Удалить игру'
-      genre_title: 'Жанр игры'
+      game_title: 'Название игры'
       game_description: 'Описание игры'
     event_fields:
       remove: ' Удалить'
