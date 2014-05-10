@@ -10,6 +10,8 @@ class Event
 
   belongs_to :game
 
+  delegate :title, to: :game, allow_nil: true
+
   validates :description, presence: true
   validates :beginning_at, presence: true
 
@@ -22,16 +24,13 @@ class Event
     end
   }
 
-  #Using by Solr
-  def title
-    game.title
-  end
-
-  def solr_index_data
-    {id: id, ctext: [title, description].join(' ')}
-  end
-
   def finished?
     beginning_at < Time.now
+  end
+
+  def solr_index_data(options={})
+    data = {id: id}
+    data[:ctext] = [options[:title] || title, description].join(' ')
+    data
   end
 end

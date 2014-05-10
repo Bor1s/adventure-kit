@@ -1,14 +1,17 @@
-<div class='col-md-8 col-md-offset-1'>
-  <aside>
-    <header><i class='fa fa-bar-chart-o'></i> <%= t('general.games_heatmap') %></header>
-    <article>
-      <div id="container" style="height: 300px; min-width: 600px; max-width: 600px;"></div>
-    </article>
-  </aside>
-
-  <aside>
-    <header><i class='fa fa-info'></i> <%= t('general.day_info') %></header>
-    <article id='day-info'>
-    </article>
-  </aside>
+<div class='col-md-9 col-md-offset-1'>
+  <% if @games.present? %>
+    <table class="table table-striped">
+      <tr>
+        <th><%= t('.title') %></th>
+        <th><%= t('.first_event_at') %></th>
+        <th><%= t('.next_event_at') %></th>
+        <th><%= t('.events_amount') %></th>
+        <th><%= t('.participants_amount') %></th>
+        <th><%= t('.my_role') %></th>
+      </tr>
+      <%= render partial: 'game', collection: @games %>
+    </table>
+  <% else %>
+    <%= t('.no_games') %>
+  <% end %>
 </div>

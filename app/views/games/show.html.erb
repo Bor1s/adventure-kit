@@ -10,15 +10,6 @@
           <%= t('.comments') %> <span class='counter pull-right'><%= @game.comments.count %></span>
         </li>
       </ul>
-      <p>
-        <% unless current_user.creator?(@game) %>
-          <% if @game.subscribed?(current_user) %>
-            <%= link_to t('.leave_game'), unenroll_game_path(@game), method: :delete, data: {confirm: 'Sure?'}, class: 'btn btn-danger btn-xs' %>
-          <% else %>
-            <%= link_to t('.take_part'), take_part_game_path(@game), class: 'btn btn-success btn-xs' %>
-          <% end %>
-        <% end %>
-      </p>
     </article>
   </aside>
 
@@ -45,13 +36,21 @@
     </article>
   </aside>
 
-  <% if current_user.creator?(@game) %>
-    <aside>
+  <aside>
+    <% if current_user.creator?(@game) %>
       <header><i class='fa fa-eye'></i> <%= t('.for_master') %></header>
       <p><%= link_to t('.edit_game'), edit_game_path(@game), class: 'btn btn-primary btn-xs' %></p>
       <p><%= link_to t('games.form.remove'), game_path(@game), method: :delete, data: { confirm: t('general.remove_confirm') }, class: 'btn btn-danger btn-xs' %></p>
-    </aside>
-  <% end %>
+    <% else %>
+      <header><i class='fa fa-eye'></i> <%= t('.for_player') %></header>
+      <% if @game.subscribed?(current_user) %>
+        <p><%= link_to t('.leave_game'), unenroll_game_path(@game), method: :delete, data: {confirm: 'Sure?'}, class: 'btn btn-danger btn-xs' %></p>
+      <% else %>
+        <p><%= link_to t('.take_part'), take_part_game_path(@game), class: 'btn btn-success btn-xs' %></p>
+      <% end %>
+    <% end %>
+  </aside>
+
 <% end %>
 
 <div class='row game'>

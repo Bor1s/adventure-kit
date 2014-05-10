@@ -23,7 +23,7 @@ class Game
   after_update do
     events.each do |e|
       e.class.solr.delete(e.id.to_s)
-      e.class.solr.add(e.solr_index_data)
+      e.class.solr.add(e.solr_index_data(title: self.title))
     end
   end
 

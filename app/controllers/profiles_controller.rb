@@ -17,7 +17,7 @@ class ProfilesController < ApplicationController
     end
   end
 
-  def my_games
+  def heatmap
     respond_with @result do |format|
       format.html
       format.js do
@@ -28,6 +28,11 @@ class ProfilesController < ApplicationController
                       step: service.x_axis_step}
       end
     end
+  end
+
+  def my_games
+    game_ids = current_user.subscriptions.map(&:game_id)
+    @games = Game.where(:id.in => game_ids || []).all
   end
 
   private

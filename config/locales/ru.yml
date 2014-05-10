@@ -20,8 +20,16 @@ ru:
       profile: 'Профиль'
       approval_list: 'Заявки мастеров'
       games_heatmap: 'Карта игр'
+      my_games: 'Мои игры'
       achivements: 'Достижения'
       statistics: 'Статистика'
+    master_menu:
+      profile: 'Профиль'
+      games_heatmap: 'Карта игр'
+      my_games: 'Мои игры'
+    player_menu:
+      profile: 'Профиль'
+      my_games: 'Мои игры'
 
   navbar:
     events: 'Игры'
@@ -55,7 +63,8 @@ ru:
     show:
       comments: 'Комментарии'
       participants: 'Участники'
-      for_master: 'Мастеру '
+      for_master: 'Мастеру'
+      for_player: 'Игроку'
       master: 'Мастер: '
       tags: 'Тэги '
       edit_game: 'Редактировать'
@@ -89,6 +98,14 @@ ru:
   profiles:
     edit:
       update: 'Сохранить'
+    my_games:
+      title: 'Название'
+      first_event_at: 'Первая сессия'
+      next_event_at: 'Следующая сессия'
+      events_amount: 'Сессии'
+      participants_amount: 'Люди'
+      my_role: 'Мой статус'
+      no_games: 'Игр пока нет'
 
   January: 'Январь'
   February: 'Февраль'

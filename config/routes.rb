@@ -17,6 +17,7 @@ PlayhardCore::Application.routes.draw do
   end
   resources :users, only: [:index]
   resource  :profile, only: [:edit, :update] do
+    get 'heatmap'
     get 'my_games'
   end
   resources :approvals, only: [:index, :update, :destroy]

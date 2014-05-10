@@ -1,15 +1,22 @@
 <footer>
-  <div class='container'>
-    <div class='row'>
-      <div class='col-md-12'>
-        <nav class='navbar navbar-default navbar-light' role='navigation'>
-          <ul class='nav navbar-nav toplinks'>
-            <li><%= link_to 'Мы', '#' %></li>
-            <li><%= link_to 'Соглашение', '#' %></li>
-            <li><%= link_to 'Контакты', '#' %></li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-  </div>
+  <nav class='container navbar navbar-default navbar-light' role='navigation'>
+    <ul class='nav navbar-nav'>
+      <li><%= link_to 'Мы', '#' %></li>
+      <li><%= link_to 'Контакты', '#' %></li>
+    </ul>
+
+    <ul class='nav navbar-nav navbar-right'>
+      <li>
+        <%= link_to 'https://vk.com/play_hard_rpg', target: :blank do %>
+          <i class='fa fa-vk fa-2x'></i>
+        <% end %>
+      </li>
+
+      <li>
+        <%= link_to 'https://twitter.com/PlayHardRpg', target: :blank do %>
+          <i class='fa fa-twitter fa-2x'></i>
+        <% end %>
+      </li>
+    </ul>
+  </nav>
 </footer>
