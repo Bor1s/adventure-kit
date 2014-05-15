@@ -1,0 +1,27 @@
+$ph-orange: #FF8400;
+$ph-orange-dark: #DA7100;
+$ph-red: #E11012;
+
+@mixin fadeIn($sec, $delay) {
+  opacity: 0;
+  animation: fadein $sec;
+  -moz-animation: fadein $sec;
+  -webkit-animation: fadein $sec;
+
+  animation-delay: $delay;
+  -moz-animation-delay: $delay;
+  -webkit-animation-delay: $delay;
+
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+@-moz-keyframes fadein {
+    from { opacity:0; }
+    to { opacity:1; }
+}
+@-webkit-keyframes fadein {
+    from { opacity:0; }
+    to { opacity:1; }
+}

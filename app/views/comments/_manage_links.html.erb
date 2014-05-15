@@ -1,8 +1,8 @@
 <span class='links'>
   <%= link_to edit_game_comment_path(@game, comment), data: {remote: true} do %>
-    <i class='fa fa-pencil text-muted'></i>
+    <i class='fa fa-pencil'></i>
   <% end %>
-  <%= link_to game_comment_path(@game, comment), method: :delete, data: {remote: true, confirm: 'Are you sure?'} do %>
-    <i class='fa fa-trash-o text-muted'></i>
+  <%= link_to game_comment_path(@game, comment), method: :delete, data: {remote: true, confirm: t('.remove_confirm')} do %>
+    <i class='fa fa-trash-o'></i>
   <% end %>
 </span>

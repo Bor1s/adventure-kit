@@ -1,6 +1,6 @@
 <%= form_for [@game, @comment], data: {remote: true}, html: {role: 'form'} do |f| %>
   <div class="form-group col-md-5">
-    <%= f.text_area :message, placeholder: t('.your_comment'), class: 'form-control', rows: 5 %>
+    <%= f.text_area :message, placeholder: t('.your_comment'), class: 'form-control input-sm', rows: 5 %>
   </div>
 
   <div class="form-group col-md-12">

@@ -1,22 +1,32 @@
 <footer>
   <nav class='container navbar navbar-default navbar-light' role='navigation'>
-    <ul class='nav navbar-nav'>
-      <li><%= link_to 'Мы', '#' %></li>
-      <li><%= link_to 'Контакты', '#' %></li>
-    </ul>
+    <div class='row'>
+      <div class='col-md-4'>
+        <article class='footer-info'>
+          <header class='brand'><mark>2014</mark> <%= t('general.playhard') %></header>
+        </article>
+      </div>
+      <div class='col-md-4 text-center'>
+        <article class='footer-info'>
+          <header><%= t('general.common') %></header>
+        <%= link_to t('general.about'), '#' %>
+        <%= link_to t('general.contacts'), '#' %>
+        </article>
+      </div>
 
-    <ul class='nav navbar-nav navbar-right'>
-      <li>
-        <%= link_to 'https://vk.com/play_hard_rpg', target: :blank do %>
-          <i class='fa fa-vk fa-2x'></i>
-        <% end %>
-      </li>
+      <div class='col-md-4 text-center'>
+        <article class='footer-info'>
+          <header><%= t('general.join_us') %></header>
+          <%= link_to 'https://vk.com/play_hard_rpg', target: :blank do %>
+            <i class='fa fa-vk fa-2x'></i>
+          <% end %>
 
-      <li>
-        <%= link_to 'https://twitter.com/PlayHardRpg', target: :blank do %>
-          <i class='fa fa-twitter fa-2x'></i>
-        <% end %>
-      </li>
-    </ul>
+          <%= link_to 'https://twitter.com/PlayHardRpg', target: :blank do %>
+            <i class='fa fa-twitter fa-2x'></i>
+          <% end %>
+        </article>
+      </div>
+    </div>
+
   </nav>
 </footer>

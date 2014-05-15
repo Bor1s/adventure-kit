@@ -12,7 +12,8 @@ loadChart = ->
           marginTop: 10
           marginBottom: 40
           style:
-            fontFamily: 'Forum'
+            fontFamily: "tahoma, arial, verdana, sans-serif, 'Lucida Sans', sans-serif"
+            fontSize: '10px'
         title:
           text: null
         xAxis:
@@ -55,8 +56,6 @@ loadChart = ->
               color: '#eee'
             select:
               color: '#e11012'
-          tooplit:
-            followPointer: true
           point:
             events:
               select: (e) ->
@@ -71,7 +70,8 @@ loadChart = ->
             color: '#000',
             style: {
               textShadow: 'none'
-              fontSize: '10px'
+              fontSize: '8px'
+              fontWeight: 'normal'
             }
           }
         }]

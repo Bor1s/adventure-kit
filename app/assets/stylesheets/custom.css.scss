@@ -1,3 +1,5 @@
+@import 'common';
+
 html {
   height: 100%;
 }
@@ -5,7 +7,8 @@ html {
 body {
   min-height: 100%;
   position: relative;
-  font-family: 'Forum', sans-serif;
+  font-family: tahoma, arial, verdana, sans-serif, 'Lucida Sans', sans-serif;
+  font-size: 12px;
   //font-family: 'Ubuntu Condensed', sans-serif;
   //font-family: 'Tenor Sans', sans-serif;
   //font-family: 'Play', sans-serif;
@@ -21,7 +24,7 @@ header {
   margin-bottom: 1em;
   border-bottom: 2px solid black;
   text-transform: uppercase;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: bold;
 }
 
@@ -31,7 +34,7 @@ footer {
   width: 100%;
   min-height: 10em;
   background-color: #000;
-  border-top: 3px solid #e11012;
+  border-top: 3px solid $ph-orange-dark;
 }
 
 img {
@@ -56,16 +59,25 @@ input[type='file'] {
   width: 300px;
 }
 
+mark {
+  color: $ph-orange;
+  background-color: transparent;
+}
+
 .input-xs {
   height: 22px;
   padding: 1px 5px;
-  font-size: 12px;
+  font-size: 11px;
   line-height: 1.5;
   border-radius: 2px;
 }
 
 .select2-container-multi input {
   font-family: inherit !important;
+}
+
+.btn-xs {
+  font-size: 11px;
 }
 
 // --- General ---
@@ -81,30 +93,44 @@ input[type='file'] {
 
 // --- Login Page ---
 .signin {
-  display: block;
-  padding-top: 10em;
-  h1 {
+  padding-top: 15%;
+  header {
     display: inline-block;
-    font-size: 90px;
     padding: 0;
+    margin: 0;
+    font-size: 90px;
+    text-transform: none;
+    @include fadeIn(1s, 0s);
   }
 
-  img {
-    vertical-align: text-bottom;
-  }
+  article {
+    .description {
+      margin-top: 30px;
+      font-size: 25px;
+      @include fadeIn(1s, 1s);
+    }
 
-  .description {
-    color: silver;
-    font-size: 30px;
-  }
-
-  .providers {
-    margin-top: 50px;
-    a {
-      width: 100px;
+    .providers {
+      font-size: 50px;
+      text-align: center;
+      margin-top: 100px;
+      @include fadeIn(1s, 1.5s);
     }
   }
 }
+
+.beta {
+  position: absolute;
+  top: 200px;
+  left: 500px;
+  text-transform: uppercase;
+  transform: rotate(30deg);
+  -webkit-transform: rotate(30deg);
+  color: red;
+  font-weight: bold;
+  @include fadeIn(2s, 2s);
+}
+
 
 .tip {
   margin: 20px 20px 20px 0px;
@@ -132,8 +158,8 @@ input[type='file'] {
 
 .topbar {
   background-color: black;
-  height: 3.5em;
-  border-bottom: 2px solid #e11012;
+  height: 4em;
+  border-bottom: 2px solid $ph-orange-dark;
   margin-bottom: 5em;
   input {
     border: 1px solid #fff;
@@ -141,10 +167,10 @@ input[type='file'] {
 }
 
 .navbar-brand {
-  padding: 6px 15px 6px 0px;
   margin-left: -15px;
-  img {
-    background-color: transparent;
+  span {
+    text-transform: lowercase;
+    color: #fff;
   }
 }
 
@@ -160,8 +186,7 @@ input[type='file'] {
 
 .navbar-nav > .active > a,
 .navbar-nav > li > a:hover {
-  color: #e11012 !important;
-  //text-shadow: 0px 0px 15px #ff0000;
+  color: $ph-orange !important;
 }
 
 .navbar a.profile-link {
@@ -191,7 +216,7 @@ input[type='file'] {
   margin-bottom: 1em;
   div {
     color: #bbb;
-    font-size: 16px;
+    font-size: 14px;
     text-transform: uppercase;
     text-align: center;
   }
@@ -213,8 +238,7 @@ input[type='file'] {
 
 // --- General tag looking ---
 .tag {
-  font-size: 12px;
-  margin: 2px;
+  font-size: 11px;
   display: inline-block;
   padding: 2px 3px 2px 3px;
   background-color: #000;
@@ -224,7 +248,7 @@ input[type='file'] {
     color: inherit;
     text-decoration: none;
     &:hover {
-      color: #e11012;
+      color: $ph-orange;
     }
   }
 }
@@ -252,4 +276,32 @@ input[type='file'] {
   width: 50px;
   height: 20px;
   bottom: 0%;
+}
+
+// --- Footer information ---
+
+article.footer-info {
+  font-weight: normal;
+
+  header {
+    font-size: 11px;
+    margin: 20px 0px 0px 0px;
+    border: 0;
+    text-transform: normal;
+    color: #fff;
+    text-decoration: underline;
+    color: $ph-orange;
+  }
+
+  a {
+    font-size: 11px;
+    display: inline-block;
+    margin: 10px;
+    color: #fff;
+  }
+
+  .brand {
+    color: #fff;
+    text-decoration: none;
+  }
 }

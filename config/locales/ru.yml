@@ -14,6 +14,12 @@ ru:
     player: 'Игрок'
     master: 'Мастер'
     remove_confirm: 'Вы уверены? Отменить удаление игры будет невозможно.'
+    common: 'Общее'
+    join_us: 'Мы в соцсетях'
+    about: 'О нас'
+    contacts: 'Контакты'
+    playhard: 'Play Hard'
+    slogan: 'Онлайн платформа клуба'
 
   application:
     admin_menu:
@@ -94,6 +100,8 @@ ru:
   comments:
     form:
       your_comment: 'Ваш комментарий'
+    manage_links:
+      remove_confirm: 'Точно хотите удалить комментарий?'
 
   profiles:
     edit:

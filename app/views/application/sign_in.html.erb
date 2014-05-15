@@ -1,13 +1,17 @@
 <div class='container signin'>
-  <h1>Play Hard Core</h1>
-  <%= image_tag asset_path('beta.png'), size: '70x49' %>
-  <p class='description'>
-    We are the future of tabletop roleplaying!
-  </p>
-  <p class='providers'>
-    <%= vk_login_link %>
-  </p>
-  <p class='tip text-muted center-block'>
-    Sign in via provider
-  </p>
+  <header><mark>PLAY</mark> hard</header>
+  <div class='beta'>beta</div>
+  <article>
+    <p class='description'>
+      <%= t('general.slogan') %>
+    </p>
+    <p class='providers'>
+      <%= link_to '/auth/vkontakte', alt: 'Sign In via VK' do %>
+        <span class="fa-stack">
+          <i class="fa fa-circle-thin fa-stack-2x"></i>
+          <i class='fa fa-vk fa-stack-1x'></i>
+        </span>
+      <% end %>
+    </p>
+  </article>
 </div>
