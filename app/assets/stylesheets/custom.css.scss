@@ -238,18 +238,19 @@ mark {
 
 // --- General tag looking ---
 .tag {
-  font-size: 11px;
   display: inline-block;
-  padding: 2px 3px 2px 3px;
-  background-color: #000;
+  font-size: 11px;
   color: #fff;
+  margin-bottom: 2px;
+  padding: 2px 3px 2px 3px;
+  background-color: $ph-blue;
+  &:hover {
+    background-color: $ph-dark-blue;
+  }
 
   a {
     color: inherit;
     text-decoration: none;
-    &:hover {
-      color: $ph-orange;
-    }
   }
 }
 

@@ -3,11 +3,21 @@
     <header><i class='fa fa-users'></i> <%= t('.general') %></header>
     <article>
       <ul class='list-unstyled'>
-        <li><%= t('.total_masters') %><span class='counter pull-right'><%= @users.masters.count %></span></li>
-        <li><%= t('.total_players') %><span class='counter pull-right'><%= @users.players.count %></span></li>
+        <li><%= t('.total_masters') %><span class='counter pull-right'><%= @masters.count %></span></li>
+        <li><%= t('.total_players') %><span class='counter pull-right'><%= @players.count %></span></li>
       </ul>
     </article>
   </aside>
 <% end %>
 
-<%= render @users %>
+<div class='row'>
+  <div class='col-md-6'>
+    <header><i class='fa fa-users'></i> <%= t('.players') %></header>
+    <%= render @players %>
+  </div>
+
+  <div class='col-md-6'>
+    <header><i class='fa fa-users'></i> <%= t('.masters') %></header>
+    <%= render @masters %>
+  </div>
+</div>

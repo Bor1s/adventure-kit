@@ -37,7 +37,7 @@ class GamesController < ApplicationController
   def update
     @game = Game.find params[:id]
     authorize! :update, @game
-    @game.update_attributes normalize_params game_params
+    @game.update_attributes normalize_params(game_params)
     respond_with @game, location: edit_game_path(@game)
   end
 

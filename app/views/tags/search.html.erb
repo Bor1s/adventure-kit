@@ -1,0 +1,32 @@
+<% content_for :sidebar do %>
+  <aside>
+    <header><i class='fa fa-tag'></i> <%= t('.tag_description') %></header>
+    <article>
+      <span class='tag'>
+        <%= @tag.title %>
+      </span>
+    </article>
+  </aside>
+
+  <aside>
+    <header><i class='fa fa-tags'></i> <%= t('.general') %></header>
+    <article>
+      <ul class='list-unstyled'>
+        <li><%= t('.total_users') %><span class='counter pull-right'><%= @users.count %></span></li>
+        <li><%= t('.total_games') %><span class='counter pull-right'><%= @games.count %></span></li>
+      </ul>
+    </article>
+  </aside>
+<% end %>
+
+<div class='row'>
+  <div class='col-md-6'>
+    <header><i class='fa fa-gamepad'></i> <%= t('.games') %></header>
+    <%= render @games %>
+  </div>
+
+  <div class='col-md-6'>
+    <header><i class='fa fa-users'></i> <%= t('.users') %></header>
+    <%= render @users %>
+  </div>
+</div>

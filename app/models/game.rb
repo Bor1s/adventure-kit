@@ -16,6 +16,7 @@ class Game
 
   scope :finished, ->() { where(finished: true) }
   scope :pending, ->() { where(finished: false) }
+  scope :by_tag, ->(tag_id) { where(:tag_ids.in => [tag_id]) }
 
   accepts_nested_attributes_for :events, allow_destroy: true
 
@@ -50,14 +51,5 @@ class Game
 
   def subscribed? user
     subscriptions.where(user_id: user.id).first.present?
-  end
-
-  def self.search tag_id=nil
-    #TODO maybe remove
-    if tag_id.present?
-      where(:tag_ids.in => [tag_id])
-    else
-      all
-    end
   end
 end

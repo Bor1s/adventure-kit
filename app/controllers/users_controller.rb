@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   def index
     authorize! :read, User
-    @users = User.asc(:created_at)
+    @masters = User.masters.asc(:created_at)
+    @players = User.players.asc(:created_at)
   end
 end

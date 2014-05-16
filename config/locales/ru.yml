@@ -94,8 +94,8 @@ ru:
       general: 'Общее'
       total_masters: 'Всего мастеров'
       total_players: 'Всего игроков'
-    user:
-      master: 'Мастер'
+      masters: 'Мастеры'
+      players: 'Игроки'
 
   comments:
     form:
@@ -114,6 +114,15 @@ ru:
       participants_amount: 'Люди'
       my_role: 'Мой статус'
       no_games: 'Игр пока нет'
+
+  tags:
+    search:
+      general: 'Всего найдено по тегу'
+      tag_description: 'Текущий тег'
+      total_users: 'Людей'
+      total_games: 'Игр'
+      games: 'Игры'
+      users: 'Люди'
 
   January: 'Январь'
   February: 'Февраль'

@@ -2,13 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.user {
-  margin-bottom: 2em;
-  padding: 1em 0em;
-  box-shadow: 1px 1px 2px #ddd;
-  background-color: #F7F7F7;
-
-  a {
-    font-weight: bold;
-  }
+.user-info {
+  display: inline-block;
+  vertical-align: top;
 }

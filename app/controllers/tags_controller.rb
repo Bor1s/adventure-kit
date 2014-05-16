@@ -11,4 +11,11 @@ class TagsController < ApplicationController
       end
     end
   end
+
+  def search
+    service = TagSearchService.new(params[:tag_id])
+    @users = service.users
+    @games = service.games
+    @tag   = service.tag
+  end
 end

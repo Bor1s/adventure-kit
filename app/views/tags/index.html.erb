@@ -12,7 +12,9 @@
 
 <div class='row tags'>
   <div class='col-md-12'>
-    <%= render partial: 'tag', collection: @tags %>
+    <div class='newspaper'>
+      <%= render @tags %>
+    </div>
   </div>
 </div>
 <div class='row'>

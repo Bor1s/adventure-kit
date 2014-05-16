@@ -1,6 +1,3 @@
-<%= link_to events_path(tag: tag.id) do %>
-  <div class='tag'>
-    <span> x <%= tag.game_ids.count %></span>
-    <%= tag.title %>
-  </div>
-<% end %>
+<div class='tag'>
+  <%= link_to tag.title, search_tags_path(tag.id) %>
+</div>

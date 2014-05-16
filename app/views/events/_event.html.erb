@@ -30,9 +30,9 @@
 
     <p class='tag-container'>
       <% event.game.tags.each do |tag| %>
-        <span class='tag'>
-          <%= link_to tag.title, events_path(tag: tag.id) %>
-        </span>
+        <div class='tag'>
+          <%= link_to tag.title, search_tags_path(tag.id) %>
+        </div>
       <% end %>
     </p>
   </div>

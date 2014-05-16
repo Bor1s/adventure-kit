@@ -1,6 +1,8 @@
 $ph-orange: #FF8400;
 $ph-orange-dark: #DA7100;
 $ph-red: #E11012;
+$ph-blue: #3276b1;
+$ph-dark-blue: #285e8e;
 
 @mixin fadeIn($sec, $delay) {
   opacity: 0;

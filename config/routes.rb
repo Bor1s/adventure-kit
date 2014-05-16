@@ -21,7 +21,11 @@ PlayhardCore::Application.routes.draw do
     get 'my_games'
   end
   resources :approvals, only: [:index, :update, :destroy]
-  resources :tags
+  resources :tags do
+    collection do
+      get 'search/:tag_id' => 'tags#search', as: :search
+    end
+  end
   resources :events
 
   root 'events#index'
