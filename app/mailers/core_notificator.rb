@@ -2,44 +2,33 @@ class CoreNotificator < ActionMailer::Base
   default from: "playhard-core-noreply@gmail.com"
 
   def master_born payload
-    @name = payload[:name]
-    @email = payload[:email]
-    @social_network_link = payload[:social_network_link]
-
-    mail to: 'boris.bbk@gmail.com', subject: 'Potential Master detected!'
+    @master = User.find(payload[:id])
+    mail to: 'boris.bbk@gmail.com'
   end
 
   def player_downgrade payload
-    @name = payload[:name]
-    @email = payload[:email]
-    @social_network_link = payload[:social_network_link]
-
-    mail to: 'boris.bbk@gmail.com', subject: 'Master downgrades to player!'
+    @player = User.find(payload[:id])
+    mail to: 'boris.bbk@gmail.com'
   end
 
-  def game_created payload
-    game = Game.find(payload[:game_id])
-    @title = game.title
-    @description = game.description
-    @game_id = game.id
-    mail to: 'boris.bbk@gmail.com', subject: 'New game created'
+  def event_created payload
+    @event = Event.find(payload[:id])
+    @event.game.subscribers.each do |user|
+      mail to: user.email if user.email.present?
+    end
   end
 
   def join_game payload
-    game = Game.find(payload[:game_id])
-    user = User.find(payload[:user_id])
-    @user_name = user.name
-    @title = game.title
-    @game_id = game.id
-    mail to: 'boris.bbk@gmail.com', subject: 'Player joins game'
+    @game = Game.find(payload[:game_id])
+    @subscriber = User.find(payload[:user_id])
+    @master = @game.master
+    mail to: @master.email if @master.email.present?
   end
 
   def left_game payload
-    game = Game.find(payload[:game_id])
-    user = User.find(payload[:user_id])
-    @user_name = user.name
-    @title = game.title
-    @game_id = game.id
-    mail to: 'boris.bbk@gmail.com', subject: 'Player left game'
+    @game = Game.find(payload[:game_id])
+    @subscriber = User.find(payload[:user_id])
+    @master = @game.master
+    mail to: @master.email if @master.email.present?
   end
 end

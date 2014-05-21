@@ -65,8 +65,7 @@ class ProfilesController < ApplicationController
 
   def notify_about_master_born
     if going_to_become_master?
-      payload = {name: current_user.name, email: current_user.email, social_network_link: current_user.social_network_link}
-      ActiveSupport::Notifications.instrument('master_born', payload) do
+      ActiveSupport::Notifications.instrument('master_born', {id: current_user.id}) do
         message = "#{current_user.name} want to become a Master."
         CoreNotification.create(message: message)
         ApprovalBox.create(message: message, user_id: current_user.id)
@@ -77,8 +76,7 @@ class ProfilesController < ApplicationController
   def notify_about_downgrade_to_player
     if going_to_become_player?
       current_user.update_attribute(:role, User::ROLES[:player])
-      payload = {name: current_user.name, email: current_user.email, social_network_link: current_user.social_network_link}
-      ActiveSupport::Notifications.instrument('player_downgrade', payload) do
+      ActiveSupport::Notifications.instrument('player_downgrade', {id: current_user.id}) do
         message = "#{current_user.name} downgrades to Player."
         CoreNotification.create(message: message)
       end

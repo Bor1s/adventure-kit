@@ -13,6 +13,7 @@ class Game
 
   validates :title, presence: true
   validates :description, presence: true
+  validates :events, presence: true
 
   scope :finished, ->() { where(finished: true) }
   scope :pending, ->() { where(finished: false) }
@@ -47,6 +48,10 @@ class Game
   def players
     player_subscriptions = subscriptions.where(user_right: Subscription::RIGHTS[:player])
     User.where :id.in => player_subscriptions.map(&:user_id)
+  end
+
+  def subscribers
+    User.where :id.in => subscriptions.map(&:user_id)
   end
 
   def subscribed? user

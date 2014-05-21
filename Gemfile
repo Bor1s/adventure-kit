@@ -38,6 +38,7 @@ group :test, :development do
   gem 'capybara'
   gem 'pry-rails'
   gem 'sunspot_solr'
+  gem 'letter_opener'
   #gem 'pry-debugger'
 end
 

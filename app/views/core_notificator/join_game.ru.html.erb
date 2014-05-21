@@ -1,0 +1,16 @@
+<p>Здравствуйте <%= @master.name %>.</p>
+
+<p><%= link_to @subscriber.name, @subscriber.social_network_link %> принял участие в вашей игре <strong><%= @game.title %></strong></p>
+
+<p>
+  <strong>Текущий список игроков</strong>
+  <ul>
+    <% @game.players.each do |user| %>
+      <li><%= link_to user.name, user.social_network_link %></li>
+    <% end %>
+  </ul>
+</p>
+
+<p><%= link_to 'Подробнее', game_url(@game.id) %></p>
+
+<p>Хорошей игры мастер!</p>

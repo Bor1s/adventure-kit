@@ -6,8 +6,8 @@ ActiveSupport::Notifications.subscribe('player_downgrade') do |name, start, fini
   CoreNotificator.delay.player_downgrade(payload)
 end
 
-ActiveSupport::Notifications.subscribe('game_created') do |name, start, finish, id, payload|
-  CoreNotificator.delay.game_created(payload)
+ActiveSupport::Notifications.subscribe('event_created') do |name, start, finish, id, payload|
+  CoreNotificator.delay.event_created(payload)
 end
 
 ActiveSupport::Notifications.subscribe('join_game') do |name, start, finish, id, payload|

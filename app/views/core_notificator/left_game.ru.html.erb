@@ -1,0 +1,18 @@
+<p>Здравствуйте <%= @master.name %>!</p>
+
+<p><%= link_to @subscriber.name, @subscriber.social_network_link %> покинул игру <strong><%= @game.title %></strong></p>
+
+<% if @game.players.exists? %>
+  <p>
+    <strong>Текущий список игроков</strong>
+    <ul>
+      <% @game.players.each do |user| %>
+        <li><%= link_to user.name, user.social_network_link %></li>
+      <% end %>
+    </ul>
+  </p>
+<% end %>
+
+<p><%= link_to 'Подробнее', game_url(@game.id) %></p>
+
+<p>Хорошей игры мастер!</p>

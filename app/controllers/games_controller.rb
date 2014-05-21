@@ -20,10 +20,6 @@ class GamesController < ApplicationController
     @game = Game.create normalize_params(game_params)
     if @game.valid?
       @game.subscribe(current_user, :master)
-      payload = {game_id: @game.id, user_id: current_user.id}
-      notifications.instrument('game_created', payload) do
-        CoreNotification.create(message: "#{current_user.name} created #{@game.title}")
-      end
       location = edit_game_path(@game)
     end
     respond_with(@game, location: location)
@@ -52,7 +48,7 @@ class GamesController < ApplicationController
     @game = Game.find params[:id]
     payload = {game_id: @game.id, user_id: current_user.id}
     notifications.instrument('join_game', payload) do
-      CoreNotification.create(message: "#{current_user.name} now joining #{@game.title}")
+      CoreNotification.create(message: "#{current_user.name} joined #{@game.title}")
     end
     @game.subscribe current_user
     redirect_to game_path(@game)
@@ -76,7 +72,7 @@ class GamesController < ApplicationController
     params.require(:game).permit(:title, :description, :tag_ids, events_attributes: [:title, :poster, :poster_cache, :description, :_destroy, :id, :remove_poster, :beginning_at])
   end
 
-  def normalize_params parameters
+  def normalize_params(parameters)
     tag_ids = parameters[:tag_ids].split(',')
     new_tags_titles, tag_ids = tag_ids.partition { |t| t.ends_with? '_new' }
     parameters[:tag_ids] = tag_ids

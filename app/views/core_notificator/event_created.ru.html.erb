@@ -1,0 +1,13 @@
+<h3><%= @event.title %></h3>
+<p><%= @event.description %></p>
+<p>Начало <%= l(@event.beginning_at, format: :short) %></p>
+<h4>Участники</h4>
+<ul>
+  <li><%= @event.game.master.name %> (ведущий)</li>
+  <% @event.game.players.each do |user| %>
+    <li><%= link_to user.name, user.social_network_link %></li>
+  <% end %>
+</ul>
+<p><%= link_to 'Подробнее', game_url(@event.game.id) %></p>
+
+<p>Желаем Вам приятной игры!</p>

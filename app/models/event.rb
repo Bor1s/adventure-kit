@@ -2,6 +2,7 @@ class Event
   include Mongoid::Document
   include Mongoid::Timestamps
   include SolrService::MongoidHooks
+  include Notification
 
   field :description, type: String
   field :beginning_at, type: DateTime
@@ -33,4 +34,5 @@ class Event
     data[:ctext] = [options[:title] || title, description].join(' ')
     data
   end
+
 end

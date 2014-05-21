@@ -66,6 +66,7 @@ ru:
       remove: ' Удалить'
       remove_poster: ' Удалить постер'
       event_title: 'Название игровой сессии'
+      remove_event: 'Точно хотите удалить игровую сессию?'
     show:
       comments: 'Комментарии'
       participants: 'Участники'
@@ -106,6 +107,8 @@ ru:
   profiles:
     edit:
       update: 'Сохранить'
+      want_to_be_master: 'Хочу быть мастером'
+      wait_approval: 'Ваш запрос будет скоро обработан нашими администраторами'
     my_games:
       title: 'Название'
       first_event_at: 'Первая сессия'
@@ -136,3 +139,15 @@ ru:
   October: 'Октябрь'
   November: 'Ноябрь'
   December: 'Декабрь'
+
+  core_notificator:
+    event_created:
+      subject: 'Вас ожидает новая игровая сессия'
+    join_game:
+      subject: 'У вас появился новый игрок'
+    left_game:
+      subject: 'Игрок покинул вашу партию'
+    player_downgrade:
+      subject: 'Мастер стал игроком'
+    master_born:
+      subject: 'Новый запрос на мастера'

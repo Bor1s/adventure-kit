@@ -34,18 +34,37 @@ initPicker = ->
 
 initCocoonPicker = ->
   $('.events').on 'cocoon:after-insert', ->
-    console.log 'cocoon insertion'
     initPicker()
 
+#Do not allow to remove last standing event
+checkLastEventCannotBeRemoved = ->
+  if $('.nested-fields').filter(':visible').length == 1
+    $('.nested-fields .remove_fields').hide()
+  else
+    $('.nested-fields .remove_fields').show()
+
+cocoonEvents = ->
+  $('.events').on 'cocoon:after-insert', ->
+    checkLastEventCannotBeRemoved()
+
+  $('.events').on 'cocoon:after-remove', ->
+    checkLastEventCannotBeRemoved()
+
+# Page load
 $ ->
   $('img').tooltip()
   initTokenInput()
   initPicker()
   initCocoonPicker()
+  checkLastEventCannotBeRemoved()
+  cocoonEvents()
 
+# Turbolinks ajax body reload
 $(document).on 'page:load', ->
   $('img').tooltip()
   initTokenInput()
   initPicker()
   initCocoonPicker()
+  checkLastEventCannotBeRemoved()
+  cocoonEvents()
 
