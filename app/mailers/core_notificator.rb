@@ -13,9 +13,8 @@ class CoreNotificator < ActionMailer::Base
 
   def event_created payload
     @event = Event.find(payload[:id])
-    @event.game.subscribers.each do |user|
-      mail to: user.email if user.email.present?
-    end
+    emails = @event.game.subscribers.map(&:email).compact
+    mail to: emails
   end
 
   def join_game payload
