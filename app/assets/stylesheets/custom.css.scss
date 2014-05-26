@@ -91,47 +91,6 @@ mark {
   padding-left: 55px;
 }
 
-// --- Login Page ---
-.signin {
-  padding-top: 15%;
-  header {
-    display: inline-block;
-    padding: 0;
-    margin: 0;
-    font-size: 90px;
-    text-transform: none;
-    @include fadeIn(1s, 0s);
-  }
-
-  article {
-    .description {
-      margin-top: 30px;
-      font-size: 25px;
-      @include fadeIn(1s, 1s);
-    }
-
-    .providers {
-      font-size: 50px;
-      text-align: center;
-      margin-top: 100px;
-      @include fadeIn(1s, 1.5s);
-    }
-  }
-}
-
-.beta {
-  position: absolute;
-  top: 200px;
-  left: 500px;
-  text-transform: uppercase;
-  transform: rotate(30deg);
-  -webkit-transform: rotate(30deg);
-  color: red;
-  font-weight: bold;
-  @include fadeIn(2s, 2s);
-}
-
-
 .tip {
   margin: 20px 20px 20px 0px;
   font-size: 12px;

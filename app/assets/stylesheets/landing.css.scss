@@ -1,0 +1,68 @@
+@import 'common';
+
+// --- Login Page ---
+.signin {
+  padding: 0;
+  background-image: url('/assets/scetch.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+
+  .desc0 {
+    height: 600px;
+    width: 100%;
+    color: white;
+
+    header {
+      display: inline-block;
+      padding: 0;
+      margin: 0;
+      padding-left: 100px;
+      border: none;
+      font-size: 90px;
+      text-transform: none;
+      @include fadeIn(1s, 0s);
+    }
+
+    .description {
+      padding-left: 105px;
+      font-size: 20px;
+      @include fadeIn(1s, 1s);
+    }
+
+    .providers {
+      font-size: 50px;
+      text-align: center;
+      margin-top: 300px;
+      margin-bottom: 50px;
+      @include fadeIn(1s, 1.5s);
+      a {
+        color: white;
+        &:hover {
+          color: $ph-blue;
+        }
+      }
+    }
+  }
+
+  .desc1, .desc3 {
+    box-shadow: 50px 50px 50px 20px black;	
+    box-shadow: 0px 0px 40px 5px #000;
+    height: 300px;
+    width: 100%;
+    padding: 100px 0px 0px 50px;
+    background-color: #fff;
+    p {
+      font-size: 25px;
+    }
+  }
+
+  .desc2, .desc4 {
+    height: 600px;
+    width: 100%;
+    padding: 100px 0px 0px 50px;
+    color: white;
+    p {
+      font-size: 40px;
+    }
+  }
+}

@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :user_signed_in?
 
+  def sign_in
+    render layout: 'landing'
+  end
+
   def routing_error_handler
     render '/public/404.html', status: 404
   end
