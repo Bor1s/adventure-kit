@@ -4,10 +4,10 @@
     <article>
       <ul class='list-unstyled'>
         <li>
-          <%= t('.participants') %> <span class='counter pull-right'><%= @game.subscriptions.count %></span>
+          <%= t('.participants') %> <span class='badge'><%= @game.subscriptions.count %></span>
         </li>
         <li>
-          <%= t('.comments') %> <span class='counter pull-right'><%= @game.comments.count %></span>
+          <%= t('.comments') %> <span class='badge'><%= @game.comments.count %></span>
         </li>
       </ul>
     </article>
