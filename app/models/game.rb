@@ -5,6 +5,7 @@ class Game
   field :title, type: String
   field :description, type: String
   field :finished, type: Mongoid::Boolean, default: false
+  field :players_amount, type: Integer, default: 5
 
   has_many :subscriptions, dependent: :delete
   has_and_belongs_to_many :tags
@@ -14,6 +15,7 @@ class Game
   validates :title, presence: true
   validates :description, presence: true
   validates :events, presence: true
+  validates :players_amount, presence: true
 
   scope :finished, ->() { where(finished: true) }
   scope :pending, ->() { where(finished: false) }
@@ -30,8 +32,10 @@ class Game
   end
 
   def subscribe user, role=:player
-    unless subscribed? user
-      subscriptions.create!(user_id: user.id, user_right: Subscription::RIGHTS[role])
+    if allows_to_take_part?
+      unless subscribed? user
+        subscriptions.create!(user_id: user.id, user_right: Subscription::RIGHTS[role])
+      end
     end
   end
 
@@ -56,5 +60,9 @@ class Game
 
   def subscribed? user
     subscriptions.where(user_id: user.id).first.present?
+  end
+
+  def allows_to_take_part?
+    players.count < players_amount
   end
 end

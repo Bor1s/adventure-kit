@@ -46,7 +46,13 @@
       <% if @game.subscribed?(current_user) %>
         <p><%= link_to t('.leave_game'), unenroll_game_path(@game), method: :delete, data: {confirm: 'Sure?'}, class: 'btn btn-danger btn-xs' %></p>
       <% else %>
-        <p><%= link_to t('.take_part'), take_part_game_path(@game), class: 'btn btn-success btn-xs' %></p>
+        <p>
+          <% if @game.allows_to_take_part? %>
+            <%= link_to t('.take_part'), take_part_game_path(@game), class: 'btn btn-success btn-xs' %>
+          <% else %>
+            <%= t('.game_is_full') %>
+          <% end %>
+        </p>
       <% end %>
     <% end %>
   </aside>

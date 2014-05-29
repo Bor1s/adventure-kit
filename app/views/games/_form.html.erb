@@ -25,6 +25,10 @@
     </div>
 
     <div class="form-group">
+      <%= f.select :players_amount, options_for_select((1..6), @game.players_amount), { include_blank: t('.select_players_amount'), class: 'form-control input-sm' } %>
+    </div>
+
+    <div class="form-group">
       <div class='triada-header'>
         <div class='row'>
         <div class='col-md-4'></div>

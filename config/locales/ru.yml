@@ -61,6 +61,7 @@ ru:
       remove: 'Удалить игру'
       game_title: 'Название игры'
       game_description: 'Описание игры'
+      select_players_amount: 'Выберите количество игроков'
     event_fields:
       remove: ' Удалить'
       remove_poster: ' Удалить постер'
@@ -78,6 +79,7 @@ ru:
       take_part: 'Принять участие'
       general: 'Общее'
       players: 'Игроки: '
+      game_is_full: 'Команда игроков уже набрана'
 
   events:
     index:

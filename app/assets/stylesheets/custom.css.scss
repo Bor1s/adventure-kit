@@ -101,8 +101,10 @@ mark {
 }
 
 // --- Errors ---
-.field_with_errors input, .field_with_errors textarea {
-  border: 1px solid #e11012;
+.field_with_errors input,
+.field_with_errors select,
+.field_with_errors textarea {
+  border: 2px solid #e11012;
 }
 
 // --- Bootstrap Navbar ---

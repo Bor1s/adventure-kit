@@ -69,7 +69,7 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit(:title, :description, :tag_ids, events_attributes: [:title, :poster, :poster_cache, :description, :_destroy, :id, :remove_poster, :beginning_at])
+    params.require(:game).permit(:title, :description, :tag_ids, :players_amount, events_attributes: [:title, :poster, :poster_cache, :description, :_destroy, :id, :remove_poster, :beginning_at])
   end
 
   def normalize_params(parameters)
