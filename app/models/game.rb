@@ -5,7 +5,7 @@ class Game
   field :title, type: String
   field :description, type: String
   field :finished, type: Mongoid::Boolean, default: false
-  field :players_amount, type: Integer, default: 5
+  field :players_amount, type: Integer
 
   has_many :subscriptions, dependent: :delete
   has_and_belongs_to_many :tags
