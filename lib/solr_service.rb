@@ -35,25 +35,26 @@ class SolrService
   # Included class must define #solr_index_data method used by Solr
   module MongoidHooks
     def self.included(base)
-      base.class_eval do
-        def self.solr
-          @solr ||= SolrService.new
-        end    
-      end
+      unless Rails.env.test?
+        base.class_eval do
+          def self.solr
+            @solr ||= SolrService.new
+          end
+        end
 
-      base.send(:after_create) do |document|
-        base.solr.add(document.solr_index_data)
-      end
+        base.send(:after_create) do |document|
+          base.solr.add(document.solr_index_data)
+        end
 
-      base.send(:after_update) do |document|
-        base.solr.delete(document.id.to_s)
-        base.solr.add(document.solr_index_data)
-      end
+        base.send(:after_update) do |document|
+          base.solr.delete(document.id.to_s)
+          base.solr.add(document.solr_index_data)
+        end
 
-      base.send(:after_destroy) do |document|
-        base.solr.delete(document.id.to_s)
+        base.send(:after_destroy) do |document|
+          base.solr.delete(document.id.to_s)
+        end
       end
-
     end
   end
 end

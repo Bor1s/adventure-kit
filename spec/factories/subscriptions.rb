@@ -2,5 +2,6 @@
 
 FactoryGirl.define do
   factory :subscription do
+    user_right 2
   end
 end

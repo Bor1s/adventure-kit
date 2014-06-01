@@ -32,9 +32,9 @@ gem 'rsolr'
 
 group :test, :development do
   gem 'thin'
-  gem 'rspec-rails'
-  gem 'factory_girl_rails'
-  gem 'shoulda-matchers'
+  #TODO remove this when rspec-bug with AR is fixed
+  gem 'rspec-rails', github: 'rspec/rspec-rails', branch: 'master'
+  gem 'factory_girl_rails', '~> 4.0'
   gem 'capybara'
   gem 'pry-rails'
   gem 'sunspot_solr'

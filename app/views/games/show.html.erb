@@ -44,7 +44,7 @@
     <% else %>
       <header><i class='fa fa-eye'></i> <%= t('.for_player') %></header>
       <% if @game.subscribed?(current_user) %>
-        <p><%= link_to t('.leave_game'), unenroll_game_path(@game), method: :delete, data: {confirm: 'Sure?'}, class: 'btn btn-danger btn-xs' %></p>
+        <p><%= link_to t('.leave_game'), unenroll_game_path(@game), method: :delete, data: {confirm: t('.confirm_leave_game')}, class: 'btn btn-danger btn-xs' %></p>
       <% else %>
         <p>
           <% if @game.allows_to_take_part? %>

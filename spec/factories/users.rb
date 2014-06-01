@@ -2,5 +2,19 @@
 
 FactoryGirl.define do
   factory :user do
+    uid { SecureRandom.hex(16) }
+    name 'Boris'
+
+    factory :admin do
+      role 1
+    end
+
+    factory :master do
+      role 2
+    end
+
+    factory :player do
+      role 3
+    end
   end
 end

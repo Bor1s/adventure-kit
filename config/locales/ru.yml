@@ -80,6 +80,7 @@ ru:
       general: 'Общее'
       players: 'Игроки: '
       game_is_full: 'Команда игроков уже набрана'
+      confirm_leave_game: 'Вы точно хотите покинуть эту игру?'
 
   events:
     index:

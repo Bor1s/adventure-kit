@@ -17,8 +17,6 @@ class Game
   validates :events, presence: true
   validates :players_amount, presence: true
 
-  scope :finished, ->() { where(finished: true) }
-  scope :pending, ->() { where(finished: false) }
   scope :by_tag, ->(tag_id) { where(:tag_ids.in => [tag_id]) }
 
   accepts_nested_attributes_for :events, allow_destroy: true
@@ -34,7 +32,7 @@ class Game
   def subscribe user, role=:player
     if allows_to_take_part?
       unless subscribed? user
-        subscriptions.create!(user_id: user.id, user_right: Subscription::RIGHTS[role])
+        subscriptions.create(user_id: user.id, user_right: Subscription::RIGHTS[role])
       end
     end
   end
@@ -63,6 +61,6 @@ class Game
   end
 
   def allows_to_take_part?
-    players.count < players_amount
+    players.empty? or players.count < players_amount
   end
 end
