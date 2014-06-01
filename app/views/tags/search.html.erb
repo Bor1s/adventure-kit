@@ -27,6 +27,6 @@
 
   <div class='col-md-6'>
     <header><i class='fa fa-users'></i> <%= t('.users') %></header>
-    <%= render @users %>
+    <%= render partial: 'user', collection: @users %>
   </div>
 </div>
