@@ -12,7 +12,7 @@ ru:
       - Воскресенье
     admin: 'Администратор'
     player: 'Игрок'
-    master: 'Мастер'
+    master: 'Ведущий'
     remove_confirm: 'Вы уверены? Отменить удаление игры будет невозможно.'
     common: 'Общее'
     join_us: 'Мы в соцсетях'
@@ -70,9 +70,9 @@ ru:
     show:
       comments: 'Комментарии'
       participants: 'Участники'
-      for_master: 'Мастеру'
+      for_master: 'Ведущему'
       for_player: 'Игроку'
-      master: 'Мастер: '
+      master: 'Ведущий: '
       tags: 'Тэги '
       edit_game: 'Редактировать'
       leave_game: 'Покинуть игру'
@@ -97,7 +97,7 @@ ru:
       general: 'Общее'
       total_masters: 'Всего мастеров'
       total_players: 'Всего игроков'
-      masters: 'Мастеры'
+      masters: 'Ведущие'
       players: 'Игроки'
 
   comments:
@@ -150,6 +150,6 @@ ru:
     left_game:
       subject: 'Игрок покинул вашу партию'
     player_downgrade:
-      subject: 'Мастер стал игроком'
+      subject: 'Ведущий стал игроком'
     master_born:
       subject: 'Новый запрос на мастера'
