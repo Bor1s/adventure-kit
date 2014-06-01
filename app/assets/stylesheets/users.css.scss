@@ -2,9 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.user-short {
+  margin-bottom: 10px;
+}
+
 .user-info {
   margin: 0;
-  margin-bottom: 10px;
   display: inline-block;
   vertical-align: top;
   a {
