@@ -23,6 +23,7 @@ loadChart = ->
             lineWidth: 0
             labels:
               step: data.step
+            offset: 100
           yAxis:
             categories: data.days
             lineWidth: 0
@@ -41,7 +42,11 @@ loadChart = ->
             y: 10
           tooltip:
             headerFormat: ''
-            pointFormat: "<b>{point.value} игр(ы)</b> на {point.day} {point.human_name}"
+            formatter: ()->
+              if this.point.value
+                "<b>#{this.point.value} игр(ы)</b> на #{this.point.day} #{this.point.human_name}"
+              else
+                "<b>Нет игр</b> на #{this.point.day} #{this.point.human_name}"
             hideDelay: true
             distance: 20
             followPointer: true
@@ -71,7 +76,7 @@ loadChart = ->
               color: '#000',
               style: {
                 textShadow: 'none'
-                fontSize: '8px'
+                fontSize: '0px'
                 fontWeight: 'normal'
               }
             }
