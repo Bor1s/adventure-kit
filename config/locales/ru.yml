@@ -23,7 +23,7 @@ ru:
   application:
     admin_menu:
       profile: 'Профиль'
-      approval_list: 'Заявки мастеров'
+      approval_list: 'Заявки ведущих'
       games_heatmap: 'Карта игр'
       my_games: 'Мои игры'
       achivements: 'Достижения'
@@ -95,7 +95,7 @@ ru:
   users:
     index:
       general: 'Общее'
-      total_masters: 'Всего мастеров'
+      total_masters: 'Всего ведущих'
       total_players: 'Всего игроков'
       masters: 'Ведущие'
       players: 'Игроки'
@@ -109,7 +109,7 @@ ru:
   profiles:
     edit:
       update: 'Сохранить'
-      want_to_be_master: 'Хочу быть мастером'
+      want_to_be_master: 'Хочу быть ведущим'
       wait_approval: 'Ваш запрос будет скоро обработан нашими администраторами'
     my_games:
       title: 'Название'
@@ -152,4 +152,4 @@ ru:
     player_downgrade:
       subject: 'Ведущий стал игроком'
     master_born:
-      subject: 'Новый запрос на мастера'
+      subject: 'Новый запрос на ведущего'
