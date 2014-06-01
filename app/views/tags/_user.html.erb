@@ -5,11 +5,11 @@
     <i class='fa fa-picture-o default-image'></i>
   <% end %>
 
-  <p class='user-info'>
+  <aside class='user-info'>
     <%= user.name %> <span class='text-muted'>(<%= I18n.t("general.#{user.human_role}") %>)</span><br />
     <%= link_to user.social_network_link, target: '_blank' do %>
       <i class='fa fa-vk'></i>
     <% end %><br />
     <%= user.email %>
-  </p>
+  </aside>
 </div>
