@@ -6,6 +6,10 @@ class GameDecorator
     @game = game
   end
 
+  def id
+    game.id
+  end
+
   def title
     game.title
   end
