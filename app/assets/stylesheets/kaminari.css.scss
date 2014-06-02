@@ -1,22 +1,13 @@
 .pagination {
-  a {
-    color: #333333;
-  }
-
   .last, .first {
     display: none;
   }
 
   .next, .prev {
-    text-transform: uppercase;
     font-weight: bold;
   }
 
   .page {
     padding: 0px 5px 0px 5px;
-  }
-
-  .current {
-    color: #e11012; 
   }
 }

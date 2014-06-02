@@ -30,6 +30,7 @@ initPicker = ->
     _picker.datetimepicker
       lang: 'ru'
       format: 'd-m-Y H:i'
+      dayOfWeekStart: 1
     _picker.datetimepicker('show')
 
 initCocoonPicker = ->

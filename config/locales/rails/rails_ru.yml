@@ -256,3 +256,9 @@ ru:
   activerecord:
     errors:
       <<: *errors
+  views:
+    pagination:
+      first: "&laquo; Начало"
+      last: "Конец &raquo;"
+      previous: "&lsaquo; Сюда"
+      next: "Туда &rsaquo;"
