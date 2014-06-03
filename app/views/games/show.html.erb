@@ -13,13 +13,25 @@
     </article>
   </aside>
 
-  <aside>
+  <aside class='participants'>
+    <header><i class='fa fa-users'></i> <%= t('.master') %></header>
+    <article>
+      <p>
+        <%= image_tag asset_path(@game.master.avatar), data: {toggle: 'tooltip'}, title: "#{@game.master.name}"  %>
+      </p>
+    </article>
+  </aside>
+
+  <aside class='participants'>
     <header><i class='fa fa-users'></i> <%= t('.participants') %></header>
     <article>
-      <p class='master-ico'>
-        <%= image_tag asset_path(@game.master.avatar), data: {toggle: 'tooltip'}, title: "#{@game.master.name}"  %>
-        <% @game.players.each do |player| %>
-          <%= image_tag asset_path(player.avatar), data: {toggle: 'tooltip'}, title: "#{player.name}" %>
+      <p>
+        <% if @game.players.present? %>
+          <% @game.players.each do |player| %>
+            <%= image_tag asset_path(player.avatar), data: {toggle: 'tooltip'}, title: "#{player.name}" %>
+          <% end %>
+        <% else %>
+          <%= t('.no_players_yet') %>
         <% end %>
       </p>
     </article>

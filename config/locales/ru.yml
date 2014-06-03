@@ -72,7 +72,7 @@ ru:
       participants: 'Участники'
       for_master: 'Ведущему'
       for_player: 'Игроку'
-      master: 'Ведущий: '
+      master: 'Ведущий'
       tags: 'Теги '
       edit_game: 'Редактировать'
       leave_game: 'Покинуть игру'
@@ -81,6 +81,7 @@ ru:
       players: 'Игроки: '
       game_is_full: 'Команда игроков уже набрана'
       confirm_leave_game: 'Вы точно хотите покинуть эту игру?'
+      no_players_yet: 'Игроков пока нет'
 
   events:
     index:
