@@ -41,6 +41,7 @@ class Ability
       can [:update, :destroy], Game do |game|
         user.creator? game
       end
+      can :update, Tag
 
       can [:update, :destroy], Comment do |comment|
         user.commenter? comment

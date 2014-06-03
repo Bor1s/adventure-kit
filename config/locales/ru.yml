@@ -129,6 +129,10 @@ ru:
       total_games: 'Игр'
       games: 'Игры'
       users: 'Люди'
+    form:
+      tag_description: 'Описание тега'
+      tag_title: 'Название тега'
+      save: 'Сохранить'
 
   January: 'Январь'
   February: 'Февраль'

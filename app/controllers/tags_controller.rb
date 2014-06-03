@@ -3,7 +3,7 @@ class TagsController < ApplicationController
   respond_to :html
 
   def index
-    @tags = Tag.desc(:game_ids).page(params[:page])
+    @tags = Tag.asc(:title).page(params[:page])
     respond_with @tags do |format|
       format.html
       format.json do
@@ -17,5 +17,23 @@ class TagsController < ApplicationController
     @users = service.users
     @games = service.games
     @tag   = service.tag
+  end
+
+  def edit
+    @tag = Tag.find(params[:id])
+    authorize! :update, @tag
+  end
+
+  def update
+    @tag = Tag.find(params[:id])
+    authorize! :update, @tag
+    @tag.update_attributes(tag_attributes)
+    respond_with @tag, location: tags_path
+  end
+
+  private
+
+  def tag_attributes
+    params.require(:tag).permit(:title, :description)
   end
 end

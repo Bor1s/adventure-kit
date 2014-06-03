@@ -1,3 +1,14 @@
-<div class='tag'>
-  <%= link_to tag.title, search_tags_path(tag.id) %>
+<div class='tag-container'>
+  <div class='tag'>
+    <%= link_to tag.title, search_tags_path(tag.id) %>
+  </div>
+  <span class='text-muted'> x <%= tag.games.count %></span>
+  <% if current_user.admin? || current_user.master? %>
+    <%= link_to edit_tag_path(tag), class: 'pull-right' do %>
+      <i class='fa fa-pencil'></i>
+    <% end %>
+  <% end %>
+  <aside>
+    <%= tag.description %>
+  </aside>
 </div>

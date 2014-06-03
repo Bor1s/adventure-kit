@@ -3,13 +3,13 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import 'common';
 
-.newspaper {
-  min-height: 300px;
-  -webkit-column-count: 4;
-  -moz-column-count: 4;
-  column-count: 4;
+.tag-container {
+  margin-right: 20px;
+  display: inline-table;
+  width: 200px;
+  height: auto;
+}
 
-  -webkit-column-gap: 100px;
-  -moz-column-gap: 100px;
-  column-gap: 100px;
+.edit_tag {
+  margin-bottom: 50px;
 }

@@ -3,11 +3,13 @@ class Tag
   include Mongoid::Timestamps
 
   field :title, type: String
+  field :description, type: String
 
   has_and_belongs_to_many :users
   has_and_belongs_to_many :games
 
-  validates :title, presence: true
+  validates :title, presence: true, uniqueness: true
+  validates_with TagValidator
 
   def self.tokenize
     all.map do |g|
