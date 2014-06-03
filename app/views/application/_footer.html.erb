@@ -1,31 +1,34 @@
 <footer>
-  <nav class='container navbar navbar-default navbar-light' role='navigation'>
-    <div class='row'>
-      <div class='col-md-4'>
-        <article class='footer-info'>
-          <header class='brand'><%= t('general.playhard') %> <small><mark>2014</mark></small></header>
-        </article>
-      </div>
-      <div class='col-md-4 text-center'>
-        <article class='footer-info'>
-          <header><%= t('general.common') %></header>
-        <%= link_to t('general.about'), '/about_us' %>
-        <%= link_to t('general.contacts'), '/contacts' %>
-        </article>
-      </div>
+  <nav class='container navbar navbar-inverse navbar-light' role='navigation'>
 
-      <div class='col-md-4 text-center'>
-        <article class='footer-info'>
-          <header><%= t('general.join_us') %></header>
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#footer-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+    </div>
+
+    <div class='collapse navbar-collapse' id='footer-collapse'>
+      <ul class='nav navbar-nav toplinks'>
+        <li><%= link_to t('general.about'), '/about_us' %></li>
+        <li><%= link_to t('general.contacts'), '/contacts' %></li>
+      </ul>
+
+      <ul class='nav navbar-nav navbar-right'>
+        <li>
           <%= link_to 'https://vk.com/play_hard_rpg', target: :blank do %>
             <i class='fa fa-vk fa-2x'></i>
           <% end %>
-
+        </li>
+        <li>
           <%= link_to 'https://twitter.com/PlayHardRpg', target: :blank do %>
             <i class='fa fa-twitter fa-2x'></i>
           <% end %>
-        </article>
-      </div>
+        </li>
+      </ul>
     </div>
 
   </nav>

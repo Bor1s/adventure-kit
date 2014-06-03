@@ -1,56 +1,57 @@
 <div class='row'>
-  <%= form_for @game, html: { multipart: true, class: 'form-horizontal', role: 'form' } do |f| %>
-    <%#= errors_for @game %>
+  <div class='col-xs-12 col-sm-12 col-md-12'>
+    <%= form_for @game, html: { multipart: true, class: 'form-horizontal', role: 'form' } do |f| %>
 
-    <div class="form-group">
-      <div class='triada-header'>
-        <div class='row'>
-          <div class='col-md-4'></div>
-          <div class='col-md-4'><%= t('.general_info')%></div>
-          <div class='col-md-4'></div>
+      <div class="form-group">
+        <div class='triada-header'>
+          <div class='row'>
+            <div class='col-xs-4 col-sm-4 col-lg-4'></div>
+            <div class='col-xs-4 col-sm-4 col-lg-4'><%= t('.general_info')%></div>
+            <div class='col-xs-4 col-sm-4 col-lg-4'></div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="form-group">
-      <%= f.text_field :title, class: 'form-control input-sm', placeholder: t('.game_title'), required: true %>
-    </div>
+      <div class="form-group">
+        <%= f.text_field :title, class: 'form-control input-sm', placeholder: t('.game_title'), required: true %>
+      </div>
 
-    <div class="form-group">
-      <%= f.text_area :description, class: 'form-control input-sm', placeholder: t('.game_description'), size: '50x10' %>
-    </div>
+      <div class="form-group">
+        <%= f.text_area :description, class: 'form-control input-sm', placeholder: t('.game_description'), size: '50x10' %>
+      </div>
 
-    <div class="form-group tags">
-      <%= f.hidden_field :tag_ids, id: 'tags', data: {pre: @game.tags.tokenize}, style: 'width: 500px; font-size: 12px;' %>
-    </div>
+      <div class="form-group tags">
+        <%= f.hidden_field :tag_ids, id: 'tags', data: {pre: @game.tags.tokenize}, style: 'width: 500px; font-size: 12px;' %>
+      </div>
 
-    <div class="form-group">
-      <%= f.select :players_amount, options_for_select((1..10), @game.players_amount), { include_blank: t('.select_players_amount'), class: 'form-control input-sm' } %>
-    </div>
+      <div class="form-group">
+        <%= f.select :players_amount, options_for_select((1..10), @game.players_amount), { include_blank: t('.select_players_amount'), class: 'form-control input-sm' } %>
+      </div>
 
-    <div class="form-group">
-      <div class='triada-header'>
-        <div class='row'>
-        <div class='col-md-4'></div>
-        <div class='col-md-4'><%= t('.events')%></div>
-        <div class='col-md-4'></div>
+      <div class="form-group">
+        <div class='triada-header'>
+          <div class='row'>
+          <div class='col-xs-4 col-sm-4 col-lg-4'></div>
+          <div class='col-xs-4 col-sm-4 col-lg-4'><%= t('.events')%></div>
+          <div class='col-xs-4 col-sm-4 col-lg-4'></div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class='events'>
-      <%= f.fields_for :events do |event| %>
-        <%= render 'event_fields', f: event %>
-      <% end %>
-    </div>
+      <div class='events'>
+        <%= f.fields_for :events do |event| %>
+          <%= render 'event_fields', f: event %>
+        <% end %>
+      </div>
 
-    <div class="form-group">
-      <%= link_to_add_association f, :events,
-        data: {:'association-insertion-node' => '.events', :'association-insertion-method' => 'append'},
-        class: 'btn btn-sm btn-default' do %>
-        <i class='fa fa-bars'><%= t('.add_event') %></i>
-      <% end %>
-      <%= f.submit "#{t('.save')}", class: 'btn btn-success btn-sm' %>
-    </div>
-  <% end %>
+      <div class="form-group">
+        <%= link_to_add_association f, :events,
+          data: {:'association-insertion-node' => '.events', :'association-insertion-method' => 'append'},
+          class: 'btn btn-sm btn-default' do %>
+          <i class='fa fa-bars'><%= t('.add_event') %></i>
+        <% end %>
+        <%= f.submit "#{t('.save')}", class: 'btn btn-success btn-sm' %>
+      </div>
+    <% end %>
+  </div>
 </div>

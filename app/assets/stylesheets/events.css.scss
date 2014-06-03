@@ -7,15 +7,14 @@
 .game-event {
   background-color: #F7F7F7;
   margin-bottom: 3em;
-  min-height: 200px;
   box-shadow: 1px 1px 2px #ddd;
 
   aside {
     color: #fff;
     position: relative;
     background-color: #000;
-    top: -23px;
-    right: -13px;
+    top: -12px;
+    right: -28px;
     margin: 0;
     padding: 4px;
     font-size: 13px;
@@ -36,8 +35,12 @@
     padding-left: 0px;
   }
 
-  .body {
-    padding: 10px 0px 0px 50px;
+  .finished {
+    opacity: 0.3;
+  }
+
+  .title {
+    padding-top: 5px;
   }
 
   .description {

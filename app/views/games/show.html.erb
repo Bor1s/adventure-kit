@@ -72,7 +72,7 @@
 <% end %>
 
 <div class='row game'>
-  <div class='col-md-12'>
+  <div class='col-xs-12 col-sm-12 col-md-12'>
     <p class='title'><%= @game.title %></p>
     <p><%= render 'events_carousel' %></p>
     <p class='description'><%= @game.description %><p>
@@ -82,17 +82,17 @@
 <div class="form-group">
   <div class='triada-header'>
     <div class='row'>
-      <div class='col-md-4'></div>
-      <div class='col-md-4'><%= t('.comments')%></div>
-      <div class='col-md-4'></div>
+      <div class='col-xs-4 col-sm-4 col-md-4'></div>
+      <div class='col-xs-4 col-sm-4 col-md-4'><%= t('.comments')%></div>
+      <div class='col-xs-4 col-sm-4 col-md-4'></div>
     </div>
   </div>
 </div>
 
-<div class='comments'>
+<div class='row comments'>
   <%= render partial: @game.comments %>
 </div>
 
 <div class='row'>
-<%= render 'comments/form' %>
+  <%= render 'comments/form' %>
 </div>

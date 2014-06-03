@@ -40,6 +40,8 @@ footer {
 img {
   //outline: 1px solid #dddddd;
   background-color: #ffffff;
+  max-width: 100%;
+  height: auto;
 }
 
 aside {
@@ -108,27 +110,17 @@ mark {
 }
 
 // --- Bootstrap Navbar ---
-.navbar-default {
-  border: none;
-}
-
 .navbar-light {
   font-weight: bold;
-  background-color: transparent;
+  background-color: inherit;
 }
 
 .topbar {
-  background-color: black;
-  height: 4em;
-  border-bottom: 2px solid $ph-orange-dark;
+  background-color: #101010;
   margin-bottom: 5em;
-  input {
-    border: 1px solid #fff;
-  }
 }
 
 .navbar-brand {
-  margin-left: -15px;
   span {
     text-transform: lowercase;
     color: #fff;
@@ -156,10 +148,6 @@ mark {
     margin-top: -3px;
     border: 1px solid #ddd;
   }
-}
-
-.navbar-form {
-  margin-top: 12px;
 }
 
 // --- Alerts ---

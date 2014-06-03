@@ -1,26 +1,21 @@
 <div class='row game-event'>
-  <div class='col-md-3 poster'>
+  <div class='col-xs-3 col-sm-3 col-md-3 poster'>
     <% if event.poster? %>
-      <%= image_tag asset_path(event.poster.medium.url) %>
+      <%= image_tag asset_path(event.poster.medium.url), class: "#{'finished' if event.finished?}" %>
     <% else %>
       <div class='text-center default-image-container'>
         <i class='fa fa-picture-o fa-5x default-image'></i>
       </div>
     <% end %>
-    <% if event.finished? %>
-      <div class='mask text-center'>
-        <p><%= t('.completed') %></p>
-      </div>
-    <% end %>
   </div>
 
-  <div class='col-md-9 body'>
+  <div class='col-xs-9 col-sm-9 col-md-9'>
     <aside class='pull-right'>
       <i class='fa fa-clock-o'></i> <%= l(event.beginning_at, format: :short) %>
       <div class='pull-right corner'></div>
     </aside>
 
-    <p>
+    <p class='title'>
       <%= link_to event.game.title.truncate(35), game_path(event.game), class: 'header' %>
       <br />
       <small class='text-muted'>By <%= event.game.master.name %></small>

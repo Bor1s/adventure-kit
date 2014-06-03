@@ -1,25 +1,23 @@
 <% unless comment.new_record? %>
-  <div class='col-md-12'>
+  <div class='col-xs-12 col-sm-12 col-md-12'>
     <div id='comment_<%= comment.id.to_s %>' class='row comment'>
       <div class='row'>
-        <div class='col-md-1'>
+        <div class='col-xs-12 col-sm-12 col-md-12 meta'>
           <%= image_tag comment.user.avatar %>
-        </div>
-        <div class='col-md-11 meta'>
-          <small><strong><%= comment.user.name %></strong></small>
-          <span class='text-muted'>
-            <br />
-            <small><%= comment.created_at.try(:to_s, :short) %></small>
-            <br />
-            <% if current_user.id == comment.user.id %>
-              <%= render 'comments/manage_links', comment: comment %>
-            <% end %>
+          <span class='commenter-stats'>
+            <small><strong><%= comment.user.name %></strong></small><br />
+            <span class='text-muted'>
+              <small><%= comment.created_at.try(:to_s, :short) %></small><br />
+              <% if current_user.id == comment.user.id %>
+                <%= render 'comments/manage_links', comment: comment %>
+              <% end %>
+            </span>
           </span>
         </div>
       </div>
 
       <div class='row'>
-        <div class='col-md-12'>
+        <div class='col-xs-12 col-sm-12 col-md-12'>
           <article id="<%= comment.id.to_s %>" class='message'><%= comment.message %></article>
         </div>
       </div>
