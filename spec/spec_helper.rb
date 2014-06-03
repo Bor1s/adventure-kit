@@ -49,4 +49,12 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
 
   config.include FactoryGirl::Syntax::Methods
+
+  config.before(:suite) do
+    User.destroy_all
+    Game.destroy_all
+    Tag.destroy_all
+    ApprovalBox.destroy_all
+    CoreNotification.destroy_all
+  end
 end

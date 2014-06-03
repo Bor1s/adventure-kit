@@ -3,7 +3,6 @@ FactoryGirl.define do
     sequence :title do |t|
       "#{t}tag"
     end
-
     description 'Foobar description'
   end
 end

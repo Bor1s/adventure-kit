@@ -4,6 +4,7 @@ class Tag
 
   field :title, type: String
   field :description, type: String
+  field :last_edited_by, type: BSON::ObjectId
 
   has_and_belongs_to_many :users
   has_and_belongs_to_many :games
@@ -24,5 +25,9 @@ class Tag
     else
       all
     end
+  end
+
+  def editor
+    User.find(last_edited_by) if last_edited_by.present?
   end
 end

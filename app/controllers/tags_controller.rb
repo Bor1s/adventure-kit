@@ -27,6 +27,7 @@ class TagsController < ApplicationController
   def update
     @tag = Tag.find(params[:id])
     authorize! :update, @tag
+    @tag.last_edited_by = current_user.id
     @tag.update_attributes(tag_attributes)
     respond_with @tag, location: tags_path
   end
