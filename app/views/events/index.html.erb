@@ -7,7 +7,7 @@
         <% @top_games.each do |top_game| %>
           <li>
             <%= link_to top_game.title, game_path(top_game.id) %>
-            <span class='badge'><%= top_game.amount %></span>
+            <span class='badge pull-right'><%= top_game.amount %></span>
           </li>
         <% end %>
       </ul>
