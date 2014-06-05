@@ -1,2 +1,6 @@
-@media screen and (max-width: 1199px) {
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .top-game {
+    display: inline-block;
+    width: 180px;
+  }
 }
