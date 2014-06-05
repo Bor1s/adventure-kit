@@ -3,7 +3,7 @@ class EventService
     if options[:q].present?
       search_by_query(options[:q], options[:page].to_i)
     else
-      Event.for_week.asc(:beginning_at)
+      Event.for_month.asc(:beginning_at)
     end
   end
 
