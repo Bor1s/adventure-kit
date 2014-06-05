@@ -15,7 +15,6 @@
 
     <div class='collapse navbar-collapse' id='topbar-collapse'>
 
-
       <ul class='nav navbar-nav toplinks'>
         <li class='<%= current_tab?('events') ? 'active' : '' %>'><%= link_to t('navbar.events'), events_path %></li>
         <li class='<%= current_tab?('tags') ? 'active' : '' %>'><%= link_to t('navbar.tags'), tags_path %></li>
@@ -30,8 +29,12 @@
 
       <ul class='nav navbar-nav navbar-right'>
         <li>
-          <%= link_to edit_profile_path, class: 'profile-link' do %>
-            <%= image_tag current_user.avatar, size: '30x30' %>
+          <% if current_user.admin? %>
+            <%= render 'admin_profile_link' %>
+          <% elsif current_user.master? %>
+            <%= render 'master_profile_link' %>
+          <% else %>
+            <%= render 'player_profile_link' %>
           <% end %>
         </li>
         <li>

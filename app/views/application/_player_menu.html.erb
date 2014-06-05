@@ -1,10 +1,8 @@
 <ul class='list-unstyled'>
   <li class='<%= current_page?(controller: 'profiles', action: 'edit') ? 'active' : '' %>'>
-    <%= link_to t('.profile'), edit_profile_path %>
+    <%= link_to t('.profile'), edit_player_profile_path %>
   </li>
-  <li class='<%= current_page?(action: 'my_games') ? 'active' : '' %>'>
-    <%= link_to t('.my_games'), my_games_profile_path %>
+  <li class='<%= current_page?(controller: 'games') ? 'active' : '' %>'>
+    <%= link_to t('.my_games'), player_games_path %>
   </li>
-  <!--<li><%#= link_to t('.achivements'), '#' %></li>
-  <li><%#= link_to t('.statistics'), '#' %></li>-->
 </ul>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Profile</title>
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css" rel="stylesheet">
+  <%= favicon_link_tag %>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= render 'navigation_bar' %>
+
+
+<main class='container'>
+  <div class='row'>
+    <div class='col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-2 col-md-offset-0 profile-menu'>
+      <%= render 'admin_menu' %>
+    </div>
+
+    <%= yield %>
+  </div>
+</main>
+
+<%= render 'footer' %>
+
+</body>
+</html>

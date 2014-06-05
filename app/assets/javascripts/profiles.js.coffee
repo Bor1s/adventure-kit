@@ -3,8 +3,9 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 loadChart = ->
   if $('#heatmap_container').length > 0
+    url_namespace = $('#heatmap_container').data('prefix')
     $.ajax
-      url: '/profile/heatmap'
+      url: "/#{url_namespace}/heatmap"
       dataType: 'json'
       success: (data)->
         $('#heatmap_container').highcharts

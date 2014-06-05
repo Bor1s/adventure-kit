@@ -52,6 +52,52 @@ ru:
       ago: ' назад'
       top_games: 'Топ игр'
 
+  admin:
+    profiles:
+      edit:
+        update: 'Сохранить'
+    games:
+      index:
+        title: 'Название'
+        first_event_at: 'Первая сессия'
+        next_event_at: 'Следующая сессия'
+        events_amount: 'Сессии'
+        participants_amount: 'Люди'
+        my_role: 'Мой статус'
+        no_games: 'Игр пока нет'
+
+  master:
+    profiles:
+      edit:
+        want_to_be_master: 'Хочу быть ведущим'
+        wait_approval: 'Ваш запрос будет скоро обработан нашими администраторами'
+        update: 'Сохранить'
+    games:
+      index:
+        title: 'Название'
+        first_event_at: 'Первая сессия'
+        next_event_at: 'Следующая сессия'
+        events_amount: 'Сессии'
+        participants_amount: 'Люди'
+        my_role: 'Мой статус'
+        no_games: 'Игр пока нет'
+
+  player:
+    profiles:
+      edit:
+        want_to_be_master: 'Хочу быть ведущим'
+        wait_approval: 'Ваш запрос будет скоро обработан нашими администраторами'
+        update: 'Сохранить'
+    games:
+      index:
+        title: 'Название'
+        first_event_at: 'Первая сессия'
+        next_event_at: 'Следующая сессия'
+        events_amount: 'Сессии'
+        participants_amount: 'Люди'
+        my_role: 'Мой статус'
+        no_games: 'Игр пока нет'
+
   games:
     form:
       general_info: 'Общая информация'
@@ -88,7 +134,7 @@ ru:
       recruits: 'Рекруты'
       top_games: 'Топ игр'
       no_recent_users: 'Нет новых рекрутов'
-      no_games: 'На ближайший месяц игр нет'
+      no_games: 'Игр нет'
     event:
       go_to_game: 'перейти к игре'
       completed: 'Завершено'
@@ -106,20 +152,6 @@ ru:
       your_comment: 'Ваш комментарий'
     manage_links:
       remove_confirm: 'Точно хотите удалить комментарий?'
-
-  profiles:
-    edit:
-      update: 'Сохранить'
-      want_to_be_master: 'Хочу быть ведущим'
-      wait_approval: 'Ваш запрос будет скоро обработан нашими администраторами'
-    my_games:
-      title: 'Название'
-      first_event_at: 'Первая сессия'
-      next_event_at: 'Следующая сессия'
-      events_amount: 'Сессии'
-      participants_amount: 'Люди'
-      my_role: 'Мой статус'
-      no_games: 'Игр пока нет'
 
   tags:
     search:

@@ -16,17 +16,34 @@ PlayhardCore::Application.routes.draw do
     resources :comments, except: [:index, :new]
   end
   resources :users, only: [:index]
-  resource  :profile, only: [:edit, :update] do
-    get 'heatmap'
-    get 'my_games'
-  end
-  resources :approvals, only: [:index, :update, :destroy]
+  #resource  :profile, only: [:edit, :update] do
+    #get 'heatmap'
+    #get 'my_games'
+  #end
   resources :tags do
     collection do
       get 'search/:tag_id' => 'tags#search', as: :search
     end
   end
   resources :events
+
+  namespace :admin do
+    resources :approvals, only: [:index, :update, :destroy]
+    resources :games, only: [:index]
+    resource :profile, only: [:edit, :update]
+    get 'heatmap' => 'heatmap#index', as: :heatmap
+  end
+
+  namespace :master do
+    resources :games, only: [:index]
+    resource :profile, only: [:edit, :update]
+    get 'heatmap' => 'heatmap#index', as: :heatmap
+  end
+
+  namespace :player do
+    resources :games, only: [:index]
+    resource :profile, only: [:edit, :update]
+  end
 
   root 'events#index'
 
