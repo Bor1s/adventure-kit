@@ -27,6 +27,7 @@ class Admin::ApprovalsController < Admin::BaseController
 
     message = "#{approval_box.user.name} Master request declined."
     approval_box.destroy
+    approval_box.user.update_attributes(want_to_be_master: false)
     CoreNotification.create(message: message)
     redirect_to admin_approvals_path
   end
