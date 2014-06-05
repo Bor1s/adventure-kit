@@ -1,13 +1,32 @@
 .pagination {
-  .last, .first {
-    display: none;
+  font-size: 14px;
+  cursor: pointer;
+
+  .first, .last {
+    margin: 0px 20px 0px 20px;
+    opacity: 0.5;
+    &:hover {
+      opacity: 1;
+    }
   }
 
   .next, .prev {
     font-weight: bold;
+    opacity: 0.5;
+    &:hover {
+      opacity: 1;
+    }
   }
 
   .page {
     padding: 0px 5px 0px 5px;
+    opacity: 0.5;
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .current {
+    opacity: 0.9;
   }
 }

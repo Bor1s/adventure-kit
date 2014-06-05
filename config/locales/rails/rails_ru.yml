@@ -260,6 +260,6 @@ ru:
     pagination:
       first: "&laquo; Начало"
       last: "Конец &raquo;"
-      previous: "&lsaquo; Сюда"
-      next: "Туда &rsaquo;"
+      previous: "&lsaquo;"
+      next: "&rsaquo;"
       truncate: ''
