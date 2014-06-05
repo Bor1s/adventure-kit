@@ -65,6 +65,9 @@ ru:
         participants_amount: 'Люди'
         my_role: 'Мой статус'
         no_games: 'Игр пока нет'
+    approvals:
+      index:
+        no_requests: 'Нет заявок'
 
   master:
     profiles:
