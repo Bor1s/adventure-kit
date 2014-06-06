@@ -46,6 +46,6 @@ class Player::ProfilesController < Player::BaseController
   end
 
   def going_to_become_master?
-    !current_user.waiting_for_acceptance? and current_user.player? and user_params[:want_to_be_master] == '1'
+    !current_user.waiting_for_acceptance? and user_params[:want_to_be_master] == '1'
   end
 end

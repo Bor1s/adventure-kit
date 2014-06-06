@@ -44,4 +44,8 @@ class Master::ProfilesController < Master::BaseController
       end
     end
   end
+
+  def going_to_become_player?
+    user_params[:want_to_be_master] == '0'
+  end
 end
