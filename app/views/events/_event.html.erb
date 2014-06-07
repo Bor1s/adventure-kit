@@ -3,7 +3,7 @@
     <% if event.poster? %>
       <%= image_tag asset_path(event.poster.medium.url), class: "#{'finished' if event.finished?}" %>
     <% else %>
-      <div class='text-center default-image-container'>
+      <div class='text-center'>
         <i class='fa fa-picture-o fa-5x default-image'></i>
       </div>
     <% end %>
