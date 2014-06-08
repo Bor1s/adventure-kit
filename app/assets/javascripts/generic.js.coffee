@@ -5,9 +5,10 @@ initTokenInput = ->
     placeholder: 'Один или больше тегов, например (D&D4ed Fallout)'
     tags: true
     createSearchChoice: (term, data)->
-      existing_term = data.filter (d)-> d.text == term
+      new_term = term.toLowerCase()
+      existing_term = data.filter (d)-> d.text == new_term
       if existing_term.length == 0
-        {id: "#{term}_new", text: term}
+        {id: "#{new_term}_new", text: new_term}
     query: (query)->
       _data = results: []
       $.ajax
@@ -17,7 +18,7 @@ initTokenInput = ->
           q: query.term
         success: (data)->
           for d in data
-            _data.results.push {id: d.id, text: d.text }
+            _data.results.push {id: d.id, text: d.text}
           query.callback(_data)
 
   input.select2 'data', input.data('pre')
