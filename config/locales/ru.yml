@@ -168,6 +168,8 @@ ru:
       tag_description: 'Описание тега'
       tag_title: 'Название тега'
       save: 'Сохранить'
+    tag:
+      remove_confirm: 'Вы уверены? Отменить удаление тега будет невозможно.'
 
   January: 'Январь'
   February: 'Февраль'

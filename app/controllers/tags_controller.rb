@@ -33,6 +33,12 @@ class TagsController < ApplicationController
     respond_with @tag, location: tags_path
   end
 
+  def destroy
+    @tag = Tag.find(params[:id])
+    @tag.destroy
+    respond_with @tag
+  end
+
   private
 
   def tag_attributes
