@@ -3,9 +3,10 @@ class TagsController < ApplicationController
   respond_to :html
 
   def index
-    @tags = Tag.asc(:title).page(params[:page])
-    respond_with @tags do |format|
-      format.html
+    respond_with do |format|
+      format.html do
+        @tags = Tag.search(params[:q]).asc(:title).page(params[:page])
+      end
       format.json do
         render json: Tag.search(params[:q]).tokenize
       end

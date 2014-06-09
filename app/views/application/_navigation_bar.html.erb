@@ -21,10 +21,14 @@
         <li class='<%= current_tab?('users') ? 'active' : '' %>'><%= link_to t('navbar.people'), users_path %></li>
       </ul>
 
-      <%= form_tag '/events', role: 'search', class: 'navbar-form navbar-left', method: :get do %>
-        <div class="form-group">
-          <input type='text' name='q' class="form-control" placeholder="Поиск игр">
-        </div>
+      <% if content_for?(:search_form)%>
+        <%= yield :search_form %>
+      <% else %>
+        <%= form_tag '/events', role: 'search', class: 'navbar-form navbar-left', method: :get do %>
+          <div class="form-group">
+            <input type='text' name='q' class="form-control" placeholder="Поиск игр">
+          </div>
+        <% end %>
       <% end %>
 
       <ul class='nav navbar-nav navbar-right'>
