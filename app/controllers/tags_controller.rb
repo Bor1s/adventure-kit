@@ -35,6 +35,7 @@ class TagsController < ApplicationController
 
   def destroy
     @tag = Tag.find(params[:id])
+    authorize! :destroy, @tag
     @tag.destroy
     respond_with @tag
   end

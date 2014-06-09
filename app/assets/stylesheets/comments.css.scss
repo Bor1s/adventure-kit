@@ -6,6 +6,10 @@
   .comment {
     margin-bottom: 4em;
 
+    a {
+      text-decoration: none;
+    }
+
     .links {
       margin-top: 1em;
       text-align: center;
@@ -16,6 +20,14 @@
     }
     .message {
       margin-top: 1em;
+    }
+
+    img {
+      border: 3px double #aaa;
+      &:hover {
+        opacity: 0.5;
+        cursor: pointer;
+      }
     }
   }
 

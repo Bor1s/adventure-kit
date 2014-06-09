@@ -17,7 +17,9 @@
     <header><i class='fa fa-users'></i> <%= t('.master') %></header>
     <article>
       <p>
-        <%= image_tag asset_path(@game.master.avatar), data: {toggle: 'tooltip'}, title: "#{@game.master.name}"  %>
+        <%= link_to user_path(@game.master) do %>
+          <%= image_tag asset_path(@game.master.avatar) %>
+        <% end %>
       </p>
     </article>
   </aside>
@@ -28,7 +30,9 @@
       <p>
         <% if @game.players.present? %>
           <% @game.players.each do |player| %>
-            <%= image_tag asset_path(player.avatar), data: {toggle: 'tooltip'}, title: "#{player.name}" %>
+            <%= link_to user_path(player) do %>
+              <%= image_tag asset_path(player.avatar) %>
+            <% end %>
           <% end %>
         <% else %>
           <%= t('.no_players_yet') %>

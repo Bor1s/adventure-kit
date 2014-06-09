@@ -84,7 +84,16 @@
 }
 
 .participants {
+  a {
+    text-decoration: none;
+  }
+
   img {
     vertical-align: baseline;
+    border: 3px double #aaa;
+    &:hover {
+      opacity: 0.5;
+      cursor: pointer;
+    }
   }
 }

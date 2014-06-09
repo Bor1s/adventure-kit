@@ -15,7 +15,7 @@ PlayhardCore::Application.routes.draw do
     end
     resources :comments, except: [:index, :new]
   end
-  resources :users, only: [:index]
+  resources :users, only: [:index, :show]
   #resource  :profile, only: [:edit, :update] do
     #get 'heatmap'
     #get 'my_games'

@@ -3,7 +3,20 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .user-short {
+  display: inline-block;
   margin-bottom: 10px;
+
+  a {
+    text-decoration: none;
+  }
+
+  img {
+    border: 3px double #aaa;
+    &:hover {
+      opacity: 0.5;
+      cursor: pointer;
+    }
+  }
 }
 
 .user-info {

@@ -7,4 +7,9 @@ class UsersController < ApplicationController
     @masters = User.masters.asc(:created_at)
     @players = User.players.asc(:created_at)
   end
+
+  def show
+    @user = User.find(params[:id])
+    authorize! :read, @user
+  end
 end

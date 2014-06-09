@@ -1,6 +1,8 @@
 <div class='user-short'>
   <% if user.avatar.present? %>
-    <%= image_tag asset_path(user.avatar) %>
+     <%= link_to user_path(user) do %>
+       <%= image_tag asset_path(user.avatar) %>
+     <% end %>
   <% else %>
     <i class='fa fa-picture-o default-image'></i>
   <% end %>
@@ -9,7 +11,6 @@
     <%= user.name %><br />
     <%= link_to user.social_network_link, target: '_blank' do %>
       <i class='fa fa-vk'></i>
-    <% end %><br />
-    <%= user.email %>
+    <% end %>
   </aside>
 </div>
