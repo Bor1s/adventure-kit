@@ -36,11 +36,7 @@ loadChart = ->
             minColor: '#FFFFFF',
             maxColor: Highcharts.getOptions().colors[6]
           legend:
-            align: 'right'
-            layout: 'vertical'
-            margin: 0
-            verticalAlign: 'top'
-            y: 10
+            enabled: false
           tooltip:
             headerFormat: ''
             formatter: ()->
@@ -68,7 +64,7 @@ loadChart = ->
                 select: (e) ->
                   lis = ""
                   for g in this.games
-                    lis += "<li>#{g.beginning_at} #{g.title}</li>"
+                    lis += "<li>#{g.beginning_at} <a href='#{g.url}'>#{g.title}</a></li>"
                   link = "<p><a href='/games/new?date=#{this._full_date}' target='_blank'>Назначить игру</a></p>"
                   html = "<h5>#{this.day} #{this.human_name}</h5><ul class='list-unstyled'>#{lis}</ul>#{link}"
                   $('#day-info').html(html)

@@ -1,4 +1,6 @@
 class GamesHeatmapService
+  include ActionView::Helpers::UrlHelper
+
   attr_reader :data, :x_axis_step, :human_date_range
 
   def initialize
@@ -40,7 +42,9 @@ class GamesHeatmapService
 
   def fetch_events_data(event_ids)
     Event.where(:id.in => event_ids).map do |event|
-      {title: event.game.title, beginning_at: I18n.l(event.beginning_at, format: :hm) }
+      {title: event.game.title,
+       url: Rails.application.routes.url_helpers.game_path(event.game),
+       beginning_at: I18n.l(event.beginning_at, format: :hm) }
     end
   end
 
