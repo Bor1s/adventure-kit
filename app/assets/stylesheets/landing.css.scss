@@ -4,38 +4,43 @@
 .signin {
   padding: 0;
   background-image: url(image_path('scetch.jpg'));
-  background-size: 100% 100%;
   background-repeat: no-repeat;
+  min-width: 600px;
+
+  .valign {
+    vertical-align: middle;
+  }
 
   .desc0 {
-    height: 600px;
+    height: 700px;
     width: 100%;
     color: white;
 
     header {
-      display: inline-block;
+      font-family: 'Lobster', tahoma, arial, verdana, sans-serif, 'Lucida Sans', sans-serif;
       padding: 0;
       margin: 0;
-      padding-left: 100px;
       border: none;
       font-size: 90px;
       text-transform: none;
+      text-align: center;
       @include fadeIn(1s, 0s);
     }
 
     .description {
-      padding-left: 105px;
+      text-align: center;
       font-size: 20px;
-      @include fadeIn(1s, 1s);
+      @include fadeIn(1s, 0.5s);
     }
 
     .providers {
-      font-size: 50px;
+      font-size: 20px;
       text-align: center;
-      margin-top: 300px;
+      margin-top: 150px;
       margin-bottom: 50px;
-      @include fadeIn(1s, 1.5s);
+      @include fadeIn(1s, 0.5s);
       a {
+        font-size: 50px;
         color: white;
         &:hover {
           color: $ph-blue;
@@ -45,12 +50,11 @@
   }
 
   .desc1, .desc3 {
-    box-shadow: 50px 50px 50px 20px black;	
-    box-shadow: 0px 0px 40px 5px #000;
-    height: 300px;
+    font-family: 'Lobster', tahoma, arial, verdana, sans-serif, 'Lucida Sans', sans-serif;
+    box-shadow: 0px 0px 40px 7px #000;
     width: 100%;
-    padding: 100px 0px 0px 50px;
-    background-color: #fff;
+    padding: 50px;
+    background-color: #BFA67E;
     p {
       font-size: 25px;
     }

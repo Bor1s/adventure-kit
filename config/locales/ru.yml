@@ -143,11 +143,11 @@ ru:
       stats: 'Статистика'
       tags: 'Теги'
       registered_at: 'Зарегистрирован'
-      total_games: 'Всего участий в играх'
-      total_games_created: 'Всего создано игр'
-      total_comments: 'Всего комментариев'
-      total_tags: 'Всего тегов'
-      participations: 'Участние в играх'
+      total_games: 'Участий в играх'
+      total_games_created: 'Создано игр'
+      total_comments: 'Комментариев'
+      total_tags: 'Тегов'
+      participations: 'Игры'
       <<: *game_table_fields
 
   comments:
