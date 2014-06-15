@@ -14,10 +14,10 @@
   <td class='<%= 'warning' if user.creator?(game) %>'><%= user.creator?(game) ? t('general.master') : t('general.player') %></td>
   <td><%= l(game.events.last.beginning_at, format: :short) %></td>
   <td>
-    <% game.players.each do |subscription| %>
-      <% unless subscription == user %>
-        <%= link_to user_path(subscription) do %>
-          <%= image_tag asset_path(subscription.avatar) %>
+    <% game.subscriptions.each do |subscription| %>
+      <% unless subscription.user == user %>
+        <%= link_to user_path(subscription.user) do %>
+          <%= image_tag asset_path(subscription.user.avatar) %>
         <% end %>
       <% end %>
     <% end %>
