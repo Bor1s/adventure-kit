@@ -83,6 +83,10 @@ class User
   end
 
   def games
-    Game.where(:id.in => subscriptions.map(&:game_id)) if subscriptions.exists?
+    if subscriptions.exists?
+      Game.where(:id.in => subscriptions.map(&:game_id))
+    else
+      []
+    end
   end
 end

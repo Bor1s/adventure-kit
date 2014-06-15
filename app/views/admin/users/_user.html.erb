@@ -1,0 +1,27 @@
+<% user.games.each do |game| %>
+  <tr class='<%= row_indicator_class(game) %>'>
+  <% if user.games.first == game %>
+    <td rowspan='<%= user.games.count %>'>
+      <center>
+        <%= link_to user_path(user) do %>
+          <%= image_tag asset_path(user.avatar) %>
+        <% end %><br />
+        <%= user.name %>
+      </center>
+    </td>
+  <% end %>
+  <td><%= link_to game.title, game_path(game) %></td>
+  <td class='<%= 'warning' if user.creator?(game) %>'><%= user.creator?(game) ? t('general.master') : t('general.player') %></td>
+  <td><%= l(game.events.last.beginning_at, format: :short) %></td>
+  <td>
+    <% game.players.each do |subscription| %>
+      <% unless subscription == user %>
+        <%= link_to user_path(subscription) do %>
+          <%= image_tag asset_path(subscription.avatar) %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </td>
+  <td><%= game.places_left %></td>
+  </tr>
+<% end %>

@@ -38,6 +38,7 @@ ru:
       my_games: 'Мои игры'
       achivements: 'Достижения'
       statistics: 'Статистика'
+      users: 'Таблица игроков'
     master_menu:
       profile: 'Профиль'
       games_heatmap: 'Карта игр'
@@ -71,6 +72,15 @@ ru:
     approvals:
       index:
         no_requests: 'Нет заявок'
+    users:
+      index:
+        name: 'Имя'
+        game: 'Название игры'
+        role: 'Статус'
+        next_session: 'След. сессия'
+        participants: 'Остальные участники'
+        left: 'Мест осталось'
+        no_users: 'Нет участников'
 
   master:
     profiles:

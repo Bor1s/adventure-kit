@@ -63,4 +63,8 @@ class Game
   def allows_to_take_part?
     players.empty? or players.count < players_amount
   end
+
+  def places_left
+    self.players_amount - self.players.count
+  end
 end

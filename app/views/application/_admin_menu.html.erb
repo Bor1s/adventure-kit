@@ -2,13 +2,20 @@
   <li class='<%= current_page?(controller: 'profiles', action: 'edit') ? 'active' : '' %>'>
     <%= link_to t('.profile'), edit_admin_profile_path %>
   </li>
+
   <li class='<%= current_page?(controller: 'approvals') ? 'active' : '' %>'>
     <%= link_to t('.approval_list'), admin_approvals_path %>
   </li>
+
   <li class='<%= current_page?(controller: 'heatmap') ? 'active' : '' %>'>
     <%= link_to t('.games_heatmap'), admin_heatmap_path %>
   </li>
+
   <li class='<%= current_page?(controller: 'games') ? 'active' : '' %>'>
     <%= link_to t('.my_games'), admin_games_path %>
+  </li>
+
+  <li class='<%= current_page?(controller: 'users') ? 'active' : '' %>'>
+    <%= link_to t('.users'), admin_users_path %>
   </li>
 </ul>
