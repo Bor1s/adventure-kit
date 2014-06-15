@@ -9,6 +9,12 @@
   margin-bottom: 3em;
   box-shadow: 1px 1px 2px #ddd;
 
+  .poster {
+    img {
+      border: 0;
+    }
+  }
+
   aside {
     color: #fff;
     position: relative;

@@ -1,0 +1,6 @@
+<tr>
+  <td><%= link_to game.title, game_path(game) %></td>
+  <td><%= l(game.events.last.beginning_at, format: :short) %></td>
+  <td><%= game.events.count %></td>
+  <td><%= user.creator?(game) ? t('general.master') : t('general.player') %></td>
+</tr>

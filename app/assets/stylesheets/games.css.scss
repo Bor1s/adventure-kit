@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import 'common';
+
 .game {
   .title {
     font-size: 2em;
@@ -81,19 +83,14 @@
     z-index: 5;
     display: inline-block;
   }
+
+  img {
+    @include plain-img;
+  }
 }
 
 .participants {
   a {
     text-decoration: none;
-  }
-
-  img {
-    vertical-align: baseline;
-    border: 3px double #aaa;
-    &:hover {
-      opacity: 0.5;
-      cursor: pointer;
-    }
   }
 }

@@ -9,14 +9,6 @@
   a {
     text-decoration: none;
   }
-
-  img {
-    border: 3px double #aaa;
-    &:hover {
-      opacity: 0.5;
-      cursor: pointer;
-    }
-  }
 }
 
 .user-info {
@@ -27,5 +19,15 @@
     &:hover {
       text-decoration: none;
     }
+  }
+}
+
+.user-bio, .user-stats {
+  line-height: 2;
+}
+
+.tiled {
+  div {
+    margin-bottom: 20px;
   }
 }

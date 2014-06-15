@@ -77,4 +77,12 @@ class User
   def commenter? comment
     comment.user == self
   end
+
+  def mastered_subscriptions
+    subscriptions.where(user_right: Subscription::RIGHTS[:master])
+  end
+
+  def games
+    Game.where(:id.in => subscriptions.map(&:game_id)) if subscriptions.exists?
+  end
 end

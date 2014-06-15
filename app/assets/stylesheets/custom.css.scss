@@ -38,10 +38,10 @@ footer {
 }
 
 img {
-  //outline: 1px solid #dddddd;
-  background-color: #ffffff;
+  background-color: #fff;
   max-width: 100%;
   height: auto;
+  @include with-hover;
 }
 
 aside {
@@ -102,6 +102,10 @@ mark {
   margin-left: 50px;
 }
 
+.plain-img {
+  @include plain-img;
+}
+
 // --- Errors ---
 .field_with_errors input,
 .field_with_errors select,
@@ -146,7 +150,6 @@ mark {
   padding-top: 12px;
   img {
     margin-top: -3px;
-    border: 1px solid #ddd;
   }
 }
 

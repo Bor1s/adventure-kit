@@ -44,10 +44,14 @@
   <aside>
     <header><i class='fa fa-tags'></i> <%= t('.tags') %></header>
     <article>
-      <% @game.tags.each do |tag| %>
-        <span class='tag'>
-          <%= link_to tag.title, search_tags_path(tag.id) %>
-        </span>
+      <% if @game.tags.exists? %>
+        <% @game.tags.each do |tag| %>
+          <span class='tag'>
+            <%= link_to tag.title, search_tags_path(tag.id) %>
+          </span>
+        <% end %>
+      <% else %>
+        <%= t('general.no_tags') %>
       <% end %>
     </article>
   </aside>

@@ -1,0 +1,89 @@
+<div class='row tiled'>
+  <div class='col-xs-12 col-sm-4 col-md-3'>
+    <%= image_tag(@user.avatar_original, class: 'plain-img') %>
+  </div>
+
+  <div class='col-xs-12 col-sm-4 col-md-3'>
+    <header><i class='fa fa-user'></i> <%= t('.bio') %></header>
+    <ul class='list-unstyled user-bio'>
+      <li>
+        <%= @user.name %>
+        <span class='text-muted'>(<%= t("general.#{@user.human_role}") %>)</span>
+      </li>
+
+      <li>
+        <%= t('.registered_at') %>
+        <span class='text-muted'><%= l(@user.created_at, format: :short) %></span>
+      </li>
+
+      <li>
+        <i class='fa fa-vk'></i>
+        <%= link_to @user.social_network_link, @user.social_network_link, target: :_blank %>
+      </li>
+
+      <% if @user.email.present? %>
+        <li>
+          <i class='fa fa-envelope-o'></i>
+          <%= mail_to @user.email, @user.email %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class='col-xs-12 col-sm-4 col-md-3'>
+    <header><i class='fa fa-bar-chart-o'></i> <%= t('.stats') %></header>
+    <ul class='list-unstyled user-stats'>
+      <li>
+        <%= t('.total_games') %>
+        <span class='badge pull-right'><%= @user.subscriptions.count %></span>
+      </li>
+
+      <li>
+        <%= t('.total_games_created') %>
+        <span class='badge pull-right'><%= @user.mastered_subscriptions.count %></span>
+      </li>
+
+      <li>
+        <%= t('.total_comments') %>
+        <span class='badge pull-right'><%= @user.comments.count %></span>
+      </li>
+
+      <li>
+        <%= t('.total_tags') %>
+        <span class='badge pull-right'><%= @user.tags.count %></span>
+      </li>
+    </ul>
+  </div>
+
+  <div class='col-xs-12 col-sm-4 col-md-3'>
+    <header><i class='fa fa-tags'></i> <%= t('.tags') %></header>
+    <% if @user.tags.exists? %>
+      <% @user.tags.each do |tag| %>
+        <span class='tag'>
+          <%= link_to tag.title, search_tags_path(tag.id) %>
+        </span>
+      <% end %>
+    <% else %>
+      <%= t('general.no_tags') %>
+    <% end %>
+  </div>
+</div>
+
+<div class='row tiled'>
+  <div class='col-xs-12 col-sm-12 col-md-12'>
+    <header><i class='fa fa-tags'></i> <%= t('.participations') %></header>
+    <% if @user.subscriptions.present? %>
+      <table class="table table-striped">
+        <tr>
+          <th><%= t('.title') %></th>
+          <th><%= t('.next_event_at') %></th>
+          <th><%= t('.events_amount') %></th>
+          <th><%= t('.role') %></th>
+        </tr>
+        <%= render partial: 'game', collection: @user.games, locals: {user: @user} %>
+      </table>
+    <% else %>
+      <%= t('.no_games') %>
+    <% end %>
+  </div>
+</div>

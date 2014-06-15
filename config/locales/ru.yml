@@ -19,6 +19,16 @@ ru:
     about: 'О нас'
     contacts: 'Контакты'
     playhard: 'Play Hard'
+    no_tags: 'Тегов нет'
+
+    game_table_fields: &game_table_fields
+      title: 'Название'
+      first_event_at: 'Первая сессия'
+      next_event_at: 'Следующая сессия'
+      events_amount: 'Сессии'
+      participants_amount: 'Люди'
+      role: 'Статус'
+      no_games: 'Игр пока нет'
 
   application:
     admin_menu:
@@ -57,14 +67,7 @@ ru:
       edit:
         update: 'Сохранить'
     games:
-      index:
-        title: 'Название'
-        first_event_at: 'Первая сессия'
-        next_event_at: 'Следующая сессия'
-        events_amount: 'Сессии'
-        participants_amount: 'Люди'
-        my_role: 'Мой статус'
-        no_games: 'Игр пока нет'
+      index: *game_table_fields
     approvals:
       index:
         no_requests: 'Нет заявок'
@@ -76,14 +79,7 @@ ru:
         wait_approval: 'Ваш запрос будет скоро обработан нашими администраторами'
         update: 'Сохранить'
     games:
-      index:
-        title: 'Название'
-        first_event_at: 'Первая сессия'
-        next_event_at: 'Следующая сессия'
-        events_amount: 'Сессии'
-        participants_amount: 'Люди'
-        my_role: 'Мой статус'
-        no_games: 'Игр пока нет'
+      index: *game_table_fields
 
   player:
     profiles:
@@ -92,14 +88,7 @@ ru:
         wait_approval: 'Ваш запрос будет скоро обработан нашими администраторами'
         update: 'Сохранить'
     games:
-      index:
-        title: 'Название'
-        first_event_at: 'Первая сессия'
-        next_event_at: 'Следующая сессия'
-        events_amount: 'Сессии'
-        participants_amount: 'Люди'
-        my_role: 'Мой статус'
-        no_games: 'Игр пока нет'
+      index: *game_table_fields
 
   games:
     form:
@@ -149,6 +138,17 @@ ru:
       total_players: 'Всего игроков'
       masters: 'Ведущие'
       players: 'Игроки'
+    show:
+      bio: 'Био'
+      stats: 'Статистика'
+      tags: 'Теги'
+      registered_at: 'Зарегистрирован'
+      total_games: 'Всего участий в играх'
+      total_games_created: 'Всего создано игр'
+      total_comments: 'Всего комментариев'
+      total_tags: 'Всего тегов'
+      participations: 'Участние в играх'
+      <<: *game_table_fields
 
   comments:
     form:
