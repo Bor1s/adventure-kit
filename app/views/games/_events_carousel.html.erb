@@ -1,14 +1,14 @@
 <div id="events-carousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
-    <% @game.events.each_with_index do |event, idx| %>
+    <% @game.events.asc(:beginning_at).each_with_index do |event, idx| %>
       <li data-target="#events-carousel" data-slide-to="<%= idx %>" class="<%= 'active' if idx.zero? %>"></li>
     <% end %>
   </ol>
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
-    <% @game.events.each_with_index do |event, idx| %>
+    <% @game.events.asc(:beginning_at).each_with_index do |event, idx| %>
       <div class="item <%= 'active' if idx.zero? %>" style='background-color: #ddd;'>
         <%= image_tag asset_path(event.poster.slide.url) %>
         <div class="carousel-caption">
