@@ -144,7 +144,7 @@ ru:
       all: 'Все'
       today: 'На сегодня'
       upcoming: 'Предстоящие'
-      finished: 'Прошедшие'
+      finished: 'Прошлые'
 
   users:
     index:
