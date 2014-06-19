@@ -17,7 +17,7 @@ end
 gem 'moped', github: 'mongoid/moped'
 gem 'mongoid', github: 'mongoid/mongoid'
 gem 'omniauth', '~> 1.1.4'
-gem 'omniauth-vkontakte', '~> 1.2.0'
+gem 'omniauth-vkontakte', '~> 1.3.2'
 gem 'cancan'
 gem 'kaminari'
 gem 'sidekiq'
