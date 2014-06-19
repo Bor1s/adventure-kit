@@ -16,9 +16,9 @@ class Event
   validates :description, presence: true
   validates :beginning_at, presence: true
 
-  scope :upcoming, -> { where(:beginning_at.gte => Time.now.beginning_of_day, :beginning_at.lte => (Time.now + 1.month)) }
-  scope :for_today, -> { where(:beginning_at.gte => Time.now.beginning_of_day, :beginning_at.lte => Time.now.tomorrow.beginning_of_day) }
-  scope :finished, -> { where(:beginning_at.lte => Time.now) }
+  scope :upcoming, -> { where(:beginning_at.gte => Time.now.beginning_of_day, :beginning_at.lte => (Time.now + 1.month)).asc(:beginning_at) }
+  scope :for_today, -> { where(:beginning_at.gte => Time.now.beginning_of_day, :beginning_at.lte => Time.now.tomorrow.beginning_of_day).asc(:beginning_at) }
+  scope :finished, -> { where(:beginning_at.lte => Time.now).asc(:beginning_at) }
   scope :for_games, ->(game_ids) {
     if game_ids.present?
       where(:game_id.in => game_ids)
