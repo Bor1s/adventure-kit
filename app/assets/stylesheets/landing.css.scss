@@ -2,11 +2,17 @@
 
 // --- Login Page ---
 .signin {
+
   padding: 0;
-  background-image: url(image_path('scetch.jpg'));
-  background-size: auto 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   background-repeat: no-repeat;
   min-width: 600px;
+  background-position: center center;
+  background-color: #000;
+  background-image: url(image_path('scetch.jpg'));
 
   .valign {
     vertical-align: middle;
