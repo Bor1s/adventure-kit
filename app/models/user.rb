@@ -24,7 +24,7 @@ class User
 
   scope :masters, -> { where(:role.in => [1,2]) }
   scope :players, -> { where(role: 3) }
-  scope :recent, -> { where(:created_at.gte => (Time.zone.now - 3.days)) }
+  scope :recent, -> { where(:created_at.gte => (Time.zone.now - 2.days)).desc(:created_at) }
   scope :by_tag, ->(tag_id) { where(:tag_ids.in => [tag_id]) }
 
   def self.find_or_create_by_auth_hash(auth_hash)
