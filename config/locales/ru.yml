@@ -140,6 +140,11 @@ ru:
     event:
       go_to_game: 'перейти к игре'
       completed: 'Завершено'
+    filter_bar:
+      all: 'Все'
+      today: 'На сегодня'
+      upcoming: 'Предстоящие'
+      finished: 'Прошедшие'
 
   users:
     index:
