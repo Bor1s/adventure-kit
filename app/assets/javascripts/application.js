@@ -19,3 +19,10 @@
 //= require_tree .
 //= require highcharts
 //= require heatmap
+//= require jquery.cookie
+//= require jstz-1.0.4.min
+
+jQuery(function() {
+  var tz = jstz.determine();
+  $.cookie('timezone', tz.name(), { path: '/' });
+});

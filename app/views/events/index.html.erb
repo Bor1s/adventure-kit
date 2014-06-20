@@ -33,8 +33,9 @@
   </aside>
 <% end %>
 
+<%= render 'filter_bar' %>
+
 <% if @events.present? %>
-  <%= render 'filter_bar' %>
   <%= render @events %>
   <div class='row'>
     <div class='col-xs-12 col-sm-12 col-md-12 text-center'>

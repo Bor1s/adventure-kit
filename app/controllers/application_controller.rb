@@ -11,6 +11,8 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :user_signed_in?
 
+  around_filter :set_timezone
+
   def sign_in
     render layout: 'landing'
   end
@@ -39,5 +41,14 @@ class ApplicationController < ActionController::Base
     else
       render '/public/404.html', status: 404
     end
+  end
+
+  def set_timezone
+    default_timezone = Time.zone
+    client_timezone  = cookies[:timezone]
+    Time.zone = client_timezone if client_timezone.present?
+    yield
+  ensure
+    Time.zone = default_timezone
   end
 end

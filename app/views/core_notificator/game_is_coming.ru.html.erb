@@ -1,0 +1,13 @@
+<p><strong>Приветствуем тебя приключенец!</strong></p>
+
+<p>Напоминаем тебе о предстоящей игре:</p>
+<p><strong><%= @event.game.title %></strong></p>
+<p><%= @event.game.description %></p>
+<p><%= @event.description %></p>
+
+<p>Дата проведения: <strong><%= l(@event.beginning_at, format: :short) %></strong></p>
+<p>Ведущий: <%= @master.name %></p>
+
+<p><%= link_to 'Подробнее', game_url(@event.game.id) %></p>
+
+<p>Хорошей игры!</p>

@@ -210,3 +210,5 @@ ru:
       subject: 'Ведущий стал игроком'
     master_born:
       subject: 'Новый запрос на ведущего'
+    game_is_coming:
+      subject: 'Напоминание о предстоящей игре'

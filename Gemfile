@@ -30,6 +30,7 @@ gem 'sinatra', '>= 1.3.0', :require => nil #For Sidekiq WEB
 gem 'unicorn'
 gem 'rsolr'
 gem 'newrelic_rpm'
+gem 'whenever', require: false
 
 group :test, :development do
   gem 'thin'

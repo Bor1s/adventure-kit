@@ -16,9 +16,10 @@ class Event
   validates :description, presence: true
   validates :beginning_at, presence: true
 
-  scope :upcoming, -> { where(:beginning_at.gte => Time.now.beginning_of_day, :beginning_at.lte => (Time.now + 1.month)).asc(:beginning_at) }
-  scope :for_today, -> { where(:beginning_at.gte => Time.now.beginning_of_day, :beginning_at.lte => Time.now.tomorrow.beginning_of_day).asc(:beginning_at) }
-  scope :finished, -> { where(:beginning_at.lte => Time.now).asc(:beginning_at) }
+  #NOTE Scopes uses additional sum for utc_offset because of Mongoid bug
+  scope :upcoming, -> { where(:beginning_at.gte => (Time.zone.now + Time.zone.now.utc_offset), :beginning_at.lte => (Time.zone.now + 1.month).beginning_of_day).asc(:beginning_at) }
+  scope :for_today, -> { where(:beginning_at.gte => (Time.zone.now.beginning_of_day + Time.zone.now.utc_offset), :beginning_at.lte => (Time.zone.now.end_of_day + Time.zone.now.utc_offset)).asc(:beginning_at) }
+  scope :finished, -> { where(:beginning_at.lte => (Time.zone.now + Time.zone.now.utc_offset)).asc(:beginning_at) }
   scope :for_games, ->(game_ids) {
     if game_ids.present?
       where(:game_id.in => game_ids)
@@ -26,9 +27,10 @@ class Event
       all
     end
   }
+  scope :nearest, -> { where(:beginning_at.gte => (Time.zone.now + Time.zone.now.utc_offset), :beginning_at.lte => (Time.zone.now.tomorrow.end_of_day + Time.zone.now.utc_offset)) }
 
   def finished?
-    beginning_at < Time.now
+    beginning_at < Time.zone.now
   end
 
   def solr_index_data(options={})
