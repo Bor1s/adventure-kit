@@ -14,7 +14,7 @@ class EventService
 
   def self.search_by_query(string, page)
     event_ids = Event.solr.search_events(string, page: page)
-    Event.where(:id.in => event_ids)
+    Event.where(:id.in => event_ids).page(page)
   end
 
   def self.filtered_events(filter, page)
