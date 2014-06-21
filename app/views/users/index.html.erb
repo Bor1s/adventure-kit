@@ -6,7 +6,6 @@
   <% end %>
 <% end %>
 
-
 <% content_for :sidebar do %>
   <aside>
     <header><i class='fa fa-users'></i> <%= t('.general') %></header>
@@ -36,7 +35,7 @@
 <% else %>
   <div class='row'>
     <div class='col-xs-12 col-sm-12 col-md-12 text-center'>
-      <%= t('.no_users') %>
+      <aside><%= t('.no_users') %></aside>
     </div>
   </div>
 <% end %>

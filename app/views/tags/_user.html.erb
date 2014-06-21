@@ -8,9 +8,7 @@
   <% end %>
 
   <aside class='user-info'>
-    <%= user.name %> <span class='text-muted'>(<%= I18n.t("general.#{user.human_role}") %>)</span><br />
-    <%= link_to user.social_network_link, target: '_blank' do %>
-      <i class='fa fa-vk'></i>
-    <% end %><br />
+    <%= link_to user.name, user_path(user) %><br />
+    <span class='text-muted'>(<%= I18n.t("general.#{user.human_role}") %>)</span>
   </aside>
 </div>
