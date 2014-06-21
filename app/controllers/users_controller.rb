@@ -4,8 +4,7 @@ class UsersController < ApplicationController
 
   def index
     authorize! :read, User
-    @masters = User.masters.asc(:created_at)
-    @players = User.players.asc(:created_at)
+    @users = UserSearchService.call(q: params[:q], f: params[:f], page: params[:page])
   end
 
   def show

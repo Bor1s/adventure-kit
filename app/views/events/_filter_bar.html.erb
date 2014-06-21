@@ -1,8 +1,8 @@
 <div class='row'>
   <div class='col-xs-12 col-sm-12 col-md-12 filters'>
-    <%= link_to t('.all'), events_path(f: 'all'), class: "btn btn-default btn-sm #{activity('all')}" %>
-    <%= link_to t('.today'), events_path(f: 'today'), class: "btn btn-default btn-sm #{activity('today')}" %>
-    <%= link_to t('.upcoming'), events_path(f: 'upcoming'), class: "btn btn-default btn-sm #{activity('upcoming')}" %>
-    <%= link_to t('.finished'), events_path(f: 'finished'), class: "btn btn-default btn-sm #{activity('finished')}" %>
+    <%= link_to t('.all'), events_path(f: 'all'), class: "btn btn-default btn-sm #{activity('all', 'upcoming')}" %>
+    <%= link_to t('.today'), events_path(f: 'today'), class: "btn btn-default btn-sm #{activity('today', 'upcoming')}" %>
+    <%= link_to t('.upcoming'), events_path(f: 'upcoming'), class: "btn btn-default btn-sm #{activity('upcoming', 'upcoming')}" %>
+    <%= link_to t('.finished'), events_path(f: 'finished'), class: "btn btn-default btn-sm #{activity('finished', 'upcoming')}" %>
   </div>
 </div>

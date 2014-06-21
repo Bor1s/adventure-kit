@@ -1,23 +1,42 @@
+<% content_for :search_form do %>
+  <%= form_tag '/users', role: 'search', class: 'navbar-form navbar-left', method: :get do %>
+    <div class="form-group">
+      <input type='text' name='q' class="form-control" placeholder="Поиск людей">
+    </div>
+  <% end %>
+<% end %>
+
+
 <% content_for :sidebar do %>
   <aside>
     <header><i class='fa fa-users'></i> <%= t('.general') %></header>
     <article>
       <ul class='list-unstyled'>
-        <li><%= t('.total_masters') %> <span class='badge pull-right'><%= @masters.count %></span></li>
-        <li><%= t('.total_players') %> <span class='badge pull-right'><%= @players.count %></span></li>
+        <li><%= t('.total_masters') %> <span class='badge pull-right'><%= User.masters.count %></span></li>
+        <li><%= t('.total_players') %> <span class='badge pull-right'><%= User.players.count %></span></li>
       </ul>
     </article>
   </aside>
 <% end %>
 
-<div class='row'>
-  <div class='col-xs-6 col-sm-6 col-md-6'>
-    <header><i class='fa fa-users'></i> <%= t('.players') %></header>
-    <%= render @players %>
+<%= render 'filter_bar' %>
+
+<% if @users.present? %>
+  <div class='row'>
+    <div class='col-xs-12 col-sm-12 col-md-12 users-tiles'>
+      <%= render @users %>
+    </div>
   </div>
 
-  <div class='col-xs-6 col-sm-6 col-md-6'>
-    <header><i class='fa fa-users'></i> <%= t('.masters') %></header>
-    <%= render @masters %>
+  <div class='row'>
+    <div class='col-xs-12 col-sm-12 col-md-12 text-center'>
+      <%= paginate @users %>
+    </div>
   </div>
-</div>
+<% else %>
+  <div class='row'>
+    <div class='col-xs-12 col-sm-12 col-md-12 text-center'>
+      <%= t('.no_users') %>
+    </div>
+  </div>
+<% end %>

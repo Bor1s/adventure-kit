@@ -29,7 +29,6 @@ class User
   scope :by_tag, ->(tag_id) { where(:tag_ids.in => [tag_id]) }
 
   def self.find_or_create_by_auth_hash(auth_hash)
-    puts auth_hash
     user = User.where(uid: auth_hash[:uid]).first
     if user
       user.update_attributes(name: auth_hash[:info][:first_name],
@@ -91,6 +90,15 @@ class User
       Game.where(:id.in => subscriptions.map(&:game_id))
     else
       []
+    end
+  end
+
+  def self.search string=nil
+    if string.present?
+      payload = Regexp.escape(string)
+      where(name: /#{payload}/i)
+    else
+      all
     end
   end
 end

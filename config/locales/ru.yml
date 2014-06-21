@@ -28,7 +28,7 @@ ru:
       events_amount: 'Сессии'
       participants_amount: 'Люди'
       role: 'Статус'
-      no_games: 'Игр пока нет'
+      no_games: 'Игры не надены'
 
   application:
     admin_menu:
@@ -136,7 +136,7 @@ ru:
       recruits: 'Рекруты'
       top_games: 'Топ игр'
       no_recent_users: 'Нет новых рекрутов'
-      no_games: 'Игр нет'
+      no_games: 'Игры не найдены'
     event:
       go_to_game: 'перейти к игре'
       completed: 'Завершено'
@@ -151,6 +151,11 @@ ru:
       general: 'Общее'
       total_masters: 'Всего ведущих'
       total_players: 'Всего игроков'
+      masters: 'Ведущие'
+      players: 'Игроки'
+      no_users: 'Люди не найдены'
+    filter_bar:
+      all: 'Все'
       masters: 'Ведущие'
       players: 'Игроки'
     show:

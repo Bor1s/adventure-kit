@@ -35,4 +35,8 @@ module ApplicationHelper
   def current_tab? name
     controller_name == name
   end
+
+  def activity(state, default_state)
+    'active' if (state == default_state and params[:f].blank?) || (params[:f] == state)
+  end
 end

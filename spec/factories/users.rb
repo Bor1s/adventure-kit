@@ -3,7 +3,10 @@
 FactoryGirl.define do
   factory :user do
     uid { SecureRandom.hex(16) }
-    name 'Boris'
+
+    sequence :name do |n|
+      "user_#{n}"
+    end
 
     factory :admin do
       role 1
