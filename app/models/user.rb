@@ -15,6 +15,7 @@ class User
   field :avatar_original, type: String
   field :want_to_be_master, type: Mongoid::Boolean
   field :social_network_link, type: String
+  field :current_timezone_offset, type: Integer, default: 0
 
   has_and_belongs_to_many :tags
   has_many :approval_boxes, dependent: :delete
@@ -32,6 +33,7 @@ class User
     user = User.where(uid: auth_hash[:uid]).first
     if user
       user.update_attributes(name: auth_hash[:info][:first_name],
+                             current_timezone_offset: auth_hash[:current_timezone_offset],
                              avatar: auth_hash[:info][:image],
                              avatar_original: auth_hash[:extra][:raw_info][:photo_200_orig],
                              avatar_medium: auth_hash[:extra][:raw_info][:photo_100],
@@ -39,6 +41,7 @@ class User
       user
     else
       User.create(uid: auth_hash[:uid],
+                  current_timezone_offset: auth_hash[:current_timezone_offset],
                   name: auth_hash[:info][:first_name],
                   avatar: auth_hash[:info][:image],
                   avatar_original: auth_hash[:extra][:raw_info][:photo_200_orig],

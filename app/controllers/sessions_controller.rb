@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   def create
+    auth_hash.merge!({current_timezone_offset: Time.zone.now.utc_offset})
     @user = User.find_or_create_by_auth_hash(auth_hash)
     session[:user_id] = @user.id
     redirect_to root_url
