@@ -3,7 +3,9 @@ namespace :mail_watcher do
   task check_and_deliver: :environment do
     Event.nearest.each do |event|
       event.game.subscribers.each do |s|
-        CoreNotificator.delay.game_is_coming(event.id, s.id)
+        if s.email.present?
+          CoreNotificator.delay.game_is_coming(event.id, s.id)
+        end
       end
     end
   end
