@@ -30,7 +30,7 @@ when 'development'
 end
 
 job_type :rbenv_rake, %Q{export PATH=#{path}; eval "$(rbenv init -)"; \
-                       cd :path && bundle exec rake :task --silent :output }
+                       cd :path && :environment_variable=:environment bundle exec rake :task --silent :output }
 
 every 1.day, at: '12:00 am' do
   rbenv_rake 'mail_watcher:check_and_deliver'
