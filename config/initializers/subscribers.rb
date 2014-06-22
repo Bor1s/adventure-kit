@@ -7,7 +7,12 @@ ActiveSupport::Notifications.subscribe('player_downgrade') do |name, start, fini
 end
 
 ActiveSupport::Notifications.subscribe('event_created') do |name, start, finish, id, payload|
-  CoreNotificator.delay.event_created(payload)
+  @event = Event.find(payload[:id])
+  @event.game.subscribers.each do |subscriber|
+    if subscriber.email.present?
+      CoreNotificator.delay.event_created(@event.id, subscriber.id)
+    end
+  end
 end
 
 ActiveSupport::Notifications.subscribe('join_game') do |name, start, finish, id, payload|

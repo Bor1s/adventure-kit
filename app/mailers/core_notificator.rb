@@ -11,10 +11,10 @@ class CoreNotificator < ActionMailer::Base
     mail to: 'boris.bbk@gmail.com'
   end
 
-  def event_created payload
-    @event = Event.find(payload[:id])
-    emails = @event.game.subscribers.map(&:email).compact
-    mail to: emails
+  def event_created(event_id, user_id)
+    @event = Event.find(event_id)
+    @user = User.find(user_id)
+    mail to: @user.email
   end
 
   def join_game payload
