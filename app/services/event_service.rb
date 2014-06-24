@@ -1,10 +1,9 @@
 class EventService
-  def self.call(options={})
-    page = options[:page].to_i
-    if options[:q].present?
-      search_by_query(options[:q], page)
-    elsif options[:f].present?
-      filtered_events(options[:f], page)
+  def self.call(q: nil, f: nil, page: 1)
+    if q.present?
+      search_by_query(q, page)
+    elsif f.present?
+      filtered_events(f, page)
     else
       Event.upcoming.page(page)
     end

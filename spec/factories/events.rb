@@ -6,5 +6,13 @@ FactoryGirl.define do
       "Some #{d} description"
     end
     beginning_at { Time.now.tomorrow }
+
+    factory :today_event do
+      beginning_at { Time.now + 1.hour }
+    end
+
+    factory :finished_event do
+      beginning_at { Time.now.yesterday }
+    end
   end
 end
