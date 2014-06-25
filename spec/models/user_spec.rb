@@ -120,5 +120,29 @@ describe User do
       comment = FactoryGirl.create(:comment)
       expect(player.commenter?(comment)).to eq false
     end
+
+    it '#mastered_subscriptions returns all subscriptions where user is master' do
+      master = described_class.masters.first
+      game = FactoryGirl.create(:game)
+      game.subscribe(master, :master)
+      expect(master.mastered_subscriptions.count).to eq 1
+    end
+
+    it "#games returns all user's games" do
+      master = described_class.masters.first
+      game = FactoryGirl.create(:game)
+      game.subscribe(master, :master)
+      expect(master.games.count).to eq 1
+    end
+
+    it '.search finds users by name' do
+      described_class.find_or_create_by_auth_hash(vk_auth_hash)
+      expect(described_class.search('boris').count).to eq 1
+    end
+
+    it '.search returns empty result' do
+      described_class.find_or_create_by_auth_hash(vk_auth_hash)
+      expect(described_class.search('John Snow').count).to eq 0
+    end
   end
 end
