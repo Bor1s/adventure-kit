@@ -1,8 +1,8 @@
 <div class='row game-event'>
   <div class='col-xs-3 col-sm-3 col-md-3 poster'>
-    <% if event.poster? %>
+    <% if event.game.poster? %>
       <%= link_to game_path(event.game) do %>
-        <%= image_tag asset_path(event.poster.medium.url), class: "with-hover #{'finished' if event.finished?}" %>
+        <%= image_tag asset_path(event.game.poster.medium.url), class: "with-hover #{'finished' if event.finished?}" %>
       <% end %>
     <% else %>
       <div class='text-center'>

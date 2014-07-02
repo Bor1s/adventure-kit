@@ -3,11 +3,21 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
-  $('#events-carousel').carousel()
   loadScript()
+  setCustomBG()
 $(document).on 'page:load', ->
-  $('#events-carousel').carousel()
   loadScript()
+  setCustomBG()
+
+setCustomBG = ()->
+  if $('meta[name="background-url"]').length > 0
+    imgUrl = $('meta[name="background-url"]').attr('content')
+    $('body').addClass('custom-bg')
+    $('body').css('background-image', "url(#{imgUrl})")
+  else
+    $('body').removeClass('custom-bg')
+    $('body').css('background-image', '')
+
 
 window.initMap = ()->
   if $('#event-map').length > 0

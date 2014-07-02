@@ -1,5 +1,5 @@
 <%= content_for :sidebar do %>
-  <aside>
+  <aside class='darken'>
     <header><i class='fa fa-info-circle'></i> <%= t('.general') %></header>
     <article>
       <ul class='list-unstyled'>
@@ -13,7 +13,7 @@
     </article>
   </aside>
 
-  <aside class='participants'>
+  <aside class='darken participants'>
     <header><i class='fa fa-users'></i> <%= t('.master') %></header>
     <article>
       <p>
@@ -24,7 +24,7 @@
     </article>
   </aside>
 
-  <aside class='participants'>
+  <aside class='darken participants'>
     <header><i class='fa fa-users'></i> <%= t('.participants') %></header>
     <article>
       <p>
@@ -41,7 +41,7 @@
     </article>
   </aside>
 
-  <aside>
+  <aside class='darken'>
     <header><i class='fa fa-tags'></i> <%= t('.tags') %></header>
     <article>
       <% if @game.tags.exists? %>
@@ -56,7 +56,7 @@
     </article>
   </aside>
 
-  <aside>
+  <aside class='darken'>
     <% if current_user.creator?(@game) %>
       <header><i class='fa fa-eye'></i> <%= t('.for_master') %></header>
       <p><%= link_to t('.edit_game'), edit_game_path(@game), class: 'btn btn-primary btn-xs' %></p>
@@ -77,13 +77,14 @@
     <% end %>
   </aside>
 
+  <meta name='background-url' content="<%= asset_path(@game.poster.url) %>"/>
 <% end %>
 
 <div class='row game'>
   <div class='col-xs-12 col-sm-12 col-md-12'>
     <p class='title'><%= @game.title %></p>
-    <p><%= render 'events_carousel' %></p>
     <p class='description'><%= @game.description %><p>
+    <p class='description'><%= @game.events.last.description %><p>
   </div>
 </div>
 

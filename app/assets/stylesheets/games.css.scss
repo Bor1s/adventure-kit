@@ -5,9 +5,11 @@
 @import 'common';
 
 .game {
+  margin-bottom: 10px;
+  @include dark-tile;
+
   .title {
     font-size: 2em;
-    color: black;
     font-weight: bold;
   }
 
@@ -68,21 +70,12 @@
   }
 }
 
-#events-carousel {
-  max-width: 800px;
-  margin-bottom: 2em;
-  font-size: 18px;
-
-  .carousel-control span {
-    position: absolute;
-    top: 48%;
-    z-index: 5;
-    display: inline-block;
-  }
-}
-
 .participants {
   a {
     text-decoration: none;
   }
+}
+
+.darken {
+  @include dark-tile;
 }
