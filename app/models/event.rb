@@ -13,7 +13,6 @@ class Event
 
   delegate :title, to: :game, allow_nil: true
 
-  validates :description, presence: true
   validates :beginning_at, presence: true
 
   #NOTE Scopes uses additional sum for utc_offset because of Mongoid bug
@@ -35,7 +34,7 @@ class Event
 
   def solr_index_data(options={})
     data = {id: id}
-    data[:ctext] = [options[:title] || title, description].join(' ')
+    data[:ctext] = [options[:title] || title, options[:description] || self.game.description].join(' ')
     data
   end
 
