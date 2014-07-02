@@ -31,6 +31,7 @@ gem 'unicorn'
 gem 'rsolr'
 gem 'newrelic_rpm'
 gem 'whenever', require: false
+gem 'geocoder'
 
 group :test, :development do
   gem 'thin'

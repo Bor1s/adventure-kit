@@ -110,9 +110,9 @@ ru:
       game_title: 'Название игры'
       game_description: 'Описание игры'
       select_players_amount: 'Выберите количество игроков'
+      remove_poster: ' Удалить постер'
     event_fields:
       remove: ' Удалить'
-      remove_poster: ' Удалить постер'
       event_title: 'Название игровой сессии'
       remove_event: 'Точно хотите удалить игровую сессию?'
     show:

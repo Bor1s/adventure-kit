@@ -7,10 +7,13 @@ class Game
   field :finished, type: Mongoid::Boolean, default: false
   field :players_amount, type: Integer
 
+  mount_uploader :poster, PosterUploader
+
   has_many :subscriptions, dependent: :delete
   has_and_belongs_to_many :tags
   has_many :comments, dependent: :delete
   has_many :events, dependent: :destroy #Need to affect Solr index
+  has_one :location
 
   validates :title, presence: true
   validates :description, presence: true
@@ -20,6 +23,10 @@ class Game
   scope :by_tag, ->(tag_id) { where(:tag_ids.in => [tag_id]) }
 
   accepts_nested_attributes_for :events, allow_destroy: true
+  accepts_nested_attributes_for :location, reject_if: proc { |attrs| attrs[:text_coordinates].blank? }
+
+  delegate :lat, to: :location, allow_nil: true
+  delegate :lng, to: :location, allow_nil: true
 
   # Force Solr to reindex
   after_update do

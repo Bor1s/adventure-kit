@@ -1,21 +1,8 @@
 <div class='row nested-fields'>
 
-  <div class='col-xs-4 col-md-4 col-md-4 text-center'>
+  <div class='col-xs-12 col-md-12 col-md-12'>
     <div class="form-group">
-      <% if f.object.poster? %>
-        <%= image_tag(asset_path(f.object.poster.medium.url), class: 'poster') %><br />
-        <%= f.label :remove_poster, class: 'checkbox-inline input-sm remove-poster' do %>
-          <%= f.check_box :remove_poster %><%= t('.remove_poster') %>
-        <% end %>
-      <% else %>
-        <i class='fa fa-picture-o fa-5x default-image'></i>
-      <% end %>
-    </div>
-  </div>
-
-  <div class='col-xs-7 col-xs-offset-1 col-md-7 col-sm-offset-1 col-md-7 col-md-offset-1'>
-    <div class="form-group">
-      <%= f.text_area :description, class: 'form-control input-sm', required: true, rows: 5, placeholder: t('.event_title') %>
+      <%= f.text_area :description, class: 'form-control input-sm', required: true, rows: 3, placeholder: t('.event_title') %>
     </div>
 
     <div class="form-group">
@@ -29,15 +16,11 @@
       </div>
     </div>
 
-    <div class="form-group poster">
-      <%= f.file_field :poster, class: 'form-control input-sm' %>
-      <%= f.hidden_field :poster_cache %>
-    </div>
-
     <div class="form-group">
       <%= link_to_remove_association f, class: 'btn btn-xs btn-danger', data: {confirm: t('.remove_event')} do %>
         <i class='fa fa-trash-o'><%= t('.remove') %></i>
       <% end %>
     </div>
   </div>
+
 </div>

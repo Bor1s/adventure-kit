@@ -41,19 +41,3 @@ $ph-dark-blue: #285e8e;
   from { opacity:0; }
   to { opacity:1; }
 }
-
-@mixin with-hover {
-  border: 3px double #aaa;
-  &:hover {
-    opacity: 0.5;
-    cursor: pointer;
-  }
-}
-
-@mixin plain-img {
-  border: 0;
-  &:hover {
-    opacity: 1;
-    cursor: auto;
-  }
-}

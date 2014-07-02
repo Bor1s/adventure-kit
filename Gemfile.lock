@@ -126,6 +126,7 @@ GEM
       railties (>= 3.0.0)
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
+    geocoder (1.2.2)
     hashie (2.0.5)
     hike (1.2.3)
     httpauth (0.2.1)
@@ -318,6 +319,7 @@ DEPENDENCIES
   execjs
   factory_girl_rails (~> 4.0)
   faraday
+  geocoder
   jbuilder (~> 1.2)
   jquery-rails
   kaminari

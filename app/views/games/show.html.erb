@@ -18,7 +18,7 @@
     <article>
       <p>
         <%= link_to user_path(@game.master) do %>
-          <%= image_tag asset_path(@game.master.avatar) %>
+          <%= image_tag asset_path(@game.master.avatar), class: 'with-hover' %>
         <% end %>
       </p>
     </article>
@@ -31,7 +31,7 @@
         <% if @game.players.present? %>
           <% @game.players.each do |player| %>
             <%= link_to user_path(player) do %>
-              <%= image_tag asset_path(player.avatar) %>
+              <%= image_tag asset_path(player.avatar), class: 'with-hover' %>
             <% end %>
           <% end %>
         <% else %>

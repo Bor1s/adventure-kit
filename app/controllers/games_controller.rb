@@ -14,6 +14,7 @@ class GamesController < ApplicationController
     authorize! :create, Game
     @game = Game.new
     @game.events.build(optional_params)
+    @game.build_location
   end
 
   def create
@@ -69,7 +70,7 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit(:title, :description, :tag_ids, :players_amount, events_attributes: [:title, :poster, :poster_cache, :description, :_destroy, :id, :remove_poster, :beginning_at])
+    params.require(:game).permit(:title, :description, :tag_ids, :players_amount, :poster, :poster_cache, :remove_poster, events_attributes: [:title, :description, :_destroy, :id, :beginning_at], location_attributes: [:text_coordinates, :id])
   end
 
   def normalize_params(parameters)

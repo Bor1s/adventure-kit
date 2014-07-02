@@ -37,13 +37,6 @@ footer {
   border-top: 3px solid $ph-orange-dark;
 }
 
-img {
-  background-color: #fff;
-  max-width: 100%;
-  height: auto;
-  @include with-hover;
-}
-
 aside {
   margin-bottom: 3em;
 }
@@ -64,6 +57,17 @@ input[type='file'] {
 mark {
   color: $ph-orange;
   background-color: transparent;
+}
+
+.with-hover {
+  background-color: #fff;
+  max-width: 100%;
+  height: auto;
+  border: 3px double #aaa;
+  &:hover {
+    opacity: 0.7;
+    cursor: pointer;
+  }
 }
 
 .input-xs {
@@ -100,10 +104,6 @@ mark {
 
 .signout-link {
   margin-left: 50px;
-}
-
-.plain-img {
-  @include plain-img;
 }
 
 // --- Errors ---

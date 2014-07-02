@@ -31,10 +31,6 @@
 
 }
 
-.tags {
-  margin-bottom: 3em;
-}
-
 .new {
   color: #e11012;
   &:hover {
@@ -82,10 +78,6 @@
     top: 48%;
     z-index: 5;
     display: inline-block;
-  }
-
-  img {
-    @include plain-img;
   }
 }
 

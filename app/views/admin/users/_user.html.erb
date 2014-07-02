@@ -4,7 +4,7 @@
     <td rowspan='<%= user.games.count %>'>
       <center>
         <%= link_to user_path(user) do %>
-          <%= image_tag asset_path(user.avatar) %>
+          <%= image_tag asset_path(user.avatar), class: 'with-hover' %>
         <% end %><br />
         <%= user.name %>
       </center>
@@ -17,7 +17,7 @@
     <% game.subscriptions.each do |subscription| %>
       <% unless subscription.user == user %>
         <%= link_to user_path(subscription.user) do %>
-          <%= image_tag asset_path(subscription.user.avatar) %>
+          <%= image_tag asset_path(subscription.user.avatar), class: 'with-hover' %>
         <% end %>
       <% end %>
     <% end %>

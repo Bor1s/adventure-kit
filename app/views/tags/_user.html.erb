@@ -1,7 +1,7 @@
 <div class='user-short'>
   <% if user.avatar.present? %>
     <%= link_to user_path(user) do %>
-      <%= image_tag asset_path(user.avatar) %>
+      <%= image_tag asset_path(user.avatar), class: 'with-hover' %>
     <% end %>
   <% else %>
     <i class='fa fa-picture-o default-image'></i>
