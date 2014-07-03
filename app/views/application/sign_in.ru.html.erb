@@ -1,48 +1,25 @@
 <main class='signin'>
-  <section class='desc0'>
-    <header><mark>PLAY</mark> hard</header>
-    <p class='description'>
-      Клуб настольных ролевых игр
-    </p>
-    <p class='providers'>
-      Вход <i class="fa fa-arrow-down valign"></i><br />
-      <%= link_to '/auth/vkontakte', alt: 'Sign In via VK' do %>
-        <span class="fa-stack">
-          <i class="fa fa-circle-thin fa-stack-2x"></i>
-          <i class='fa fa-vk fa-stack-1x'></i>
-        </span>
-      <% end %>
-    </p>
+  <section class='head'>
+    <span class='title'><mark>PLAY</mark> hard</span>
+    <p class='desc'>Онлайн платформа для управления настольными RPG</p>
   </section>
 
-  <section class='desc1'>
-    <p>
-      <strong>Собственное полноценное приключение за игровым столом</strong><br />
-      <small>
-        С командой других игроков или в одиночку.<br />
-        Под чутким руководством опытного ведущего.
-      </small>
-    </p>
+  <section class='providers'>
+    Вход
+    <%= link_to '/auth/vkontakte', alt: 'Sign In via VK' do %>
+      <span class="fa-stack">
+        <i class="fa fa-circle-thin fa-stack-2x"></i>
+        <i class='fa fa-vk fa-stack-1x'></i>
+      </span>
+    <% end %>
   </section>
 
-  <section class='desc2'>
-    <p>
-      <strong>Выберите сеттинг</strong><br />
-      <small>
-        Участвуйте в эпических сражениях, интригах, расследованиях.<br />
-        У нас возможно всё!
-      </small>
-    </p>
-  </section>
-
-  <section class='desc3'>
-    <p>
-      <strong>Создайте собственного героя</strong><br />
-      <small>Хитрый авантюрист, утончённый аристократ или могучий воин, варианты безграничны.</small>
-    </p>
-  </section>
-
-  <section class='desc4'>
-    <p>Вперед, навстречу приключениям!</p>
+  <section class='contacts'>
+    <%= link_to 'https://vk.com/play_hard_rpg', target: :blank do %>
+      <i class='fa fa-vk fa-2x'></i>
+    <% end %>
+    <%= link_to 'https://twitter.com/PlayHardRpg', target: :blank do %>
+      <i class='fa fa-twitter fa-2x'></i>
+    <% end %>
   </section>
 </main>

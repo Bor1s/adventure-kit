@@ -11,69 +11,60 @@
   background-repeat: no-repeat;
   min-width: 600px;
   background-position: center center;
-  background-color: #000;
-  background-image: url(image_path('scetch.jpg'));
+  //background-image: url(image_path('scetch.jpg'));
 
-  .valign {
-    vertical-align: middle;
+  .head {
+    height: 300px;
+    background-color: #000;
+    color: #fff;
+    font-family: tahoma, arial, verdana, sans-serif, 'Lucida Sans', sans-serif;
+    padding: 0;
+    margin: 0;
+    border: none;
+    font-size: 90px;
+    text-transform: none;
+    text-align: center;
+    @include fadeIn(1s, 0s);
+
+    .title {
+      font-size: 70px;
+      font-weight: bold;
+    }
+
+    .desc {
+      font-size: 20px;
+    }
   }
 
-  .desc0 {
-    height: 700px;
-    width: 100%;
-    color: white;
+  .providers {
+    text-align: center;
+    font-size: 35px;
+    margin: 130px 130px;
+    border-top: 6px solid $ph-orange-dark;
+    border-bottom: 6px solid $ph-orange-dark;
+    padding: 20px;
 
-    header {
-      font-family: 'Lobster', tahoma, arial, verdana, sans-serif, 'Lucida Sans', sans-serif;
-      padding: 0;
-      margin: 0;
-      border: none;
-      font-size: 90px;
-      text-transform: none;
-      text-align: center;
-      @include fadeIn(1s, 0s);
-    }
-
-    .description {
-      text-align: center;
-      font-size: 20px;
-      @include fadeIn(1s, 0.5s);
-    }
-
-    .providers {
-      font-size: 20px;
-      text-align: center;
-      margin-top: 150px;
-      margin-bottom: 50px;
-      @include fadeIn(1s, 0.5s);
-      a {
-        font-size: 50px;
-        color: white;
-        &:hover {
-          color: $ph-blue;
-        }
+    a {
+      color: #000;
+      &:hover {
+        color: $ph-orange-dark;
       }
     }
   }
 
-  .desc1, .desc3 {
-    font-family: 'Lobster', tahoma, arial, verdana, sans-serif, 'Lucida Sans', sans-serif;
-    box-shadow: 0px 0px 40px 7px #000;
-    width: 100%;
-    padding: 50px;
-    background-color: #BFA67E;
-    p {
-      font-size: 25px;
+  .contacts {
+    text-align: center;
+    font-size: 18px;
+    margin: 0px 130px 50px 130px;
+
+    a {
+      color: #000;
+      padding: 10px;
+      &:hover {
+        color: $ph-orange-dark;
+        text-decoration: none;
+      }
     }
   }
 
-  .desc2, .desc4 {
-    height: 600px;
-    width: 100%;
-    padding: 100px 0px 0px 50px;
-    color: white;
-    p {
-      font-size: 40px;
-    }
-  }
 }
