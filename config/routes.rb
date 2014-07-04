@@ -48,7 +48,6 @@ PlayhardCore::Application.routes.draw do
   root 'events#index'
 
   get '/about_us' => 'application#about_us'
-  get '/contacts' => 'application#contacts'
 
   mount Sidekiq::Web => '/sidekiq', :constraints => AdminConstraint.new
 
