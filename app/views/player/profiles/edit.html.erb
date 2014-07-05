@@ -17,14 +17,10 @@
     </div>
 
     <div class="form-group">
-      <% if current_user.waiting_for_acceptance? %>
-        <%= t('.wait_approval') %>
-      <% else %>
-        <div class='checkbox'>
-          <%= f.check_box :want_to_be_master %>
-          <%= f.label :want_to_be_master, t('.want_to_be_master') %>
-        </div>
-      <% end %>
+      <div class='checkbox'>
+        <%= f.check_box :want_to_be_master %>
+        <%= f.label :want_to_be_master, t('.want_to_be_master') %>
+      </div>
     </div>
 
     <div class="form-group">

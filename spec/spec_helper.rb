@@ -53,7 +53,6 @@ RSpec.configure do |config|
     User.destroy_all
     Game.destroy_all
     Tag.destroy_all
-    ApprovalBox.destroy_all
     CoreNotification.destroy_all
   end
 end

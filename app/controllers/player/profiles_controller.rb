@@ -6,10 +6,9 @@ class Player::ProfilesController < Player::BaseController
 
   def update
     @profile = current_user
-    normalized_parameters = normalize_params user_params
+    normalized_parameters = normalize_params(user_params)
     if @profile.update_attributes(normalized_parameters)
       redirect_to edit_player_profile_path
-      notify_about_master_born
     else
       render :edit
     end
@@ -32,20 +31,12 @@ class Player::ProfilesController < Player::BaseController
       parameters[:tag_ids] = tag_ids.concat(new_tags.map(&:id))
     end
 
+    parameters[:role] = User::ROLES[:master] if going_to_become_master?
+
     parameters
   end
 
-  def notify_about_master_born
-    if going_to_become_master?
-      ActiveSupport::Notifications.instrument('master_born', {id: current_user.id}) do
-        message = "#{current_user.name} want to become a Master."
-        CoreNotification.create(message: message)
-        ApprovalBox.create(message: message, user_id: current_user.id)
-      end
-    end
-  end
-
   def going_to_become_master?
-    !current_user.waiting_for_acceptance? and user_params[:want_to_be_master] == '1'
+    user_params[:want_to_be_master] == '1'
   end
 end

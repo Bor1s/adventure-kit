@@ -18,7 +18,6 @@ class User
   field :current_timezone_offset, type: Integer, default: 0
 
   has_and_belongs_to_many :tags
-  has_many :approval_boxes, dependent: :delete
   has_many :subscriptions, dependent: :delete
   has_many :comments, dependent: :delete
 
@@ -70,10 +69,6 @@ class User
     else
       'player'
     end
-  end
-
-  def waiting_for_acceptance?
-    ApprovalBox.where(user_id: self.id, approved: false).exists?
   end
 
   def creator? game

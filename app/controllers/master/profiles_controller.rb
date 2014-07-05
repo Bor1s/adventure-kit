@@ -9,7 +9,6 @@ class Master::ProfilesController < Master::BaseController
     normalized_parameters = normalize_params user_params
     if @profile.update_attributes(normalized_parameters)
       redirect_to edit_master_profile_path
-      notify_about_downgrade_to_player
     else
       render :edit
     end
@@ -32,17 +31,9 @@ class Master::ProfilesController < Master::BaseController
       parameters[:tag_ids] = tag_ids.concat(new_tags.map(&:id))
     end
 
-    parameters
-  end
+    parameters[:role] = User::ROLES[:player] if going_to_become_player?
 
-  def notify_about_downgrade_to_player
-    if going_to_become_player?
-      current_user.update_attribute(:role, User::ROLES[:player])
-      ActiveSupport::Notifications.instrument('player_downgrade', {id: current_user.id}) do
-        message = "#{current_user.name} downgrades to Player."
-        CoreNotification.create(message: message)
-      end
-    end
+    parameters
   end
 
   def going_to_become_player?

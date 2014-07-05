@@ -27,7 +27,6 @@ PlayhardCore::Application.routes.draw do
   resources :events
 
   namespace :admin do
-    resources :approvals, only: [:index, :update, :destroy]
     resources :games, only: [:index]
     resource :profile, only: [:edit, :update]
     resources :users

@@ -21,7 +21,6 @@ describe User do
 
   before do
     User.destroy_all
-    ApprovalBox.destroy_all
     FactoryGirl.create(:master)
     FactoryGirl.create_list(:player, 2)
   end
@@ -39,7 +38,6 @@ describe User do
 
   context 'relations' do
     specify { expect(subject).to respond_to(:tags) }
-    specify { expect(subject).to respond_to(:approval_boxes) }
     specify { expect(subject).to respond_to(:subscriptions) }
     specify { expect(subject).to respond_to(:comments) }
   end
@@ -88,12 +86,6 @@ describe User do
       expect(master.human_role).to eq 'master'
       expect(player.human_role).to eq 'player'
       expect(admin.human_role).to eq 'admin'
-    end
-
-    it '#waiting_for_acceptance? returns user accept status' do
-      player = described_class.players.first
-      ApprovalBox.create(user_id: player.id, approved: false)
-      expect(player.waiting_for_acceptance?).to eq true
     end
 
     it '#creator? returns true if user is the master of the current game' do
