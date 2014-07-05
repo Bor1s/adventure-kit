@@ -79,3 +79,7 @@
 .darken {
   @include dark-tile;
 }
+
+#event-map {
+  outline: 3px double #ddd;
+}

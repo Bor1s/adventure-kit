@@ -74,4 +74,8 @@ class Game
   def places_left
     self.players_amount - self.players.count
   end
+
+  def continues?
+    events.last.beginning_at.future?
+  end
 end

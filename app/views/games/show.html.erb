@@ -13,6 +13,29 @@
     </article>
   </aside>
 
+  <aside class='darken'>
+    <header><i class='fa fa-calendar'></i> <%= t('.next_session') %></header>
+    <article>
+      <% if @game.continues? %>
+        <%= l(@game.events.last.beginning_at, format: :short) %>
+      <% else %>
+        <%= t('.no_next_session') %>
+      <% end %>
+    </article>
+  </aside>
+
+  <aside class='darken'>
+    <header><i class='fa fa-calendar'></i> <%= t('.location') %></header>
+    <article>
+      <p>
+        <%= @game.location.address %>
+      </p>
+      <%= link_to "https://www.google.com/maps/place/#{@game.location.address}", target: :blank do %>
+        <%= image_tag "http://maps.googleapis.com/maps/api/staticmap?zoom=13&size=200x200&maptype=roadmap&markers=color:red%7C#{@game.location.to_coordinates.join(',')}&scale=2&sensor=false&language=#{I18n.locale.to_s}", style: 'width: 100%' %>
+      <% end %>
+    </article>
+  </aside>
+
   <aside class='darken participants'>
     <header><i class='fa fa-users'></i> <%= t('.master') %></header>
     <article>

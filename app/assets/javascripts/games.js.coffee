@@ -26,7 +26,7 @@ window.initMap = ()->
     myLatlng = new google.maps.LatLng(parseFloat(lat),parseFloat(lng))
     mapOptions =
       center: myLatlng
-      zoom: 8
+      zoom: 13
     map = new google.maps.Map(document.getElementById("event-map"), mapOptions)
 
     # Place a draggable marker on the map
@@ -57,6 +57,6 @@ window.initMap = ()->
 loadScript = ()->
   script = document.createElement('script')
   script.type = 'text/javascript'
-  script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&callback=initMap&key=AIzaSyC5qjp9_GkTBzAyMQZbw28ALlmj9liuYoA'
+  script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&language=ru&callback=initMap&key=AIzaSyC5qjp9_GkTBzAyMQZbw28ALlmj9liuYoA'
   document.body.appendChild(script)
 

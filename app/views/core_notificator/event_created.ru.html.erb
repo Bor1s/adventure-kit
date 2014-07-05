@@ -1,6 +1,8 @@
 <h3><%= @event.title %></h3>
+<p><%= @event.game.description %></p>
 <p><%= @event.description %></p>
-<p>Начало <%= l(@event.beginning_at + @user.current_timezone_offset.seconds, format: :short) %></p>
+<p>Когда: <%= l(@event.beginning_at + @user.current_timezone_offset.seconds, format: :short) %></p>
+<p>Где: <%= @event.game.location.address %></p>
 <h4>Участники</h4>
 <ul>
   <li><%= @event.game.master.name %> (ведущий)</li>

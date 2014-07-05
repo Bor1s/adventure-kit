@@ -24,6 +24,7 @@ class Location
   private
 
   def convert_coordinates
+    Geocoder.configure(language: I18n.locale.to_s)
     if text_coordinates.present?
       coords = text_coordinates.split(',')
       self.coordinates = [coords[1].to_f, coords[0].to_f]

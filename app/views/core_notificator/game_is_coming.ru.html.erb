@@ -5,7 +5,8 @@
 <p><%= @event.game.description %></p>
 <p><%= @event.description %></p>
 
-<p>Дата проведения: <strong><%= l(@event.beginning_at + @user.current_timezone_offset.seconds, format: :short) %></strong></p>
+<p>Когда: <strong><%= l(@event.beginning_at + @user.current_timezone_offset.seconds, format: :short) %></strong></p>
+<p>Где: <%= @event.game.location.address %></p>
 <p>Ведущий: <%= @master.name %></p>
 
 <p><%= link_to 'Подробнее', game_url(@event.game.id) %></p>

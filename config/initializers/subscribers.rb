@@ -1,11 +1,3 @@
-ActiveSupport::Notifications.subscribe('master_born') do |name, start, finish, id, payload|
-  CoreNotificator.delay.master_born(payload)
-end
-
-ActiveSupport::Notifications.subscribe('player_downgrade') do |name, start, finish, id, payload|
-  CoreNotificator.delay.player_downgrade(payload)
-end
-
 ActiveSupport::Notifications.subscribe('event_created') do |name, start, finish, id, payload|
   @event = Event.find(payload[:id])
   @event.game.subscribers.each do |subscriber|

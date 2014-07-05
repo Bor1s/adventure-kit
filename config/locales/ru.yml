@@ -130,6 +130,9 @@ ru:
       game_is_full: 'Команда игроков уже набрана'
       confirm_leave_game: 'Вы точно хотите покинуть эту игру?'
       no_players_yet: 'Игроков пока нет'
+      next_session: 'Следующая сессия'
+      no_next_session: 'Новых сессий не запланировано'
+      location: 'Место проведения'
 
   events:
     index:
