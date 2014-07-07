@@ -35,7 +35,7 @@ window.initMap = ()->
       map: map
       draggable: true
       animation: google.maps.Animation.DROP
-      title: "Drag me!"
+      title: "Перетащите на нужный адрес"
 
     setCoordinates = (latLng)->
       $('#game_location_attributes_text_coordinates').val(latLng)
@@ -53,6 +53,7 @@ window.initMap = ()->
     google.maps.event.addListener(marker, 'dragend', fnDragend)
     google.maps.event.addDomListener(window, 'resize', fnResize)
     google.maps.event.addListener(map, 'click', fnClick)
+    setCoordinates(myLatlng.toUrlValue())
 
 loadScript = ()->
   script = document.createElement('script')

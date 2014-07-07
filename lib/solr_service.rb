@@ -43,16 +43,31 @@ class SolrService
         end
 
         base.send(:after_create) do |document|
-          base.solr.add(document.solr_index_data)
+          begin
+            base.solr.add(document.solr_index_data)
+          rescue => e
+            Rails.logger.warn('=== Solr is down ===')
+            Rails.logger.warn("Cannot add #{document.id} event")
+          end
         end
 
         base.send(:after_update) do |document|
-          base.solr.delete(document.id.to_s)
-          base.solr.add(document.solr_index_data)
+          begin
+            base.solr.delete(document.id.to_s)
+            base.solr.add(document.solr_index_data)
+          rescue => e
+            Rails.logger.warn('=== Solr is down ===')
+            Rails.logger.warn("Cannot add #{document.id} event")
+          end
         end
 
         base.send(:after_destroy) do |document|
-          base.solr.delete(document.id.to_s)
+          begin
+            base.solr.delete(document.id.to_s)
+          rescue => e
+            Rails.logger.warn('=== Solr is down ===')
+            Rails.logger.warn("Cannot add #{document.id} event")
+          end
         end
       end
     end

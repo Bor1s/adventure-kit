@@ -30,9 +30,14 @@ class Game
 
   # Force Solr to reindex
   after_update do
-    events.each do |e|
-      e.class.solr.delete(e.id.to_s)
-      e.class.solr.add(e.solr_index_data(title: self.title, description: self.description))
+    begin
+      events.each do |e|
+        e.class.solr.delete(e.id.to_s)
+        e.class.solr.add(e.solr_index_data(title: self.title, description: self.description))
+      end
+    rescue => e
+      Rails.logger.warn('=== Solr is down ===')
+      Rails.logger.warn("Cannot add #{e.id} event")
     end
   end
 

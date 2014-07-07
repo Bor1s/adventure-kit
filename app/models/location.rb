@@ -6,7 +6,7 @@ class Location
   
   belongs_to :game
   
-  field :coordinates, type: Array, default: [30.49916, 50.456825]
+  field :coordinates, type: Array, default: [30.4823803, 50.4397198]
   field :address, type: String
   
   reverse_geocoded_by :coordinates
