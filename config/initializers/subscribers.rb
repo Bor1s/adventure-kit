@@ -14,3 +14,7 @@ end
 ActiveSupport::Notifications.subscribe('left_game') do |name, start, finish, id, payload|
   CoreNotificator.delay.left_game(payload)
 end
+
+ActiveSupport::Notifications.subscribe('player_rejected') do |name, start, finish, id, payload|
+  CoreNotificator.delay.player_rejected(payload)
+end

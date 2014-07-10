@@ -12,6 +12,7 @@ PlayhardCore::Application.routes.draw do
     member do
       get :take_part
       delete :unenroll
+      delete :remove_player
     end
     resources :comments, except: [:index, :new]
   end

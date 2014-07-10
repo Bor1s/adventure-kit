@@ -1,0 +1,7 @@
+<p>Здравствуйте <%= @user.name %>!</p>
+
+<p>Ваша заявка на участие в игре <%= link_to @game.title, game_url(@game.id) %> была отклонена.</p>
+
+<p>Вы можете уточнить подробности у игрового мастера <%= link_to @master.name, @master.social_network_link %></p>
+
+<p>Команда <%= link_to 'PlayHard', 'http://playhardrpg.org' %><p>

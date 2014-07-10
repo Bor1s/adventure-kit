@@ -37,4 +37,11 @@ class CoreNotificator < ActionMailer::Base
     @master = @event.game.master
     mail to: @user.email
   end
+
+  def player_rejected(payload)
+    @game = Game.find(payload[:game_id])
+    @user = User.find(payload[:user_id])
+    @master = @game.master
+    mail to: @user.email if @user.email.present?
+  end
 end

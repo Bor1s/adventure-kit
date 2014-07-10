@@ -133,6 +133,8 @@ ru:
       next_session: 'Следующая сессия'
       no_next_session: 'Новых сессий не запланировано'
       location: 'Место проведения'
+      remove_player: 'Удалить игрока'
+      remove_player_confirm: 'Вы точно хотите удалить игрока из вашей игры?'
 
   events:
     index:
@@ -220,3 +222,5 @@ ru:
       subject: 'Новый запрос на ведущего'
     game_is_coming:
       subject: 'Напоминание о предстоящей игре'
+    player_rejected:
+      subject: 'Заявка на игру отклонена'

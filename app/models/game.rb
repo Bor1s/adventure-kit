@@ -53,7 +53,7 @@ class Game
 
   def redeem user
     _subscription = subscriptions.where(user_id: user.id).first
-    subscriptions.delete _subscription
+    subscriptions.delete _subscription if _subscription.present?
   end
 
   def master

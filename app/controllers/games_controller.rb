@@ -67,6 +67,20 @@ class GamesController < ApplicationController
     redirect_to game_path(@game)
   end
 
+  def remove_player
+    @game = Game.find(params[:id])
+    authorize! :update, @game
+    user = User.find(params[:user_id])
+    if @game.subscribed?(user)
+      @game.redeem(user)
+      payload = {game_id: @game.id, user_id: user.id}
+      notifications.instrument('player_rejected', payload) do
+        CoreNotification.create(message: "#{current_user.name} left #{@game.title}")
+      end
+    end
+    redirect_to game_path(@game)
+  end
+
   private
 
   def game_params
