@@ -16,12 +16,13 @@ end
 
 gem 'moped', github: 'mongoid/moped'
 gem 'mongoid', github: 'mongoid/mongoid'
+gem 'mongoid_slug'
 gem 'omniauth', '~> 1.1.4'
 gem 'omniauth-vkontakte', '~> 1.3.2'
 gem 'cancan'
 gem 'kaminari'
 gem 'sidekiq'
-gem "select2-rails"
+gem 'select2-rails'
 gem 'faraday'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 gem 'mini_magick'

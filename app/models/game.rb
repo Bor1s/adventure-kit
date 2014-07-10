@@ -1,11 +1,14 @@
 class Game
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Slug
 
   field :title, type: String
   field :description, type: String
   field :finished, type: Mongoid::Boolean, default: false
   field :players_amount, type: Integer
+
+  slug :title
 
   mount_uploader :poster, PosterUploader
 
@@ -35,9 +38,8 @@ class Game
         e.class.solr.delete(e.id.to_s)
         e.class.solr.add(e.solr_index_data(title: self.title, description: self.description))
       end
-    rescue => e
-      Rails.logger.warn('=== Solr is down ===')
-      Rails.logger.warn("Cannot add #{e.id} event")
+    rescue => error
+      Rails.logger.warn('=== Solr is down, cannot save event ===')
     end
   end
 
