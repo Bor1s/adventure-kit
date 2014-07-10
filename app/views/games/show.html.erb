@@ -52,13 +52,24 @@
     <article>
       <p>
         <% if @game.players.present? %>
-          <% @game.players.each do |player| %>
-            <div class='participant'>
+          <% if current_user.creator?(@game) %>
+            <% @game.players.each do |player| %>
+              <div class='participant'>
+                <%= link_to user_path(player) do %>
+                  <%= image_tag asset_path(player.avatar), class: 'with-hover' %>
+                <% end %>
+
+                <% if current_user.creator?(@game) %>
+                  <%= link_to t('.remove_player'), remove_player_game_path(user_id: player.id), method: :delete, data: {confirm: t('.remove_player_confirm')}, class: 'btn btn-danger btn-xs' %>
+                <% end %>
+              </div>
+            <% end %>
+          <% else %>
+            <% @game.players.each do |player| %>
               <%= link_to user_path(player) do %>
                 <%= image_tag asset_path(player.avatar), class: 'with-hover' %>
               <% end %>
-              <%= link_to t('.remove_player'), remove_player_game_path(user_id: player.id), method: :delete, data: {confirm: t('.remove_player_confirm')}, class: 'btn btn-danger btn-xs' %>
-            </div>
+            <% end %>
           <% end %>
         <% else %>
           <%= t('.no_players_yet') %>
