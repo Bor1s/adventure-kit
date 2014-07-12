@@ -6,14 +6,16 @@
   <aside>
     <header><i class='fa fa-bar-chart-o'></i> <%= t('general.games_heatmap') %></header>
     <article>
-      <div id="heatmap_container" data-prefix='admin' style="height: 200px; min-width: 600px; max-width: 600px;"></div>
+      <div id="heatmap_container" data-prefix='admin' style="height: 200px; min-width: 600px; max-width: 600px;">
+        <i class="fa fa-cog fa-spin fa-3x heatmap-spinner"></i>
+      </div>
+
       <div id='heatmap_months'><%= @service.human_date_range %></div>
     </article>
   </aside>
 
   <aside>
     <header><i class='fa fa-info'></i> <%= t('general.day_info') %></header>
-    <article id='day-info'>
-    </article>
+    <article id='day-info'></article>
   </aside>
 </div>

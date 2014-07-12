@@ -8,8 +8,7 @@ class Admin::HeatmapController < Admin::BaseController
       format.js do
         render json: {data: @service.data,
                       title: I18n.t('general.games_heatmap'),
-                      days: I18n.t('general.day_names'),
-                      step: @service.x_axis_step}
+                      days: I18n.t('general.day_names')}
       end
     end
   end

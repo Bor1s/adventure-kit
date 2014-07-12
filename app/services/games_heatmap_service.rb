@@ -1,7 +1,7 @@
 class GamesHeatmapService
   include ActionView::Helpers::UrlHelper
 
-  attr_reader :data, :x_axis_step, :human_date_range
+  attr_reader :data, :human_date_range
 
   def initialize
     service = StatisticsService.new
@@ -11,7 +11,6 @@ class GamesHeatmapService
     @human_date_range = date_range.map { |date| I18n.t(Date::MONTHNAMES[date.month]) }.uniq.join(' ')
 
     @data = []
-    @x_axis_step = calculate_step(date_range)
 
     column = 0
     date_range.each do |date|
@@ -31,14 +30,6 @@ class GamesHeatmapService
   end
 
   private
-
-  def calculate_step(date_range)
-    #NOTE xAxis is hidden for now
-    # Set the step of showing labels on xAxis of highchart
-    # depending on a week amount in current date range
-    days = date_range.count
-    days.divmod(7)[1].present? ? 4 : 3
-  end
 
   def fetch_events_data(event_ids)
     Event.where(:id.in => event_ids).map do |event|

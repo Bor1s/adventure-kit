@@ -22,8 +22,6 @@ loadChart = ->
             type: 'category'
             tickLength: 0
             lineWidth: 0
-            labels:
-              step: data.step
             offset: 100
           yAxis:
             categories: data.days
