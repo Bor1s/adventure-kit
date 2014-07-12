@@ -1,3 +1,7 @@
+<% content_for :title do %>
+  Теги
+<% end %>
+
 <% content_for :search_form do %>
   <%= form_tag '/tags', role: 'search', class: 'navbar-form navbar-left', method: :get do %>
     <div class="form-group">

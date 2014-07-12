@@ -1,25 +1,20 @@
 <main class='signin'>
   <section class='head'>
     <span class='title'><mark>PLAY</mark> hard</span>
-    <p class='desc'>Онлайн платформа для управления настольными RPG</p>
+    <p class='desc'>Система управления настольными RPG</p>
+  </section>
+
+  <section class='description'>
+    Создавайте собственные настольные RPG игры и управляйте ими. Набирите свою команду игроков, выберите время проведения игры, укажите место встречи и наслаждайтесь вашей игрой!
   </section>
 
   <section class='providers'>
-    Вход
+    <div>Вход</div>
     <%= link_to '/auth/vkontakte', alt: 'Sign In via VK' do %>
       <span class="fa-stack">
         <i class="fa fa-circle-thin fa-stack-2x"></i>
         <i class='fa fa-vk fa-stack-1x'></i>
       </span>
-    <% end %>
-  </section>
-
-  <section class='contacts'>
-    <%= link_to 'https://vk.com/play_hard_rpg', target: :blank do %>
-      <i class='fa fa-vk fa-2x'></i>
-    <% end %>
-    <%= link_to 'https://twitter.com/PlayHardRpg', target: :blank do %>
-      <i class='fa fa-twitter fa-2x'></i>
     <% end %>
   </section>
 </main>

@@ -11,10 +11,9 @@
   background-repeat: no-repeat;
   min-width: 600px;
   background-position: center center;
-  //background-image: url(image_path('scetch.jpg'));
 
   .head {
-    height: 300px;
+    height: 210px;
     background-color: #000;
     color: #fff;
     font-family: tahoma, arial, verdana, sans-serif, 'Lucida Sans', sans-serif;
@@ -38,7 +37,7 @@
 
   .providers {
     text-align: center;
-    font-size: 35px;
+    font-size: 30px;
     margin: 130px 130px;
     border-top: 6px solid $ph-orange-dark;
     border-bottom: 6px solid $ph-orange-dark;
@@ -52,19 +51,10 @@
     }
   }
 
-  .contacts {
+  .description {
+    margin: 100px;
+    font-size: 20px;
     text-align: center;
-    font-size: 18px;
-    margin: 0px 130px 50px 130px;
-
-    a {
-      color: #000;
-      padding: 10px;
-      &:hover {
-        color: $ph-orange-dark;
-        text-decoration: none;
-      }
-    }
   }
 
 }
