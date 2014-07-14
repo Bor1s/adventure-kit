@@ -19,6 +19,7 @@
         <li class='<%= current_tab?('events') ? 'active' : '' %>'><%= link_to t('navbar.events'), events_path %></li>
         <li class='<%= current_tab?('tags') ? 'active' : '' %>'><%= link_to t('navbar.tags'), tags_path %></li>
         <li class='<%= current_tab?('users') ? 'active' : '' %>'><%= link_to t('navbar.people'), users_path %></li>
+        <li class='<%= current_tab?('locations') ? 'active' : '' %>'><%= link_to t('navbar.locations'), locations_path %><span class='beta'>beta</span></li>
       </ul>
 
       <% if content_for?(:search_form)%>

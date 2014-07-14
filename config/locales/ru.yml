@@ -20,6 +20,7 @@ ru:
     contacts: 'Контакты'
     playhard: 'Play Hard'
     no_tags: 'Тегов нет'
+    no_nearby_games: 'Рядом с вами игр не обнаружено'
 
     game_table_fields: &game_table_fields
       title: 'Название'
@@ -51,6 +52,7 @@ ru:
     events: 'Игры'
     tags: 'Теги'
     people: 'Люди'
+    locations: 'Радар'
 
   sidebar:
     create_game_header: 'Создайте свою игру'

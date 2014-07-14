@@ -21,6 +21,7 @@
 //= require heatmap
 //= require jquery.cookie
 //= require jstz-1.0.4.min
+//= require markerclusterer
 
 jQuery(function() {
   var tz = jstz.determine();

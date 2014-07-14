@@ -21,6 +21,10 @@ class Location
     coordinates and to_coordinates.last
   end
 
+  def as_json(options={})
+    options.merge!({lat: lat, lng: lng})
+  end
+
   private
 
   def convert_coordinates

@@ -45,6 +45,8 @@ PlayhardCore::Application.routes.draw do
     resource :profile, only: [:edit, :update]
   end
 
+  resources :locations, only: [:index]
+
   root 'events#index'
 
   get '/about_us' => 'application#about_us'

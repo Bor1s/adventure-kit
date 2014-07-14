@@ -1,0 +1,39 @@
+<% content_for :title do %>
+  Радар
+<% end %>
+
+<% content_for :sidebar do %>
+  <aside>
+    <header>
+      <i class='fa fa-map-marker'></i>
+      Игровой радар
+    </header>
+    <article>
+      Тут отображаются игры ближайшие к вашему текущему местонахождению
+    </article>
+  </aside>
+
+  <aside>
+    <header>
+      <i class='fa fa-gamepad'></i>
+      Игры неподалеку
+    </header>
+    <article>
+      <% if @locations.present? %>
+        <% @locations.each do |location| %>
+          <div>
+            <%= link_to location.game.title, game_path(location.game) %>
+          </div>
+        <% end %>
+      <% else %>
+        <%= t('general.no_nearby_games') %>
+      <% end %>
+    </article>
+  </aside>
+<% end %>
+
+<div class='row'>
+  <div id='event-radar-container' class='col-xs-12 col-sm-12 col-md-12'>
+    <div id='event-radar' data-lat="<%= @lat %>" data-lng="<%= @lng %>" style="width: 100%; height: 100%;"></div>
+  </div>
+</div>

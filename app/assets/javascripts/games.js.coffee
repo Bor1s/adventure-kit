@@ -56,8 +56,12 @@ window.initMap = ()->
     setCoordinates(myLatlng.toUrlValue())
 
 loadScript = ()->
-  script = document.createElement('script')
-  script.type = 'text/javascript'
-  script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&language=ru&callback=initMap&key=AIzaSyC5qjp9_GkTBzAyMQZbw28ALlmj9liuYoA'
-  document.body.appendChild(script)
+  if $('#event-map').length > 0
+    script = document.createElement('script')
+    script.type = 'text/javascript'
+    script.id = 'event-map-script'
+    script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&language=ru&callback=initMap&key=AIzaSyC5qjp9_GkTBzAyMQZbw28ALlmj9liuYoA'
+    document.body.appendChild(script)
+  else
+    $('#event-map-script').remove()
 
