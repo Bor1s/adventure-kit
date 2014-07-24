@@ -27,3 +27,8 @@ jQuery(function() {
   var tz = jstz.determine();
   $.cookie('timezone', tz.name(), { path: '/' });
 });
+
+$(document).on('page:load', function(){
+  var tz = jstz.determine();
+  $.cookie('timezone', tz.name(), { path: '/' });
+})
