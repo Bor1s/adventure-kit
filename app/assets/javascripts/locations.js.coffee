@@ -56,16 +56,22 @@ loadGames = (map, mc, infowindow)->
     success: (data)->
       markers = []
       for d in data
-        _marker = new google.maps.Marker
+        _m = new google.maps.Marker(
           position: new google.maps.LatLng(parseFloat(d.lat),parseFloat(d.lng))
           map: map
-        markers.push _marker
-
-        #Add info window
-        google.maps.event.addListener(_marker, 'click', ()->
-          infowindow.setContent("<div><a href='#{d.url}'>#{d.title}</a></div>")
-          infowindow.open(map,_marker)
         )
+
+        #TODO refactor this!
+        _m['title'] = d.title
+        _m['url'] = d.url
+
+        google.maps.event.addListener(_m, 'click', ()->
+          infowindow.setContent("<div><a href='#{this.url}'>#{this.title}</a></div>")
+          infowindow.open(map, this)
+        )
+
+        markers.push _m
+
       mc.addMarkers(markers)
       renderNearbyGames(data)
 
