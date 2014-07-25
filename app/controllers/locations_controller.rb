@@ -7,11 +7,10 @@ class LocationsController < ApplicationController
       format.html do
         @lat = request.location.latitude
         @lng = request.location.longitude
-        @locations = Location.near([@lat, @lng], 5).all #Near 5 miles
       end
 
       format.json do
-        render json: Location.all
+        render json: Location.near([params[:lat], params[:lng]], 5).all
       end
     end
   end

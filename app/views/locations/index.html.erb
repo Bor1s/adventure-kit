@@ -18,16 +18,8 @@
       <i class='fa fa-gamepad'></i>
       Игры неподалеку
     </header>
-    <article>
-      <% if @locations.present? %>
-        <% @locations.each do |location| %>
-          <div>
-            <%= link_to location.game.title, game_path(location.game) %>
-          </div>
-        <% end %>
-      <% else %>
-        <%= t('general.no_nearby_games') %>
-      <% end %>
+    <article id='nearby-events'>
+      <i class="fa fa-cog fa-spin fa-2x"></i>
     </article>
   </aside>
 <% end %>

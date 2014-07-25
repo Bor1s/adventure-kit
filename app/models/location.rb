@@ -22,7 +22,7 @@ class Location
   end
 
   def as_json(options={})
-    options.merge!({lat: lat, lng: lng})
+    options.merge!({lat: lat, lng: lng, title: self.game.title, url: Rails.application.routes.url_helpers.game_path(self.game)})
   end
 
   private
