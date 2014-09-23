@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Game do
   let(:game_with_tags) {FactoryGirl.create(:game_with_tags)}

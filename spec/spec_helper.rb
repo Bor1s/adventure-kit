@@ -12,8 +12,6 @@ require 'rspec/rails'
 # option on the command line or in ~/.rspec, .rspec or `.rspec-local`.
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
-OmniAuth.config.test_mode = true
-
 RSpec.configure do |config|
   # ## Mock Framework
   #

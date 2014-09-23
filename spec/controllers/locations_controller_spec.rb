@@ -1,10 +1,11 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe LocationsController do
   before do
     User.destroy_all
+    Game.destroy_all
     Location.destroy_all
-    FactoryGirl.create_list(:location, 3)
+    FactoryGirl.create_list(:game_with_location, 3)
     sign_in_user_via_vk(:master)
   end
 
@@ -13,11 +14,10 @@ describe LocationsController do
       get :index
       expect(assigns[:lat]).to eq 0.0
       expect(assigns[:lng]).to eq 0.0
-      expect(assigns[:locations]).not_to be_empty
     end
 
     it '#index via json returns nearby locations' do
-      get :index, {format: :json}
+      get :index, {lat: 0.0, lng: 0.0, format: :json}
       expect(JSON.parse(response.body).count).to eq 3
     end
   end

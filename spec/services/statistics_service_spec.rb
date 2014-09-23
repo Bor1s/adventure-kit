@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe StatisticsService do
   let(:top_games_fake_statistics) {
