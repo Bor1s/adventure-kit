@@ -8,8 +8,8 @@ describe TagSearchService do
     Game.destroy_all
 
     FactoryGirl.create_list(:game_with_tags, 2)
-    FactoryGirl.create(:master, name: 'Boris')
-    FactoryGirl.create(:player, name: 'John Snow')
+    FactoryGirl.create(:master_with_vk_account)
+    FactoryGirl.create(:player_with_vk_account)
   end
 
   it 'returns tag matched by tag_id' do

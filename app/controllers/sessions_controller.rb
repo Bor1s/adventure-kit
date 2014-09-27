@@ -1,13 +1,18 @@
 class SessionsController < ApplicationController
+
   def create
-    auth_hash.merge!({current_timezone_offset: Time.zone.now.utc_offset})
-    @user = User.find_or_create_by_auth_hash(auth_hash)
-    session[:user_id] = @user.id
-    redirect_to root_url
+    if session[:account_id].present?
+      add_user_account(auth_hash)
+      #NOTE Change route to smt sensible
+      redirect_to root_url
+    else
+      create_user_account(auth_hash)
+      redirect_to root_url
+    end
   end
 
   def destroy
-    session[:user_id] = nil
+    session[:account_id] = nil
     redirect_to sign_in_url
   end
 
@@ -20,4 +25,22 @@ class SessionsController < ApplicationController
   def auth_hash
     request.env['omniauth.auth']
   end
+
+  def create_user_account(auth_hash)
+    account = Account.find_or_create_by_auth_hash(auth_hash)
+    if account.user.blank?
+      user = User.create({current_timezone_offset: Time.zone.now.utc_offset})
+      user.accounts << account
+    end
+
+    session[:account_id] = account.id
+  end
+
+  def add_user_account(auth_hash)
+    account = Account.find_or_create_by_auth_hash(auth_hash)
+    if account.user.blank?
+      current_user.accounts << account
+    end
+  end
+
 end

@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
     Mongoid::Errors::DocumentNotFound,
     CanCan::AccessDenied, with: :not_found
 
-  helper_method :current_user, :user_signed_in?
+  helper_method :current_user, :current_user_profile, :user_signed_in?
 
   around_filter :set_timezone
 
@@ -24,11 +24,16 @@ class ApplicationController < ActionController::Base
   private
 
   def current_user
-    @current_user ||= User.where(id: session[:user_id]).first if session[:user_id]
+    #TODO Search by account and mix user and account into decorator
+    @current_user ||= Account.where(id: session[:account_id]).first.user if session[:account_id]
+  end
+
+  def current_user_profile
+    @current_user_profile ||= Account.where(id: session[:account_id]).first if session[:account_id]
   end
 
   def user_signed_in?
-    session[:user_id].present?
+    session[:account_id].present?
   end
 
   def authenticate

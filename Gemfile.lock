@@ -178,6 +178,8 @@ GEM
     omniauth (1.1.4)
       hashie (>= 1.2, < 3)
       rack
+    omniauth-gplus (2.0.1)
+      omniauth-oauth2 (~> 1.1)
     omniauth-oauth2 (1.1.1)
       oauth2 (~> 0.8.0)
       omniauth (~> 1.0)
@@ -334,6 +336,7 @@ DEPENDENCIES
   moped!
   newrelic_rpm
   omniauth (~> 1.1.4)
+  omniauth-gplus (~> 2.0)
   omniauth-vkontakte (~> 1.3.2)
   pry-rails
   rails (= 4.0.4)

@@ -1,7 +1,7 @@
 module ControllersHelper
-  def sign_in_user_via_vk(role=:admin)
+  def sign_in_user_via_vk(role=:admin_with_vk_account)
     user = FactoryGirl.create(role)
-    session[:user_id] = user.id
+    session[:account_id] = user.accounts.first.id
   end
 end
 

@@ -4,50 +4,30 @@ class User
   ROLES = { admin: 1, master: 2, player: 3}
 
   # Mandatory fields
+  field :email, type: String
+  field :role, type: Integer, default: ROLES[:player]
+  field :want_to_be_master, type: Mongoid::Boolean
+  field :current_timezone_offset, type: Integer, default: 0
+
+  # REMOVE !!!!!!!!! ================
   field :uid, type: String
   field :name, type: String
-  field :role, type: Integer, default: ROLES[:player]
-
-  #Additional fields
-  field :email, type: String
   field :avatar, type: String
   field :avatar_medium, type: String
   field :avatar_original, type: String
-  field :want_to_be_master, type: Mongoid::Boolean
   field :social_network_link, type: String
-  field :current_timezone_offset, type: Integer, default: 0
+  # =============================
+
 
   has_and_belongs_to_many :tags
+  has_many :accounts, dependent: :delete
   has_many :subscriptions, dependent: :delete
   has_many :comments, dependent: :delete
-
-  validates :name, presence: true
 
   scope :masters, -> { where(:role.in => [1,2]) }
   scope :players, -> { where(role: 3) }
   scope :recent, -> { where(:created_at.gte => (Time.zone.now - 2.days)).desc(:created_at) }
   scope :by_tag, ->(tag_id) { where(:tag_ids.in => [tag_id]) }
-
-  def self.find_or_create_by_auth_hash(auth_hash)
-    user = User.where(uid: auth_hash[:uid]).first
-    if user
-      user.update_attributes(name: auth_hash[:info][:first_name],
-                             current_timezone_offset: auth_hash[:current_timezone_offset],
-                             avatar: auth_hash[:info][:image],
-                             avatar_original: auth_hash[:extra][:raw_info][:photo_200_orig],
-                             avatar_medium: auth_hash[:extra][:raw_info][:photo_100],
-                             social_network_link: auth_hash[:info][:urls][:Vkontakte])
-      user
-    else
-      User.create(uid: auth_hash[:uid],
-                  current_timezone_offset: auth_hash[:current_timezone_offset],
-                  name: auth_hash[:info][:first_name],
-                  avatar: auth_hash[:info][:image],
-                  avatar_original: auth_hash[:extra][:raw_info][:photo_200_orig],
-                  avatar_medium: auth_hash[:extra][:raw_info][:photo_100],
-                  social_network_link: auth_hash[:info][:urls][:Vkontakte])
-    end
-  end
 
   def admin?
     role == 1
@@ -91,12 +71,4 @@ class User
     end
   end
 
-  def self.search string=nil
-    if string.present?
-      payload = Regexp.escape(string)
-      where(name: /#{payload}/i)
-    else
-      all
-    end
-  end
 end

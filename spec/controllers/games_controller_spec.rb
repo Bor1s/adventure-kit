@@ -5,14 +5,14 @@ describe GamesController do
     Game.destroy_all
     Subscription.destroy_all
     User.destroy_all
-    sign_in_user_via_vk(:master)
+    sign_in_user_via_vk(:master_with_vk_account)
   end
 
   context 'requesting' do
     it '#remove_player allows master to reject player from game' do
       game = FactoryGirl.create(:game)
       master = User.first
-      player = FactoryGirl.create(:player)
+      player = FactoryGirl.create(:player_with_vk_account)
 
       game.subscribe(master, :master)
       game.subscribe(player)
@@ -24,7 +24,7 @@ describe GamesController do
     it '#remove_player do not removes unsubscribed user' do
       game = FactoryGirl.create(:game)
       master = User.first
-      player = FactoryGirl.create(:player)
+      player = FactoryGirl.create(:player_with_vk_account)
 
       game.subscribe(master, :master)
 

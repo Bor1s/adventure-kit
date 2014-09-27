@@ -49,7 +49,7 @@ class GamesController < ApplicationController
     @game = Game.find params[:id]
     payload = {game_id: @game.id, user_id: current_user.id}
     notifications.instrument('join_game', payload) do
-      CoreNotification.create(message: "#{current_user.name} joined #{@game.title}")
+      CoreNotification.create(message: "#{current_user_profile.name} joined #{@game.title}")
     end
     @game.subscribe current_user
     redirect_to game_path(@game)
@@ -61,7 +61,7 @@ class GamesController < ApplicationController
       @game.redeem current_user
       payload = {game_id: @game.id, user_id: current_user.id}
       notifications.instrument('left_game', payload) do
-        CoreNotification.create(message: "#{current_user.name} left #{@game.title}")
+        CoreNotification.create(message: "#{current_user_profile.name} left #{@game.title}")
       end
     end
     redirect_to game_path(@game)
@@ -75,7 +75,7 @@ class GamesController < ApplicationController
       @game.redeem(user)
       payload = {game_id: @game.id, user_id: user.id}
       notifications.instrument('player_rejected', payload) do
-        CoreNotification.create(message: "#{current_user.name} left #{@game.title}")
+        CoreNotification.create(message: "#{current_user_profile.name} left #{@game.title}")
       end
     end
     redirect_to game_path(@game)

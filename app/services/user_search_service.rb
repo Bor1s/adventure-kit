@@ -1,7 +1,8 @@
 class UserSearchService
   def self.call(q: nil, f: nil, page: 1)
     if q.present?
-      User.search(q).asc(:created_at).page(page)
+      user_ids = Account.where(name: /#{Regexp.escape(q)}/i).all.to_a.map(&:user_id)
+      User.where(:id.in => user_ids).asc(:created_at).page(page)
     elsif f.present?
       filtered_users(filter: f, page: page)
     else

@@ -25,21 +25,15 @@ describe User do
     FactoryGirl.create_list(:player, 2)
   end
 
-  specify { expect(subject).to respond_to(:uid) }
-  specify { expect(subject).to respond_to(:name) }
   specify { expect(subject).to respond_to(:role) }
   specify { expect(subject).to respond_to(:email) }
-  specify { expect(subject).to respond_to(:avatar) }
-  specify { expect(subject).to respond_to(:avatar_medium) }
-  specify { expect(subject).to respond_to(:avatar_original) }
   specify { expect(subject).to respond_to(:want_to_be_master) }
-  specify { expect(subject).to respond_to(:social_network_link) }
-  specify { expect(subject).to respond_to(:current_timezone_offset) }
 
   context 'relations' do
     specify { expect(subject).to respond_to(:tags) }
     specify { expect(subject).to respond_to(:subscriptions) }
     specify { expect(subject).to respond_to(:comments) }
+    specify { expect(subject).to respond_to(:accounts) }
   end
 
   context 'by calling' do
@@ -53,15 +47,6 @@ describe User do
 
     it ':recent scope returns users created 2 days ago as most' do
       expect(described_class.recent.count).to eq 3
-    end
-
-    it '.find_or_create_by_auth_hash returns new user (VK based)' do
-      expect { described_class.find_or_create_by_auth_hash(vk_auth_hash) }.to change(User, :count).by 1
-    end
-
-    it '.find_or_create_by_auth_hash returns existing user (VK based)' do
-      described_class.find_or_create_by_auth_hash(vk_auth_hash)
-      expect { described_class.find_or_create_by_auth_hash(vk_auth_hash) }.to change(User, :count).by 0
     end
 
     it '#master? returns true if user is a master' do
@@ -127,14 +112,5 @@ describe User do
       expect(master.games.count).to eq 1
     end
 
-    it '.search finds users by name' do
-      described_class.find_or_create_by_auth_hash(vk_auth_hash)
-      expect(described_class.search('boris').count).to eq 1
-    end
-
-    it '.search returns empty result' do
-      described_class.find_or_create_by_auth_hash(vk_auth_hash)
-      expect(described_class.search('John Snow').count).to eq 0
-    end
   end
 end

@@ -7,7 +7,7 @@ describe UserSearchService do
     User.destroy_all
     FactoryGirl.create_list(:player, 5)
     FactoryGirl.create_list(:master, 2)
-    FactoryGirl.create(:admin, name: 'Boris')
+    FactoryGirl.create(:admin_with_vk_account)
   end
 
   context 'calling' do
@@ -16,7 +16,7 @@ describe UserSearchService do
     end
 
     it 'with :q return searched users' do
-      expect(subject.call(q: 'Boris').count).to eq 1
+      expect(subject.call(q: 'GIR').count).to eq 1
     end
     
     it 'with :f returns masters' do

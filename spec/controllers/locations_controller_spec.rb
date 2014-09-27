@@ -6,7 +6,7 @@ describe LocationsController do
     Game.destroy_all
     Location.destroy_all
     FactoryGirl.create_list(:game_with_location, 3)
-    sign_in_user_via_vk(:master)
+    sign_in_user_via_vk(:master_with_vk_account)
   end
 
   context 'requesting' do

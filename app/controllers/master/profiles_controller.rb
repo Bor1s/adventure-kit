@@ -17,7 +17,7 @@ class Master::ProfilesController < Master::BaseController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :tag_ids, :want_to_be_master)
+    params.require(:user).permit(:email, :tag_ids, :want_to_be_master)
   end
 
   def normalize_params parameters

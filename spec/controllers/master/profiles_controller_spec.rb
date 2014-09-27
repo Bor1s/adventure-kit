@@ -4,7 +4,7 @@ describe Master::ProfilesController do
   before do
     User.destroy_all
     Tag.destroy_all
-    sign_in_user_via_vk(:master)
+    sign_in_user_via_vk(:master_with_vk_account)
   end
 
   context 'requesting' do
@@ -16,7 +16,7 @@ describe Master::ProfilesController do
     describe '#update' do
       let(:user) { User.first }
       let(:user_params) {
-        {name: 'New name', email: 'new@gmail.com', want_to_be_master: 0, tag_ids: ''}
+        {email: 'new@gmail.com', want_to_be_master: 0, tag_ids: ''}
       }
       subject { put :update, {id: user.id, user: user_params} }
 
