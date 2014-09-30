@@ -1,13 +1,13 @@
 <div class='user-short'>
-  <% if user.avatar.present? %>
+  <% if user.avatar? %>
      <%= link_to user_path(user) do %>
-       <%= image_tag asset_path(user.avatar), class: 'with-hover' %>
+       <%= image_tag asset_path(user.avatar.small.url), class: 'with-hover' %>
      <% end %>
   <% else %>
     <i class='fa fa-picture-o default-image'></i>
   <% end %>
 
   <aside class='user-info'>
-    <%= link_to user.name, user_path(user) %>
+    <%= link_to user.nickname, user_path(user) %>
   </aside>
 </div>

@@ -4,10 +4,10 @@
       <div class='row'>
         <div class='col-xs-12 col-sm-12 col-md-12 meta'>
           <%= link_to user_path(comment.user) do %>
-            <%= image_tag asset_path(comment.user.avatar) %>
+            <%= image_tag asset_path(comment.user.avatar.small.url) %>
           <% end %>
           <span class='commenter-stats'>
-            <small><strong><%= comment.user.name %></strong></small><br />
+            <small><strong><%= comment.user.nickname %></strong></small><br />
             <span class='text-muted'>
               <small><%= comment.created_at.try(:to_s, :short) %></small><br />
               <% if current_user.id == comment.user.id %>

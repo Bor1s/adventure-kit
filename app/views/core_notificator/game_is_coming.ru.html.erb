@@ -7,7 +7,7 @@
 
 <p>Когда: <strong><%= l(@event.beginning_at + @user.current_timezone_offset.seconds, format: :short) %></strong></p>
 <p>Где: <%= @event.game.location.address %></p>
-<p>Ведущий: <%= @master.name %></p>
+<p>Ведущий: <%= @master.nickname %></p>
 
 <p><%= link_to 'Подробнее', game_url(@event.game.id) %></p>
 

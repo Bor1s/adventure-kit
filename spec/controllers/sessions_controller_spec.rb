@@ -23,6 +23,19 @@ RSpec.describe SessionsController do
         }
       }
     )
+
+    OmniAuth.config.mock_auth[:gplus] = OmniAuth::AuthHash.new(
+      {
+        provider: 'gplus',
+        uid: '7890',
+        current_timezone_offset: 3,
+        info: {
+          name: 'BOB',
+          urls: {'Google+' => 'someurl'}
+        },
+        extra: {}
+      }
+    )
   end
 
   before do
@@ -33,7 +46,7 @@ RSpec.describe SessionsController do
 
   describe 'requesting #create' do
     it 'makes new user account and user himself' do
-      expect { get :create }.to change(User, :count).by(1) 
+      expect { get :create }.to change(User, :count).by(1)
     end
 
     it 'sets account id to session' do
@@ -42,6 +55,11 @@ RSpec.describe SessionsController do
     end
 
     it 'adds new account to existing user' do
+      player = FactoryGirl.create(:player_with_vk_account)
+      session[:account_id] = player.accounts.first.id
+      request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:gplus]
+      get :create
+      expect(player.accounts.count).to eq 2
     end
 
     it 'remains already existing account for existing user' do

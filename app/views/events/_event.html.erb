@@ -20,7 +20,7 @@
     <p class='title'>
       <%= link_to event.game.title.truncate(35), game_path(event.game), class: 'header' %>
       <br />
-      <small class='text-muted'>By <%= event.game.master.name %></small>
+      <small class='text-muted'>By <%= event.game.master.nickname %></small>
     </p>
 
     <p class='description'><%= event.description %></p>

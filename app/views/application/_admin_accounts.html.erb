@@ -1,0 +1,5 @@
+<% me.accounts.each do |account| %>
+  <%= link_to "Remove #{account.provider} account", remove_account_admin_profile_path(name: account.provider), method: :delete, data: {confirm: 'Sure?'} %>
+<% end %>
+
+<%= render partial: 'account_presence_links', locals: {me: me} %>

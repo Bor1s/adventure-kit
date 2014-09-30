@@ -1,0 +1,7 @@
+<% unless me.has_vk_account? %>
+  <%= link_to 'Sign In via VK', '/auth/vkontakte' %>
+<% end %>
+
+<% unless me.has_gplus_account? %>
+  <%= link_to 'Sign In via Google+', '/auth/gplus' %>
+<% end %>

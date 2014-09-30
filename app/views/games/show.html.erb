@@ -45,7 +45,7 @@
     <article>
       <p>
         <%= link_to user_path(@game.master) do %>
-          <%= image_tag asset_path(@game.master.avatar), class: 'with-hover' %>
+          <%= image_tag asset_path(@game.master.avatar.small.url), class: 'with-hover' %>
         <% end %>
       </p>
     </article>
@@ -60,7 +60,7 @@
             <% @game.players.each do |player| %>
               <div class='participant'>
                 <%= link_to user_path(player) do %>
-                  <%= image_tag asset_path(player.avatar), class: 'with-hover' %>
+                  <%= image_tag asset_path(player.avatar.small.url), class: 'with-hover' %>
                 <% end %>
 
                 <% if current_user.creator?(@game) %>
@@ -71,7 +71,7 @@
           <% else %>
             <% @game.players.each do |player| %>
               <%= link_to user_path(player) do %>
-                <%= image_tag asset_path(player.avatar), class: 'with-hover' %>
+                <%= image_tag asset_path(player.avatar.small.url), class: 'with-hover' %>
               <% end %>
             <% end %>
           <% end %>

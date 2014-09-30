@@ -1,4 +1,6 @@
 class Admin::ProfilesController < Admin::BaseController
+  include UserConcern
+
   respond_to :html
 
   def edit
@@ -15,11 +17,21 @@ class Admin::ProfilesController < Admin::BaseController
     end
   end
 
-  private
-
-  def user_params
-    params.require(:user).permit(:name, :email, :tag_ids, :want_to_be_master)
+  def remove_account
+    if params[:name].present?
+      account = current_user.accounts.where(provider: params[:name]).first
+      if last_account?
+        flash.alert = 'You cannot delete last account'
+      else
+        handle_account_in_session(account)
+      end
+      redirect_to edit_admin_profile_path
+    else
+      render :edit
+    end
   end
+
+  private
 
   def normalize_params parameters
     tag_ids = parameters[:tag_ids].split(',')

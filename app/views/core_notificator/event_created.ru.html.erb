@@ -5,9 +5,9 @@
 <p>Где: <%= @event.game.location.address %></p>
 <h4>Участники</h4>
 <ul>
-  <li><%= @event.game.master.name %> (ведущий)</li>
+  <li><%= @event.game.master.nickname %> (ведущий)</li>
   <% @event.game.players.each do |user| %>
-    <li><%= link_to user.name, user.social_network_link %></li>
+    <li><%= link_to user.nickname, user.social_network_link %></li>
   <% end %>
 </ul>
 <p><%= link_to 'Подробнее', game_url(@event.game.id) %></p>

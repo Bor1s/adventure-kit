@@ -1,4 +1,5 @@
 class Master::ProfilesController < Master::BaseController
+  include UserConcern
 
   def edit
     @profile = current_user
@@ -14,11 +15,21 @@ class Master::ProfilesController < Master::BaseController
     end
   end
 
-  private
-
-  def user_params
-    params.require(:user).permit(:email, :tag_ids, :want_to_be_master)
+  def remove_account
+    if params[:name].present?
+      account = current_user.accounts.where(provider: params[:name]).first
+      if last_account?
+        flash.alert = 'You cannot delete last account'
+      else
+        handle_account_in_session(account)
+      end
+      redirect_to edit_master_profile_path
+    else
+      render :edit
+    end
   end
+
+  private
 
   def normalize_params parameters
     tag_ids = parameters[:tag_ids].split(',')

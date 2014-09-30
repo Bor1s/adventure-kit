@@ -1,5 +1,5 @@
 <% content_for :title do %>
-  <%= @user.name %>
+  <%= @user.nickname %>
 <% end %>
 
 <% content_for :search_form do %>
@@ -12,14 +12,14 @@
 
 <div class='row tiled'>
   <div class='col-xs-12 col-sm-4 col-md-3'>
-    <%= image_tag(@user.avatar_original, class: 'plain-img') %>
+    <%= image_tag(@user.avatar.medium.url, class: 'plain-img') %>
   </div>
 
   <div class='col-xs-12 col-sm-4 col-md-3'>
     <header><i class='fa fa-user'></i> <%= t('.bio') %></header>
     <ul class='list-unstyled user-bio'>
       <li>
-        <%= @user.name %>
+        <%= @user.nickname %>
         <span class='text-muted'>(<%= t("general.#{@user.human_role}") %>)</span>
       </li>
 
@@ -28,10 +28,11 @@
         <span class='text-muted'><%= l(@user.created_at, format: :short) %></span>
       </li>
 
-      <li>
-        <i class='fa fa-vk'></i>
-        <%= link_to @user.social_network_link, @user.social_network_link, target: :_blank %>
-      </li>
+      <% @user.accounts.each do |account| %>
+        <li>
+          <%= link_to account.social_network_link, account.social_network_link, target: :_blank %>
+        </li>
+      <% end %>
 
       <% if @user.email.present? %>
         <li>

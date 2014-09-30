@@ -18,7 +18,7 @@ FactoryGirl.define do
       role 1
 
       after(:create) do |user, evaluator|
-        user.accounts.create(uid: '12345', name: 'GIR')
+        user.accounts.create(uid: '12345', name: 'GIR', provider: 'vkontakte')
       end
     end
 
@@ -26,7 +26,7 @@ FactoryGirl.define do
       role 2
 
       after(:create) do |user, evaluator|
-        user.accounts.create(uid: '12345', name: 'ZIM')
+        user.accounts.create(uid: '12345', name: 'ZIM', provider: 'vkontakte')
       end
     end
 
@@ -34,7 +34,7 @@ FactoryGirl.define do
       role 3
 
       after(:create) do |user, evaluator|
-        user.accounts.create(uid: '12345', name: 'DIB')
+        user.accounts.create(uid: '12345', name: 'DIB', provider: 'vkontakte')
       end
     end
   end

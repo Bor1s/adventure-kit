@@ -1,13 +1,13 @@
-<p>Здравствуйте <%= @master.name %>!</p>
+<p>Здравствуйте <%= @master.nickname %>!</p>
 
-<p><%= link_to @subscriber.name, @subscriber.social_network_link %> покинул игру <strong><%= @game.title %></strong></p>
+<p><%= link_to @subscriber.nickname, @subscriber.social_network_link %> покинул игру <strong><%= @game.title %></strong></p>
 
 <% if @game.players.exists? %>
   <p>
     <strong>Текущий список игроков</strong>
     <ul>
       <% @game.players.each do |user| %>
-        <li><%= link_to user.name, user.social_network_link %></li>
+        <li><%= link_to user.nickname, user.social_network_link %></li>
       <% end %>
     </ul>
   </p>

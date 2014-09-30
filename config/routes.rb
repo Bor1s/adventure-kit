@@ -30,20 +30,32 @@ PlayhardCore::Application.routes.draw do
 
   namespace :admin do
     resources :games, only: [:index]
-    resource :profile, only: [:edit, :update]
+    resource :profile, only: [:edit, :update] do
+      collection do
+        delete :remove_account
+      end
+    end
     resources :users
     get 'heatmap' => 'heatmap#index', as: :heatmap
   end
 
   namespace :master do
     resources :games, only: [:index]
-    resource :profile, only: [:edit, :update]
+    resource :profile, only: [:edit, :update] do
+      collection do
+        delete :remove_account
+      end
+    end
     get 'heatmap' => 'heatmap#index', as: :heatmap
   end
 
   namespace :player do
     resources :games, only: [:index]
-    resource :profile, only: [:edit, :update]
+    resource :profile, only: [:edit, :update] do
+      collection do
+        delete :remove_account
+      end
+    end
   end
 
   resources :locations, only: [:index]

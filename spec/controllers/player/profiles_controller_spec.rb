@@ -30,5 +30,31 @@ describe Player::ProfilesController do
       end
     end
 
+    describe '#remove_account' do
+      let(:user) { User.first }
+
+      it 'renders :edit when name parameter is missing' do
+        delete :remove_account, {}
+        expect(response.status).to eq 200
+      end
+
+      it 'removes VK account' do
+        delete :remove_account, {name: 'vkontakte'}
+        expect(response.status).to eq 302
+      end
+
+      it 'removes GPlus account' do
+        add_account(user, 'gplus')
+        delete :remove_account, {name: 'gplus'}
+        expect(response.status).to eq 302
+      end
+
+      it 'does not remove last account' do
+        delete :remove_account, {name: 'vkontakte'}
+        expect(flash[:alert]).to eq 'You cannot delete last account'
+        expect(user.accounts.count).to eq 1
+      end
+    end
+
   end
 end

@@ -3,6 +3,11 @@ module ControllersHelper
     user = FactoryGirl.create(role)
     session[:account_id] = user.accounts.first.id
   end
+
+  def add_account(user, provider_name)
+    user.accounts.create(provider: provider_name)
+    user.reload
+  end
 end
 
 RSpec.configure do |config|

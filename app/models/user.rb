@@ -9,15 +9,19 @@ class User
   field :want_to_be_master, type: Mongoid::Boolean
   field :current_timezone_offset, type: Integer, default: 0
 
-  # REMOVE !!!!!!!!! ================
-  field :uid, type: String
-  field :name, type: String
-  field :avatar, type: String
-  field :avatar_medium, type: String
-  field :avatar_original, type: String
-  field :social_network_link, type: String
-  # =============================
+  #User settings
+  field :nickname, type: String
 
+  mount_uploader :avatar, AvatarUploader
+
+  # REMOVE !!!!!!!!! ================
+  #field :uid, type: String
+  #field :name, type: String
+  #field :avatar, type: String
+  #field :avatar_medium, type: String
+  #field :avatar_original, type: String
+  #field :social_network_link, type: String
+  # =============================
 
   has_and_belongs_to_many :tags
   has_many :accounts, dependent: :delete
@@ -69,6 +73,15 @@ class User
     else
       []
     end
+  end
+
+  #TODO write specs
+  def has_vk_account?
+    accounts.where(provider: 'vkontakte').exists?
+  end
+
+  def has_gplus_account?
+    accounts.where(provider: 'gplus').exists?
   end
 
 end
