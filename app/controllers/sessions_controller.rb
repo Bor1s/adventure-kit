@@ -39,7 +39,10 @@ class SessionsController < ApplicationController
   def add_user_account(auth_hash)
     account = Account.find_or_create_by_auth_hash(auth_hash)
     if account.user.blank?
+      flash.notice = I18n.t('messages.account_added')
       current_user.accounts << account
+    else
+      flash.alert = I18n.t('messages.account_busy')
     end
   end
 

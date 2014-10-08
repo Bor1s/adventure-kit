@@ -16,7 +16,7 @@ module PlayhardCore
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
-    config.autoload_paths += %W(#{config.root}/app/presenters #{config.root}/app/services #{config.root}/app/decorators #{config.root}/lib)
+    config.autoload_paths += %W(#{config.root}/app/presenters #{config.root}/app/services #{config.root}/app/decorators #{config.root}/lib #{config.root}/lib/providers)
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
@@ -24,8 +24,10 @@ module PlayhardCore
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', 'rails', '*.{rb,yml}').to_s]
     config.i18n.default_locale = :ru
-    #NOTE this is dirty HACK!!! Need to remove after I18n updates
+
+    #TODO this is dirty HACK!!! Need to remove after I18n updates
     config.i18n.locale = :ru
+
     config.harvester = ActiveSupport::OrderedOptions.new
   end
 end

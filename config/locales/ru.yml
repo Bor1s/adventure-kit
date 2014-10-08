@@ -226,3 +226,7 @@ ru:
       subject: 'Напоминание о предстоящей игре'
     player_rejected:
       subject: 'Заявка на игру отклонена'
+
+  messages:
+    account_added: 'Аккаунт добавлен'
+    account_busy: 'Этот аккаунт уже занят другим пользователем'

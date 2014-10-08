@@ -19,6 +19,7 @@ module ApplicationHelper
     end
   end
 
+  #TODO rework
   def flash_messages
     unless flash.empty?
       msgs = flash.map {|name, msg| msg}.join(' ')
