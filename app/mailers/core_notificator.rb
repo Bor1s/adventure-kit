@@ -1,16 +1,6 @@
 class CoreNotificator < ActionMailer::Base
   default from: "playhard-core-noreply@gmail.com"
 
-  def master_born payload
-    @master = User.find(payload[:id])
-    mail to: 'boris.bbk@gmail.com'
-  end
-
-  def player_downgrade payload
-    @player = User.find(payload[:id])
-    mail to: 'boris.bbk@gmail.com'
-  end
-
   def event_created(event_id, user_id)
     @event = Event.find(event_id)
     @user = User.find(user_id)
