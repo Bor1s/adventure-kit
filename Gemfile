@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
-gem 'rails', '4.0.4'
-gem 'sass-rails', '~> 4.0.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.0.0'
+gem 'rails', '~> 4.1.6'
+gem 'sass-rails'
+gem 'uglifier'
+gem 'coffee-rails'
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -39,7 +39,7 @@ gem 'geocoder'
 group :test, :development do
   gem 'thin'
   #TODO remove this when rspec-bug with AR is fixed
-  gem 'rspec-rails', github: 'rspec/rspec-rails', branch: 'master'
+  gem 'rspec-rails'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'capybara'
   gem 'pry-rails'
