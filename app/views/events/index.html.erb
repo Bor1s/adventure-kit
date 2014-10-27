@@ -4,19 +4,6 @@
 
 <% content_for :sidebar do %>
   <%= render 'admin_sidebar' if current_user.master? || current_user.admin? %>
-  <aside>
-    <header><i class='fa fa-trophy'></i> <%= t('.top_games') %></header>
-    <article>
-      <ul class='list-unstyled'>
-        <% @top_games.each do |top_game| %>
-          <li>
-            <%= link_to top_game.title, game_path(top_game.id), class: 'top-game' %>
-            <span class='badge pull-right'><%= top_game.amount %></span>
-          </li>
-        <% end %>
-      </ul>
-    </article>
-  </aside>
 <% end %>
 
 <%= render 'filter_bar' %>

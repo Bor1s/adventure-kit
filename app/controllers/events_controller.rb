@@ -4,9 +4,6 @@ class EventsController < ApplicationController
 
   def index
     authorize! :read, Event
-    service = StatisticsService.new
-    @top_games = service.top_games.take(10)
-    @recent_users = User.recent.take(10)
 
     @events = EventService.call(q: params[:q], f: params[:f], page: params[:page])
   end
