@@ -47,3 +47,8 @@ $ph-dark-blue: #285e8e;
   padding: 10px;
   color: #fff;
 }
+
+@mixin shadowFont($font-color) {
+  color: $font-color;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}

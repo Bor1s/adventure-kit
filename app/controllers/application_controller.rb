@@ -14,7 +14,11 @@ class ApplicationController < ActionController::Base
   around_filter :set_timezone
 
   def sign_in
-    render layout: 'landing'
+    render layout: 'basic'
+  end
+
+  def welcome
+    render layout: 'basic'
   end
 
   def routing_error_handler

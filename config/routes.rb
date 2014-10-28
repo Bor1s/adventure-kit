@@ -60,7 +60,7 @@ PlayhardCore::Application.routes.draw do
 
   resources :locations, only: [:index]
 
-  root 'events#index'
+  root 'application#welcome'
 
   get '/about_us' => 'application#about_us'
 
