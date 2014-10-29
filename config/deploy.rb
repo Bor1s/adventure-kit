@@ -1,5 +1,5 @@
 # config valid only for Capistrano 3.1
-lock '3.1.0'
+lock '3.2.1'
 
 set :application, 'playhard_core'
 set :repo_url, 'git@github.com:Bor1s/playhard-core.git'
@@ -8,7 +8,7 @@ set :rbenv_type, :user
 set :rbenv_ruby, '2.0.0-p353'
 
 # Default branch is :master
-# ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
+# ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 
 # Default deploy_to directory is /var/www/my_app
 # set :deploy_to, '/var/www/my_app'
@@ -27,20 +27,23 @@ set :rbenv_ruby, '2.0.0-p353'
 
 # Default value for :linked_files is []
 # set :linked_files, %w{config/database.yml}
+
 #set :linked_files, ['config/mongoid.yml']
 
 # Default value for linked_dirs is []
 # set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads}
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
 # Default value for keep_releases is 5
-set :keep_releases, 3
+set :keep_releases, 2
 
 namespace :deploy do
-  def run_unicorn
+
+ def run_unicorn
     within release_path do
       with rails_env: fetch(:stage) do
         execute "#{fetch(:bundle_binstubs)}/unicorn_rails", "-c #{release_path}/config/unicorn.rb -D -E #{fetch(:stage)}"
@@ -86,6 +89,8 @@ namespace :deploy do
       end
     end
   end
+
+
 
   desc 'Reindex solr'
   task :reindex_solr do
@@ -139,4 +144,5 @@ namespace :deploy do
 
   before :finishing, :reboot_solr
   after :finishing, :reindex_solr
+
 end
