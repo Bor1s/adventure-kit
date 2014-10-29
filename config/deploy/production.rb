@@ -9,7 +9,7 @@ set :default_env, { path: "'/home/playhard/.rbenv/shims:/home/playhard/.rbenv/bi
 
 role :app, %w{playhard@95.85.61.76}
 role :web, %w{playhard@95.85.61.76}
-role :db, %w{playhard@95.85.61.76}
+role :db,  %w{playhard@95.85.61.76}
 
 # Extended Server Syntax
 # ======================
@@ -17,7 +17,8 @@ role :db, %w{playhard@95.85.61.76}
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
 
-server 'example.com', user: 'deploy', roles: %w{web app}, my_property: :my_value
+server '95.85.61.76', user: 'playhard', roles: %w{web app db}
+#server 'example.com', user: 'deploy', roles: %w{web app}, my_property: :my_value
 
 # Custom SSH Options
 # ==================
