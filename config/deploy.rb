@@ -5,7 +5,7 @@ set :application, 'playhard_core'
 set :repo_url, 'git@github.com:Bor1s/playhard-core.git'
 
 set :rbenv_type, :user
-set :rbenv_ruby, '2.0.0-p353'
+set :rbenv_ruby, '2.1.2'
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
