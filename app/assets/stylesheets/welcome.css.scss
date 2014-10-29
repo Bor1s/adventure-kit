@@ -10,16 +10,19 @@ html {
 #w-header {
   height: 100px;
   a {
-    font-size: 20px;
+    padding: 0px 10px 0px 10px;
+    font-size: 18px;
     color: #fff;
-    opacity: 0.7;
+    background-color: transparent;
     font-weight: bold;
     float: right;
     margin: 30px 50px 0px 0px;
+    text-transform: uppercase;
 
     &:hover {
-      opacity: 1;
       text-decoration: none;
+      background-color: #fff;
+      color: #000;
     }
   }
 }
@@ -41,7 +44,7 @@ html {
 }
 
 #w-content {
-  height: 1000px;
+  min-height: 1000px;
   font-size: 18px;
   padding-top: 100px;
   text-align: center;
@@ -55,7 +58,7 @@ html {
 
 #w-footer {
   background-color: #000;
-  height: 300px;
+  min-height: 300px;
   color: #fff;
 }
 
@@ -72,6 +75,23 @@ html {
   &:hover {
     color: #fff;
     background-color: $ph-orange;
+  }
+}
+
+#reviews {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+  text-align: left;
+
+  .portrait {
+    float: left;
+    margin: 0px 20px;
+  }
+
+  .review {
+    margin-bottom: 100px;
   }
 }
 
