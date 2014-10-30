@@ -1,16 +1,33 @@
+<div class='video-overlay'></div>
+
+<header id='w-header'>
+  <%= link_to 'Вход', sign_in_path, class: 'btn btn-default btn-sm' %>
+</header>
+
 <div id='w-video'>
+
   <div class='container-fluid'>
-    <header id='w-header'>
-      <%= link_to 'Вход', sign_in_path, class: 'btn btn-default btn-sm' %>
-    </header>
+    <div class='container'>
+      <div class='row'>
+        <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center'>
+          <h1 id='main-title'>Good Games Group presents ...</h1>
+        </div>
+      </div>
+
+      <div class='row'>
+        <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center'>
+          <%= link_to 'Начать приключение', '', class: 'btn btn-lg btn-outline'%>
+        </div>
+      </div>
+    </div>
   </div>
+
 </div>
 
 <div id='w-content'>
   <div class='container-fluid'>
     <h2>Наверное самое лучшее хобби в мире!</h2>
-    <p>Настольные ролевые игры это вообще мега круто, офигенно и классно развивает воображение, но тут нужен нормальный и внятный текст на пару строчек.</p>
-    <%= link_to 'Начать приключение', '', class: 'btn btn-lg btn-outline'%>
+    <p class='description'>Настольные ролевые игры это вообще мега круто, офигенно и классно развивает воображение, но тут нужен нормальный и внятный текст на пару строчек.</p>
 
     <section id='reviews'>
       <div class='row'>
@@ -41,10 +58,11 @@
 
 <div id='w-footer'>
   <div class='container-fluid'>
+
     <div class='row'>
       <div class='col-xs-12 col-sm-4 col-md-4 col-lg-4'>
         <div id='footer1'>
-          <h4>Мы в соцсетях:</h4>
+          <h4>Мы в соцсетях</h4>
           <p>
             <ul class='list-inline'>
               <li><i class='fa fa-facebook'></i></li>
@@ -57,7 +75,7 @@
 
       <div class='col-xs-12 col-sm-4 col-md-4 col-lg-4'>
         <div id='footer2'>
-          <h4>Партнеры:</h4>
+          <h4>Партнеры</h4>
           <ul class='list-inline'>
             <li>Wizards</li>
             <li>Dungeon</li>
@@ -68,7 +86,7 @@
 
       <div class='col-xs-12 col-sm-4 col-md-4 col-lg-4'>
         <div id='footer3'>
-          <h4>Инфо:</h4>
+          <h4>Инфо</h4>
           <ul class='list-inline'>
             <li>Соглашение</li>
             <li>О Нас</li>
