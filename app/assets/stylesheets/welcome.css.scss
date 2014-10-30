@@ -1,8 +1,7 @@
 @import 'common';
 
-.video-overlay {
+.overlay {
   background: rgba(0,0,0,.4);
-  height: 700px;
   position: absolute;
   top: 0;
   right: 0;
@@ -35,13 +34,17 @@
 }
 
 #w-video {
+  position: relative;
   height: 700px;
+  overflow: hidden;
 
-  background: url(image-path('w-video-new.jpg')) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  video {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 0;
+  }
 
   h2 {
     @include shadowFont(#fff);

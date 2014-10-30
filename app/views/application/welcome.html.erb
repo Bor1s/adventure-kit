@@ -1,10 +1,11 @@
-<div class='video-overlay'></div>
 
 <header id='w-header'>
   <%= link_to 'Вход', sign_in_path, class: 'btn btn-default btn-sm' %>
 </header>
 
 <div id='w-video'>
+  <%= video_tag 'banner_mix.mp4', width: '100%', autoplay: true, loop: true, preload: :auto %>
+  <div class='overlay'></div>
 
   <div class='container-fluid'>
     <div class='container'>
