@@ -301,6 +301,8 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    warden (1.2.3)
+      rack (>= 1.0)
     whenever (0.9.3)
       chronic (>= 0.6.3)
     xpath (2.0.0)
@@ -353,4 +355,5 @@ DEPENDENCIES
   turbolinks
   uglifier
   unicorn
+  warden
   whenever

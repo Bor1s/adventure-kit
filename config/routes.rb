@@ -4,9 +4,9 @@ require 'admin_constraint'
 PlayhardCore::Application.routes.draw do
   get '/sign_in' => 'application#sign_in'
   get 'sessions/create'
-  get '/auth/:provider/callback', to: 'sessions#create'
-  post '/auth/:provider/callback', to: 'sessions#create' #Stub
-  get '/auth/failure', to: 'sessions#failure'
+  get '/login' => 'sessions#authorize'
+  get '/auth/:provider/callback', to: 'sessions#authorize'
+  get '/auth/failure', to: 'sessions#authorize'
   get '/signout', to: 'sessions#destroy', as: :signout
 
   resources :games do

@@ -27,21 +27,26 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def current_user
-    #TODO Search by account and mix user and account into decorator
-    @current_user ||= Account.where(id: session[:account_id]).first.user if session[:account_id]
+  def authenticate
+    warden.authenticated? || redirect_to(sign_in_path)
   end
 
-  def current_user_profile
-    @current_user_profile ||= Account.where(id: session[:account_id]).first if session[:account_id]
+  def warden
+    env['warden']
   end
 
   def user_signed_in?
-    session[:account_id].present?
+    warden.authenticated?
   end
 
-  def authenticate
-    redirect_to sign_in_path unless user_signed_in?
+  def current_user
+    #TODO Search by account and mix user and account into decorator
+    @current_user ||= warden.user.user
+  end
+
+  def current_user_profile
+    #Means Account
+    @current_user_profile ||= warden.user
   end
 
   def not_found

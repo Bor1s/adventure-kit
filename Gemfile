@@ -9,6 +9,7 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 gem 'font-awesome-sass', '~> 4.2.0'
+gem 'warden'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -53,7 +54,7 @@ group :development do
   gem 'capistrano'
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
-  gem 'capistrano-sidekiq' , github: 'seuros/capistrano-sidekiq'
+  gem 'capistrano-sidekiq', github: 'seuros/capistrano-sidekiq'
 end
 
 group :production do
