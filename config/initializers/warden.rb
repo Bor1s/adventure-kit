@@ -4,8 +4,7 @@ Rails.application.middleware.insert_after ActionDispatch::Flash, Warden::Manager
 end
 
 Warden::Manager.serialize_into_session do |user|
-  #Means Account
-  user.id
+  user.id #Means Account
 end
 
 Warden::Manager.serialize_from_session do |id|
