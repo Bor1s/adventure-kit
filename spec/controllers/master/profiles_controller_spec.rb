@@ -1,10 +1,13 @@
 require 'rails_helper'
 
 describe Master::ProfilesController do
+
   before do
     User.destroy_all
     Tag.destroy_all
-    sign_in_user_via_vk(:master_with_vk_account)
+    
+    user = FactoryGirl.create(:master_with_vk_account)
+    sign_in user.accounts.first
   end
 
   context 'requesting' do
@@ -21,7 +24,7 @@ describe Master::ProfilesController do
       subject { put :update, {id: user.id, user: user_params} }
 
       it 'updates user' do
-        expect(subject).to redirect_to(edit_master_profile_path)
+        expect(subject).to redirect_to(edit_player_profile_path)
         expect(user.reload.human_role).to eq 'player'
       end
 

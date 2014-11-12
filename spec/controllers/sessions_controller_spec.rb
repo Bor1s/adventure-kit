@@ -39,33 +39,28 @@ RSpec.describe SessionsController do
   end
 
   before do
-    request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:vkontakte] 
+    request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:vkontakte]
     User.destroy_all
     Account.destroy_all
+
+    user = FactoryGirl.create(:player_with_vk_account)
+    sign_in user.accounts.first
   end
 
   describe 'requesting #create' do
-    it 'makes new user account and user himself' do
-      expect { get :create }.to change(User, :count).by(1)
-    end
-
-    it 'sets account id to session' do
-      get :create
-      expect(session[:account_id]).to eq Account.first.id
+    it 'sets up and picks user from warden' do
+      get :authorize
+      expect(controller.send(:current_user)).to eq User.first
     end
 
     it 'adds new account to existing user' do
-      player = FactoryGirl.create(:player_with_vk_account)
-      session[:account_id] = player.accounts.first.id
       request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:gplus]
-      get :create
-      expect(player.accounts.count).to eq 2
+      get :authorize
+      expect(controller.send(:current_user).accounts.count).to eq 2
     end
 
     it 'remains already existing account for existing user' do
-      player = FactoryGirl.create(:player_with_vk_account)
-      session[:account_id] = player.accounts.first.id
-      expect { get :create }.to change(Account, :count).by(0)
+      expect { get :authorize }.to change(Account, :count).by(0)
     end
   end
 end

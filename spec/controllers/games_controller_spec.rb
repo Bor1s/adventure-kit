@@ -5,7 +5,9 @@ describe GamesController do
     Game.destroy_all
     Subscription.destroy_all
     User.destroy_all
-    sign_in_user_via_vk(:master_with_vk_account)
+
+    user = FactoryGirl.create(:master_with_vk_account)
+    sign_in user.accounts.first
   end
 
   context 'requesting' do

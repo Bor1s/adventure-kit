@@ -1,7 +1,8 @@
 module ControllersHelper
-  def sign_in_user_via_vk(role=:admin_with_vk_account)
-    user = FactoryGirl.create(role)
-    session[:account_id] = user.accounts.first.id
+
+  def sign_in(user)
+    #TODO redo this stuff!
+    allow(controller).to receive(:warden) { double('Warden', 'authenticate!' => true, 'authenticated?' => true, user: user) }
   end
 
   def add_account(user, provider_name)

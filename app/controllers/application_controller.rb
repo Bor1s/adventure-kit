@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
   end
 
   def warden
-    env['warden']
+    request.env['warden']
   end
 
   def user_signed_in?
