@@ -14,19 +14,14 @@ class User
 
   mount_uploader :avatar, AvatarUploader
 
-  # REMOVE !!!!!!!!! ================
-  #field :uid, type: String
-  #field :name, type: String
-  #field :avatar, type: String
-  #field :avatar_medium, type: String
-  #field :avatar_original, type: String
-  #field :social_network_link, type: String
-  # =============================
-
   has_and_belongs_to_many :tags
   has_many :accounts, dependent: :delete
   has_many :subscriptions, dependent: :delete
   has_many :comments, dependent: :delete
+
+  accepts_nested_attributes_for :accounts
+
+  validates :email, uniqueness: true, if: Proc.new {|u| u.email.present?}
 
   scope :masters, -> { where(:role.in => [1,2]) }
   scope :players, -> { where(role: 3) }

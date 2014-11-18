@@ -1,0 +1,14 @@
+<%= form_for @user, url: registrations_path do |f| %>
+  <%= f.label :email %>
+  <%= f.email_field :email %><br />
+
+  <%= f.fields_for :accounts do |af| %>
+    <%= af.label :password %>
+    <%= af.password_field :password %><br />
+
+    <%= af.label :password_confirmation %>
+    <%= af.password_field :password_confirmation %><br />
+  <% end %>
+
+  <%= f.submit %>
+<% end %>

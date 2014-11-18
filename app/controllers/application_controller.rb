@@ -39,6 +39,10 @@ class ApplicationController < ActionController::Base
     warden.authenticated?
   end
 
+  def verfify_not_signed_in
+    routing_error_handler if warden.authenticated?
+  end
+
   def current_user
     #TODO Search by account and mix user and account into decorator
     @current_user ||= warden.user.user
