@@ -16,9 +16,9 @@ end
 Warden::Strategies.add(:plain) do
 
   def authenticate!
-    fail!('warden.unauthorized') unless params['email'].present? && params['password'].present?
+    return fail!('warden.unauthorized') unless params['email'].present? && params['password'].present?
     u = User.where(email: params['email']).first
-    fail!('warden.unauthorized') unless u
+    return fail!('warden.unauthorized') unless u.present?
     account = u.accounts.where(provider: nil).first #Searching for plain account
 
     begin 
