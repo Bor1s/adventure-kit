@@ -13,10 +13,6 @@ class ApplicationController < ActionController::Base
 
   around_filter :set_timezone
 
-  def sign_in
-    render layout: 'basic'
-  end
-
   def welcome
     render layout: 'basic'
   end
@@ -28,7 +24,7 @@ class ApplicationController < ActionController::Base
   private
 
   def authenticate
-    warden.authenticated? || redirect_to(sign_in_path)
+    warden.authenticated? || redirect_to(new_registration_path)
   end
 
   def warden
@@ -40,7 +36,9 @@ class ApplicationController < ActionController::Base
   end
 
   def verfify_not_signed_in
-    routing_error_handler if warden.authenticated?
+    if warden.authenticated?
+      redirect_to events_path, alert: 'please log out to before you can register new user'
+    end 
   end
 
   def current_user

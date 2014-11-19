@@ -1,18 +1,25 @@
 class SessionsController < ApplicationController
 
   def authorize
-    add_account(request.env['omniauth.auth']) if user_signed_in?
-    warden.authenticate!
+    if request.post?
+      warden.authenticate!(:plain)
+    else
+      add_account(request.env['omniauth.auth']) if user_signed_in?
+      warden.authenticate!
+    end
+
     redirect_to events_path
   end
 
   def destroy
     warden.logout
-    redirect_to sign_in_url
+    redirect_to root_path
   end
 
   def failure
-    redirect_to root_path
+    #Handles failures for both Warden and OAuth callbacks
+    url = ((warden.message == 'warden.unauthorized') || params[:error].present?) ? new_registration_path : root_path
+    redirect_to url, alert: I18n.t(warden.message || params[:error])
   end
 
   private

@@ -11,6 +11,28 @@ Warden::Manager.serialize_from_session do |id|
   Account.find(id)
 end
 
+# Strategies
+
+Warden::Strategies.add(:plain) do
+
+  def authenticate!
+    fail!('warden.unauthorized') unless params['email'].present? && params['password'].present?
+    u = User.where(email: params['email']).first
+    fail!('warden.unauthorized') unless u
+    account = u.accounts.where(provider: nil).first #Searching for plain account
+
+    begin 
+      if account.present? && account.authenticate(params['password'])
+        success!(account)
+      else
+        fail!('warden.unauthorized')
+      end
+    rescue BCrypt::Errors::InvalidHash => e
+      fail!('warden.unauthorized')
+    end
+  end
+end
+
 Warden::Strategies.add(:oauth) do
 
   def authenticate!
@@ -20,9 +42,9 @@ Warden::Strategies.add(:oauth) do
     when auth_hash.present?
       authorize_user_from_valid_oauth_response(auth_hash)
     when oauth_error?
-      fail('OAuth authorization error!')
+      fail!('warden.unauthorized')
     else
-      fail('WTF?')
+      fail!('warden.unauthorized')
     end
   end
 

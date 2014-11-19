@@ -2,11 +2,9 @@ require 'sidekiq/web'
 require 'admin_constraint'
 
 PlayhardCore::Application.routes.draw do
-  get '/sign_in' => 'application#sign_in'
-  get 'sessions/create'
   get '/login' => 'sessions#authorize'
+  post '/login' => 'sessions#authorize'
   get '/auth/:provider/callback', to: 'sessions#authorize'
-  get '/auth/failure', to: 'sessions#authorize'
   get '/signout', to: 'sessions#destroy', as: :signout
 
   #Registrations

@@ -38,16 +38,16 @@ RSpec.describe SessionsController do
     )
   end
 
-  before do
-    request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:vkontakte]
-    User.destroy_all
-    Account.destroy_all
+  describe 'requesting #authorize' do
+    before do
+      request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:vkontakte]
+      User.destroy_all
+      Account.destroy_all
 
-    user = FactoryGirl.create(:player_with_vk_account)
-    sign_in user.accounts.first
-  end
+      user = FactoryGirl.create(:player_with_vk_account)
+      sign_in user.accounts.first
+    end
 
-  describe 'requesting #create' do
     it 'sets up and picks user from warden' do
       get :authorize
       expect(controller.send(:current_user)).to eq User.first
@@ -61,6 +61,14 @@ RSpec.describe SessionsController do
 
     it 'remains already existing account for existing user' do
       expect { get :authorize }.to change(Account, :count).by(0)
+    end
+  end
+
+  describe '#authorize with plain authentification' do
+    it 'is successful' do
+      allow(controller).to receive(:warden) { double('Warden', 'authenticate!' => true, 'authenticated?' => true) }
+      post :authorize, {email: 'gir@gmail.com', password: '12345678'}
+      expect(response).to redirect_to(events_path)
     end
   end
 end

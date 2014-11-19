@@ -1,6 +1,8 @@
 class RegistrationsController < ApplicationController
   before_filter :verfify_not_signed_in
 
+  layout 'basic'
+
   def new
     @user = User.new
     @account = @user.accounts.build
