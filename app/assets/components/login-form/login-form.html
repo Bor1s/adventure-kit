@@ -1,0 +1,19 @@
+<polymer-element name="login-form" attributes='data'>
+  <template>
+    <link rel="stylesheet" href="login-form.css.scss" />
+
+    <h2>Login</h2>
+
+    <paper-input-decorator id='email_decorator' floatingLabel label="Email" error='Must be kind of email!'>
+        <input id='email' type='email' is="core-input" pattern='[0-9a-zA-Z]+@[0-9a-zA-Z]+'>
+    </paper-input-decorator>
+
+    <paper-input-decorator id='password_decorator' floatingLabel label="Password">
+        <input id='password' type='password' is="core-input">
+    </paper-input-decorator>
+
+    <paper-button on-click='{{validate}}'>OK</paper-button>
+  </template>
+
+  <script src="login-form.js.coffee"></script>
+</polymer-element>

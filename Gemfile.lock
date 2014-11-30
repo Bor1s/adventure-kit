@@ -103,6 +103,10 @@ GEM
     connection_pool (2.0.0)
     daemons (1.1.9)
     diff-lcs (1.2.5)
+    emcee (1.0.9)
+      nokogiri (~> 1.0)
+      nokogumbo (~> 1.1)
+      rails (~> 4.0)
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (2.2.2)
@@ -160,6 +164,8 @@ GEM
     newrelic_rpm (3.9.6.257)
     nokogiri (1.6.3.1)
       mini_portile (= 0.6.0)
+    nokogumbo (1.1.13)
+      nokogiri
     oauth2 (0.8.1)
       faraday (~> 0.8)
       httpauth (~> 0.1)
@@ -319,6 +325,7 @@ DEPENDENCIES
   carrierwave-mongoid
   cocoon
   coffee-rails
+  emcee
   execjs
   factory_girl_rails (~> 4.0)
   faraday
