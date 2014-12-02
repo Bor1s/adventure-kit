@@ -3,6 +3,8 @@ class RegistrationsController < ApplicationController
 
   layout 'basic'
 
+  respond_to :json
+
   def new
     @user = User.new
     @account = @user.accounts.build
@@ -12,15 +14,15 @@ class RegistrationsController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       warden.set_user(@user.accounts.first)
-      redirect_to root_path
+      render json: { account_id: current_user_profile.id }
     else
-      render :new
+      render json: { success: false, errors: @user.accounts.first.errors.messages }, status: 422
     end
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:email, accounts_attributes: [:password, :password_confirmation])
+    params.require(:user).permit(accounts_attributes: [:password, :email, :password_confirmation])
   end
 end

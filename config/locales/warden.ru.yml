@@ -1,0 +1,7 @@
+ru:
+  warden:
+    empty_email: 'Пожалуйста введите e-mail!'
+    empty_password: 'Пожалуйста введите пароль!'
+    no_user_found: 'Пользователь с такими данными не зарегистрирован!'
+    invalid_password: 'Неверный пароль!'
+    unauthorized: 'Ты не пройдешь!'

@@ -230,6 +230,3 @@ ru:
   messages:
     account_added: 'Аккаунт добавлен'
     account_busy: 'Этот аккаунт уже занят другим пользователем'
-
-  warden:
-    unauthorized: 'Ты не пройдешь!'

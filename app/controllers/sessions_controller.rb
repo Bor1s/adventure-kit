@@ -1,14 +1,16 @@
 class SessionsController < ApplicationController
 
+  respond_to :json
+
   def authorize
     if request.post?
       warden.authenticate!(:plain)
+      render json: {account_id: current_user_profile.id}
     else
       add_account(request.env['omniauth.auth']) if user_signed_in?
       warden.authenticate!
+      redirect_to events_path and return
     end
-
-    redirect_to events_path
   end
 
   def destroy
@@ -18,11 +20,18 @@ class SessionsController < ApplicationController
 
   def failure
     #Handles failures for both Warden and OAuth callbacks
-    url = ((warden.message == 'warden.unauthorized') || params[:error].present?) ? new_registration_path : root_path
-    redirect_to url, alert: I18n.t(warden.message || params[:error])
+    if params[:error].present?
+      redirect_to new_registration_path
+    else
+      errors = warden.errors.to_hash
+      error_obj = errors.each_pair {|k,v| errors[k] = I18n.t(v) }
+      render json: { error: error_obj }, status: 422 #Unpocessable entity
+    end
   end
 
   private
+
+  #TODO rewrite to send JSON response
 
   def add_account(auth_hash)
     account = Account.find_or_create_by_auth_hash(auth_hash)

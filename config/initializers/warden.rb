@@ -16,20 +16,34 @@ end
 Warden::Strategies.add(:plain) do
 
   def authenticate!
-    return fail!('warden.unauthorized') unless params['email'].present? && params['password'].present?
+    return fail_with_errors!([:email], 'warden.empty_email') unless params['email'].present?
+    return fail_with_errors!([:password], 'warden.empty_password') unless params['password'].present?
+
     u = User.where(email: params['email']).first
-    return fail!('warden.unauthorized') unless u.present?
+
+    return fail_with_errors!([:email], 'warden.no_user_found') unless u.present?
+
     account = u.accounts.where(provider: nil).first #Searching for plain account
 
     begin 
       if account.present? && account.authenticate(params['password'])
         success!(account)
       else
-        fail!('warden.unauthorized')
+        return fail_with_errors!([:password], 'warden.invalid_password')
       end
     rescue BCrypt::Errors::InvalidHash => e
-      fail!('warden.unauthorized')
+      return fail_with_errors!('warden.unauthorized')
     end
+  end
+
+  private
+
+  def fail_with_errors!(fields = [], msg)
+    fields.each do |field|
+      self.errors.add(field, msg)
+    end
+
+    fail!
   end
 end
 

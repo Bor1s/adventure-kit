@@ -1,7 +1,7 @@
 module UserConcern
 
   def user_params
-    params.require(:user).permit(:email, :tag_ids, :want_to_be_master, :avatar, :avatar_cache, :nickname, :remove_avatar)
+    params.require(:user).permit(:tag_ids, :want_to_be_master, :avatar, :avatar_cache, :nickname, :remove_avatar)
   end
 
   def update(redirect_path: root_path, render_path: :edit)

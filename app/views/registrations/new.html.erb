@@ -1,31 +1,7 @@
-<%= form_for @user, url: registrations_path do |f| %>
-  <%= f.label :email %>
-  <%= f.email_field :email %><br />
-
-  <%= f.fields_for :accounts do |af| %>
-    <%= af.label :password %>
-    <%= af.password_field :password %><br />
-
-    <%= af.label :password_confirmation %>
-    <%= af.password_field :password_confirmation %><br />
-  <% end %>
-
-  <%= f.submit %>
-<% end %>
-
-<%= form_tag '/login' do %>
-  <%= label_tag :email %><br />
-  <%= text_field_tag :email %><br />
-
-  <%= label_tag :password %><br />
-  <%= password_field_tag :password %>
-
-  <%= submit_tag 'Login' %>
-<% end %>
-
 <div>
   <%= link_to 'VK', '/login?provider=vkontakte' %>
   <%= link_to 'GPlus', '/login?provider=gplus' %>
 </div>
 
 <login-form></login-form>
+<register-form form_path="<%= registrations_path %>"></register-form>

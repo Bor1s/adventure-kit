@@ -4,7 +4,6 @@ class User
   ROLES = { admin: 1, master: 2, player: 3}
 
   # Mandatory fields
-  field :email, type: String
   field :role, type: Integer, default: ROLES[:player]
   field :want_to_be_master, type: Mongoid::Boolean
   field :current_timezone_offset, type: Integer, default: 0
@@ -20,8 +19,6 @@ class User
   has_many :comments, dependent: :delete
 
   accepts_nested_attributes_for :accounts
-
-  validates :email, uniqueness: true, if: Proc.new {|u| u.email.present?}
 
   scope :masters, -> { where(:role.in => [1,2]) }
   scope :players, -> { where(role: 3) }

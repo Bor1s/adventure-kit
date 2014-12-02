@@ -1,0 +1,6 @@
+en:
+  warden:
+    empty_credentials: 'Логин и пароль пусты!'
+    no_user_found: 'Пользователь с такими данными не зарегистрирован!'
+    invalid_password: 'Неверный пароль!'
+    unauthorized: 'Ты не пройдешь!'
