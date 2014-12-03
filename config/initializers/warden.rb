@@ -19,14 +19,12 @@ Warden::Strategies.add(:plain) do
     return fail_with_errors!([:email], 'warden.empty_email') unless params['email'].present?
     return fail_with_errors!([:password], 'warden.empty_password') unless params['password'].present?
 
-    u = User.where(email: params['email']).first
+    account = Account.where(email: params['email'], provider: nil).first #Searching for plain account
 
-    return fail_with_errors!([:email], 'warden.no_user_found') unless u.present?
-
-    account = u.accounts.where(provider: nil).first #Searching for plain account
+    return fail_with_errors!([:email], 'warden.no_user_found') unless account.present?
 
     begin 
-      if account.present? && account.authenticate(params['password'])
+      if account.authenticate(params['password'])
         success!(account)
       else
         return fail_with_errors!([:password], 'warden.invalid_password')
