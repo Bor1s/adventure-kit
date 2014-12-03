@@ -59,6 +59,7 @@ end
 group :development do
   gem 'better_errors'
   gem 'capistrano'
+  gem 'capistrano-bower'
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
   gem 'capistrano-sidekiq'

@@ -41,6 +41,10 @@ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public
 # Default value for keep_releases is 5
 set :keep_releases, 2
 
+set :bower_flags, '--quiet --config.interactive=false'
+set :bower_roles, :web
+set :bower_target_path, nil
+
 namespace :deploy do
 
  def run_unicorn
