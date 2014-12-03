@@ -7,6 +7,7 @@ body {
 }
 
 #login, #register {
+  position: relative;
   padding: 20px;
   background-color: #fff;
   margin-left: auto;
@@ -15,17 +16,15 @@ body {
   min-height: 280px;
   margin-top: 30px;
 
-  div {
-    div:first-child {
-      width: 250px;
-    }
+  div.login-form {
+    width: 250px;
+  }
 
-    div:last-child {
-      margin-left: 20px;
-      p {
-        margin-top: 40px;
-        text-align: center;
-      }
+  div.providers {
+    margin-left: 20px;
+    p {
+      margin-top: 40px;
+      text-align: center;
     }
   }
 }

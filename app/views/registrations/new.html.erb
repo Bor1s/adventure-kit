@@ -1,13 +1,13 @@
-<main unresolved>
+<main unresolved style='overflow: hidden; transform: translateZ(0px);'>
   
-  <paper-shadow z='1' animated='true' id='login'>
+  <section id='login'>
     <h3>Вход</h3>
     <div horizontal layout>
-      <div>
+      <div class='login-form'>
         <login-form></login-form>
       </div>
 
-      <div>
+      <div class='providers'>
         <aside id="login-tip">Используйте ваш аккаунт в соцсетях для входа</aside>
         <p>
           <%= link_to "/login?provider=vkontakte" do %>
@@ -22,11 +22,11 @@
         </p>
       </div>
     </div>
-  </paper-shadow>
+  </section>
 
-  <paper-shadow z='1' animated='true' on-tap="{{registerTap}}" id='register'>
+  <section id='register'>
     <h3>Регистрация</h3>
     <register-form form_path="<%= registrations_path %>"></register-form>
-  </paper-shadow>
+  </section>
 
 </main>
