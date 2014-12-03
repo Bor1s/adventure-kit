@@ -1,7 +1,32 @@
-<div>
-  <%= link_to 'VK', '/login?provider=vkontakte' %>
-  <%= link_to 'GPlus', '/login?provider=gplus' %>
-</div>
+<main unresolved>
+  
+  <paper-shadow z='1' animated='true' id='login'>
+    <h3>Вход</h3>
+    <div horizontal layout>
+      <div>
+        <login-form></login-form>
+      </div>
 
-<login-form></login-form>
-<register-form form_path="<%= registrations_path %>"></register-form>
+      <div>
+        <aside id="login-tip">Используйте ваш аккаунт в соцсетях для входа</aside>
+        <p>
+          <%= link_to "/login?provider=vkontakte" do %>
+            <paper-button class="vk-link" raised><i class="fa fa-lg fa-vk"></i></paper-button>
+          <% end %>
+        </p>
+
+        <p>
+          <%= link_to "/login?provider=glpus" do %>
+            <paper-button class="gplus-link" raised><i class="fa fa-lg fa-google-plus"></i></paper-button>
+          <% end %>
+        </p>
+      </div>
+    </div>
+  </paper-shadow>
+
+  <paper-shadow z='1' animated='true' on-tap="{{registerTap}}" id='register'>
+    <h3>Регистрация</h3>
+    <register-form form_path="<%= registrations_path %>"></register-form>
+  </paper-shadow>
+
+</main>

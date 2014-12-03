@@ -2,21 +2,19 @@
   <template>
     <link rel="stylesheet" href="register-form.css.scss" />
 
-      <h2>Register</h2>
-
-      <paper-input-decorator id='email_decorator' floatingLabel label="Email">
+      <paper-input-decorator id='email_decorator' floatingLabel label="E-mail">
         <input id='email' type='email' value='{{emailValue}}' is="core-input">
       </paper-input-decorator>
 
-      <paper-input-decorator id='password_decorator' floatingLabel label="Password">
+      <paper-input-decorator id='password_decorator' floatingLabel label="Пароль">
         <input id='password' value='{{passwordValue}}' type='password' is="core-input">
       </paper-input-decorator>
 
-      <paper-input-decorator id='password_confirmation_decorator' floatingLabel label="Password Confirmation">
+      <paper-input-decorator id='password_confirmation_decorator' floatingLabel label="Пароль еще раз">
         <input id='password_confirmation' value='{{passwordConfirmValue}}' type='password' is="core-input">
       </paper-input-decorator>
 
-      <paper-button on-click='{{submitForm}}'>Register</paper-button>
+      <paper-button class='register' raised on-click='{{submitForm}}'>Зарегистрируйте меня</paper-button>
      
       <core-ajax id='form_sender' url='{{form_path}}' method='POST'
       handleAs='json' 
@@ -24,7 +22,6 @@
       on-core-response='{{handleSuccess}}'>
       </core-ajax>
   </template>
-
 
   <script src="register-form.js.coffee"></script>
 </polymer-element>

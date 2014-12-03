@@ -1,3 +1,52 @@
 // Place all the styles related to the registrations controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  background-color: #EEEEEE;
+}
+
+#login, #register {
+  padding: 20px;
+  background-color: #fff;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  min-height: 280px;
+  margin-top: 30px;
+
+  div {
+    div:first-child {
+      width: 250px;
+    }
+
+    div:last-child {
+      margin-left: 20px;
+      p {
+        margin-top: 40px;
+        text-align: center;
+      }
+    }
+  }
+}
+
+#register {
+  min-height: 340px;
+}
+
+#login-tip {
+  margin-top: -35px;
+  color: #9E9E9E;
+  border-left: 2px solid #EF6C00;
+  padding-left: 10px;
+}
+
+.vk-link {
+  background-color: #0277BD;
+  color: #fff;
+}
+
+.gplus-link {
+  background-color: #D84315;
+  color: #fff;
+}
