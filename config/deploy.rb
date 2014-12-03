@@ -45,7 +45,6 @@ set :keep_releases, 2
 
 set :bower_flags, '--quiet --config.interactive=false'
 set :bower_roles, :web
-set :bower_target_path, nil
 
 namespace :deploy do
 
