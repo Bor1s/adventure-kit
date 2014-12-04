@@ -1,32 +1,28 @@
-<main unresolved style='overflow: hidden; transform: translateZ(0px);'>
-  
-  <section id='login'>
-    <h3>Вход</h3>
-    <div horizontal layout>
-      <div class='login-form'>
-        <login-form></login-form>
-      </div>
-
-      <div class='providers'>
-        <aside id="login-tip">Используйте ваш аккаунт в соцсетях для входа</aside>
-        <p>
-          <%= link_to "/login?provider=vkontakte" do %>
-            <paper-button class="vk-link" raised><i class="fa fa-lg fa-vk"></i></paper-button>
-          <% end %>
-        </p>
-
-        <p>
-          <%= link_to "/login?provider=glpus" do %>
-            <paper-button class="gplus-link" raised><i class="fa fa-lg fa-google-plus"></i></paper-button>
-          <% end %>
-        </p>
-      </div>
+<section id='login'>
+  <h3>Вход</h3>
+  <div horizontal layout>
+    <div class='login-form'>
+      <login-form></login-form>
     </div>
-  </section>
 
-  <section id='register'>
-    <h3>Регистрация</h3>
-    <register-form form_path="<%= registrations_path %>"></register-form>
-  </section>
+    <div class='providers'>
+      <aside id="login-tip">Используйте ваш аккаунт в соцсетях для входа</aside>
+      <p>
+        <%= link_to "/login?provider=vkontakte" do %>
+          <paper-button class="vk-link" raised><i class="fa fa-lg fa-vk"></i></paper-button>
+        <% end %>
+      </p>
 
-</main>
+      <p>
+        <%= link_to "/login?provider=glpus" do %>
+          <paper-button class="gplus-link" raised><i class="fa fa-lg fa-google-plus"></i></paper-button>
+        <% end %>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id='register'>
+  <h3>Регистрация</h3>
+  <register-form form_path="<%= registrations_path %>"></register-form>
+</section>

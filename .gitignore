@@ -20,3 +20,4 @@
 .DS_Store
 sunspot-solr.pid
 .ruby-version
+vendor/assets/components/
