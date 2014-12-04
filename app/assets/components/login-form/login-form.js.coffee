@@ -30,7 +30,7 @@ Polymer 'login-form',
     this.isFormValid()
 
   handleSuccess: (e, response)->
-    window.location.assign('/events')
+    window.location.assign(response.response.redirect_path)
 
   _cleanupOldErrors: ->
     this.$.email.setCustomValidity('')

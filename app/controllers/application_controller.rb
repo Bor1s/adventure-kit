@@ -24,7 +24,10 @@ class ApplicationController < ActionController::Base
   private
 
   def authenticate
-    warden.authenticated? || redirect_to(new_registration_path)
+    unless warden.authenticated?
+      session[:request_path] = request.env['REQUEST_URI']
+      redirect_to(new_registration_path)
+    end
   end
 
   def warden

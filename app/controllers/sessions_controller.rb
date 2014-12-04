@@ -5,11 +5,11 @@ class SessionsController < ApplicationController
   def authorize
     if request.post?
       warden.authenticate!(:plain)
-      render json: {account_id: current_user_profile.id}
+      render json: {redirect_path: (session[:request_path] || events_path)}
     else
       add_account(request.env['omniauth.auth']) if user_signed_in?
       warden.authenticate!
-      redirect_to events_path and return
+      redirect_to (session[:request_path] || events_path) and return
     end
   end
 
