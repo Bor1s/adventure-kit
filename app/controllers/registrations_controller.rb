@@ -14,7 +14,7 @@ class RegistrationsController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       warden.set_user(@user.accounts.first)
-      render json: { account_id: current_user_profile.id }
+      render json: { success: true }
     else
       render json: { success: false, errors: @user.accounts.first.errors.messages }, status: 422
     end

@@ -65,10 +65,10 @@ RSpec.describe SessionsController do
   end
 
   describe '#authorize with plain authentification' do
-    it 'is successful' do
+    it 'is valid' do
       allow(controller).to receive(:warden) { double('Warden', 'authenticate!' => true, 'authenticated?' => true) }
-      post :authorize, {email: 'gir@gmail.com', password: '12345678'}
-      expect(response).to redirect_to(events_path)
+      post :authorize, {accounts_attributes: {'0' => {email: 'gir@gmail.com', password: '12345678', password_confirmation: '12345678' }}}
+      expect(JSON.parse(response.body)).to eq({'redirect_path' => '/events'})
     end
   end
 end
