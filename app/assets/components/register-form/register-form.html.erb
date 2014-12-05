@@ -14,7 +14,7 @@
         <input id='password_confirmation' value='{{passwordConfirmValue}}' type='password' is="core-input">
       </paper-input-decorator>
 
-      <paper-button class='register' raised on-click='{{submitForm}}'>Зарегистрируйте меня</paper-button>
+      <paper-button class='register' raised recenteringTouch='true' on-click='{{submitForm}}'>Зарегистрируйте меня</paper-button>
      
       <core-ajax id='form_sender' url='{{form_path}}' method='POST'
       handleAs='json' 
@@ -22,6 +22,5 @@
       on-core-response='{{handleSuccess}}'>
       </core-ajax>
   </template>
-
   <script src="register-form.js.coffee"></script>
 </polymer-element>

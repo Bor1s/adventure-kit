@@ -10,7 +10,7 @@
     <input id='password' value='{{passwordValue}}' type='password' is="core-input">
     </paper-input-decorator>
 
-    <paper-button class='enter' raised on-click='{{submitLoginForm}}'>Войти</paper-button>
+    <paper-button class='enter' raised recenteringTouch='true' on-click='{{submitLoginForm}}'>Войти</paper-button>
 
     <core-ajax id='form_sender' url='/login' method='POST'
     handleAs='json' 
@@ -21,5 +21,4 @@
   </template>
 
   <script src="login-form.js.coffee"></script>
-
 </polymer-element>

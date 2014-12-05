@@ -15,18 +15,12 @@ body {
   width: 40%;
   min-height: 220px;
   margin-top: 30px;
+}
 
-  div.login-form {
-    width: 250px;
-  }
-
-  div.providers {
-    margin-left: 20px;
-    p {
-      margin-top: 40px;
-      text-align: center;
-    }
-  }
+#providers {
+  position: relative;
+  top: -30px;
+  float: right;
 }
 
 #register {
