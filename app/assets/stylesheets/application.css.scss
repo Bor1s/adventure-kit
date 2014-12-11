@@ -9,10 +9,18 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require imports
- *= require_self
- *= require_tree .
- *= require select2
- *= require select2-bootstrap
- *= require jquery.datetimepicker
- *= require_tree ./responsive
+ * require_self
+ * require_tree .
+ * require select2
+ * require select2-bootstrap
+ * require jquery.datetimepicker
+ * require_tree ./responsive
+
+ *= require "registrations"
+ *= require "game_dashboard"
  */
+
+html,body {
+  font-family: 'RobotoDraft', sans-serif;
+  background-color: #fff;
+}

@@ -2,45 +2,21 @@
 <html>
 <head>
   <title><%= yield :title %></title>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
 
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-
-  <!-- Optional theme -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= favicon_link_tag %>
+  <link href="/assets/paper-shadow/paper-shadow.css" rel="stylesheet" shim-shadowdom>
+  <link href="/assets/core-icon/core-icon.css" rel="stylesheet" shim-shadowdom>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+
+  <%= html_import_tag "application", "data-turbolinks-track" => true %>
+
   <%= csrf_meta_tags %>
 
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </head>
-<body>
-
-<%= render 'navigation_bar' if user_signed_in? %>
-
-<main class='container'>
-  <div class='row'>
-
-    <div class='col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-<%= content_for?(:sidebar) ? '8' : '12' %> col-md-offset-0'>
-
-      <%= render 'alerts' %>
-
-      <%= yield %>
-    </div>
-
-    <% if content_for? :sidebar %>
-      <div class='col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-3 col-md-offset-1'>
-        <%= yield :sidebar %>
-      </div>
-    <% end %>
-  </div>
-</main>
-
-<%= render 'footer' if user_signed_in? %>
-
+<body unresolved fullbleed>
+  <%= yield %>
 </body>
 </html>

@@ -2,6 +2,8 @@ require 'sidekiq/web'
 require 'admin_constraint'
 
 PlayhardCore::Application.routes.draw do
+  get '/dashboard' => 'game_dashboard#index'
+
   get '/login' => 'sessions#authorize'
   post '/login' => 'sessions#authorize'
   get '/auth/:provider/callback', to: 'sessions#authorize'

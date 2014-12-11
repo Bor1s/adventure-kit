@@ -55,6 +55,10 @@ class User
     comment.user == self
   end
 
+  def player_subscriptions
+    subscriptions.where(user_right: Subscription::RIGHTS[:player])
+  end
+
   def mastered_subscriptions
     subscriptions.where(user_right: Subscription::RIGHTS[:master])
   end
