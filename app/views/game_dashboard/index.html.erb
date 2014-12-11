@@ -7,9 +7,11 @@
     </core-toolbar>
 
     <template is='auto-binding'>
-      <template repeat='{{game in games}}'>
-        <div layout horizontal>{{game.description}}</div>
-      </template>
+      <div layout horizontal wrap>
+        <template repeat='{{game in games}}'>
+          <paper-game data='{{game}}'></paper-game>
+        </template>
+      </div>
       <game-service games='{{games}}' url="<%= events_path %>"></game-service>
     </template>
 

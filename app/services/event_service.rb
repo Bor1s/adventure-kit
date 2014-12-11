@@ -17,7 +17,7 @@ class EventService
   end
 
   def self.filtered_events(user, filter, page)
-    criteria = Event
+    criteria = Event.include
 
     filter.each do |value|
       criteria = case value

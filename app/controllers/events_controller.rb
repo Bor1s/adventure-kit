@@ -8,7 +8,7 @@ class EventsController < ApplicationController
 
     respond_with do |format|
       format.json do
-        render json: {games: @events}
+        render json: {games: @events.as_json(include: :game)}
       end
     end
   end

@@ -1,0 +1,14 @@
+<polymer-element name='paper-game' attributes='data'>
+  <template>
+    <link rel="stylesheet" href="paper-game.css.scss" />
+
+    <paper-shadow z='1'>
+      <div>{{data.game.title}}</div>
+      <img src='{{data.game.poster.medium.url}}' />
+    </paper-shadow>
+
+  </template>
+
+
+  <script src="paper-game.js.coffee"></script>
+</polymer-element>

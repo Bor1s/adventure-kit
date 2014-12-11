@@ -37,5 +37,4 @@ class Event
     data[:ctext] = [options[:title] || title, options[:description] || self.game.description].join(' ')
     data
   end
-
 end
