@@ -3,12 +3,20 @@
     <link rel="stylesheet" href="paper-game.css.scss" />
 
     <paper-shadow z='1'>
-      <div>{{data.game.title}}</div>
-      <img src='{{data.game.poster.medium.url}}' />
+
+      <header layout horizontal center center-justified>
+        <div>{{data.title}}</div>
+      </header>
+      <core-image src='{{data.poster.poster.slide.url}}' sizing='cover'></core-image>
+
+      <section>
+        <p><core-icon icon='event'></core-icon> {{data.beginning_at}}</p>
+        <p>{{data.short_description}}</p>
+      </section>
+
+      <paper-ripple fit></paper-ripple>
     </paper-shadow>
 
   </template>
-
-
   <script src="paper-game.js.coffee"></script>
 </polymer-element>

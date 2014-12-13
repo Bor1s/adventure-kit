@@ -11,12 +11,10 @@ gem 'jbuilder', '~> 1.2'
 gem 'font-awesome-sass', '~> 4.2.0'
 gem 'warden'
 gem 'bcrypt'
+gem 'active_model_serializers'
 
 #Polymer Project
 gem 'emcee'
-#gem 'polymer-rails'
-#gem 'polymer-core-rails'
-#gem 'polymer-paper-rails'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

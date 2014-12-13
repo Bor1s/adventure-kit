@@ -17,7 +17,7 @@ Polymer 'game-service',
 
   handleSuccess: (e, data)->
     #Bind games back to view
-    this.games = data.response.games
+    this.games = data.response.events
 
   sendData: (optionValues)->
     this.optionsToSend = optionValues
