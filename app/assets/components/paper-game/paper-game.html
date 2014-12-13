@@ -3,11 +3,11 @@
     <link rel="stylesheet" href="paper-game.css.scss" />
 
     <paper-shadow z='1'>
+      <core-image src='{{data.poster.poster.slide.url}}' sizing='cover'></core-image>
 
       <header layout horizontal center center-justified>
         <div>{{data.title}}</div>
       </header>
-      <core-image src='{{data.poster.poster.slide.url}}' sizing='cover'></core-image>
 
       <section>
         <p><core-icon icon='event'></core-icon> {{data.beginning_at}}</p>

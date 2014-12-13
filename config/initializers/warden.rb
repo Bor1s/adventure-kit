@@ -12,14 +12,13 @@ Warden::Manager.serialize_from_session do |id|
 end
 
 # Strategies
-
 Warden::Strategies.add(:plain) do
 
   def authenticate!
     return fail_with_errors!([:email], 'warden.empty_email') unless params['email'].present?
     return fail_with_errors!([:password], 'warden.empty_password') unless params['password'].present?
 
-    account = Account.where(email: params['email'], provider: nil).first #Searching for plain account
+    account = PlainAccount.where(email: params['email']).first #Searching for plain account
 
     return fail_with_errors!([:email], 'warden.no_user_found') unless account.present?
 

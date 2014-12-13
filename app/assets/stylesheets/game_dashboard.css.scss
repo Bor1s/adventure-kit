@@ -2,10 +2,22 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#game-drawer {
-  background-color: #fff;
+[main] {
+  color: #fff;
+
+  core-toolbar {
+    background-color: #757575;
+  }
 }
 
-#game-main {
+[drawer] {
+  background-color: #FFF;
 
+  core-toolbar {
+    background-color: #757575;
+  }
+
+  section {
+    padding-left: 8px;
+  }
 }

@@ -7,22 +7,22 @@ class RegistrationsController < ApplicationController
 
   def new
     @user = User.new
-    @account = @user.accounts.build
+    @account = @user.build_plain_account
   end
 
   def create
     @user = User.new(user_params)
     if @user.save
-      warden.set_user(@user.accounts.first)
+      warden.set_user(@user.plain_account)
       render json: { success: true }
     else
-      render json: { success: false, errors: @user.accounts.first.errors.messages }, status: 422
+      render json: { success: false, errors: @user.plain_account.errors.messages }, status: 422
     end
   end
 
   private
 
   def user_params
-    params.require(:user).permit(accounts_attributes: [:password, :email, :password_confirmation])
+    params.require(:user).permit(plain_account_attributes: [:password, :email, :password_confirmation])
   end
 end

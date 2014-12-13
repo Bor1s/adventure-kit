@@ -3,22 +3,20 @@ class User
   include Mongoid::Timestamps
   ROLES = { admin: 1, master: 2, player: 3}
 
-  # Mandatory fields
+  # General settings to be used in all user's accounts
   field :role, type: Integer, default: ROLES[:player]
   field :want_to_be_master, type: Mongoid::Boolean
   field :current_timezone_offset, type: Integer, default: 0
-
-  #User settings
-  field :nickname, type: String
 
   mount_uploader :avatar, AvatarUploader
 
   has_and_belongs_to_many :tags
   has_many :accounts, dependent: :delete
+  has_one :plain_account, dependent: :delete
   has_many :subscriptions, dependent: :delete
   has_many :comments, dependent: :delete
 
-  accepts_nested_attributes_for :accounts
+  accepts_nested_attributes_for :plain_account
 
   scope :masters, -> { where(:role.in => [1,2]) }
   scope :players, -> { where(role: 3) }

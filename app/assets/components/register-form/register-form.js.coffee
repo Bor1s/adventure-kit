@@ -20,9 +20,9 @@ Polymer 'register-form',
   sendForm: ->
     d = new FormData()
     d.append('authenticity_token', this.token)
-    d.append('user[accounts_attributes][0][email]', this.emailValue)
-    d.append('user[accounts_attributes][0][password]', this.passwordValue)
-    d.append('user[accounts_attributes][0][password_confirmation]', this.passwordConfirmValue)
+    d.append('user[plain_account_attributes][email]', this.emailValue)
+    d.append('user[plain_account_attributes][password]', this.passwordValue)
+    d.append('user[plain_account_attributes][password_confirmation]', this.passwordConfirmValue)
 
     this.$.form_sender.headers = {"Accept": "application/json"}
     this.$.form_sender.contentType = null
@@ -42,7 +42,7 @@ Polymer 'register-form',
     this.isFormValid()
 
   handleSuccess: (e, response)->
-    window.location.assign('/events')
+    window.location.assign('/dashboard')
 
   _cleanupOldErrors: ->
     this.$.email.setCustomValidity('')

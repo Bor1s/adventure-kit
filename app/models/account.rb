@@ -1,29 +1,19 @@
 class Account
   include Mongoid::Document
   include Mongoid::Timestamps
-  include ActiveModel::SecurePassword
-
-  EMAIL_REGEX = /([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})/i
-
-  attr_reader :password_confirmation
 
   # Mandatory fields
   field :email, type: String
   field :provider, type: String
   field :uid, type: String
   field :name, type: String
+  field :nickname, type: String
 
   #Additional fields
   field :avatar, type: String
   field :avatar_medium, type: String
   field :avatar_original, type: String
   field :social_network_link, type: String
-
-  field :password_digest
-
-  has_secure_password validations: false
-  validates :password, presence: true, length: {minimum: 8, maximum: 16}, confirmation: true, if: Proc.new {|a| a.provider.nil?}
-  validates :email, presence: true, uniqueness: true, format: { with: EMAIL_REGEX }, if: Proc.new {|a| a.provider.nil?} #If plain account
 
   belongs_to :user
 
