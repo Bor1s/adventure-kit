@@ -17,24 +17,24 @@ RSpec.describe RegistrationsController, :type => :controller do
       it 'with valid parameters' do
         allow_any_instance_of(User).to receive(:save) { true }
         allow(request.env['warden']).to receive(:set_user) { true }
-        post :create, {user: {accounts_attributes: {'0' => {email: 'some@gmail.com', password: '12345678', password_confirmation: '12345678'}}}}
+        post :create, {user: {plain_account_attributes: {email: 'some@gmail.com', password: '12345678', password_confirmation: '12345678'}}}
         expect(JSON.parse(response.body)).to eq({'success' => true})
       end
     end
 
     context 'renders error' do
       it 'email not provided' do
-        post :create, {user: {accounts_attributes: {'0' => {email: '', password: '12345678', password_confirmation: '12345678'}}}}
+        post :create, {user: {plain_account_attributes: {email: '', password: '12345678', password_confirmation: '12345678'}}}
         expect(JSON.parse(response.body)['errors']).to include('email')
       end
 
       it 'password not provided' do
-        post :create, {user: {accounts_attributes: {'0' => {email: 'boo@boo.com', password: '', password_confirmation: ''}}}}
+        post :create, {user: {plain_account_attributes: {email: 'boo@boo.com', password: '', password_confirmation: ''}}}
         expect(JSON.parse(response.body)['errors']).to include('password')
       end
 
       it 'password_confirmation not provided' do
-        post :create, {user: {accounts_attributes: {'0' => {email: 'boo@boo.com', password: '12345', password_confirmation: ''}}}}
+        post :create, {user: {plain_account_attributes: {email: 'boo@boo.com', password: '12345', password_confirmation: ''}}}
         expect(JSON.parse(response.body)['errors']).to include('password_confirmation')
       end
     end

@@ -23,19 +23,15 @@ describe EventService do
 
   context 'with :f' do
     it 'containing :all returns all events' do
-      expect(subject.call(f: 'all').count).to eq 6
-    end
-
-    it 'containing :today returns events for today' do
-      expect(subject.call(f: 'today').count).to eq 2
+      expect(subject.call(f: ['all']).count).to eq 6
     end
 
     it 'containing :upcoming returns events started from tomorrow' do
-      expect(subject.call(f: 'upcoming').count).to eq 5
+      expect(subject.call(f: ['upcoming']).count).to eq 5
     end
 
-    it 'containing :finished returns events finished before today' do
-      expect(subject.call(f: 'finished').count).to eq 1
+    it 'containing :past returns events finished before today' do
+      expect(subject.call(f: ['past']).count).to eq 1
     end
   end
 end

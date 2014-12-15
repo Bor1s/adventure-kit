@@ -20,7 +20,7 @@ describe LocationsController do
 
     it '#index via json returns nearby locations' do
       get :index, {lat: 0.0, lng: 0.0, format: :json}
-      expect(JSON.parse(response.body).count).to eq 3
+      expect(JSON.parse(response.body)['locations'].count).to eq 3
     end
   end
 

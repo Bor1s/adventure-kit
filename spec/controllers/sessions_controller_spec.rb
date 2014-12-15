@@ -68,7 +68,7 @@ RSpec.describe SessionsController do
     it 'is valid' do
       allow(controller).to receive(:warden) { double('Warden', 'authenticate!' => true, 'authenticated?' => true) }
       post :authorize, {accounts_attributes: {'0' => {email: 'gir@gmail.com', password: '12345678', password_confirmation: '12345678' }}}
-      expect(JSON.parse(response.body)).to eq({'redirect_path' => '/events'})
+      expect(JSON.parse(response.body)).to eq({'redirect_path' => '/dashboard'})
     end
   end
 end
