@@ -32,6 +32,17 @@
     }
   }
 
+
+  // Firefox
+  paper-radio-button #ink[checked] {
+    color: #FF9800;
+  }
+
+  paper-radio-button #onRadio {
+    background-color: #FF9800;
+  }
+
+  // Chrome
   paper-radio-button::shadow #ink[checked] {
     color: #FF9800;
   }
