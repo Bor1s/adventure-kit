@@ -40,4 +40,15 @@ module ApplicationHelper
   def activity(state, default_state)
     'active' if (state == default_state and params[:f].blank?) || (params[:f] == state)
   end
+
+  def path_to_current_user_profile
+    case
+    when current_user.master?
+      edit_master_profile_path
+    when current_user.player?
+      edit_player_profile_path
+    when current_user.admin?
+      edit_admin_profile_path
+    end
+  end
 end

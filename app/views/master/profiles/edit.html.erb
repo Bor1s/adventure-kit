@@ -20,10 +20,6 @@
     </div>
 
     <div class="form-group">
-      <%= f.text_field :nickname, class: 'form-control input-sm', placeholder: 'My nickname' %>
-    </div>
-
-    <div class="form-group">
       <%= f.hidden_field :tag_ids, id: 'tags', data: {pre: @profile.tags.tokenize}, style: 'min-width: 390px; width: auto; font-size: 12px;' %>
     </div>
 
