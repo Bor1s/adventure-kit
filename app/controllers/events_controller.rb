@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :authenticate
-  respond_to :html, :json
+  respond_to :json
 
   def index
     authorize! :read, Event

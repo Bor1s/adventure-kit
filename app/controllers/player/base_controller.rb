@@ -6,6 +6,6 @@ class Player::BaseController < ApplicationController
   private
 
   def verify_player
-    redirect_to root_path unless current_user.player?
+    raise CanCan::AccessDenied unless current_user.player?
   end
 end
