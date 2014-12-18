@@ -2,7 +2,7 @@ class EventSearchService
   attr_reader :query, :page, :events
 
   def initialize(events=nil, query=nil, page=1)
-    @events = events.presence || Event
+    @events = events || Event
     @query = query.presence
     @page = page
   end
