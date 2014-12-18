@@ -4,7 +4,10 @@ class EventsController < ApplicationController
 
   def index
     authorize! :read, Event
-    @events = EventService.call(user: current_user, q: params[:q], f: filters, page: params[:page])
+    event_filter_service = EventFilterService.new(current_user, filters)
+    filtered_events = event_filter_service.filter
+    event_search_service = EventSearchService.new(filtered_events, params[:q], params[:page])
+    @events = event_search_service.search
 
     respond_with do |format|
       format.json do

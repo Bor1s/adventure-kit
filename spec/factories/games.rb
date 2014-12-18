@@ -18,6 +18,10 @@ FactoryGirl.define do
       events_attributes {[FactoryGirl.attributes_for(:today_event)]}
     end
 
+    factory :game_with_upcoming_events do
+      events_attributes {[FactoryGirl.attributes_for(:event)]}
+    end
+
     factory :game_with_finished_events do
       events_attributes {[FactoryGirl.attributes_for(:finished_event)]}
     end
