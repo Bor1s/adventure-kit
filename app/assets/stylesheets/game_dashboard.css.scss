@@ -1,11 +1,14 @@
 // Place all the styles related to the game_dashboard controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'common';
 
 [main] {
+  background-color: $light-grey;
+
   core-toolbar {
-    color: #fff;
-    background-color: #616161;
+    color: $white;
+    background-color: $grey;
   }
 
   #game_container {
@@ -14,11 +17,11 @@
 }
 
 [drawer] {
-  background-color: #FFF;
+  background-color: $white;
 
   core-toolbar {
-    color: #fff;
-    background-color: #616161;
+    color: $white;
+    background-color: $grey;
   }
 
   section {
@@ -26,29 +29,29 @@
   }
 
   a {
-    color: #fff;
+    color: $white;
     &:hover {
-      color: #FF9800;
+      color: $yellow;
     }
   }
 
 
   // Firefox
   paper-radio-button #ink[checked] {
-    color: #FF9800;
+    color: $yellow;
   }
 
   paper-radio-button #onRadio {
-    background-color: #FF9800;
+    background-color: $yellow;
   }
 
   // Chrome
   paper-radio-button::shadow #ink[checked] {
-    color: #FF9800;
+    color: $yellow;
   }
 
   paper-radio-button::shadow #onRadio {
-    background-color: #FF9800;
+    background-color: $yellow;
   }
 
 }
@@ -68,5 +71,5 @@
 }
 
 .white-ripple {
-  color: #FFF;
+  color: $white;
 }

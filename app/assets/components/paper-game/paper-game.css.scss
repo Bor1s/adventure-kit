@@ -1,8 +1,15 @@
+@import 'common';
+
 :host {
   width: 350px;
   height: 300px;
   margin-top: 8px;
   margin-left: 8px;
+
+  .small {
+    width: 18px;
+    height: 18px;
+  }
 
   paper-shadow {
     width: inherit;
@@ -11,13 +18,12 @@
 
     header {
       text-align: center;
-      background-color: #FF9800;
-      opacity: 0.9;
+      background-color: rgba(0,0,0, 0.4);
       position: absolute;
       top: 0px;
       width: 100%;
       height: 28px;
-      color: #fff;
+      color: $white;
     }
 
     core-image {
@@ -35,7 +41,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
       background-color: rgba(0,0,0, 0.4);
-      color: #fff;
+      color: $white;
 
       p {
         margin: 8px;
