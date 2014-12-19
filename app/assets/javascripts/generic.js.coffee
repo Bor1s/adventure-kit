@@ -54,19 +54,19 @@ cocoonEvents = ->
 
 # Page load
 $ ->
-  $('img').tooltip()
-  initTokenInput()
-  initPicker()
-  initCocoonPicker()
-  checkLastEventCannotBeRemoved()
-  cocoonEvents()
+  #$('img').tooltip()
+  #initTokenInput()
+  #initPicker()
+  #initCocoonPicker()
+  #checkLastEventCannotBeRemoved()
+  #cocoonEvents()
 
 # Turbolinks ajax body reload
 $(document).on 'page:load', ->
-  $('img').tooltip()
-  initTokenInput()
-  initPicker()
-  initCocoonPicker()
-  checkLastEventCannotBeRemoved()
-  cocoonEvents()
+  #$('img').tooltip()
+  #initTokenInput()
+  #initPicker()
+  #initCocoonPicker()
+  #checkLastEventCannotBeRemoved()
+  #cocoonEvents()
 

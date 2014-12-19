@@ -1,4 +1,4 @@
-<polymer-element name="register-form" attributes='form_path'>
+<polymer-element layout vertical name="register-form" attributes='form_path'>
   <template>
     <link rel="stylesheet" href="register-form.css.scss" />
 
@@ -14,7 +14,7 @@
         <input id='password_confirmation' value='{{passwordConfirmValue}}' type='password' is="core-input">
       </paper-input-decorator>
 
-      <paper-button class='register' raised recenteringTouch='true' on-click='{{submitForm}}'>Зарегистрируйте меня</paper-button>
+      <paper-button class='register' recenteringTouch='true' on-click='{{submitForm}}'>Зарегистрируйте меня</paper-button>
      
       <core-ajax id='form_sender' url='{{form_path}}' method='POST'
       handleAs='json' 
@@ -25,4 +25,5 @@
   </template>
 
   <script src="register-form.js.coffee"></script>
+
 </polymer-element>

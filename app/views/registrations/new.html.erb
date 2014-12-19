@@ -1,21 +1,31 @@
-<paper-shadow z='1' id='login'>
-  <h3>Вход</h3>
-    <div class='login-form'>
-      <login-form></login-form>
-    </div>
+<div id='login' horizontal layout center-justified>
+  <p self-center>Вход</p>
+</div>
 
-    <div id='providers' horizontal layout>
+<core-collapse id='login-collapse' opened>
+  <login-form></login-form>
+
+  <aside>... или войдите через</aside>
+
+  <div id='providers' layout horizontal>
+    <paper-button flex noink>
       <%= link_to "/login?provider=vkontakte" do %>
-        <paper-button class="vk-link" raised><i class="fa fa-lg fa-vk"></i></paper-button>
+        <i class="fa fa-3x fa-vk"></i>
       <% end %>
+    </paper-button>
 
+    <paper-button flex noink> 
       <%= link_to "/login?provider=glpus" do %>
-        <paper-button class="gplus-link" raised><i class="fa fa-lg fa-google-plus"></i></paper-button>
+        <i class="fa fa-3x fa-google-plus"></i>
       <% end %>
-    </div>
-</paper-shadow>
+    </paper-button>
+  </div>
+</core-collapse>
 
-<paper-shadow z='1' id='register'>
-  <h3>Регистрация</h3>
+<div id='register' layout horizontal center-justified>
+  <p self-center>Регистрация</p>
+</div>
+
+<core-collapse id='register-collapse'>
   <register-form form_path="<%= registrations_path %>"></register-form>
-</paper-shadow>
+</core-collapse>

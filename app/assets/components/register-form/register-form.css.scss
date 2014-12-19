@@ -1,11 +1,59 @@
+$_white: #FFF;
+$_grey: #616161;
+$_light_grey: #BDBDBD;
+$_yellow: #FBC02D;
+$_skyline: #69D2E7;
+
 :host {
   display: block;
+  padding-left: 18px;
+  padding-right: 18px;
+
+  paper-input-decorator /deep/ .label-text,
+  paper-input-decorator /deep/ .error {
+      /* inline label,  floating label, error message and error icon color when the input is unfocused */
+      color: $_light_grey;
+  }
+
+  paper-input-decorator /deep/ ::-webkit-input-placeholder {
+      /* platform specific rules for placeholder text */
+      color: $_light_grey;
+  }
+  paper-input-decorator /deep/ ::-moz-placeholder {
+      color: $_light_grey;
+  }
+  paper-input-decorator /deep/ :-ms-input-placeholder {
+      color: $_light_grey;
+  }
+
+  paper-input-decorator /deep/ .unfocused-underline {
+      /* line color when the input is unfocused */
+      background-color: $_light_grey;
+  }
+
+  paper-input-decorator[focused] /deep/ .floated-label .label-text {
+    /* floating label color when the input is focused */
+    color: $_white;
+  }
+
+  paper-input-decorator /deep/ .focused-underline {
+      /* line color when the input is focused */
+      background-color: $_white;
+  }
+
+  paper-input-decorator /deep/ .cursor {
+      /* floating cursor when the input is focused */
+      background-color: $_white;
+  }
 }
 
 .register::shadow #ripple {
-  color: #BDBDBD;
+  color: $_white;
 }
 
 .register {
-  margin-top: 29px;
+  background-color: rgba($_light_grey, 0.8);
+  color: $_grey;
+  margin-top: 28px;
+  margin-bottom: 28px;
 }

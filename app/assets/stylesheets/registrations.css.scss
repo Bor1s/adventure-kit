@@ -2,44 +2,57 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import 'common';
+
 body {
-  background-color: #EEEEEE;
+  margin: 0;
+  padding: 0;
+  background-color: $light-grey;
+  background: url('/assets/login.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
-#login, #register {
-  position: relative;
-  padding: 20px;
-  background-color: #fff;
+#register, #login {
+  cursor: pointer;
+  p {
+    font-size: 20px;
+  }
+}
+
+#login, #login-collapse, #register, #register-collapse {
+  background-color: $grey;
+  color: $white;
   margin-left: auto;
   margin-right: auto;
-  width: 40%;
-  min-height: 220px;
-  margin-top: 30px;
-}
-
-#providers {
-  position: relative;
-  top: -30px;
-  float: right;
+  width: 90%;
+  height: 48px;
 }
 
 #register {
-  min-height: 270px;
+  border-top: 1px solid #9E9E9E;
 }
 
-#login-tip {
-  margin-top: -35px;
-  color: #9E9E9E;
-  border-left: 2px solid #EF6C00;
-  padding-left: 10px;
+#login-collapse {
+  background-color: rgba($grey, 0.8);
+  aside {
+    text-align: center;
+    margin: 48px auto 28px auto;
+  }
 }
 
-.vk-link {
-  background-color: #0277BD;
-  color: #fff;
+#register-collapse {
+  background-color: rgba($grey, 0.8);
 }
 
-.gplus-link {
-  background-color: #D84315;
-  color: #fff;
+#providers {
+  margin-bottom: 48px;
+  a {
+    color: $white;
+    &:hover {
+      color: $skyline;
+    }
+  }
 }
