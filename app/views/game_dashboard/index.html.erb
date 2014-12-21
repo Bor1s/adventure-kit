@@ -12,6 +12,13 @@
           <paper-game data='{{game}}'></paper-game>
         </template>
       </div>
+
+      <template if='{{games.length == 0}}'>
+        <section layout horizontal center center-justified class='no-games'>
+          <i class='fa fa-5x fa-gamepad'></i>
+        </section>
+      </template>
+
       <game-service games='{{games}}' url="<%= events_path %>"></game-service>
     </template>
 
@@ -34,22 +41,22 @@
     <section>
       <h4>Вид игровых кампаний</h4>
       <paper-radio-group selected="realtime">
-        <paper-radio-button name="realtime" label='Realtime игры'></paper-radio-button>
-        <paper-radio-button name="online" label='Online игры'></paper-radio-button>
+        <paper-radio-button name="realtime" label='Живые кампании'></paper-radio-button>
+        <paper-radio-button name="online" label='Online кампании'></paper-radio-button>
       </paper-radio-group>
     </section>
 
     <section>
-      <h4>Фильтр игровых кампаний</h4>
+      <h4>Мои игровые кампаний</h4>
       <paper-radio-group selected='my'>
-        <paper-radio-button name='all' label='Все кампании'></paper-radio-button>
-        <paper-radio-button name='my' label='Кампании, в которых я играю'></paper-radio-button>
-        <paper-radio-button name='owned' label='Созданные мною кампании'></paper-radio-button>
+        <paper-radio-button name='my' label='Я играю'></paper-radio-button>
+        <paper-radio-button name='owned' label='Я мастерю'></paper-radio-button>
+        <paper-radio-button name='all' label='Все вместе'></paper-radio-button>
       </paper-radio-group>
     </section>
 
     <section>
-      <h4>Временной промежуток</h4>
+      <h4>Время проведения</h4>
       <paper-radio-group selected='upcoming'>
         <paper-radio-button name='upcoming' label='Предстоящие'></paper-radio-button>
         <paper-radio-button name='past' label='Прошедшие'></paper-radio-button>
