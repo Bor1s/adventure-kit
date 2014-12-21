@@ -29,8 +29,14 @@
     background-color: $grey;
   }
 
-  section {
+  aside, section {
     padding-left: 8px;
+  }
+
+  section {
+    border-bottom: 1px solid $light-grey;
+    margin-bottom: 18px;
+    padding-bottom: 18px;
   }
 
   a {
