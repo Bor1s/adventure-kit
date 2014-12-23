@@ -10,6 +10,7 @@ Polymer 'game-service',
   domReady: ->
     # Default filter to send on page load
     this.optionsToSend = 'my,realtime,upcoming'
+    this.$.dispatcher.go()
 
   handleError: (e, error, xhr)->
     data = JSON.parse(error.xhr.responseText)
@@ -21,6 +22,7 @@ Polymer 'game-service',
 
   sendData: (optionValues)->
     this.optionsToSend = optionValues
+    this.$.dispatcher.go()
 
   fetchGames: (e, game_drawer)->
     # Get values from all 'checked' radio buttons and push them into array

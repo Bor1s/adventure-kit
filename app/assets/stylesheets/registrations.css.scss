@@ -7,12 +7,11 @@
 .login-body {
   margin: 0;
   padding: 0;
-  background-color: $light-grey;
-  background: url('/assets/login.jpg') no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  background: url('/assets/dices.png') no-repeat right center fixed;
+  -webkit-background-size: 30%;
+  -moz-background-size: 30%;
+  -o-background-size: 30%;
+  background-size: 30%;
 }
 
 #register, #login {
