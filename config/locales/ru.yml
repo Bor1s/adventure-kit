@@ -144,7 +144,7 @@ ru:
       recruits: 'Рекруты'
       top_games: 'Топ игр'
       no_recent_users: 'Нет новых рекрутов'
-      no_games: 'Игры не найдены'
+      no_games: 'Таких игровых кампаний нет.'
     event:
       go_to_game: 'перейти к игре'
       completed: 'Завершено'

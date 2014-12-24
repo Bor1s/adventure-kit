@@ -20,6 +20,9 @@ Polymer 'game-service',
     #Bind games back to view
     this.games = data.response.events
 
+    # Show toast if no games found
+    document.querySelector('#no_games_toast').show() unless data.response.events.length > 0
+
   sendData: (optionValues)->
     this.optionsToSend = optionValues
     this.$.dispatcher.go()

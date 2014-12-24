@@ -20,6 +20,7 @@
       </template>
 
       <game-service games='{{games}}' url="<%= events_path %>"></game-service>
+      <paper-toast id='no_games_toast' text='<%= t('events.index.no_games') %>'></paper-toast>
     </template>
 
   </core-header-panel>

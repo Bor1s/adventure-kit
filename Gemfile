@@ -14,7 +14,7 @@ gem 'bcrypt'
 gem 'active_model_serializers'
 
 #Polymer Project
-gem 'emcee'
+gem 'emcee', github: 'Bor1s/emcee', branch: 'dev'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
