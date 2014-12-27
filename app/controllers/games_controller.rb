@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   before_action :authenticate
-  respond_to :html
+  respond_to :json, :html
 
   before_filter :extract_optional_params, only: [:new]
 
@@ -18,12 +18,15 @@ class GamesController < ApplicationController
   end
 
   def create
-    @game = Game.create normalize_params(game_params)
-    if @game.valid?
-      @game.subscribe(current_user, :master)
-      location = edit_game_path(@game)
+    step = params[:step].to_i
+    service = GameWizardService.new(game_params)
+    service.step = step
+    if service.valid?
+      service.persist_step
+      render json: {success: true, cache_key: service.cache_key}
+    else
+      render json: {success: false, errors: service.errors}, status: 422
     end
-    respond_with(@game, location: location)
   end
 
   def edit

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe GamesController do
+RSpec.describe GamesController, type: :controller do
   before do
     Game.destroy_all
     Subscription.destroy_all
@@ -8,6 +8,21 @@ describe GamesController do
 
     user = FactoryGirl.create(:master_with_vk_account)
     sign_in user.accounts.first
+  end
+
+  context 'AJAX' do
+    describe 'POST create' do
+      it 'accepts step 1' do
+        post :create, {format: :json, step: 1, game: {title: 'some title', description: 'desc'}}
+        expect(JSON.parse(response.body)['cache_key']).not_to be_empty
+      end
+
+      it 'returns validation errors on step 1' do
+        expected_result = {'success' => false, 'errors' => {'title' => ['не может быть пустым']}}
+        post :create, {format: :json, step: 1, game: {title: '', description: 'desc'}}
+        expect(JSON.parse(response.body)).to eq expected_result
+      end
+    end
   end
 
   context 'requesting' do
