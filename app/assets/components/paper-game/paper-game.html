@@ -10,7 +10,16 @@
       </header>
 
       <section>
-        <p><core-icon icon='event' class='small'></core-icon> {{data.beginning_at}}</p>
+        <p layout horizontal>
+          <span flex><core-icon icon='event' class='small'></core-icon> {{data.beginning_at}}</span>
+          <template if='{{data.online == true}}'>
+            <core-icon icon='language' class='small'></core-icon>
+          </template>
+
+          <template if='{{data.online == false}}'>
+            <core-icon icon='room' class='small'></core-icon>
+          </template>
+        </p>
         <p>{{data.short_description}}</p>
       </section>
 

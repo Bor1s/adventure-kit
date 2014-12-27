@@ -11,20 +11,19 @@ class EventFilterService
 
     filters.each do |f|
       criteria = case f
-      when 'realtime', 'online'
-        criteria
-      when 'all'
-        criteria.asc(:beginning_at)
+      when 'realtime'
+        criteria.where(online: false)
+      when 'online'
+        criteria.where(online: true)
       when 'my'
-        game_ids = user.player_subscriptions.map(&:game_id)
-        criteria.for_games(game_ids)
-      when 'owned'
-        game_ids = user.mastered_subscriptions.map(&:game_id)
+        game_ids = user.subscriptions.map(&:game_id)
         criteria.for_games(game_ids)
       when 'upcoming'
         criteria.upcoming
       when 'past'
         criteria.finished
+      else
+        criteria.asc(:beginning_at)
       end
     end
 

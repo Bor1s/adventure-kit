@@ -16,5 +16,14 @@ class EventSerializer < ActiveModel::Serializer
     object.game.poster
   end
 
-  attributes :description, :short_description, :title, :beginning_at, :poster
+  def location
+    object.game.location
+  end
+
+  def online
+    object.online?
+  end
+
+  attributes :description, :short_description, :title, :beginning_at, :poster,
+    :location, :online
 end

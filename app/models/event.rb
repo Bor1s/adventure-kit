@@ -5,6 +5,7 @@ class Event
   include Notification
 
   field :description, type: String
+  field :online, type: Mongoid::Boolean, default: false
   field :beginning_at, type: DateTime
 
   mount_uploader :poster, PosterUploader

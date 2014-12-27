@@ -7,7 +7,7 @@
     </core-toolbar>
 
     <template is='auto-binding'>
-      <div id='game_container' layout horizontal wrap>
+      <div id='game_container' layout horizontal center-justified wrap>
         <template repeat='{{game in games}}'>
           <paper-game data='{{game}}'></paper-game>
         </template>
@@ -27,16 +27,20 @@
 
   <core-header-panel id='game_drawer' drawer>
     <core-toolbar justify='end'>
-      <%= link_to path_to_current_user_profile do %>
-        <paper-shadow z='1' class='round'>
-          <%= image_tag current_user.avatar.medium.url, class: 'round' %>
-          <paper-ripple fit class="recenteringTouch circle white-ripple"></paper-ripple>
-        </paper-shadow>
-      <% end %>
+      <core-tooltip label='Мой профиль'>
+        <%= link_to path_to_current_user_profile do %>
+          <paper-shadow z='1' class='round'>
+            <%= image_tag current_user.avatar.medium.url, class: 'round' %>
+            <paper-ripple fit class="recenteringTouch circle white-ripple"></paper-ripple>
+          </paper-shadow>
+        <% end %>
+      </core-tooltip>
 
-      <%= link_to signout_path do %>
-        <core-icon icon='exit-to-app'></core-icon>
-      <% end %>
+      <core-tooltip label='Выход'>
+        <%= link_to signout_path do %>
+          <core-icon icon='exit-to-app'></core-icon>
+        <% end %>
+      </core-tooltip>
     </core-toolbar>
 
     <aside>
@@ -45,14 +49,14 @@
 
     <section>
       <paper-radio-group selected='my'>
-        <paper-radio-button name='all' label='Все кампании'></paper-radio-button>
-        <paper-radio-button name='my' label='Я играю'></paper-radio-button>
-        <paper-radio-button name='owned' label='Я мастерю'></paper-radio-button>
+        <paper-radio-button name='nothing' label='Все кампании'></paper-radio-button>
+        <paper-radio-button name='my' label='Мои кампании'></paper-radio-button>
       </paper-radio-group>
     </section>
 
     <section>
-      <paper-radio-group selected="realtime">
+      <paper-radio-group selected="nothing">
+        <paper-radio-button name="nothing" label='Не учитывать тип'></paper-radio-button>
         <paper-radio-button name="realtime" label='Живые кампании'></paper-radio-button>
         <paper-radio-button name="online" label='Online кампании'></paper-radio-button>
       </paper-radio-group>
@@ -60,6 +64,7 @@
 
     <section>
       <paper-radio-group selected='upcoming'>
+        <paper-radio-button name="nothing" label='Не учитывать время'></paper-radio-button>
         <paper-radio-button name='upcoming' label='Предстоящие'></paper-radio-button>
         <paper-radio-button name='past' label='Прошедшие'></paper-radio-button>
       </paper-radio-group>
