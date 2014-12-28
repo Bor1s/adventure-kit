@@ -2,4 +2,16 @@
   <%= @game.title %>
 <% end %>
 
-<%= render 'form' %>
+<core-animated-pages id='game-wizard-steps' transitions='slide-from-right'>
+  <section>
+    <template is='auto-binding'>
+      <%= render partial: 'step1' %>
+      <game-wizard-service-step-1 game='{{game}}' url="<%= games_path %>"></game-wizard-service-step-1>
+      <game-edit-service game='{{game}}' url="<%= edit_game_path(@game) %>"></game-edit-service>
+    </template>
+  </section>
+
+  <section>
+    <%= render partial: 'step2' %>
+  </section>
+</core-animated-pages>

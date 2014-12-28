@@ -1,0 +1,13 @@
+<polymer-element name="game-edit-service" attributes='game url'>
+  <template>
+    <core-ajax id='dispatcher' url='{{url}}'
+      handleAs='json'
+      headers='{"Accept": "application/json"}'
+      contentType='application/json'
+      on-core-error='{{handleError}}'
+      on-core-response='{{handleSuccess}}'>
+    </core-ajax>
+  </template>
+
+  <script src="game-edit-service.js.coffee"></script>
+</polymer-element>

@@ -41,12 +41,7 @@ describe EventsController do
 
     it 'responds with my events' do
       get :index, {format: :json, f: 'my'}
-      expect(JSON.parse(response.body)['events'].count).to eq 1
-    end
-
-    it 'responds with events where I am master' do
-      get :index, {format: :json, f: 'owned'}
-      expect(JSON.parse(response.body)['events'].count).to eq 4
+      expect(JSON.parse(response.body)['events'].count).to eq 5
     end
 
     context 'combination' do
@@ -57,12 +52,12 @@ describe EventsController do
 
       it 'of past and my works' do
         get :index, {format: :json, f: 'my,past'}
-        expect(JSON.parse(response.body)['events'].count).to eq 0
+        expect(JSON.parse(response.body)['events'].count).to eq 4
       end
 
-      it 'of past and my works' do
-        get :index, {format: :json, f: 'owned,upcoming'}
-        expect(JSON.parse(response.body)['events'].count).to eq 0
+      it 'of upcoming and my works' do
+        get :index, {format: :json, f: 'my,upcoming'}
+        expect(JSON.parse(response.body)['events'].count).to eq 1
       end
     end
   end

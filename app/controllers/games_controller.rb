@@ -19,11 +19,10 @@ class GamesController < ApplicationController
 
   def create
     step = params[:step].to_i
-    service = GameWizardService.new(game_params)
-    service.step = step
+    service = GameWizardService.new(params[:cache_key], step, game_params)
     if service.valid?
       service.persist_step
-      render json: {success: true, cache_key: service.cache_key}
+      render json: {success: true, last_step: service.last_step?, cache_key: service.cache_key}
     else
       render json: {success: false, errors: service.errors}, status: 422
     end
@@ -32,14 +31,21 @@ class GamesController < ApplicationController
   def edit
     @game = Game.find params[:id]
     authorize! :update, @game
+
+    respond_with @game do |format|
+      format.html
+      format.json do
+        render json: {game: @game, cache_key: @game.cache_key}
+      end
+    end
   end
 
-  def update
-    @game = Game.find params[:id]
-    authorize! :update, @game
-    @game.update_attributes normalize_params(game_params)
-    respond_with @game, location: edit_game_path(@game)
-  end
+  #def update
+    #@game = Game.find params[:id]
+    #authorize! :update, @game
+    #@game.update_attributes normalize_params(game_params)
+    #respond_with @game, location: edit_game_path(@game)
+  #end
 
   def destroy
     @game = Game.find params[:id]

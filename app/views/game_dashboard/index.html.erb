@@ -1,75 +1,46 @@
-<core-drawer-panel rightDrawer>
-
-  <core-header-panel main>
-    <core-toolbar>
-      <span flex><%= t('site_name') %></span>
-      <core-icon-button icon="menu" core-drawer-toggle></core-icon-button>
-    </core-toolbar>
-
-    <template is='auto-binding'>
-      <div id='game_container' layout horizontal center-justified wrap>
-        <template repeat='{{game in games}}'>
-          <paper-game data='{{game}}'></paper-game>
-        </template>
-      </div>
-
-      <template if='{{games.length == 0}}'>
-        <section layout horizontal center center-justified class='no-games'>
-          <i class='fa fa-5x fa-gamepad'></i>
-        </section>
-      </template>
-
-      <game-service games='{{games}}' url="<%= events_path %>"></game-service>
-      <paper-toast id='no_games_toast' text='<%= t('events.index.no_games') %>'></paper-toast>
+<template is='auto-binding'>
+  <div id='game_container' layout horizontal center-justified wrap>
+    <template repeat='{{game in games}}'>
+      <paper-game data='{{game}}'></paper-game>
     </template>
+  </div>
 
-  </core-header-panel>
-
-  <core-header-panel id='game_drawer' drawer>
-    <core-toolbar justify='end'>
-      <core-tooltip label='Мой профиль'>
-        <%= link_to path_to_current_user_profile do %>
-          <paper-shadow z='1' class='round'>
-            <%= image_tag current_user.avatar.medium.url, class: 'round' %>
-            <paper-ripple fit class="recenteringTouch circle white-ripple"></paper-ripple>
-          </paper-shadow>
-        <% end %>
-      </core-tooltip>
-
-      <core-tooltip label='Выход'>
-        <%= link_to signout_path do %>
-          <core-icon icon='exit-to-app'></core-icon>
-        <% end %>
-      </core-tooltip>
-    </core-toolbar>
-
-    <aside>
-      <h4>Фильтр игровых кампаний</h4>
-    </aside>
-
-    <section>
-      <paper-radio-group selected='my'>
-        <paper-radio-button name='nothing' label='Все кампании'></paper-radio-button>
-        <paper-radio-button name='my' label='Мои кампании'></paper-radio-button>
-      </paper-radio-group>
+  <template if='{{games.length == 0}}'>
+    <section layout horizontal center center-justified class='no-games'>
+      <i class='fa fa-5x fa-gamepad'></i>
     </section>
+  </template>
 
-    <section>
-      <paper-radio-group selected="nothing">
-        <paper-radio-button name="nothing" label='Не учитывать тип'></paper-radio-button>
-        <paper-radio-button name="realtime" label='Живые кампании'></paper-radio-button>
-        <paper-radio-button name="online" label='Online кампании'></paper-radio-button>
-      </paper-radio-group>
-    </section>
+  <game-service games='{{games}}' url="<%= events_path %>"></game-service>
+  <paper-toast id='no_games_toast' text='<%= t('events.index.no_games') %>'></paper-toast>
+</template>
 
-    <section>
-      <paper-radio-group selected='upcoming'>
-        <paper-radio-button name="nothing" label='Не учитывать время'></paper-radio-button>
-        <paper-radio-button name='upcoming' label='Предстоящие'></paper-radio-button>
-        <paper-radio-button name='past' label='Прошедшие'></paper-radio-button>
-      </paper-radio-group>
-    </section>
-  </core-header-panel>
+<%= content_for :sidebar do %>
+  <aside>
+    <h4>Фильтр игровых кампаний</h4>
+  </aside>
 
-</core-drawer-panel>
+  <section>
+    <paper-radio-group selected='my'>
+      <paper-radio-button name='nothing' label='Все кампании'></paper-radio-button>
+      <paper-radio-button name='my' label='Мои кампании'></paper-radio-button>
+    </paper-radio-group>
+  </section>
+
+  <section>
+    <paper-radio-group selected="nothing">
+      <paper-radio-button name="nothing" label='Не учитывать тип'></paper-radio-button>
+      <paper-radio-button name="realtime" label='Живые кампании'></paper-radio-button>
+      <paper-radio-button name="online" label='Online кампании'></paper-radio-button>
+    </paper-radio-group>
+  </section>
+
+  <section>
+    <paper-radio-group selected='upcoming'>
+      <paper-radio-button name="nothing" label='Не учитывать время'></paper-radio-button>
+      <paper-radio-button name='upcoming' label='Предстоящие'></paper-radio-button>
+      <paper-radio-button name='past' label='Прошедшие'></paper-radio-button>
+    </paper-radio-group>
+  </section>
+<% end %>
 
