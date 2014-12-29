@@ -7,6 +7,8 @@ class Game
   field :description, type: String
   field :finished, type: Mongoid::Boolean, default: false
   field :players_amount, type: Integer
+  field :private_game, type: Mongoid::Boolean, default: false
+  field :online_game, type: Mongoid::Boolean, default: false
 
   slug :title
 
@@ -26,7 +28,7 @@ class Game
   scope :by_tag, ->(tag_id) { where(:tag_ids.in => [tag_id]) }
 
   accepts_nested_attributes_for :events, allow_destroy: true
-  accepts_nested_attributes_for :location, reject_if: proc { |attrs| attrs[:text_coordinates].blank? }
+  accepts_nested_attributes_for :location
 
   delegate :lat, to: :location, allow_nil: true
   delegate :lng, to: :location, allow_nil: true

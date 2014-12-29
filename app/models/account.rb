@@ -28,5 +28,4 @@ class Account
       Account.create(account_data)
     end
   end
-
 end

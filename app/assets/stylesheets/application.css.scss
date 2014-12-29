@@ -13,11 +13,12 @@
  * require_tree .
  * require select2
  * require select2-bootstrap
- * require jquery.datetimepicker
+ *= require jquery.datetimepicker
  * require_tree ./responsive
 
- *= require "registrations"
- *= require "game_dashboard"
+ *= require registrations
+ *= require game_dashboard
+ *= require layouts/game
  */
 
 html,body {

@@ -1,0 +1,28 @@
+@import 'common';
+
+#main-header {
+  height: 100%;
+  background-color: $light-grey;
+
+  core-toolbar {
+    color: $white;
+    background-color: $grey;
+  }
+
+  a {
+    color: $white;
+    &:hover {
+      color: $yellow;
+    }
+  }
+}
+
+// players amount dropdown styles
+paper-item {
+  display: block;
+  margin: 16px;
+}
+
+paper-item.core-selected {
+  color: $yellow;
+}

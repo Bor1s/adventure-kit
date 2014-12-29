@@ -1,4 +1,5 @@
 class GamesController < ApplicationController
+  layout 'game'
   before_action :authenticate
   respond_to :json, :html
 
@@ -93,7 +94,7 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit(:title, :description, :tag_ids, :players_amount, :poster, :poster_cache, :remove_poster, events_attributes: [:title, :description, :_destroy, :id, :beginning_at], location_attributes: [:text_coordinates, :id])
+    params.require(:game).permit(:title, :description, :players_amount, :private_game, :online_game, :address, :online_info, invitees: [])
   end
 
   def normalize_params(parameters)

@@ -104,6 +104,7 @@ ru:
       index: *game_table_fields
 
   games:
+    players_amount: 'Общее количество игроков'
     form:
       general_info: 'Общая информация'
       events: 'Игровые сессии'

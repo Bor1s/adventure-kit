@@ -1,1 +1,46 @@
-<div style='background-color: yellow;'>2</div>
+<section>
+  <!-- Game privacy options -->
+  <paper-radio-group id='game-privacy' selected='{{game.private_game ? "private" : "public"}}'>
+    <paper-radio-button name='public' label='Public'></paper-radio-button><br />
+    <paper-radio-button name='private' label='Private'></paper-radio-button>
+  </paper-radio-group>
+
+  <template if='{{!game.private_game}}'>
+    <paper-dropdown-menu label="<%= t('games.players_amount') %>">
+      <paper-dropdown class="dropdown">
+        <core-selector id='players-amount' selected='{{game.players_amount}}' class="menu">
+          <template repeat='{{[1,2,3,4,5,6,7,8,9,10]}}'>
+            <paper-item>{{}}</paper-item>
+          </template>
+        </core-selector>
+      </paper-dropdown>
+    </paper-dropdown-menu>
+  </template>
+
+  <template if='{{game.private_game}}'>
+    <game-invitation-list game='{{game}}' url='<%= users_path %>'>
+    </game-invitation-list>
+  </template>
+  <!-- END Game privacy options -->
+
+  <!-- Game location options -->
+  <paper-radio-group id='game-location' selected='{{game.online_game ? "online" : "location-based"}}'>
+    <paper-radio-button name='online' label='Online'></paper-radio-button><br />
+    <paper-radio-button name='location-based' label='Location Based'></paper-radio-button>
+  </paper-radio-group>
+
+  <template if='{{!game.online_game}}'>
+    <paper-input-decorator id='address_decorator' floatingLabel label="Address">
+      <input type='text' name='address' id='address' value='{{game.address}}' is='core-input'>
+    </paper-input-decorator>
+  </template>
+
+  <template if='{{game.online_game}}'>
+    <paper-input-decorator id='online_info_decorator' floatingLabel label="Online Info">
+      <input type='text' name='online_info' id='online_info' value='{{game.online_info}}' is='core-input'>
+    </paper-input-decorator>
+  </template>
+  <!-- END Game location options -->
+</section>
+
+<paper-button id='step2-submit' recenteringTouch='true'>Далее</paper-button>

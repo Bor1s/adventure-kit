@@ -1,0 +1,15 @@
+<polymer-element name="game-wizard-service-step-2" attributes='game url'>
+  <template>
+
+    <core-ajax id='dispatcher' url='{{url}}'
+      handleAs='json'
+      method='POST'
+      headers='{"Accept": "application/json"}'
+      contentType='application/json'
+      on-core-error='{{handleError}}'
+      on-core-response='{{handleSuccess}}'>
+    </core-ajax>
+
+  </template>
+  <script src="game-wizard-service-step-2.js.coffee"></script>
+</polymer-element>

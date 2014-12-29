@@ -3,15 +3,17 @@
 <% end %>
 
 <core-animated-pages id='game-wizard-steps' transitions='slide-from-right'>
-  <section>
-    <template is='auto-binding'>
+  <template is='auto-binding'>
+    <section>
       <%= render partial: 'step1' %>
       <game-wizard-service-step-1 game='{{game}}' url="<%= games_path %>"></game-wizard-service-step-1>
-      <game-edit-service game='{{game}}' url="<%= edit_game_path(@game) %>"></game-edit-service>
-    </template>
-  </section>
+    </section>
 
-  <section>
-    <%= render partial: 'step2' %>
-  </section>
+    <section>
+      <%= render partial: 'step2' %>
+      <game-wizard-service-step-2 game='{{game}}' url="<%= games_path %>"></game-wizard-service-step-2>
+    </section>
+
+    <game-edit-service game='{{game}}' url="<%= edit_game_path(@game) %>"></game-edit-service>
+  </template>
 </core-animated-pages>

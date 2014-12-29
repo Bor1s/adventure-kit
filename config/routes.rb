@@ -63,6 +63,7 @@ PlayhardCore::Application.routes.draw do
   end
 
   resources :locations, only: [:index]
+  resources :accounts, only: [:index]
 
   root 'application#welcome'
 

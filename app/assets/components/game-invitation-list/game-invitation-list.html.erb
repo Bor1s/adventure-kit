@@ -1,0 +1,21 @@
+<polymer-element name="game-invitation-list" attributes='game url invitees'>
+  <template>
+    <link rel="stylesheet" href="game-invitation-list.css.scss" />
+
+    <core-selector id='invitation_selector' target='{{$._emails}}' valueattr='label' multi>
+      <ul id='_emails'>
+      <template repeat='{{accounts}}'>
+        <li label='{{email}}'>{{email}}</li>
+      </template>
+      </ul>
+    </core-selector>
+
+    <core-ajax id='accounts_fetcher' url='/accounts'
+    handleAs='json' 
+    on-core-error='{{handleError}}'
+    on-core-response='{{handleSuccess}}'>
+    </core-ajax>
+
+  </template>
+  <script src="game-invitation-list.js.coffee"></script>
+</polymer-element>
