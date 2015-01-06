@@ -14,6 +14,11 @@
       <game-wizard-service-step-2 game='{{game}}' url="<%= games_path %>"></game-wizard-service-step-2>
     </section>
 
+    <section>
+      <%= render partial: 'step3' %>
+      <game-wizard-service-step-3 game='{{game}}' url="<%= games_path %>"></game-wizard-service-step-3>
+    </section>
+
     <game-edit-service game='{{game}}' url="<%= edit_game_path(@game) %>"></game-edit-service>
   </template>
 </core-animated-pages>

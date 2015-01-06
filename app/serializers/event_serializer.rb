@@ -5,7 +5,7 @@ class EventSerializer < ActiveModel::Serializer
   end
 
   def short_description
-    object.description.truncate(135)
+    object.game.description.truncate(135)
   end
 
   def title
@@ -24,6 +24,10 @@ class EventSerializer < ActiveModel::Serializer
     object.online?
   end
 
+  def id
+    object.id.to_s
+  end
+
   attributes :description, :short_description, :title, :beginning_at, :poster,
-    :location, :online
+    :location, :online, :id
 end

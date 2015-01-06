@@ -64,7 +64,7 @@ Polymer 'game-wizard-service-step-2',
     d = new FormData()
     d.append('authenticity_token', this.token)
     d.append('step', this.step)
-    d.append('cache_key', this._pages_container()._cache_key)
+    d.append('cache_key', this._pages_container()._cache_key || '')
 
     #Set fields for public/private game
     if this.game.private_game

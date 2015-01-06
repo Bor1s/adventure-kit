@@ -20,6 +20,7 @@ PlayhardCore::Application.routes.draw do
       delete :remove_player
     end
     resources :comments, except: [:index, :new]
+    resources :events, only: [:index]
   end
 
   resources :users, only: [:index, :show]

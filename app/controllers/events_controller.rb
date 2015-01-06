@@ -4,10 +4,12 @@ class EventsController < ApplicationController
 
   def index
     authorize! :read, Event
-    event_filter_service = EventFilterService.new(current_user, filters)
-    filtered_events = event_filter_service.filter
-    event_search_service = EventSearchService.new(filtered_events, params[:q], params[:page])
-    @events = event_search_service.search
+
+    if params[:game_id].present?
+      @events = Game.find(params[:game_id]).events
+    else
+      @events = fetch_events(params)
+    end
 
     respond_with do |format|
       format.json do
@@ -17,6 +19,13 @@ class EventsController < ApplicationController
   end
 
   private
+
+  def fetch_events(params)
+    event_filter_service = EventFilterService.new(current_user, filters)
+    filtered_events = event_filter_service.filter
+    event_search_service = EventSearchService.new(filtered_events, params[:q], params[:page])
+    event_search_service.search
+  end
 
   def filters
     params[:f].to_s.split(',')

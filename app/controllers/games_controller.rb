@@ -94,7 +94,11 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit(:title, :description, :players_amount, :private_game, :online_game, :address, :online_info, invitees: [])
+    if params[:game][:events_attributes].present?
+      params[:game].merge!({events_attributes: preprocess_events_attributes})
+    end
+    params.require(:game).permit(:title, :description, :players_amount, :private_game, :online_game, :address, :online_info,
+                                 invitees: [], events_attributes: [:beginning_at, :id, :_destroy])
   end
 
   def normalize_params(parameters)
@@ -127,5 +131,13 @@ class GamesController < ApplicationController
         warn "#{params[:date]} is not parsed properly!"
       end
     end
+  end
+
+  def preprocess_events_attributes
+    result = []
+    params[:game][:events_attributes].each_key do |key|
+      result << params[:game][:events_attributes][key]
+    end
+    result
   end
 end

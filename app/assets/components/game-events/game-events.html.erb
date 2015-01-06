@@ -1,0 +1,34 @@
+<polymer-element name="game-events" attributes='events removed_events url'>
+  <template>
+    <link rel="stylesheet" href="game-events.css.scss" />
+    
+    <template repeat='{{event in events}}'>
+      <div>
+        <paper-input-decorator id='beginning_at_decorator' floatingLabel label="Beginning At">
+          <input type='text' id='beginning_at' class='calendar' value='{{event.beginning_at}}' is='core-input'>
+        </paper-input-decorator>
+
+        <template if='{{events.length > 1}}'>
+        <paper-fab data-event-id='{{event.id}}' data-new='{{event.new}}' icon="highlight-remove" on-click='{{removeEvent}}'></paper-fab>
+        </template>
+      </div>
+    </template>
+
+    <!-- New event fields -->
+    <div>
+      <paper-input-decorator id='beginning_at_decorator' floatingLabel label="New event">
+      <input type='text' name='event[beginning_at]' id='new_beginning_at' class='calendar' value='' is='core-input'>
+      </input-decorator>
+    </div>
+    <paper-fab id='add_event' on-click='{{addEvent}}' icon="add"></paper-fab>
+
+    <!-- events fetcher -->
+    <core-ajax id='events_fetcher' url='{{url}}'
+    handleAs='json'
+    on-core-error='{{handleError}}'
+    on-core-response='{{handleSuccess}}'>
+    </core-ajax>
+
+  </template>
+  <script src="game-events.js.coffee"></script>
+</polymer-element>

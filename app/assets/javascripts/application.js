@@ -33,3 +33,10 @@ $(document).on('page:load', function(){
   var tz = jstz.determine();
   $.cookie('timezone', tz.name(), { path: '/' });
 })
+
+// Dirty Hack for letting JQuery work with shadow-dom
+$(function() {
+  jQuery.contains = function() {
+    return true;
+  };
+});

@@ -30,7 +30,7 @@ Polymer 'game-wizard-service-step-1',
     d = new FormData()
     d.append('authenticity_token', this.token)
     d.append('step', this.step)
-    d.append('cache_key', this._pages_container._cache_key)
+    d.append('cache_key', this._pages_container._cache_key || '')
     d.append('game[title]', this.game.title)
     d.append('game[description]', this.game.description)
 
