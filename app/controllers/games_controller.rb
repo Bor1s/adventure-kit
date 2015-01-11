@@ -3,8 +3,6 @@ class GamesController < ApplicationController
   before_action :authenticate
   respond_to :json, :html
 
-  before_filter :extract_optional_params, only: [:new]
-
   def show
     @game = Game.find params[:id]
     @comment = @game.comments.build
@@ -14,7 +12,7 @@ class GamesController < ApplicationController
   def new
     authorize! :create, Game
     @game = Game.new
-    @game.events.build(optional_params)
+    @game.events.build
     @game.build_location
   end
 
@@ -40,13 +38,6 @@ class GamesController < ApplicationController
       end
     end
   end
-
-  #def update
-    #@game = Game.find params[:id]
-    #authorize! :update, @game
-    #@game.update_attributes normalize_params(game_params)
-    #respond_with @game, location: edit_game_path(@game)
-  #end
 
   def destroy
     @game = Game.find params[:id]
@@ -94,43 +85,18 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    if params[:game][:events_attributes].present?
+    if params[:game].present? and params[:game][:events_attributes].present?
       params[:game].merge!({events_attributes: preprocess_events_attributes})
     end
+
+    params.merge!({game: {events_attributes: {}}}) if params[:game].blank?
+
     params.require(:game).permit(:title, :description, :players_amount, :private_game, :online_game, :address, :online_info,
-                                 invitees: [], events_attributes: [:beginning_at, :id, :_destroy])
-  end
-
-  def normalize_params(parameters)
-    tag_ids = parameters[:tag_ids].split(',')
-    new_tags_titles, tag_ids = tag_ids.partition { |t| t.ends_with? '_new' }
-    parameters[:tag_ids] = tag_ids
-    if new_tags_titles.present?
-      new_tags = new_tags_titles.map do |title|
-        Tag.where(title: title.chomp('_new')).first_or_create
-      end
-      parameters[:tag_ids] = tag_ids.concat(new_tags.map(&:id))
-    end
-
-    parameters
+                                 invitees: [], events_attributes: [:beginning_at, :id, :_destroy], events_ui_ids: [])
   end
 
   def notifications
     ActiveSupport::Notifications
-  end
-
-  def optional_params
-    @optional_params ||= {}
-  end
-
-  def extract_optional_params
-    if params[:date].present?
-      begin
-        optional_params.merge!({beginning_at: Date.parse(params[:date])})
-      rescue => e
-        warn "#{params[:date]} is not parsed properly!"
-      end
-    end
   end
 
   def preprocess_events_attributes

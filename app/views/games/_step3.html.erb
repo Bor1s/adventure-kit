@@ -1,3 +1,7 @@
-<game-events url='<%= game_events_path(@game) %>'></game-events>
+<% if @game.new_record? %>
+  <game-events url=''></game-events>
+<% else %>
+  <game-events url='<%= game_events_path(@game) %>'></game-events>
+<% end %>
 
 <paper-button id='step3-submit' recenteringTouch='true'>Далее</paper-button>

@@ -2,12 +2,12 @@ class GameWizardService
   NUMBER_OF_STEPS = 4
 
   include ActiveModel::Model
-  attr_accessor :title, :description, :players_amount, :address, :online_info, :private_game, :invitees, :online_game, :events_attributes, :step
+  attr_accessor :title, :description, :players_amount, :address, :online_info, :private_game, :invitees, :online_game, :events_attributes, :events_ui_ids, :step
   attr_reader :cache_key
 
   validates :title, :description, presence: true, if: :step1?
-
   validates_with GameWizardStep2Validator
+  validates_with GameWizardStep3Validator
 
   def initialize(cache_key, step, attributes={})
     if cache_key.present?
@@ -40,6 +40,10 @@ class GameWizardService
 
   def step3?
     step == 3
+  end
+
+  def step4?
+    step == 4
   end
 
   def last_step?

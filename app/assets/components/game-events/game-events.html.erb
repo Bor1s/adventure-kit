@@ -4,8 +4,8 @@
     
     <template repeat='{{event in events}}'>
       <div>
-        <paper-input-decorator id='beginning_at_decorator' floatingLabel label="Beginning At">
-          <input type='text' id='beginning_at' class='calendar' value='{{event.beginning_at}}' is='core-input'>
+        <paper-input-decorator id='beginning_at_decorator_{{event.id}}' floatingLabel label="Beginning At">
+          <input type='text' id='beginning_at_{{event.id}}' class='calendar' value='{{event.beginning_at}}' is='core-input'>
         </paper-input-decorator>
 
         <template if='{{events.length > 1}}'>

@@ -7,9 +7,15 @@ Polymer 'game-events',
     this.async(this.initDatepicker, [])
 
   domReady: ->
-    this.$.events_fetcher.go()
+    #If url is empty it means that we creating new game with new events
+    #so we must activate datepicker only on add_event input field
+    if this.url == ''
+      this.initDatepicker()
+    else
+      this.$.events_fetcher.go()
 
   addEvent: ->
+    #Check that input value has proper format
     if (/\d+-\d+-\d+\s\d+:\d+/).test(this.$.new_beginning_at.value)
       this.events.push({id: new Date().getTime().toString(), new: true, beginning_at: this.$.new_beginning_at.value})
     this.$.new_beginning_at.value = ''
