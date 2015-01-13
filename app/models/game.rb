@@ -87,4 +87,8 @@ class Game
   def continues?
     events.last.beginning_at.future?
   end
+
+  def sanitized_cache_key
+    cache_key.gsub('/','_')
+  end
 end

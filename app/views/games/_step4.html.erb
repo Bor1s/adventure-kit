@@ -1,0 +1,16 @@
+<template if='{{gameCreated}}'>
+  <paper-button id='show-game' recenteringTouch='true'>Show Game</paper-button>
+  <paper-button id='to-dashboard' recenteringTouch='true'>To Dashboard</paper-button>
+</template>
+
+<template if='{{!gameCreated}}'>
+  <section>
+    <file-input maxFiles='1' extensions='["jpeg", "jpg", "png"]' maxSize='3000000'>
+      <core-icon icon='file-upload'></core-icon><br />
+      <i>Максимальный размер файла не должен превышать 3MB</i>
+    </file-input>
+    <div id='preview'></div>
+  </section>
+
+  <paper-button id='step4-submit' recenteringTouch='true'>Завершить</paper-button>
+</template>

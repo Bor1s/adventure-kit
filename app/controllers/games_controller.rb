@@ -34,7 +34,7 @@ class GamesController < ApplicationController
     respond_with @game do |format|
       format.html
       format.json do
-        render json: {game: @game, cache_key: @game.cache_key}
+        render json: {game: @game, cache_key: @game.sanitized_cache_key}
       end
     end
   end
@@ -92,7 +92,7 @@ class GamesController < ApplicationController
     params.merge!({game: {events_attributes: {}}}) if params[:game].blank?
 
     params.require(:game).permit(:title, :description, :players_amount, :private_game, :online_game, :address, :online_info,
-                                 invitees: [], events_attributes: [:beginning_at, :id, :_destroy], events_ui_ids: [])
+                                 :poster, invitees: [], events_attributes: [:beginning_at, :id, :_destroy], events_ui_ids: [])
   end
 
   def notifications
