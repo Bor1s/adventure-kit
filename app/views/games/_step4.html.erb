@@ -4,6 +4,10 @@
 </template>
 
 <template if='{{!gameCreated}}'>
+  <template if='{{game && game.has_poster}}'>
+    <core-image src='{{game.poster.poster.medium.url}}'></core-image>
+  </template>
+
   <section>
     <file-input maxFiles='1' extensions='["jpeg", "jpg", "png"]' maxSize='3000000'>
       <core-icon icon='file-upload'></core-icon><br />

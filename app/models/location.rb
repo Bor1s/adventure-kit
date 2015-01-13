@@ -12,7 +12,7 @@ class Location
   validates :address, presence: true
   
   geocoded_by :address
-  before_validation :convert_coordinates
+  #before_validation :convert_coordinates
   after_validation :geocode, if: ->(obj) {obj.address.present? and obj.address_changed?}
 
   def lat

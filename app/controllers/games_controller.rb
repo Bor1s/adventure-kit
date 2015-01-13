@@ -21,6 +21,7 @@ class GamesController < ApplicationController
     service = GameWizardService.new(params[:cache_key], step, game_params)
     if service.valid?
       service.persist_step
+      service.build_game(service.cache_key, current_user) if service.last_step?
       render json: {success: true, last_step: service.last_step?, cache_key: service.cache_key}
     else
       render json: {success: false, errors: service.errors}, status: 422
@@ -34,7 +35,7 @@ class GamesController < ApplicationController
     respond_with @game do |format|
       format.html
       format.json do
-        render json: {game: @game, cache_key: @game.sanitized_cache_key}
+        render json: @game, meta: {cache_key: @game.id.to_s}
       end
     end
   end

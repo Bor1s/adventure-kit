@@ -17,4 +17,4 @@ Polymer 'game-edit-service',
     #Bind game back to view
     this.game = data.response.game
     pages = document.querySelector('#game-wizard-steps')
-    pages._cache_key = data.response.cache_key
+    pages._cache_key = data.response.meta.cache_key

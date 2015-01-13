@@ -9,6 +9,7 @@ class Game
   field :players_amount, type: Integer
   field :private_game, type: Mongoid::Boolean, default: false
   field :online_game, type: Mongoid::Boolean, default: false
+  field :online_info, type: String
 
   slug :title
 
@@ -20,10 +21,11 @@ class Game
   has_many :events, dependent: :destroy #Need to affect Solr index
   has_one :location
 
-  validates :title, presence: true
-  validates :description, presence: true
-  validates :events, presence: true
-  validates :players_amount, presence: true
+  #NOTE validation happens on Service level
+  #validates :title, presence: true
+  #validates :description, presence: true
+  #validates :events, presence: true
+  #validates :players_amount, presence: true
 
   scope :by_tag, ->(tag_id) { where(:tag_ids.in => [tag_id]) }
 
@@ -86,9 +88,5 @@ class Game
 
   def continues?
     events.last.beginning_at.future?
-  end
-
-  def sanitized_cache_key
-    cache_key.gsub('/','_')
   end
 end

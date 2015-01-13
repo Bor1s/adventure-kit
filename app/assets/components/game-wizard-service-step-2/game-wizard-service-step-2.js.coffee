@@ -69,8 +69,8 @@ Polymer 'game-wizard-service-step-2',
     #Set fields for public/private game
     if this.game.private_game
       invitees = document.querySelector('game-invitation-list').getInvitees()
+      d.append('game[private_game]', true)
       for i in invitees
-        d.append('game[private_game]', true)
         d.append('game[invitees][]', i)
     else
       d.append('game[private_game]', false)

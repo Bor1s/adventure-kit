@@ -1,5 +1,6 @@
 class GameWizardService
   NUMBER_OF_STEPS = 4
+  BASE64_TOKEN_REGEXP = /\Adata:(.+);/
 
   include ActiveModel::Model
   attr_accessor :title, :description, :players_amount, :address, :online_info, :private_game, :invitees, :online_game, :events_attributes, :events_ui_ids, :poster, :poster_tmp_url, :step
@@ -52,7 +53,7 @@ class GameWizardService
   # ---
 
   def persist_step
-    #TODO refactor with hmset and avoid block
+    #TODO refactor with hmset
     case step
     when 1
       Sidekiq.redis do |conn|
@@ -64,7 +65,7 @@ class GameWizardService
       Sidekiq.redis do |conn|
         if private_game?
           conn.hset(cache_key, 'private_game', true)
-          conn.hset(cache_key, 'invitees', JSON.generate(invitees))
+          conn.hset(cache_key, 'invitees', JSON.generate(invitees)) if invitees.present?
         else
           conn.hset(cache_key, 'private_game', false)
           conn.hset(cache_key, 'players_amount', players_amount)
@@ -85,15 +86,36 @@ class GameWizardService
       end
       cache_key
     when 4
-      poster_tmp_url = tmpfilename = Rails.root.join('tmp', 'cache', "#{cache_key}_poster")
-      File.open(tmpfilename,'w') do |file|
-        file.write Base64.decode64(poster.sub('data:image/png;base64,','')).force_encoding('UTF-8')
-      end
+      #If user uploaded new poster
+      if poster.present?
+        raw_ext = extract_poster_ext(poster)
+        if raw_ext
+          poster_ext = raw_ext.split('/').last
+        else
+          poster_ext = 'png'
+        end
 
-      Sidekiq.redis do |conn|
-        conn.hset(cache_key, 'poster_url', poster_tmp_url)
+        poster_tmp_url = tmpfilename = Rails.root.join('tmp', 'cache', "#{cache_key}_poster.#{poster_ext}")
+        File.open(tmpfilename,'w') do |file|
+          file.write Base64.decode64(poster.sub("data:#{raw_ext};base64,",'')).force_encoding('UTF-8')
+        end
+
+        Sidekiq.redis do |conn|
+          conn.hset(cache_key, 'poster_url', poster_tmp_url)
+        end
       end
       cache_key
     end
+  end
+
+  def build_game(key, game_creator)
+    builder = GameBuilderService.new(key, game_creator)
+    builder.build
+  end
+
+  private
+
+  def extract_poster_ext(poster)
+    poster.scan(BASE64_TOKEN_REGEXP).flatten.first
   end
 end
