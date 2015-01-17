@@ -32,5 +32,8 @@ FactoryGirl.define do
       end
     end
 
+    factory :game_with_bad_poster do
+      poster File.open(Rails.root.join('spec','support', 'files', 'bad_format_poster.xml'))
+    end
   end
 end

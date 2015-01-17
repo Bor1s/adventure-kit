@@ -8,9 +8,9 @@
   <template if='{{!game.private_game}}'>
     <paper-dropdown-menu label="<%= t('games.players_amount') %>">
       <paper-dropdown class="dropdown">
-        <core-selector id='players-amount' selected='{{game.players_amount}}' class="menu">
+        <core-selector id='players-amount' valueattr='label' selected='{{game.players_amount}}' class="menu">
           <template repeat='{{[1,2,3,4,5,6,7,8,9,10]}}'>
-            <paper-item>{{}}</paper-item>
+            <paper-item label='{{}}'>{{}}</paper-item>
           </template>
         </core-selector>
       </paper-dropdown>

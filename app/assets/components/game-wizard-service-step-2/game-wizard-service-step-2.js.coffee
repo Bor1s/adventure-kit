@@ -42,7 +42,7 @@ Polymer 'game-wizard-service-step-2',
 
   getPlayersAmount: ->
     #Return players amount value from dropdown field
-    this._players_amount_selector().items[this._players_amount_selector().selected].textContent
+    this._players_amount_selector().selected
 
   getOnlineInfo: ->
     this._online_info().value
@@ -96,9 +96,10 @@ Polymer 'game-wizard-service-step-2',
     this._cleanupOldErrors()
 
     for k in Object.keys(data.errors)
-      #Setting new error to field
-      this["_#{k}"]().setCustomValidity(data.errors[k].toString())
-      this["_#{k}_decorator"]().error = data.errors[k].toString()
+      #Set new error to field if it exists
+      if this["_#{k}"]
+        this["_#{k}"]().setCustomValidity(data.errors[k].toString())
+        this["_#{k}_decorator"]().error = data.errors[k].toString()
     this.isFormValid()
 
   handleSuccess: (e, data)->

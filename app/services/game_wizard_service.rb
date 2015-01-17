@@ -20,14 +20,12 @@ class GameWizardService
     super(attributes)
   end
 
-  def private_game?
-    #Stupid, I know
-    private_game == 'true'
+  def online_game
+    Mongoid::Boolean.mongoize(@online_game)
   end
 
-  def online_game?
-    #Stupid, I know
-    online_game == 'true'
+  def private_game
+    Mongoid::Boolean.mongoize(@private_game)
   end
 
   # --- Steps ---
@@ -63,7 +61,7 @@ class GameWizardService
       cache_key
     when 2
       Sidekiq.redis do |conn|
-        if private_game?
+        if private_game
           conn.hset(cache_key, 'private_game', true)
           conn.hset(cache_key, 'invitees', JSON.generate(invitees)) if invitees.present?
         else
@@ -71,7 +69,7 @@ class GameWizardService
           conn.hset(cache_key, 'players_amount', players_amount)
         end
 
-        if online_game?
+        if online_game
           conn.hset(cache_key, 'online_game', true)
           conn.hset(cache_key, 'online_info', online_info)
         else
@@ -92,7 +90,7 @@ class GameWizardService
         if raw_ext
           poster_ext = raw_ext.split('/').last
         else
-          poster_ext = 'png'
+          poster_ext = 'txt' #Specially to cause error on poster validation (wrong format)
         end
 
         poster_tmp_url = tmpfilename = Rails.root.join('tmp', 'cache', "#{cache_key}_poster.#{poster_ext}")
@@ -106,11 +104,6 @@ class GameWizardService
       end
       cache_key
     end
-  end
-
-  def build_game(key, game_creator)
-    builder = GameBuilderService.new(key, game_creator)
-    builder.build
   end
 
   private

@@ -1,11 +1,18 @@
-<paper-input-decorator id='title_decorator' floatingLabel label="Title">
-  <input id='title' type='text' value='{{game.title}}' is="core-input">
-</paper-input-decorator>
+<div horizontal layout>
+  <section flex four>
+    <paper-input-decorator id='title_decorator' floatingLabel label="Title">
+      <input id='title' type='text' value='{{game.title}}' is="core-input">
+    </paper-input-decorator>
 
-<paper-input-decorator id='description_decorator' floatingLabel label="Desc">
-  <paper-autogrow-textarea rows='10' id="game_desc">
-    <textarea id='description' value='{{game.description}}' is="core-input"></textarea>
-  <paper-autogrow-textarea>
-</paper-input-decorator>
+    <paper-input-decorator id='description_decorator' floatingLabel label="Desc">
+      <paper-autogrow-textarea rows='10' id="game_desc">
+        <textarea id='description' value='{{game.description}}' is="core-input"></textarea>
+      <paper-autogrow-textarea>
+    </paper-input-decorator>
 
-<paper-button id='step1-submit' recenteringTouch='true'>Далее</paper-button>
+    <paper-button id='step1-submit' recenteringTouch='true'>Далее</paper-button>
+  </section>
+
+  <section flex eight>
+  </scetion>
+</div>

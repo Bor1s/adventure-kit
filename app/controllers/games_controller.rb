@@ -19,10 +19,21 @@ class GamesController < ApplicationController
   def create
     step = params[:step].to_i
     service = GameWizardService.new(params[:cache_key], step, game_params)
+    service.persist_step
     if service.valid?
-      service.persist_step
-      service.build_game(service.cache_key, current_user) if service.last_step?
-      render json: {success: true, last_step: service.last_step?, cache_key: service.cache_key}
+      if service.last_step?
+        builder = GameBuilderService.new(service.cache_key)
+        if builder.build
+          game = builder.game
+          game.subscribe(current_user, :master)
+          builder.clear_tmp(service.cache_key)
+          render json: {success: true, last_step: service.last_step?, cache_key: service.cache_key}
+        else
+          render json: {success: false, errors: builder.game.errors}, status: 422
+        end
+      else
+        render json: {success: true, last_step: service.last_step?, cache_key: service.cache_key}
+      end
     else
       render json: {success: false, errors: service.errors}, status: 422
     end
