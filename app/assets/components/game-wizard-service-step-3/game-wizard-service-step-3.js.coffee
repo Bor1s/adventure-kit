@@ -5,14 +5,23 @@ Polymer 'game-wizard-service-step-3',
 
   domReady: ->
     that = this
+
+    #Handle submit button
     document.querySelector('#step3-submit').addEventListener 'click', ->
       that.sendForm()
+
+    #Handle prev button
+    document.querySelector('#step3-prev').addEventListener 'click', ->
+      that.rollBack()
 
   _pages_container: ->
     document.querySelector('#game-wizard-steps')
 
   _events_container: ->
     document.querySelector('game-events')
+
+  rollBack: ->
+    this._pages_container().selected -= 1
 
   sendForm: ->
     d = new FormData()

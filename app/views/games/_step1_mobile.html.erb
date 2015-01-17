@@ -1,5 +1,5 @@
-<div horizontal layout class='wizard-container'>
-  <section flex four>
+<div vertical layout class='wizard-container'>
+  <section>
     <paper-input-decorator id='title_decorator' floatingLabel label="<%= t('games.title') %>">
       <input id='title' type='text' value='{{game.title}}' is="core-input">
     </paper-input-decorator>
@@ -13,8 +13,8 @@
     <paper-button raised id='step1-submit' recenteringTouch='true'>Далее</paper-button>
   </section>
 
-  <section class='tips' flex eight>
-    <div layout horizontal end-justified>
+  <section class='tips'>
+    <div layout vertical center>
       <figure class='do'>
         <div><%= image_tag asset_path('step1-valid.png'), size: '300x300' %></div>
         <figcaption>

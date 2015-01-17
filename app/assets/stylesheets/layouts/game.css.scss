@@ -26,3 +26,48 @@ paper-item {
 paper-item.core-selected {
   color: $yellow;
 }
+
+.wizard-container {
+  margin: 48px;
+}
+
+#step1-submit, #step2-submit, #step3-submit, #step4-submit {
+  background-color: $yellow;
+  color: $white;
+}
+
+// Right sided tips
+.tips {
+  display: inline-block;
+
+  .do, .dont {
+    font-size: 12px;
+    .tip {
+      color: $grey;
+    }
+  }
+
+  figcaption {
+    max-width: 300px;
+  }
+
+  img {
+    margin-bottom: 16px;
+  }
+
+  .do {
+    display: inline-block;
+    color: green;
+    div { 
+      border-bottom: 12px solid green;
+    }
+  }
+
+  .dont {
+    display: inline-block;
+    color: red;
+    div { 
+      border-bottom: 12px solid red;
+    }
+  }
+}

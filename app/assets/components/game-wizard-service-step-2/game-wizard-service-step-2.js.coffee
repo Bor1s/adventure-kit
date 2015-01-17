@@ -23,6 +23,10 @@ Polymer 'game-wizard-service-step-2',
     document.querySelector('#step2-submit').addEventListener 'click', ->
       that.sendForm()
 
+    #Handle prev button
+    document.querySelector('#step2-prev').addEventListener 'click', ->
+      that.rollBack()
+
   _pages_container: ->
     document.querySelector('#game-wizard-steps')
   _game_privacy: ->
@@ -59,6 +63,9 @@ Polymer 'game-wizard-service-step-2',
       addressValidity = this._address().checkValidity()
       this._address_decorator().isInvalid = !addressValidity
       addressValidity
+
+  rollBack: ->
+    this._pages_container().selected -= 1
 
   sendForm: ->
     d = new FormData()
@@ -105,7 +112,6 @@ Polymer 'game-wizard-service-step-2',
   handleSuccess: (e, data)->
     this._pages_container()._cache_key = data.response.cache_key
     this._pages_container().selected += 1
-
   _cleanupOldErrors: ->
     if this.game.online_game
       this._online_info().setCustomValidity('')

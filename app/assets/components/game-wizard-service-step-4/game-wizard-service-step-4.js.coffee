@@ -7,8 +7,15 @@ Polymer 'game-wizard-service-step-4',
 
   domReady: ->
     that = this
+
+    #Handle form submit
     document.querySelector('#step4-submit').addEventListener 'click', ->
       that.sendForm()
+
+    #Handle prev button
+    document.querySelector('#step4-prev').addEventListener 'click', ->
+      that.rollBack()
+
     that.handleImageUpload()
 
   _pages_container: ->
@@ -16,6 +23,9 @@ Polymer 'game-wizard-service-step-4',
 
   _image_uploader: ->
     document.querySelector('file-input')
+
+  rollBack: ->
+    this._pages_container().selected -= 1
 
   sendForm: ->
     d = new FormData()

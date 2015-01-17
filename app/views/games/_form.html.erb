@@ -1,101 +1,35 @@
-<div class='triada-header'>
-  <div class='row'>
-    <div class='col-xs-4 col-sm-4 col-lg-4'></div>
-    <div class='col-xs-4 col-sm-4 col-lg-4'><%= t('.general_info')%></div>
-    <div class='col-xs-4 col-sm-4 col-lg-4'></div>
-  </div>
-</div>
+<core-animated-pages id='game-wizard-steps' transitions='slide-from-right'>
+  <template is='auto-binding'> <!--  <- is very important as it binds all external polymer elements inside itself -->
+    <section>
+      <template if={{!phoneScreen}}>
+        <%= render partial: 'step1' %>
+        <game-wizard-service-step-1 game='{{game}}' url="<%= games_path %>"></game-wizard-service-step-1>
+      </template>
 
-<%= form_for @game, html: { multipart: true, class: 'form-horizontal', role: 'form' } do |f| %>
+      <template if={{phoneScreen}}>
+        <%= render partial: 'step1_mobile' %>
+        <game-wizard-service-step-1 game='{{game}}' url="<%= games_path %>"></game-wizard-service-step-1>
+      </template>
+    </section>
 
-  <div class='row'>
-    <div class='col-xs-12 col-sm-12 col-md-12'>
+    <section>
+      <%= render partial: 'step2' %>
+      <game-wizard-service-step-2 game='{{game}}' url="<%= games_path %>"></game-wizard-service-step-2>
+    </section>
 
-      <div class='row'>
-        <div class='col-xs-12 col-sm-5 col-md-5'>
-          <div class="form-group">
-            <%= f.text_field :title, class: 'form-control input-sm', placeholder: t('.game_title'), required: true %>
-          </div>
+    <section>
+      <%= render partial: 'step3' %>
+      <game-wizard-service-step-3 game='{{game}}' url="<%= games_path %>"></game-wizard-service-step-3>
+    </section>
 
-          <div class="form-group">
-            <%= f.text_area :description, class: 'form-control input-sm', placeholder: t('.game_description'), size: '50x10' %>
-          </div>
+    <section>
+      <%= render partial: 'step4' %>
+      <game-wizard-service-step-4 game='{{game}}' gameCreated='{{gameCreated}}' url="<%= games_path %>"></game-wizard-service-step-4>
+    </section>
 
-          <div class="form-group tags">
-            <%= f.hidden_field :tag_ids, id: 'tags', data: {pre: @game.tags.tokenize}, style: 'width: 100%; font-size: 12px;' %>
-          </div>
+    <%= yield :game_edit_loader %>
 
-          <div class="form-group">
-            <%= f.select :players_amount, options_for_select((1..10), @game.players_amount), { include_blank: t('.select_players_amount'), class: 'form-control input-sm' } %>
-          </div>
+    <core-media-query query="max-width: 900px" queryMatches="{{phoneScreen}}"></core-media-query>
+  </template>
+</core-animated-pages>
 
-          <% if f.object.poster? %>
-            <div class="form-group">
-              <%= image_tag(asset_path(f.object.poster.medium.url), class: 'poster') %>
-            </div>
-          <% end %>
-
-          <% if f.object.poster? %>
-            <div class='form-group'>
-              <%= f.label :remove_poster, class: 'checkbox-inline remove-poster' do %>
-                <%= f.check_box :remove_poster %><%= t('.remove_poster') %>
-              <% end %>
-            </div>
-          <% end %>
-
-          <div class='form-group'>
-            <%= f.file_field :poster, class: 'form-control input-sm' %>
-            <%= f.hidden_field :poster_cache %>
-          </div>
-
-          <div class="form-group">
-            <%= f.fields_for :location do |location| %>
-              <%= location.hidden_field :text_coordinates %>
-            <% end %>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <div id='event-map-container' class='col-xs-12 col-sm-5 col-sm-offset-1 col-md-5 col-md-offset-1'>
-            <div id='event-map' data-lat="<%= @game.lat %>" data-lng="<%= @game.lng %>" style="width: 100%; height: 100%;"></div>
-          </div>
-        </div>
-      </div>
-
-
-    </div>
-    <!-- End of first 'row' -->
-  </div>
-
-  <div class='row'>
-    <div class='col-xs-12 col-sm-12 col-md-12'>
-      <div class='triada-header'>
-        <div class='row'>
-          <div class='col-xs-4 col-sm-4 col-lg-4'></div>
-          <div class='col-xs-4 col-sm-4 col-lg-4'><%= t('.events')%></div>
-          <div class='col-xs-4 col-sm-4 col-lg-4'></div>
-        </div>
-      </div>
-
-      <div class='events'>
-        <%= f.fields_for :events do |event| %>
-          <%= render 'event_fields', f: event %>
-        <% end %>
-      </div>
-    </div>
-  </div>
-
-  <div class='row'>
-    <div class='col-xs-12 col-sm-12 col-md-12'>
-      <div class="form-group">
-        <%= link_to_add_association f, :events,
-          data: {:'association-insertion-node' => '.events', :'association-insertion-method' => 'append'},
-          class: 'btn btn-sm btn-default' do %>
-          <i class='fa fa-bars'><%= t('.add_event') %></i>
-        <% end %>
-        <%= f.submit "#{t('.save')}", class: 'btn btn-success btn-sm' %>
-      </div>
-    </div>
-  </div>
-
-<% end %> <!-- Form end -->

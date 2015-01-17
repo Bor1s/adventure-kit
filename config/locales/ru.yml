@@ -23,195 +23,23 @@ ru:
     no_tags: 'Тегов нет'
     no_nearby_games: 'Рядом с вами игр не обнаружено'
 
-    game_table_fields: &game_table_fields
-      title: 'Название'
-      first_event_at: 'Первая сессия'
-      next_event_at: 'Следующая сессия'
-      events_amount: 'Сессии'
-      participants_amount: 'Люди'
-      role: 'Статус'
-      no_games: 'Игры не надены'
-
-  application:
-    admin_menu:
-      profile: 'Профиль'
-      approval_list: 'Заявки ведущих'
-      games_heatmap: 'Карта игр'
-      my_games: 'Мои игры'
-      achivements: 'Достижения'
-      statistics: 'Статистика'
-      users: 'Таблица игроков'
-    master_menu:
-      profile: 'Профиль'
-      games_heatmap: 'Карта игр'
-      my_games: 'Мои игры'
-    player_menu:
-      profile: 'Профиль'
-      my_games: 'Мои игры'
-
-  navbar:
-    events: 'Игры'
-    tags: 'Теги'
-    people: 'Люди'
-    locations: 'Радар'
-
-  sidebar:
-    create_game_header: 'Создайте свою игру'
-    create_game_tip: 'Хотите создать и повести игру?'
-    create_game: 'Создать игру'
-
-  dashboard:
-    index:
-      recruits: 'Рекруты'
-      ago: ' назад'
-      top_games: 'Топ игр'
-
-  admin:
-    profiles:
-      edit:
-        update: 'Сохранить'
-    games:
-      index: *game_table_fields
-    approvals:
-      index:
-        no_requests: 'Нет заявок'
-    users:
-      index:
-        name: 'Имя'
-        game: 'Название игры'
-        role: 'Статус'
-        next_session: 'След. сессия'
-        participants: 'Остальные участники'
-        left: 'Мест осталось'
-        no_users: 'Нет участников'
-
-  master:
-    profiles:
-      edit:
-        want_to_be_master: 'Хочу быть ведущим'
-        wait_approval: 'Ваш запрос будет скоро обработан нашими администраторами'
-        update: 'Сохранить'
-    games:
-      index: *game_table_fields
-
-  player:
-    profiles:
-      edit:
-        want_to_be_master: 'Хочу быть ведущим'
-        wait_approval: 'Ваш запрос будет скоро обработан нашими администраторами'
-        update: 'Сохранить'
-    games:
-      index: *game_table_fields
+    January: 'Январь'
+    February: 'Февраль'
+    March: 'Март'
+    April: 'Апрель'
+    May: 'Май'
+    June: 'Июнь'
+    July: 'Июль'
+    August: 'Август'
+    September: 'Сентябрь'
+    October: 'Октябрь'
+    November: 'Ноябрь'
+    December: 'Декабрь'
 
   games:
-    players_amount: 'Общее количество игроков'
-    form:
-      general_info: 'Общая информация'
-      events: 'Игровые сессии'
-      add_event: ' Добавить сессию'
-      save: 'Сохранить'
-      remove: 'Удалить игру'
-      game_title: 'Название игры'
-      game_description: 'Описание игры'
-      select_players_amount: 'Выберите количество игроков'
-      remove_poster: ' Удалить постер'
-    event_fields:
-      remove: ' Удалить'
-      event_title: 'Название игровой сессии'
-      remove_event: 'Точно хотите удалить игровую сессию?'
-    show:
-      comments: 'Комментарии'
-      participants: 'Участники'
-      for_master: 'Ведущему'
-      for_player: 'Игроку'
-      master: 'Ведущий'
-      tags: 'Теги '
-      edit_game: 'Редактировать'
-      leave_game: 'Покинуть игру'
-      take_part: 'Принять участие'
-      general: 'Общее'
-      players: 'Игроки: '
-      game_is_full: 'Команда игроков уже набрана'
-      confirm_leave_game: 'Вы точно хотите покинуть эту игру?'
-      no_players_yet: 'Игроков пока нет'
-      next_session: 'Следующая сессия'
-      no_next_session: 'Новых сессий не запланировано'
-      location: 'Место проведения'
-      remove_player: 'Удалить игрока'
-      remove_player_confirm: 'Вы точно хотите удалить игрока из вашей игры?'
-
-  events:
-    index:
-      recruits: 'Рекруты'
-      top_games: 'Топ игр'
-      no_recent_users: 'Нет новых рекрутов'
-      no_games: 'Таких игровых кампаний нет.'
-    event:
-      go_to_game: 'перейти к игре'
-      completed: 'Завершено'
-    filter_bar:
-      all: 'Все'
-      today: 'На сегодня'
-      upcoming: 'Предстоящие'
-      finished: 'Прошлые'
-
-  users:
-    index:
-      general: 'Общее'
-      total_masters: 'Всего ведущих'
-      total_players: 'Всего игроков'
-      masters: 'Ведущие'
-      players: 'Игроки'
-      no_users: 'Люди не найдены'
-    filter_bar:
-      all: 'Все'
-      masters: 'Ведущие'
-      players: 'Игроки'
-    show:
-      bio: 'Био'
-      stats: 'Статистика'
-      tags: 'Теги'
-      registered_at: 'Зарегистрирован'
-      total_games: 'Участий в играх'
-      total_games_created: 'Создано игр'
-      total_comments: 'Комментариев'
-      total_tags: 'Тегов'
-      participations: 'Игры'
-      <<: *game_table_fields
-
-  comments:
-    form:
-      your_comment: 'Ваш комментарий'
-    manage_links:
-      remove_confirm: 'Точно хотите удалить комментарий?'
-
-  tags:
-    search:
-      general: 'Всего найдено по тегу'
-      tag_description: 'Текущий тег'
-      total_users: 'Людей'
-      total_games: 'Игр'
-      games: 'Игры'
-      users: 'Люди'
-    form:
-      tag_description: 'Описание тега'
-      tag_title: 'Название тега'
-      save: 'Сохранить'
-    tag:
-      remove_confirm: 'Вы уверены? Отменить удаление тега будет невозможно.'
-
-  January: 'Январь'
-  February: 'Февраль'
-  March: 'Март'
-  April: 'Апрель'
-  May: 'Май'
-  June: 'Июнь'
-  July: 'Июль'
-  August: 'Август'
-  September: 'Сентябрь'
-  October: 'Октябрь'
-  November: 'Ноябрь'
-  December: 'Декабрь'
+    title: 'Название'
+    description: 'Описание'
+    players_amount: 'Количество игроков'
 
   core_notificator:
     event_created:
@@ -228,7 +56,3 @@ ru:
       subject: 'Напоминание о предстоящей игре'
     player_rejected:
       subject: 'Заявка на игру отклонена'
-
-  messages:
-    account_added: 'Аккаунт добавлен'
-    account_busy: 'Этот аккаунт уже занят другим пользователем'
