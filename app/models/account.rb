@@ -7,7 +7,6 @@ class Account
   field :provider, type: String
   field :uid, type: String
   field :name, type: String
-  field :nickname, type: String
 
   #Additional fields
   field :avatar, type: String

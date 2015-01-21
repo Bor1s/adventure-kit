@@ -40,6 +40,19 @@ ru:
     title: 'Название'
     description: 'Описание'
     players_amount: 'Количество игроков'
+    public: 'Игра с открытым набором'
+    private: 'Игра по приглашениям'
+    online: 'Онлайн игра'
+    location_based: 'Играем по адресу'
+    address: 'Адрес'
+    online_info: 'Пару слов о том, что используете для игры в онлайне'
+    errors:
+      online_info: 'Расскажите игрокам как вы будете связываться с ними онлайн'
+      address: 'Где вы видели такой адрес?'
+
+  events:
+    index:
+      no_games: 'Игр нет'
 
   core_notificator:
     event_created:

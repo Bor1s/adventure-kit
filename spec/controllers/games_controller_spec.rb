@@ -43,7 +43,7 @@ RSpec.describe GamesController, type: :controller do
         end
 
         it 'address is invalid' do
-          expected_result = {'success' => false, 'errors' => {'address' => ['Address error!']}}
+          expected_result = {'success' => false, 'errors' => {'address' => [I18n.t('games.errors.address')]}}
           post :create, {format: :json, step: 2,
                          game: {private_game: false, players_amount: 4, online_game: false, address: ''}
           }
@@ -59,7 +59,7 @@ RSpec.describe GamesController, type: :controller do
         end
 
         it 'online_info is invalid' do
-          expected_result = {'success' => false, 'errors' => {'online_info' => ['Online info error!']}}
+          expected_result = {'success' => false, 'errors' => {'online_info' => [I18n.t('games.errors.online_info')]}}
           post :create, {format: :json, step: 2,
                          game: {private_game: false, players_amount: 4, online_game: true, online_info: ''}
           }
@@ -102,7 +102,7 @@ RSpec.describe GamesController, type: :controller do
       context 'step 4' do
         it 'successful' do
           allow_any_instance_of(GameBuilderService).to receive(:build).and_return(true)
-          allow_any_instance_of(GameBuilderService).to receive(:game).and_return(double(Game, subscribe: true))
+          allow_any_instance_of(GameBuilderService).to receive(:game).and_return(double(Game, subscribe: true, id: 1, 'private_game?' => false))
           post :create, {format: :json, step: 4, game: {poster: 'data:image/png;base64,iisudfhisfh778'}}
           expect(JSON.parse(response.body)['cache_key']).not_to be_empty
           expect(JSON.parse(response.body)['success']).to be true

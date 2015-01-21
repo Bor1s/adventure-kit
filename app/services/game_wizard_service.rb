@@ -90,7 +90,8 @@ class GameWizardService
         if raw_ext
           poster_ext = raw_ext.split('/').last
         else
-          poster_ext = 'txt' #Specially to cause error on poster validation (wrong format)
+          #Specially to cause error on poster validation (wrong format)
+          poster_ext = 'txt'
         end
 
         poster_tmp_url = tmpfilename = Rails.root.join('tmp', 'cache', "#{cache_key}_poster.#{poster_ext}")

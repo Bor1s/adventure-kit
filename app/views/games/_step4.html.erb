@@ -1,6 +1,6 @@
 <template if='{{gameCreated}}'>
-  <paper-button id='show-game' recenteringTouch='true'>Show Game</paper-button>
-  <paper-button id='to-dashboard' recenteringTouch='true'>To Dashboard</paper-button>
+  <a href='/games/{{game.id}}'>Посмотреть игру</a>
+  <%= link_to 'На главную', root_path %>
 </template>
 
 <template if='{{!gameCreated}}'>

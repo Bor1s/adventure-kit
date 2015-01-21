@@ -1,6 +1,6 @@
 class GameBuilderService
   EXISTING_GAME_PREFIX = 'new_game_'
-  attr_reader :game, :game_cache_key, :game_id, :data
+  attr_reader :game, :game_cache_key, :game_id, :data, :invitees
 
   def initialize(game_cache_key)
     @game_cache_key = game_cache_key
@@ -38,7 +38,7 @@ class GameBuilderService
     end
     @game.private_game = data['private_game']
     if @game.private_game?
-      #Invite users by data['invitees']
+      @invitees = JSON.parse(data['invitees'])
     else
       @game.players_amount = data['players_amount'].to_i
     end

@@ -1,5 +1,24 @@
 $yellow: #FBC02D;
 $grey: #616161;
+$mid-grey: #E0E0E0;
 $light-grey: #F5F5F5;
 $white: #FFF;
 $skyline: #03A9F4;
+
+// Firefox
+paper-radio-button #ink[checked] {
+  color: $yellow;
+}
+
+paper-radio-button #onRadio {
+  background-color: $yellow;
+}
+
+// Chrome
+paper-radio-button::shadow #ink[checked] {
+  color: $yellow;
+}
+
+paper-radio-button::shadow #onRadio {
+  background-color: $yellow;
+}

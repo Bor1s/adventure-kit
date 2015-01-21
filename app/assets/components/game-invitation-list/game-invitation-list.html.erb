@@ -4,14 +4,14 @@
 
     <core-selector id='invitation_selector' target='{{$._emails}}' valueattr='label' multi>
       <ul id='_emails'>
-      <template repeat='{{accounts}}'>
-        <li label='{{email}}'>{{email}}</li>
+      <template repeat='{{users}}'>
+        <li label='{{id}}'>{{nickname}}</li>
       </template>
       </ul>
     </core-selector>
 
-    <core-ajax id='accounts_fetcher' url='/accounts'
-    handleAs='json' 
+    <core-ajax id='users_fetcher' url='/users'
+    handleAs='json'
     on-core-error='{{handleError}}'
     on-core-response='{{handleSuccess}}'>
     </core-ajax>

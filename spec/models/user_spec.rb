@@ -27,6 +27,7 @@ describe User do
 
   specify { expect(subject).to respond_to(:role) }
   specify { expect(subject).to respond_to(:want_to_be_master) }
+  specify { expect(subject).to respond_to(:nickname) }
 
   context 'relations' do
     specify { expect(subject).to respond_to(:tags) }

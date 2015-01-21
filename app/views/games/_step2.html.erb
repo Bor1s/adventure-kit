@@ -1,47 +1,69 @@
-<section>
-  <!-- Game privacy options -->
-  <paper-radio-group id='game-privacy' selected='{{game.private_game ? "private" : "public"}}'>
-    <paper-radio-button name='public' label='Public'></paper-radio-button><br />
-    <paper-radio-button name='private' label='Private'></paper-radio-button>
-  </paper-radio-group>
+<div horizontal layout class='wizard-container'>
+  <div flex six>
+    <section layout vertical class='privacy'>
+      <!-- Game privacy options -->
+      <div flex three>
+        <paper-radio-group id='game-privacy' selected='{{game.private_game ? "private" : "public"}}'>
+          <paper-radio-button name='public' label='<%= t('games.public') %>'></paper-radio-button>
+          <paper-radio-button name='private' label='<%= t('games.private') %>'></paper-radio-button>
+        </paper-radio-group>
+      </div>
 
-  <template if='{{!game.private_game}}'>
-    <paper-dropdown-menu label="<%= t('games.players_amount') %>">
-      <paper-dropdown class="dropdown">
-        <core-selector id='players-amount' valueattr='label' selected='{{game.players_amount}}' class="menu">
-          <template repeat='{{[1,2,3,4,5,6,7,8,9,10]}}'>
-            <paper-item label='{{}}'>{{}}</paper-item>
-          </template>
-        </core-selector>
-      </paper-dropdown>
-    </paper-dropdown-menu>
-  </template>
+      <template if='{{!game.private_game}}'>
+        <div flex three class='players'>
+          <paper-dropdown-menu label="<%= t('games.players_amount') %>">
+            <paper-dropdown class="dropdown">
+              <core-selector id='players-amount' valueattr='label' selected='{{game.players_amount}}' class="menu">
+                <template repeat='{{[1,2,3,4,5,6,7,8,9,10]}}'>
+                  <paper-item label='{{}}'>{{}}</paper-item>
+                </template>
+              </core-selector>
+            </paper-dropdown>
+          </paper-dropdown-menu>
+        </div>
+      </template>
 
-  <template if='{{game.private_game}}'>
-    <game-invitation-list game='{{game}}' url='<%= users_path %>'>
-    </game-invitation-list>
-  </template>
-  <!-- END Game privacy options -->
+      <template if='{{game.private_game}}'>
+        <div flex three>
+          <game-invitation-list game='{{game}}' url='<%= users_path %>'>
+          </game-invitation-list>
+        </div>
+      </template>
+    </section>
+    <!-- END Game privacy options -->
 
-  <!-- Game location options -->
-  <paper-radio-group id='game-location' selected='{{game.online_game ? "online" : "location-based"}}'>
-    <paper-radio-button name='online' label='Online'></paper-radio-button><br />
-    <paper-radio-button name='location-based' label='Location Based'></paper-radio-button>
-  </paper-radio-group>
+    <!-- Game location options -->
+    <section layout vertical class='place'>
+      <div>
+        <paper-radio-group id='game-location' selected='{{game.online_game ? "online" : "location-based"}}'>
+          <paper-radio-button name='online' label='<%= t('games.online') %>'></paper-radio-button>
+          <paper-radio-button name='location-based' label='<%= t('games.location_based') %>'></paper-radio-button>
+        </paper-radio-group>
+      </div>
 
-  <template if='{{!game.online_game}}'>
-    <paper-input-decorator id='address_decorator' floatingLabel label="Address">
-      <input type='text' name='address' id='address' value='{{game.address}}' is='core-input'>
-    </paper-input-decorator>
-  </template>
+      <template if='{{!game.online_game}}'>
+        <div>
+          <paper-input-decorator id='address_decorator' floatingLabel label="<%= t('games.address') %>">
+            <input type='text' name='address' id='address' value='{{game.address}}' is='core-input'>
+          </paper-input-decorator>
+        </div>
+      </template>
 
-  <template if='{{game.online_game}}'>
-    <paper-input-decorator id='online_info_decorator' floatingLabel label="Online Info">
-      <input type='text' name='online_info' id='online_info' value='{{game.online_info}}' is='core-input'>
-    </paper-input-decorator>
-  </template>
-  <!-- END Game location options -->
-</section>
+      <template if='{{game.online_game}}'>
+        <div>
+          <paper-input-decorator id='online_info_decorator' floatingLabel label="<%= t('games.online_info') %>">
+            <input type='text' name='online_info' id='online_info' value='{{game.online_info}}' is='core-input'>
+          </paper-input-decorator>
+        </div>
+      </template>
+    </section>
+    <!-- END Game location options -->
 
-<paper-button raised id='step2-submit' recenteringTouch='true'>Далее</paper-button>
-<paper-button id='step2-prev' recenteringTouch='true'>Назад</paper-button>
+    <paper-button raised id='step2-submit' recenteringTouch='true'>Далее</paper-button>
+    <paper-button id='step2-prev' recenteringTouch='true'>Назад</paper-button>
+  </div>
+
+  <div flex six>
+    <!-- Images with tips goes here -->
+  </div>
+</div>

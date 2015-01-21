@@ -20,12 +20,17 @@
 // players amount dropdown styles
 paper-item {
   display: block;
-  margin: 16px;
+  padding: 4px 16px 4px 16px;
+  cursor: pointer;
+  border-bottom: 1px dashed #DDD;
+  text-align: center;
 }
 
 paper-item.core-selected {
-  color: $yellow;
+  color: $white;
+  background-color: $yellow;
 }
+///////
 
 .wizard-container {
   margin: 48px;
@@ -34,6 +39,12 @@ paper-item.core-selected {
 #step1-submit, #step2-submit, #step3-submit, #step4-submit {
   background-color: $yellow;
   color: $white;
+  margin-left: 12px;
+  margin-top: 18px;
+}
+
+#step1-submit {
+  margin-left: 0;
 }
 
 // Right sided tips
@@ -69,5 +80,20 @@ paper-item.core-selected {
     div { 
       border-bottom: 12px solid red;
     }
+  }
+}
+
+// Step 2
+.privacy {
+  margin-bottom: 58px;
+
+  .players {
+    padding-left: 14px;
+  }
+}
+
+.place {
+  #online_info_decorator, #address_decorator {
+    padding-left: 12px;
   }
 }

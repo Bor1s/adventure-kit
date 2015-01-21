@@ -7,6 +7,7 @@ class User
   field :role, type: Integer, default: ROLES[:player]
   field :want_to_be_master, type: Mongoid::Boolean
   field :current_timezone_offset, type: Integer, default: 0
+  field :nickname, type: String
 
   mount_uploader :avatar, AvatarUploader
 

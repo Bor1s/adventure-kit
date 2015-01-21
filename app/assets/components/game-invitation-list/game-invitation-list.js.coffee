@@ -1,11 +1,12 @@
 Polymer 'game-invitation-list',
   created: ->
-    this.accounts = {}
+    this.users = {}
     this.invitees = []
 
   domReady: ->
     that = this
-    this.$.accounts_fetcher.go()
+    this.$.users_fetcher.headers = '{"Accept": "application/json"}'
+    this.$.users_fetcher.go()
     this.$.invitation_selector.addEventListener 'core-activate', (e)->
       that.invitees = that.$.invitation_selector.selected
 
@@ -13,7 +14,7 @@ Polymer 'game-invitation-list',
     this.invitees
 
   handleSuccess: (e, data)->
-    this.accounts = data.response.accounts
+    this.users = data.response.users
 
   handleError: (e, data)->
     console.log 'error', data

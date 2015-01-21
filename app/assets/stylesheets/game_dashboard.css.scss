@@ -45,25 +45,6 @@
       color: $yellow;
     }
   }
-
-
-  // Firefox
-  paper-radio-button #ink[checked] {
-    color: $yellow;
-  }
-
-  paper-radio-button #onRadio {
-    background-color: $yellow;
-  }
-
-  // Chrome
-  paper-radio-button::shadow #ink[checked] {
-    color: $yellow;
-  }
-
-  paper-radio-button::shadow #onRadio {
-    background-color: $yellow;
-  }
 }
 
 .round {

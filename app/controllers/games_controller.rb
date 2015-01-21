@@ -17,6 +17,7 @@ class GamesController < ApplicationController
   end
 
   def create
+    #TODO refactor after specs
     step = params[:step].to_i
     service = GameWizardService.new(params[:cache_key], step, game_params)
     service.persist_step
@@ -26,8 +27,13 @@ class GamesController < ApplicationController
         if builder.build
           game = builder.game
           game.subscribe(current_user, :master)
+          if game.private_game?
+            User.where(:id.in => invitees).to_a.each do |u|
+              game.subscribe(u)
+            end
+          end
           builder.clear_tmp(service.cache_key)
-          render json: {success: true, last_step: service.last_step?, cache_key: service.cache_key}
+          render json: {success: true, last_step: service.last_step?, cache_key: game.id.to_s}
         else
           render json: {success: false, errors: builder.game.errors}, status: 422
         end

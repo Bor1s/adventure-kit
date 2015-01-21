@@ -47,6 +47,10 @@ Polymer 'game-wizard-service-step-4',
   handleSuccess: (e, data)->
     this.gameCreated = true
 
+    #Game property already exists via component attributes,
+    #so we assign id right to game
+    this.game.id = data.response.cache_key
+
   handleImageUpload: ()->
     that = this
     that._image_uploader().addEventListener 'change', (event)->

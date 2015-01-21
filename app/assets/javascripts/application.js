@@ -14,7 +14,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require select2
-//= require turbolinks
+// require turbolinks
 //= require cocoon
 //= require jquery.datetimepicker
 //= require_tree .

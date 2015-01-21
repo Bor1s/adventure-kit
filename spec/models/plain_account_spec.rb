@@ -7,7 +7,6 @@ RSpec.describe PlainAccount, type: :model do
   end
 
   specify { expect(subject).to respond_to(:email) }
-  specify { expect(subject).to respond_to(:nickname) }
 
   context 'relations' do
     specify { expect(subject).to respond_to(:user) }
