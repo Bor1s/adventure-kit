@@ -1,4 +1,5 @@
 class GameWizardStep3Validator < ActiveModel::Validator
+  PATTERN = /\d+-\d+-\d+\s\d+:\d+/
   def validate(document)
     if document.step3?
       #For handling error I use two different objects(it is dumb but simple way
@@ -9,10 +10,13 @@ class GameWizardStep3Validator < ActiveModel::Validator
       #Here '12345' is UI key to show error 
       if document.events_attributes.present?
         document.events_ui_ids.each_with_index do |id, idx|
-          document.errors[id] << 'Must not be blank!' if document.events_attributes[idx][:beginning_at].blank?
+          beginning_at = document.events_attributes[idx][:beginning_at]
+          if beginning_at.blank? || !beginning_at.match(PATTERN)
+            document.errors[id] << I18n.t('events.errors.format')
+          end
         end
       else
-        document.errors[:events_attributes] << 'Must be present!'
+        document.errors[:events_attributes] << I18n.t('events.errors.blank')
       end
     end
   end

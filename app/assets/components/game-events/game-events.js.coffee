@@ -15,10 +15,11 @@ Polymer 'game-events',
       this.$.events_fetcher.go()
 
   addEvent: ->
-    #Check that input value has proper format
-    if (/\d+-\d+-\d+\s\d+:\d+/).test(this.$.new_beginning_at.value)
-      this.events.push({id: new Date().getTime().toString(), new: true, beginning_at: this.$.new_beginning_at.value})
-    this.$.new_beginning_at.value = ''
+    this.events.push({id: new Date().getTime().toString(), new: true, beginning_at: ''})
+
+  setDataToEvents: ->
+    for event in this.events
+      event.beginning_at = this.shadowRoot.querySelector("#beginning_at_#{event.id}").value
 
   removeEvent: (e)->
     eventId = e.target.attributes['data-event-id'].value

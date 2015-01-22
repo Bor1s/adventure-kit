@@ -112,6 +112,7 @@ Polymer 'game-wizard-service-step-2',
   handleSuccess: (e, data)->
     this._pages_container()._cache_key = data.response.cache_key
     this._pages_container().selected += 1
+
   _cleanupOldErrors: ->
     if this.game.online_game
       this._online_info().setCustomValidity('')

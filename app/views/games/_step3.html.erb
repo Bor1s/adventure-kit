@@ -1,8 +1,16 @@
-<% if @game.new_record? %>
-  <game-events url=''></game-events>
-<% else %>
-  <game-events url='<%= game_events_path(@game) %>'></game-events>
-<% end %>
+<div horizontal layout class='wizard-container'>
+  <div flex six>
+    <% if @game.new_record? %>
+      <game-events url=''></game-events>
+    <% else %>
+      <game-events url='<%= game_events_path(@game) %>'></game-events>
+    <% end %>
 
-<paper-button raised id='step3-submit' recenteringTouch='true'>Далее</paper-button>
-<paper-button id='step3-prev' recenteringTouch='true'>Назад</paper-button>
+    <paper-button raised id='step3-submit' recenteringTouch='true'>Далее</paper-button>
+    <paper-button id='step3-prev' recenteringTouch='true'>Назад</paper-button>
+  </div>
+
+  <div flex six>
+  </div>
+</div>
+

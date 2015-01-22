@@ -4,23 +4,19 @@
     
     <template repeat='{{event in events}}'>
       <div>
-        <paper-input-decorator id='beginning_at_decorator_{{event.id}}' floatingLabel label="Beginning At">
+        <paper-input-decorator id='beginning_at_decorator_{{event.id}}' floatingLabel label="<%= I18n.t('events.beginning_at') %>">
           <input type='text' id='beginning_at_{{event.id}}' class='calendar' value='{{event.beginning_at}}' is='core-input'>
         </paper-input-decorator>
 
         <template if='{{events.length > 1}}'>
-        <paper-fab data-event-id='{{event.id}}' data-new='{{event.new}}' icon="highlight-remove" on-click='{{removeEvent}}'></paper-fab>
+        <paper-fab mini data-event-id='{{event.id}}' data-new='{{event.new}}' icon="highlight-remove" on-click='{{removeEvent}}'></paper-fab>
         </template>
       </div>
     </template>
 
-    <!-- New event fields -->
-    <div>
-      <paper-input-decorator id='beginning_at_decorator' floatingLabel label="New event">
-      <input type='text' name='event[beginning_at]' id='new_beginning_at' class='calendar' value='' is='core-input'>
-      </input-decorator>
-    </div>
-    <paper-fab id='add_event' on-click='{{addEvent}}' icon="add"></paper-fab>
+    <paper-button raised id='add_event' on-click='{{addEvent}}'>
+      <%= I18n.t('events.add') %>
+    </paper-button>
 
     <!-- events fetcher -->
     <core-ajax id='events_fetcher' url='{{url}}'

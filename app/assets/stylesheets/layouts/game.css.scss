@@ -39,11 +39,14 @@ paper-item.core-selected {
 #step1-submit, #step2-submit, #step3-submit, #step4-submit {
   background-color: $yellow;
   color: $white;
-  margin-left: 12px;
   margin-top: 18px;
 }
 
-#step1-submit {
+#step2-submit {
+  margin-left: 12px;
+}
+
+#step1-submit, #step3-submit {
   margin-left: 0;
 }
 

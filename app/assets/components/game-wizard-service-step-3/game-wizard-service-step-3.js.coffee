@@ -31,6 +31,7 @@ Polymer 'game-wizard-service-step-3',
 
     #Insert
     game_events = document.querySelector('game-events')
+    game_events.setDataToEvents()
     events = game_events.events
     removed_events = game_events.removed_events
     for e in events
