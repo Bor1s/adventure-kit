@@ -12,6 +12,7 @@ Polymer 'game-events',
     if this.url == ''
       this.initDatepicker()
     else
+      this.$.events_fetcher.headers = {"Accept": "application/json"}
       this.$.events_fetcher.go()
 
   addEvent: ->

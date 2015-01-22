@@ -106,7 +106,7 @@ paper-item.core-selected {
   width: 300px;
   height: 300px;
   text-align: center;
-  border: 1px dashed $mid-grey; 
+  outline: 1px dashed $mid-grey;
 
   i {
     margin-top: 35%;
@@ -120,5 +120,33 @@ paper-item.core-selected {
 }
 
 .upload {
-  margin-top: 18px;
+  width: 300px;
+  height: 50px;
+  background-color: $white;
+  border: 1px dashed #ddd;
+  border-top: 0px;
+  display: block;
+  margin-top: 18px 0px 28px 0px;
+  text-align: center;
+  padding-top: 22px;
+}
+
+// For Chrome
+file-input::shadow #fileInput {
+  cursor: pointer;
+}
+
+// For Firefox
+file-input #fileInput {
+  cursor: pointer;
+}
+
+.links {
+  margin-top: 48px;
+  a {
+    margin: 0 !important;
+    padding: 0 !important;
+    color: $grey !important;
+    text-decoration: none;
+  }
 }

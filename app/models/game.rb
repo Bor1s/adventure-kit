@@ -48,9 +48,15 @@ class Game
   end
 
   def subscribe user, role=:player
-    if allows_to_take_part?
+    if private_game?
       unless subscribed? user
         subscriptions.create(user_id: user.id, user_right: Subscription::RIGHTS[role])
+      end
+    else
+      if allows_to_take_part?
+        unless subscribed? user
+          subscriptions.create(user_id: user.id, user_right: Subscription::RIGHTS[role])
+        end
       end
     end
   end
@@ -79,7 +85,7 @@ class Game
   end
 
   def allows_to_take_part?
-    players.empty? or players.count < players_amount
+    players.empty? or (players.count < players_amount)
   end
 
   def places_left

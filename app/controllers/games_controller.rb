@@ -28,7 +28,7 @@ class GamesController < ApplicationController
           game = builder.game
           game.subscribe(current_user, :master)
           if game.private_game?
-            User.where(:id.in => invitees).to_a.each do |u|
+            User.where(:id.in => builder.invitees).to_a.each do |u|
               game.subscribe(u)
             end
           end
