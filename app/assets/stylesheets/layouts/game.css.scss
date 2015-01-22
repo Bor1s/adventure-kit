@@ -100,3 +100,25 @@ paper-item.core-selected {
     padding-left: 12px;
   }
 }
+
+//Step 4
+#poster-preview {
+  width: 300px;
+  height: 300px;
+  text-align: center;
+  border: 1px dashed $mid-grey; 
+
+  i {
+    margin-top: 35%;
+    color: $mid-grey;
+  }
+
+  img {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+.upload {
+  margin-top: 18px;
+}

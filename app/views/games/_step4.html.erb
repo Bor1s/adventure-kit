@@ -1,21 +1,32 @@
-<template if='{{gameCreated}}'>
-  <a href='/games/{{game.id}}'>Посмотреть игру</a>
-  <%= link_to 'На главную', root_path %>
-</template>
+<div horizontal layout class='wizard-container'>
+  <div flex six>
+    <template if='{{gameCreated}}'>
+      <a href='/games/{{game.id}}'>Посмотреть игру</a>
+      <%= link_to 'На главную', root_path %>
+    </template>
 
-<template if='{{!gameCreated}}'>
-  <template if='{{game && game.has_poster}}'>
-    <core-image src='{{game.poster.poster.medium.url}}'></core-image>
-  </template>
+    <template if='{{!gameCreated}}'>
+      <template if='{{game && game.has_poster}}'>
+        <div id='poster-preview'>
+          <core-image style="width:300px; height:300px;" src='{{game.poster.poster.medium.url}}'></core-image>
+        </div>
+      </template>
 
-  <section>
-    <file-input maxFiles='1' extensions='["jpeg", "jpg", "png"]' maxSize='3000000'>
-      <core-icon icon='file-upload'></core-icon><br />
-      <i>Максимальный размер файла не должен превышать 3MB</i>
-    </file-input>
-    <div id='preview'></div>
-  </section>
+      <template if='{{game && !game.has_poster}}'>
+        <div id='poster-preview'>
+          <i class='fa fa-5x fa-file-image-o'></i>
+        </div>
+      </template>
 
-  <paper-button raised id='step4-submit' recenteringTouch='true'>Завершить</paper-button>
-  <paper-button id='step4-prev' recenteringTouch='true'>Назад</paper-button>
-</template>
+      <file-input maxFiles='1' class='upload' extensions='["jpeg", "jpg", "png"]' maxSize='3000000'>
+        <core-icon icon='file-upload'></core-icon> Загрузить
+      </file-input>
+
+      <paper-button raised id='step4-submit' recenteringTouch='true'>Завершить</paper-button>
+      <paper-button id='step4-prev' recenteringTouch='true'>Назад</paper-button>
+    </template>
+  </div>
+</div>
+
+
+
