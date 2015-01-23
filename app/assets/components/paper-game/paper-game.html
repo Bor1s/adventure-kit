@@ -4,6 +4,7 @@
 
     <paper-shadow z='0'>
       <core-image src='{{data.poster.poster.medium.url}}' sizing='cover'></core-image>
+      <paper-ripple fit></paper-ripple>
 
       <header layout horizontal center center-justified>
         <div>{{data.title}}</div>
@@ -11,19 +12,33 @@
 
       <section>
         <p layout horizontal>
-          <span flex><core-icon icon='event' class='small'></core-icon> {{data.beginning_at}}</span>
+          <template if='{{data.next_event_date}}'>
+            <span flex>
+              <core-tooltip position='right' label='Следующая сессия'>
+                <core-icon icon='event' class='small'></core-icon> {{data.next_event_date}}
+              </core-tooltip>
+            </span>
+          </template>
+
+          <template if='{{!data.next_event_date}}'>
+            <span flex>Новых сессий нет</span>
+          </template>
+
           <template if='{{data.online == true}}'>
-            <core-icon icon='language' class='small'></core-icon>
+            <core-tooltip position='left' label='Онлайн игра'>
+              <core-icon icon='language' class='small'></core-icon>
+            </core-tooltip>
           </template>
 
           <template if='{{data.online == false}}'>
-            <core-icon icon='room' class='small'></core-icon>
+            <core-tooltip position='left' label='{{data.location.address}}'>
+              <core-icon icon='room' class='small'></core-icon>
+            </core-tooltip>
           </template>
         </p>
-        <p>{{data.short_description}}</p>
+        <p>{{data.description}}</p>
       </section>
 
-      <paper-ripple fit></paper-ripple>
     </paper-shadow>
 
   </template>

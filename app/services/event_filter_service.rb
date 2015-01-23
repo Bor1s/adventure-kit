@@ -7,25 +7,35 @@ class EventFilterService
   end
 
   def filter
-    criteria = Event.include
+    criteria = Game.all #include
 
     filters.each do |f|
       criteria = case f
       when 'realtime'
-        criteria.where(online: false)
+        criteria.where(online_game: false)
       when 'online'
-        criteria.where(online: true)
+        criteria.where(online_game: true)
       when 'my'
         game_ids = user.subscriptions.map(&:game_id)
-        criteria.for_games(game_ids)
+        criteria.where(:id.in => game_ids)
+        #criteria.for_games(game_ids)
       when 'upcoming'
-        criteria.upcoming
+        #criteria.upcoming
+        event_game_ids = Event.upcoming.map(&:game_id)
+        game_ids = criteria.map(&:id)
+        intersect_ids = event_game_ids & game_ids
+        criteria.where(:id.in => intersect_ids)
       when 'past'
-        criteria.finished
+        #criteria.finished
+        event_game_ids = Event.finished.map(&:game_id)
+        game_ids = criteria.map(&:id)
+        intersect_ids = event_game_ids & game_ids
+        criteria.where(:id.in => intersect_ids)
       else
-        criteria.asc(:beginning_at)
+        criteria.asc(:created_at)
       end
     end
+
 
     criteria
   end

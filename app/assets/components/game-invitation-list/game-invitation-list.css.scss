@@ -1,7 +1,4 @@
-$_white: #FFF;
-$_yellow: #FBC02D;
-$_grey: #616161;
-$_light_grey: #DDD;
+@import 'common';
 
 :host {
   display: block;
@@ -16,13 +13,13 @@ $_light_grey: #DDD;
     li {
       padding: 8px 4px 8px 4px;
       cursor: pointer;
-      border-bottom: 1px dashed $_light_grey;
+      border-bottom: 1px dashed #DDD;
     }
   }
 
   .core-selected {
-    background-color: $_yellow;
-    color: $_white;
+    background-color: $yellow;
+    color: $white;
   }
 }
 

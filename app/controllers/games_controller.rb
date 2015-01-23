@@ -3,6 +3,22 @@ class GamesController < ApplicationController
   before_action :authenticate
   respond_to :json, :html
 
+  def index
+    authorize! :read, Game
+
+    if params[:game_id].present?
+      @game = Game.find(params[:game_id])
+    else
+      @games = fetch_games(params)
+    end
+
+    respond_with do |format|
+      format.json do
+        render json: @games
+      end
+    end
+  end
+
   def show
     @game = Game.find params[:id]
     @comment = @game.comments.build
@@ -123,5 +139,16 @@ class GamesController < ApplicationController
       result << params[:game][:events_attributes][key]
     end
     result
+  end
+
+  def fetch_games(params)
+    event_filter_service = EventFilterService.new(current_user, filters)
+    filtered_events = event_filter_service.filter
+    event_search_service = EventSearchService.new(filtered_events, params[:q], params[:page])
+    event_search_service.search
+  end
+
+  def filters
+    params[:f].to_s.split(',')
   end
 end

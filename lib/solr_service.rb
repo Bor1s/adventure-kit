@@ -23,7 +23,7 @@ class SolrService
     response = @solr.paginate page, 10, 'select', params: {q: query}
   end
 
-  def search_events(text, page: 1)
+  def search_games(text, page: 1)
     response = @solr.paginate page, 10, 'select', params: {q: "ctext:\"#{text}\""}
     @search_result = response['response']['docs'].map {|doc| doc['id']}
   end
