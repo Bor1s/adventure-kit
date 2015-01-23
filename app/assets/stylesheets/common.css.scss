@@ -14,6 +14,10 @@ paper-radio-button #onRadio {
   background-color: $yellow;
 }
 
+paper-radio-button[checked] #offRadio, paper-radio-button #offRadio {
+  border-color: $yellow;
+}
+
 // Chrome
 paper-radio-button::shadow #ink[checked] {
   color: $yellow;
@@ -21,4 +25,8 @@ paper-radio-button::shadow #ink[checked] {
 
 paper-radio-button::shadow #onRadio {
   background-color: $yellow;
+}
+
+paper-radio-button[checked]::shadow #offRadio, paper-radio-button::shadow #offRadio {
+  border-color: $yellow;
 }
