@@ -35,11 +35,7 @@ class PosterUploader < CarrierWave::Uploader::Base
   end
 
   version :medium do
-    process :resize_to_fill => [250, 200]
-  end
-
-  version :slide do
-    process :resize_to_fill => [800, 600]
+    process :resize_to_fill => [400, 400]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

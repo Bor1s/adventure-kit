@@ -4,6 +4,8 @@ Polymer 'game-wizard-service-step-4',
     this.step = 4
     this.fileData = ''
     this.gameCreated = false
+    #Hides spinner
+    this.processing = false
 
   domReady: ->
     that = this
@@ -28,6 +30,7 @@ Polymer 'game-wizard-service-step-4',
     this._pages_container().selected -= 1
 
   sendForm: ->
+    this.processing = true
     d = new FormData()
     d.append('authenticity_token', this.token)
     d.append('step', this.step)

@@ -144,9 +144,14 @@ file-input #fileInput {
 .links {
   margin-top: 48px;
   a {
-    margin: 0 !important;
-    padding: 0 !important;
     color: $grey !important;
     text-decoration: none;
   }
+}
+
+.spinner {
+  margin-top: 28px;
+  width: 300px;
+  color: $yellow;
+  text-align: center;
 }

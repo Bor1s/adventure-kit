@@ -9,7 +9,7 @@ Polymer 'game-service',
 
   domReady: ->
     # Default filter to send on page load
-    this.optionsToSend = 'upcoming'
+    this.optionsToSend = 'upcoming,my'
     this.$.dispatcher.go()
 
   handleError: (e, error, xhr)->

@@ -31,8 +31,16 @@
         <core-icon icon='file-upload'></core-icon> Загрузить изображение
       </file-input>
 
-      <paper-button raised id='step4-submit' recenteringTouch='true'>Завершить</paper-button>
-      <paper-button id='step4-prev' recenteringTouch='true'>Назад</paper-button>
+      <template if='{{processing}}'>
+        <div class='spinner'>
+          <i class="fa fa-2x fa-circle-o-notch fa-spin"></i>
+        </div>
+      </template>
+
+      <template if='{{!processing}}'>
+        <paper-button raised id='step4-submit' recenteringTouch='true'>Завершить</paper-button>
+        <paper-button id='step4-prev' recenteringTouch='true'>Назад</paper-button>
+      </template>
     </template>
   </div>
 </div>

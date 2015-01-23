@@ -8,7 +8,7 @@ class Event
   field :online, type: Mongoid::Boolean, default: false
   field :beginning_at, type: DateTime
 
-  mount_uploader :poster, PosterUploader
+  #mount_uploader :poster, PosterUploader
 
   belongs_to :game
 
