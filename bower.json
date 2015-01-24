@@ -17,7 +17,7 @@
   ],
   "dependencies": {
     "file-input": "~1.1.4",
-    "polymer": "Polymer/polymer#~0.5.3",
+    "polymer": "Polymer/polymer#~0.5.4",
     "core-elements": "Polymer/core-elements#~0.5.3",
     "paper-elements": "Polymer/paper-elements#~0.5.3"
   }
