@@ -7,7 +7,12 @@
       <paper-ripple fit></paper-ripple>
 
       <header layout horizontal center center-justified>
-        <div>{{data.title}}</div>
+        <div flex>{{data.title}}</div>
+        <template if='{{data.events.length > 1}}'>
+          <core-tooltip position='left' label='Всего сессий'>
+            <div class='events'>{{data.events.length}}</div>
+          </core-tooltip>
+        </template>
       </header>
 
       <section>
@@ -44,5 +49,4 @@
   </template>
 
   <script src="paper-game.js.coffee"></script>
-
 </polymer-element>
