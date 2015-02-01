@@ -2,9 +2,6 @@
 
 FactoryGirl.define do
   factory :event do
-    sequence :description do |d|
-      "Some #{d} description"
-    end
     beginning_at { Time.now.tomorrow }
 
     factory :today_event do

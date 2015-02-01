@@ -142,10 +142,10 @@ class GamesController < ApplicationController
   end
 
   def fetch_games(params)
-    event_filter_service = EventFilterService.new(current_user, filters)
+    event_filter_service = GameFilterService.new(params[:q], filters, current_user)
     filtered_events = event_filter_service.filter
-    event_search_service = EventSearchService.new(filtered_events, params[:q], params[:page])
-    event_search_service.search
+    #event_search_service = EventSearchService.new(filtered_events, params[:q], params[:page])
+    #event_search_service.search
   end
 
   def filters

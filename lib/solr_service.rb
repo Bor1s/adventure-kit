@@ -1,7 +1,8 @@
 require 'rsolr'
+require 'moped'
 
 class SolrService
-  PER_PAGE = 10
+  PER_PAGE = 1000
 
   attr_reader :search_result
 
@@ -20,12 +21,12 @@ class SolrService
   end
 
   def raw_search(query: '*:*', page: 1)
-    response = @solr.paginate page, 10, 'select', params: {q: query}
+    response = @solr.paginate page, PER_PAGE, 'select', params: {q: query}
   end
 
   def search_games(text, page: 1)
-    response = @solr.paginate page, 10, 'select', params: {q: "ctext:\"#{text}\""}
-    @search_result = response['response']['docs'].map {|doc| doc['id']}
+    response = @solr.paginate page, PER_PAGE, 'select', params: {q: "ctext:\"#{text}\""}
+    @search_result = response['response']['docs'].map {|doc| BSON::ObjectId.from_string(doc['id'])}
   end
 
   def delete_index
