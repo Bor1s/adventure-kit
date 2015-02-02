@@ -1,13 +1,26 @@
 Polymer 'game-service',
   created: ->
     this.games = {}
+    this.searchText = ''
+
+  searchTextChanged: (attrName, oldVal, newVal)->
+    filterOptions = []
+    for radio in document.querySelector('#game_drawer').querySelectorAll('paper-radio-button[aria-checked="true"]')
+      filterOptions.push(radio.attributes.name.value)
+    this.sendData(filterOptions)
 
   ready: ->
     that = this
+
+    # Listening for search input text changes
     document.querySelector('#game_drawer').addEventListener 'change', (e)->
       that.fetchGames(e, this)
 
   domReady: ->
+    that = this
+    document.querySelector('#search').addEventListener 'input', (e)->
+      that.searchText = e.target.value
+
     # Default filter to send on page load
     this.optionsToSend = 'upcoming,my'
     this.$.dispatcher.go()

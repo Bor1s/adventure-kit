@@ -11,7 +11,7 @@
     </section>
   </template>
 
-  <game-service games='{{games}}' url="<%= games_path %>"></game-service>
+  <game-service games='{{games}}' searchText='{{searchText}}' url="<%= games_path %>"></game-service>
   <paper-toast id='no_games_toast' text='<%= t('events.index.no_games') %>'></paper-toast>
 </template>
 
@@ -19,6 +19,12 @@
   <aside>
     <h4>Фильтр игровых кампаний</h4>
   </aside>
+
+  <section class='search-bar'>
+    <paper-input-decorator floatingLabel label="<%= t('general.search') %>">
+      <input type='text' id='search' value='' is='core-input'>
+    </paper-input-decorator>
+  </section>
 
   <section>
     <paper-radio-group selected='my'>

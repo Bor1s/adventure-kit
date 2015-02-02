@@ -36,6 +36,8 @@ ru:
     November: 'Ноябрь'
     December: 'Декабрь'
 
+    search: 'Поиск по названию игры'
+
   games:
     title: 'Название'
     description: 'Описание'

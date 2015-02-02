@@ -1,11 +1,11 @@
-<polymer-element name="game-service" attributes='games url'>
+<polymer-element name="game-service" attributes='games url searchText'>
   <template>
 
     <core-ajax id='dispatcher' url='{{url}}'
       handleAs='json'
       headers='{"Accept": "application/json"}'
       contentType='application/json'
-      params='{"f": "{{optionsToSend}}"}'
+      params='{"f": "{{optionsToSend}}", "q": "{{searchText}}"}'
       on-core-error='{{handleError}}'
       on-core-response='{{handleSuccess}}'>
     </core-ajax>
