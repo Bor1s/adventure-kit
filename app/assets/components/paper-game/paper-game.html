@@ -26,7 +26,7 @@
           </template>
 
           <template if='{{!data.next_event_date}}'>
-            <span flex>Новых сессий нет</span>
+            <span flex>Новых сессий не запланировано</span>
           </template>
 
           <template if='{{data.online == true}}'>
@@ -41,7 +41,7 @@
             </core-tooltip>
           </template>
         </p>
-        <p>{{data.description}}</p>
+        <p class='description'>{{data.description}}</p>
       </section>
 
     </paper-shadow>

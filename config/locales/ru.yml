@@ -59,7 +59,7 @@ ru:
       blank: 'Поле не должно быть пустым'
       format: 'Выберете дату нажав на поле'
     index:
-      no_games: 'Игр нет'
+      no_games: 'Мы не нашли игр по твоему запросу, приключенец.'
 
   core_notificator:
     event_created:

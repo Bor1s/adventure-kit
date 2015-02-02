@@ -22,7 +22,7 @@ Polymer 'game-service',
       that.searchText = e.target.value
 
     # Default filter to send on page load
-    this.optionsToSend = 'upcoming,my'
+    this.optionsToSend = ''
     this.$.dispatcher.go()
 
   handleError: (e, error, xhr)->
