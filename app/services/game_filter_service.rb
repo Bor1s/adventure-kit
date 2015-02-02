@@ -8,7 +8,7 @@ class GameFilterService
   end
 
   def filter
-    games_ids = Game.solr.search_games(query)
+    search_ids = Game.solr.search_games(query)
     criteria = Game.all
 
     result_ids = []
@@ -33,9 +33,9 @@ class GameFilterService
       end
     end
 
-    result_ids = combine_ids(games_ids, my_ids, upcoming_ids, past_ids)
+    result_ids = combine_ids(search_ids, my_ids, upcoming_ids, past_ids)
 
-    #If nil is returned then we none of IDs criteria is triggered
+    #If nil is returned then none of IDs criteria is triggered
     if result_ids.nil?
       criteria
     else
@@ -45,32 +45,32 @@ class GameFilterService
 
   private
 
-  def combine_ids(base_ids, my_ids, upcoming_ids, past_ids)
+  def combine_ids(search_ids, my_ids, upcoming_ids, past_ids)
     if my? and !past? and !upcoming?
-      return base_ids & my_ids if with_search?
+      return search_ids & my_ids if with_search?
       return my_ids 
     end
     
     if my? and upcoming?
-      return base_ids & my_ids & upcoming_ids if with_search?
+      return search_ids & my_ids & upcoming_ids if with_search?
       return my_ids & upcoming_ids 
     end
     
     if my? and past?
-      return base_ids & my_ids & past_ids if with_search?
+      return search_ids & my_ids & past_ids if with_search?
       return my_ids & past_ids 
     end
 
     if !my?
-      return base_ids & upcoming_ids if with_search? and upcoming?
-      return base_ids & past_ids if with_search? and past?
-      return base_ids if with_search?
+      return search_ids & upcoming_ids if with_search? and upcoming?
+      return search_ids & past_ids if with_search? and past?
+      return search_ids if with_search?
 
       return upcoming_ids if upcoming?
       return past_ids if past?
     end
 
-    #Returns nil if none of conditions satisfied
+    #Returns nil if none of upper conditions satisfied
   end
 
   def realtime?
