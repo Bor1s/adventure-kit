@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  layout 'game'
+  layout 'single_panel'
   before_action :authenticate
   respond_to :json, :html
 

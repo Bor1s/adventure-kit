@@ -1,0 +1,52 @@
+<polymer-element name='profile-general' attributes='user_url user_post_url'>
+  <template>
+    <link rel="stylesheet" href="profile-general.css.scss" />
+
+    <paper-shadow z='1'>
+      <header>Настройки профиля</header>
+
+      <template if='{{user.has_plain_account}}'>
+        <paper-input-decorator id='email_decorator' floatingLabel label="E-Mail">
+          <input id='email' type='email' value='{{user.plain_account.email}}' is="core-input">
+        </paper-input-decorator>
+
+        <paper-input-decorator id='password_decorator' floatingLabel label="Новый пароль (оставьте пустым что бы не менять)">
+          <input id='password' type='password' value='{{user.plain_account.password}}' is="core-input">
+        </paper-input-decorator>
+
+        <paper-input-decorator id='password_confirmation_decorator' floatingLabel label="Повторите новый пароль">
+          <input id='password_confirmation' type='password' value='{{user.plain_account.password_confirmation}}' is="core-input">
+        </paper-input-decorator>
+      </template>
+
+      <paper-input-decorator id='nickname_decorator' floatingLabel label="Никнейм">
+        <input id='nickname' value='{{user.nickname}}' is="core-input">
+      </paper-input-decorator>
+
+      <paper-input-decorator id='bio_decorator' floatingLabel label="БИО">
+        <paper-autogrow-textarea rows='5' id="user_bio">
+          <textarea id='bio' value='{{user.bio}}' is="core-input"></textarea>
+        </paper-autogrow-textarea>
+      </paper-input-decorator>
+
+      <paper-button raised recenteringTouch='true' on-click='{{submitForm}}'>Сохранить</paper-button>
+
+      <paper-toast id='dataStatus' text='Профиль успешно обновлен.'></paper-toast>
+    </paper-shadow>
+
+
+    <core-ajax id='user_fetcher' url='{{user_url}}' method='GET'
+    handleAs='json' 
+    on-core-error='{{handleUserError}}'
+    on-core-response='{{handleUserSuccess}}'>
+    </core-ajax>
+
+    <core-ajax id='form_sender' url='{{user_post_url}}' method='PUT'
+    handleAs='json' 
+    on-core-error='{{handleError}}'
+    on-core-response='{{handleSuccess}}'>
+    </core-ajax>
+  </template>
+
+  <script src="profile-general.js.coffee"></script>
+</polymer-element>

@@ -3,6 +3,11 @@ class Master::ProfilesController < Master::BaseController
 
   def edit
     @profile = current_user
+    respond_with @profile do |format|
+      format.json do
+        render json: @profile
+      end
+    end
   end
 
   def update

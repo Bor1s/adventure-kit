@@ -8,6 +8,7 @@ class User
   field :want_to_be_master, type: Mongoid::Boolean
   field :current_timezone_offset, type: Integer, default: 0
   field :nickname, type: String
+  field :bio, type: String
 
   mount_uploader :avatar, AvatarUploader
 

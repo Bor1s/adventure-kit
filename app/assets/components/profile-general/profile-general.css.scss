@@ -1,0 +1,27 @@
+@import 'common';
+
+:host {
+  display: inline-block;
+  width: 400px;
+  padding: 18px;
+
+  .small {
+    width: 18px;
+    height: 18px;
+  }
+
+  paper-shadow {
+    width: inherit;
+    padding: 18px;
+
+    header {
+      font-weight: bold;
+    }
+  }
+
+  paper-button {
+    background-color: $yellow;
+    color: $white;
+    margin-top: 18px;
+  }
+}

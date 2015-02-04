@@ -1,6 +1,6 @@
 class Master::BaseController < ApplicationController
-  layout 'master'
-  respond_to :html
+  layout 'single_panel'
+  respond_to :html, :json
   before_action :authenticate, :verify_master
 
   private
