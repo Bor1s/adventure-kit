@@ -2,10 +2,15 @@ Polymer 'profile-general',
   created: ->
     this.token = document.getElementsByName('csrf-token')[0].getAttribute('content')
     this.user = {}
+    this.processing = false
+    this.timezones = []
 
   domReady: ->
     this.$.user_fetcher.headers = {"Accept": "application/json"}
     this.$.user_fetcher.go()
+
+  _image_uploader: ->
+    this.shadowRoot.querySelector('file-input')
 
   submitForm: (e, detail, sender)->
     this.sendForm()
@@ -28,6 +33,8 @@ Polymer 'profile-general',
     d.append('authenticity_token', this.token)
     d.append('user[nickname]', this.user.nickname)
     d.append('user[bio]', this.user.bio)
+    d.append('user[timezone]', this.user.timezone) if this.user.timezone
+    d.append('user[avatar]', this.user.avatar) if this.user.avatar_changed
     if this.user.has_plain_account
       d.append('user[plain_account_attributes][id]', this.user.plain_account.id)
       d.append('user[plain_account_attributes][email]', this.user.plain_account.email)
@@ -60,9 +67,30 @@ Polymer 'profile-general',
 
   handleUserSuccess: (e, response)->
     this.user = response.response.user
+    this.timezones = response.response.meta.timezones
+    this.handleImageUpload() #Enable avatar uploader only if user data fetched
 
   handleUserError: (e, error, xhr)->
     console.log error
+
+  handleImageUpload: ()->
+    that = this
+    that._image_uploader().addEventListener 'change', (event)->
+      validFiles = event.detail.valid
+      if validFiles.length
+        reader = new FileReader()
+        reader.onload = (e)->
+          previewArea = that.shadowRoot.querySelector('#avatar-preview')
+          previewArea.innerHTML = ''
+          img = new Image()
+          img.src = reader.result
+          previewArea.appendChild(img)
+          that.user.avatar = validFiles[0]
+          that.user.avatar_changed = true
+        #actually read file
+        reader.readAsDataURL(validFiles[0])
+      else
+        console.log 'file not supported'
 
   _cleanupOldErrors: ->
     for field in ['nickname', 'bio']

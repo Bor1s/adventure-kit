@@ -5,7 +5,7 @@ class Master::ProfilesController < Master::BaseController
     @profile = current_user
     respond_with @profile do |format|
       format.json do
-        render json: @profile
+        render json: @profile, meta: {timezones: get_timezones}
       end
     end
   end
@@ -31,5 +31,11 @@ class Master::ProfilesController < Master::BaseController
 
   def going_to_become_player?
     user_params[:want_to_be_master] == '0'
+  end
+
+  def get_timezones
+    ActiveSupport::TimeZone.all.inject([]) do |result, tz|
+      result << {system_name: tz.name, human_name: tz.to_s}
+    end
   end
 end

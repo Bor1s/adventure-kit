@@ -12,7 +12,6 @@ class ApplicationController < ActionController::Base
   rescue_from CanCan::AccessDenied, with: :prohibited
 
   helper_method :current_user, :current_user_profile, :user_signed_in?
-  around_filter :set_timezone
   before_filter :verfify_not_signed_in, only: [:welcome]
 
   def welcome
@@ -70,10 +69,10 @@ class ApplicationController < ActionController::Base
 
   def set_timezone
     default_timezone = Time.zone
-    client_timezone  = cookies[:timezone]
-    Time.zone = client_timezone if client_timezone.present?
-    yield
-  ensure
-    Time.zone = default_timezone
+    if current_user.timezone.present?
+      Time.zone = current_user.timezone
+    else
+      Time.zone = default_timezone
+    end
   end
 end

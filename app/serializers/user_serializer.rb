@@ -9,5 +9,9 @@ class UserSerializer < ActiveModel::Serializer
     object.plain_account.present?
   end
 
-  attributes :id, :nickname, :bio, :has_plain_account
+  def has_avatar
+    object.avatar?
+  end
+
+  attributes :id, :nickname, :bio, :has_plain_account, :has_avatar, :avatar, :timezone
 end

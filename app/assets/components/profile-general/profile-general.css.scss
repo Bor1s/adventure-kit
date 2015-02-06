@@ -1,8 +1,9 @@
 @import 'common';
+@import 'imports';
 
 :host {
   display: inline-block;
-  width: 400px;
+  width: 600px;
   padding: 18px;
 
   .small {
@@ -19,9 +20,72 @@
     }
   }
 
+  core-image {
+    border-radius: 100%;
+  }
+
   paper-button {
     background-color: $yellow;
     color: $white;
     margin-top: 18px;
+    margin-right: 0px;
+    float: right;
+  }
+
+  .avatar-container {
+    margin: 28px;
+    text-align: center;
+  }
+
+  .info {
+    margin: 28px;
+  }
+
+  .avatar-upload {
+    display: inline-block;
+    margin-top: 8px;
+    &:hover {
+      i {
+        color: $yellow;
+      }
+    }
+  }
+
+  #avatar-preview {
+    width: 100px;
+    height: 100px;
+    text-align: center;
+
+    i {
+      color: $mid-grey;
+    }
+
+    img {
+      width: 100px;
+      height: 100px;
+      border-radius: 100%;
+    }
+  }
+
+  // players amount dropdown styles
+  paper-item {
+    display: block;
+    padding: 4px 16px 4px 16px;
+    cursor: pointer;
+    border-bottom: 1px dashed #DDD;
+    text-align: center;
+  }
+
+  paper-item.core-selected {
+    color: $white;
+    background-color: $yellow;
+  }
+  ///////
+
+  .spinner {
+    margin-top: 28px;
+    width: 300px;
+    color: $yellow;
+    text-align: center;
   }
 }

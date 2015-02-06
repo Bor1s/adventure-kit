@@ -6,7 +6,7 @@ class User
   # General settings to be used in all user's accounts
   field :role, type: Integer, default: ROLES[:player]
   field :want_to_be_master, type: Mongoid::Boolean
-  field :current_timezone_offset, type: Integer, default: 0
+  field :timezone, type: String
   field :nickname, type: String
   field :bio, type: String
 

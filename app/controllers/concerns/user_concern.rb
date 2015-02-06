@@ -6,12 +6,12 @@ module UserConcern
       params[:user][:plain_account_attributes].delete(:password)
     end
 
-    params.require(:user).permit(:avatar, :nickname, :bio, plain_account_attributes: [:email, :password, :password_confirmation, :id])
+    params.require(:user).permit(:avatar, :timezone, :nickname, :bio,
+                                 plain_account_attributes: [:email, :password, :password_confirmation, :id])
   end
 
   def update(redirect_path: root_path, render_path: :edit)
     @profile = current_user
-
     if @profile.update_attributes(user_params)
       render json: @profile
     else
