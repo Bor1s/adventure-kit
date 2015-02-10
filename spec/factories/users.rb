@@ -29,13 +29,12 @@ FactoryGirl.define do
         user.accounts.create(uid: '12345', name: 'ZIM', provider: 'vkontakte')
       end
     end
-
-    factory :player_with_vk_account do
-      role 3
-
+    
+    factory :master_with_plain_account do
       after(:create) do |user, evaluator|
-        user.accounts.create(uid: '12345', name: 'DIB', provider: 'vkontakte')
+        user.create_plain_account(email: Faker::Internet.free_email, password: '12345678', password_confirmation: '12345678')
       end
     end
+    
   end
 end

@@ -51,7 +51,7 @@ group :test, :development do
   gem 'pry-rails'
   gem 'sunspot_solr'
   gem 'letter_opener'
-  #gem 'pry-debugger'
+  gem 'faker'
 end
 
 group :development do
