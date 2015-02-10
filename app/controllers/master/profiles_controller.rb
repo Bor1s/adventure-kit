@@ -11,12 +11,7 @@ class Master::ProfilesController < Master::BaseController
   end
 
   def update
-    if going_to_become_player?
-      new_role = User::ROLES[:player]
-      redirect_path = edit_player_profile_path
-    else
-      redirect_path = edit_master_profile_path
-    end
+    redirect_path = edit_master_profile_path
 
     super(redirect_path: redirect_path) do |_params|
       _params[:role] = new_role if new_role.present?
@@ -28,10 +23,6 @@ class Master::ProfilesController < Master::BaseController
   end
 
   private
-
-  def going_to_become_player?
-    user_params[:want_to_be_master] == '0'
-  end
 
   def get_timezones
     ActiveSupport::TimeZone.all.inject([]) do |result, tz|

@@ -10,7 +10,6 @@ PlayhardCore::Application.routes.draw do
   get '/signout', to: 'sessions#destroy', as: :signout
 
   #Registrations
-
   resources :registrations, only: [:new, :create, :destroy]
 
   resources :games do
@@ -52,15 +51,6 @@ PlayhardCore::Application.routes.draw do
       end
     end
     get 'heatmap' => 'heatmap#index', as: :heatmap
-  end
-
-  namespace :player do
-    resources :games, only: [:index]
-    resource :profile, only: [:edit, :update] do
-      collection do
-        delete :remove_account
-      end
-    end
   end
 
   resources :locations, only: [:index]

@@ -1,8 +1,0 @@
-<ul class='list-unstyled'>
-  <li class='<%= current_page?(controller: 'profiles', action: 'edit') ? 'active' : '' %>'>
-    <%= link_to t('.profile'), edit_player_profile_path %>
-  </li>
-  <li class='<%= current_page?(controller: 'games') ? 'active' : '' %>'>
-    <%= link_to t('.my_games'), player_games_path %>
-  </li>
-</ul>

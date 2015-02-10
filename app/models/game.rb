@@ -17,18 +17,9 @@ class Game
   mount_uploader :poster, PosterUploader
 
   has_many :subscriptions, dependent: :delete
-  has_and_belongs_to_many :tags
   has_many :comments, dependent: :delete
   has_many :events, dependent: :destroy #Need to affect Solr index
   has_one :location
-
-  #NOTE validation happens on Service level
-  #validates :title, presence: true
-  #validates :description, presence: true
-  #validates :events, presence: true
-  #validates :players_amount, presence: true
-
-  scope :by_tag, ->(tag_id) { where(:tag_ids.in => [tag_id]) }
 
   accepts_nested_attributes_for :events, allow_destroy: true
   accepts_nested_attributes_for :location

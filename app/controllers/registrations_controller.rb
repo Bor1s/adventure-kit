@@ -1,8 +1,6 @@
 class RegistrationsController < ApplicationController
   before_filter :verfify_not_signed_in
-
   layout 'basic'
-
   respond_to :json
 
   def new

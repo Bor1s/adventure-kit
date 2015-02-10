@@ -1,14 +1,9 @@
 class Event
   include Mongoid::Document
   include Mongoid::Timestamps
-  #include SolrService::MongoidHooks
   include Notification
 
-  #field :description, type: String
-  #field :online, type: Mongoid::Boolean, default: false
   field :beginning_at, type: DateTime
-
-  #mount_uploader :poster, PosterUploader
 
   belongs_to :game
 
@@ -26,10 +21,4 @@ class Event
   def finished?
     beginning_at < Time.zone.now
   end
-
-  #def solr_index_data(options={})
-    #data = {id: id}
-    #data[:ctext] = [options[:title] || title, options[:description] || self.game.description].join(' ')
-    #data
-  #end
 end

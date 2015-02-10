@@ -1,7 +1,7 @@
 class User
   include Mongoid::Document
   include Mongoid::Timestamps
-  ROLES = { admin: 1, master: 2, player: 3}
+  ROLES = {admin: 1}
 
   # General settings to be used in all user's accounts
   field :role, type: Integer, default: ROLES[:player]
@@ -12,7 +12,6 @@ class User
 
   mount_uploader :avatar, AvatarUploader
 
-  has_and_belongs_to_many :tags
   has_many :accounts, dependent: :delete
   has_one :plain_account, dependent: :delete
   has_many :subscriptions, dependent: :delete
@@ -23,28 +22,9 @@ class User
   scope :masters, -> { where(:role.in => [1,2]) }
   scope :players, -> { where(role: 3) }
   scope :recent, -> { where(:created_at.gte => (Time.zone.now - 2.days)).desc(:created_at) }
-  scope :by_tag, ->(tag_id) { where(:tag_ids.in => [tag_id]) }
 
   def admin?
     role == 1
-  end
-
-  def master?
-    role == 2
-  end
-
-  def player?
-    role == 3
-  end
-
-  def human_role
-    if admin?
-      'admin'
-    elsif master?
-      'master'
-    else
-      'player'
-    end
   end
 
   def creator? game

@@ -13,26 +13,10 @@
 //= require webcomponentsjs/webcomponents
 //= require jquery
 //= require jquery_ujs
-//= require select2
-// require turbolinks
-//= require cocoon
 //= require jquery.datetimepicker
 //= require_tree .
-//= require highcharts
-//= require heatmap
-//= require jquery.cookie
-//= require jstz-1.0.4.min
+
 //= require markerclusterer
-
-jQuery(function() {
-  var tz = jstz.determine();
-  $.cookie('timezone', tz.name(), { path: '/' });
-});
-
-$(document).on('page:load', function(){
-  var tz = jstz.determine();
-  $.cookie('timezone', tz.name(), { path: '/' });
-})
 
 // Dirty Hack for letting JQuery work with shadow-dom
 $(function() {
