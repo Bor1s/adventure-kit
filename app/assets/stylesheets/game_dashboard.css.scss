@@ -4,11 +4,11 @@
 @import 'common';
 
 [main] {
-  background-color: $light-grey;
+  background-color: $white;
 
   core-toolbar {
-    color: $white;
-    background-color: $grey;
+    //color: $white;
+    background-color: $white;
   }
 
   #game_container {
@@ -25,8 +25,8 @@
   background-color: $white;
 
   core-toolbar {
-    color: $white;
-    background-color: $grey;
+    //color: $white;
+    background-color: $white;
   }
 
   aside, section {
@@ -40,7 +40,7 @@
   }
 
   a {
-    color: $white;
+    color: $grey;
     &:hover {
       color: $yellow;
     }

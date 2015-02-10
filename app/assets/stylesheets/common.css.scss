@@ -31,3 +31,18 @@ paper-radio-button::shadow #onRadio {
 paper-radio-button[checked]::shadow #offRadio, paper-radio-button::shadow #offRadio {
   border-color: $yellow;
 }
+// ---
+
+paper-button {
+  font-size: 14px;
+}
+
+//Site name logo
+.logo-link {
+  color: $grey;
+  text-decoration: none;
+  &:hover {
+    color: $yellow;
+    text-decoration: none;
+  }
+}

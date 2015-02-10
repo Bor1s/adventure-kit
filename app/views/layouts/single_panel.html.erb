@@ -20,7 +20,7 @@
 
   <core-header-panel id='main-header' flex>
     <core-toolbar>
-      <span flex><%= t('site_name') %></span>
+      <span flex><%= link_to t('site_name'), root_path, class: 'logo-link' %></span>
 
       <core-tooltip label='Мой профиль'>
         <%= link_to path_to_current_user_profile do %>

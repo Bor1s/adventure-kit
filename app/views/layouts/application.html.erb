@@ -14,7 +14,7 @@
   <core-drawer-panel rightDrawer>
     <core-header-panel main>
       <core-toolbar>
-        <span flex><%= t('site_name') %></span>
+        <span flex><%= link_to t('site_name'), root_path, class: 'logo-link' %></span>
         <core-icon-button icon="menu" core-drawer-toggle></core-icon-button>
       </core-toolbar>
 

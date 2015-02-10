@@ -2,15 +2,15 @@
 
 #main-header {
   height: 100%;
-  background-color: $light-grey;
+  //background-color: $light-grey;
 
   core-toolbar {
-    color: $white;
-    background-color: $grey;
+    //color: $white;
+    background-color: $white;
   }
 
   a {
-    color: $white;
+    color: $grey;
     &:hover {
       color: $yellow;
     }

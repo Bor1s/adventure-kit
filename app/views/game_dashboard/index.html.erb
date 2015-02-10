@@ -16,15 +16,11 @@
 </template>
 
 <%= content_for :sidebar do %>
-  <aside>
-    <h4>Фильтр игровых кампаний</h4>
-  </aside>
-
-  <section class='search-bar'>
+  <aside class='search-bar'>
     <paper-input-decorator floatingLabel label="<%= t('general.search') %>">
       <input type='text' id='search' value='' is='core-input'>
     </paper-input-decorator>
-  </section>
+  </aside>
 
   <section>
     <paper-radio-group selected='nothing'>
