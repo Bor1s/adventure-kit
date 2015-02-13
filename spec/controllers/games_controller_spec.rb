@@ -8,10 +8,23 @@ RSpec.describe GamesController, type: :controller do
 
     user = FactoryGirl.create(:master_with_vk_account)
     sign_in user.accounts.first
+
+    FactoryGirl.create_list(:game_with_upcoming_events, 3)
+    FactoryGirl.create_list(:game_with_finished_events, 2)
+
+    upcoming_games = FactoryGirl.create_list(:game_with_upcoming_events, 1)
+    upcoming_games.each do |g|
+      g.subscribe user
+    end
+
+    finished_games = FactoryGirl.create_list(:game_with_finished_events, 4)
+    finished_games.each do |g|
+      g.subscribe user, :master
+    end
   end
 
   context 'AJAX' do
-    describe 'POST create' do
+    describe 'POST #create' do
       context 'step 1' do
         it 'successful' do
           post :create, {format: :json, step: 1, game: {title: 'some title', description: 'desc'}}
@@ -81,19 +94,41 @@ RSpec.describe GamesController, type: :controller do
 
       context 'step 3' do
         it 'successful' do
-          post :create, {format: :json, step: 3,
-                         game: {events_attributes: {'1' => {beginning_at: Time.now}, '2' => {beginning_at: Time.now + 1.day}}, events_ui_ids: ['1', '2'] }
+          post :create, {
+            format: :json,
+            step: 3,
+            game: {
+              events_attributes: {
+                '1' => {
+                  beginning_at: Time.now.to_s
+                },
+                '2' => {
+                  beginning_at: Time.now.tomorrow.to_s
+                }
+              },
+              events_ui_ids: ['1', '2']
+            }
           }
           expect(JSON.parse(response.body)['cache_key']).not_to be_empty
           expect(JSON.parse(response.body)['success']).to be true
         end
 
         it 'responds with special formatted errors for invalid beginning_at' do
-          expected_result = {'success' => false, 'errors' => {"1"=>["Must not be blank!"]}}
-          post :create, {format: :json, step: 3,
-                         game: {events_attributes: {'1' => {beginning_at: ''},
-                                                    '2' => {beginning_at: Time.now + 1.day}},
-                         events_ui_ids: ['1', '2']}
+          expected_result = {'success' => false, 'errors' => {"1"=>["Выберите дату нажав на поле"]}}
+          post :create, {
+            format: :json,
+            step: 3,
+            game: {
+              events_attributes: {
+                '1' => {
+                  beginning_at: ''
+                },
+                '2' => {
+                  beginning_at: Time.now.tomorrow.to_s
+                }
+              },
+              events_ui_ids: ['1', '2']
+            }
           }
           expect(JSON.parse(response.body)).to eq expected_result
         end
@@ -125,7 +160,7 @@ RSpec.describe GamesController, type: :controller do
     it '#remove_player allows master to reject player from game' do
       game = FactoryGirl.create(:game)
       master = User.first
-      player = FactoryGirl.create(:player_with_vk_account)
+      player = FactoryGirl.create(:master_with_vk_account)
 
       game.subscribe(master, :master)
       game.subscribe(player)
@@ -137,12 +172,51 @@ RSpec.describe GamesController, type: :controller do
     it '#remove_player do not removes unsubscribed user' do
       game = FactoryGirl.create(:game)
       master = User.first
-      player = FactoryGirl.create(:player_with_vk_account)
+      player = FactoryGirl.create(:master_with_vk_account)
 
       game.subscribe(master, :master)
 
       delete :remove_player, {id: game.id, user_id: player.id}
       expect(game.reload.players.count).to eq 0
+    end
+  end
+
+  describe 'GET #index JSON' do
+    it 'responds with upcoming games' do
+      get :index, {format: :json, f: 'upcoming'}
+      expect(JSON.parse(response.body)['games'].count).to eq 4
+    end
+
+    it 'responds with past games' do
+      get :index, {format: :json, f: 'past'}
+      expect(JSON.parse(response.body)['games'].count).to eq 6
+    end
+
+    it 'responds with all games' do
+      get :index, {format: :json, f: 'all'}
+      expect(JSON.parse(response.body)['games'].count).to eq 10
+    end
+
+    it 'responds with my games' do
+      get :index, {format: :json, f: 'my'}
+      expect(JSON.parse(response.body)['games'].count).to eq 5
+    end
+
+    context 'combination' do
+      it 'of upcoming and my works' do
+        get :index, {format: :json, f: 'my,upcoming'}
+        expect(JSON.parse(response.body)['games'].count).to eq 1
+      end
+
+      it 'of past and my works' do
+        get :index, {format: :json, f: 'my,past'}
+        expect(JSON.parse(response.body)['games'].count).to eq 4
+      end
+
+      it 'of upcoming and my works' do
+        get :index, {format: :json, f: 'my,upcoming'}
+        expect(JSON.parse(response.body)['games'].count).to eq 1
+      end
     end
   end
 end

@@ -44,7 +44,7 @@ RSpec.describe SessionsController do
       User.destroy_all
       Account.destroy_all
 
-      user = FactoryGirl.create(:player_with_vk_account)
+      user = FactoryGirl.create(:master_with_vk_account)
       sign_in user.accounts.first
     end
 

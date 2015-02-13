@@ -5,7 +5,6 @@ FactoryGirl.define do
 
     title 'Wake Of The Dead'
     description 'Wake Of The Dead horror game'
-    players_amount 3
     events_attributes {[FactoryGirl.attributes_for(:event)]}
 
     factory :game_with_today_events do
@@ -13,7 +12,7 @@ FactoryGirl.define do
     end
 
     factory :game_with_upcoming_events do
-      events_attributes {[FactoryGirl.attributes_for(:event)]}
+      events_attributes {[FactoryGirl.attributes_for(:upcoming_event)]}
     end
 
     factory :game_with_finished_events do

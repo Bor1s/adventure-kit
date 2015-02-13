@@ -6,7 +6,6 @@ class Game
 
   field :title, type: String
   field :description, type: String
-  field :finished, type: Mongoid::Boolean, default: false
   field :players_amount, type: Integer
   field :private_game, type: Mongoid::Boolean, default: false
   field :online_game, type: Mongoid::Boolean, default: false
@@ -73,13 +72,5 @@ class Game
 
   def allows_to_take_part?
     players.empty? or (players.count < players_amount)
-  end
-
-  def places_left
-    self.players_amount - self.players.count
-  end
-
-  def continues?
-    events.last.beginning_at.future?
   end
 end

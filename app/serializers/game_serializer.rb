@@ -31,5 +31,17 @@ class GameSerializer < ActiveModel::Serializer
     object.id.to_s
   end
 
-  attributes :id, :title, :next_event_date, :description, :short_description, :poster, :private_game, :finished, :online, :online_game, :online_info, :players_amount, :has_poster, :address
+  attributes :id,
+    :title,
+    :next_event_date,
+    :description,
+    :short_description,
+    :poster,
+    :private_game,
+    :online,
+    :online_game,
+    :online_info,
+    :players_amount,
+    :has_poster,
+    :address
 end

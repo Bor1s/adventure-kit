@@ -8,6 +8,10 @@ FactoryGirl.define do
       beginning_at { Time.now + 1.hour }
     end
 
+    factory :upcoming_event do
+      beginning_at { Time.now.tomorrow }
+    end
+
     factory :finished_event do
       beginning_at { Time.now.yesterday }
     end

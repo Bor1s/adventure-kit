@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate
   respond_to :html, :json
 
+  #TODO rework all!
   def index
     authorize! :read, User
     @users = UserSearchService.call(q: params[:q], f: params[:f], page: params[:page])

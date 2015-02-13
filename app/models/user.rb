@@ -5,7 +5,6 @@ class User
 
   # General settings to be used in all user's accounts
   field :role, type: Integer, default: ROLES[:player]
-  field :want_to_be_master, type: Mongoid::Boolean
   field :timezone, type: String
   field :nickname, type: String
   field :bio, type: String
@@ -19,20 +18,12 @@ class User
 
   accepts_nested_attributes_for :plain_account
 
-  scope :masters, -> { where(:role.in => [1,2]) }
-  scope :players, -> { where(role: 3) }
-  scope :recent, -> { where(:created_at.gte => (Time.zone.now - 2.days)).desc(:created_at) }
-
   def admin?
     role == 1
   end
 
   def creator? game
     subscriptions.where(game_id: game.id, user_right: Subscription::RIGHTS[:master]).first.present?
-  end
-
-  def commenter? comment
-    comment.user == self
   end
 
   def player_subscriptions

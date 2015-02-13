@@ -40,7 +40,6 @@ PlayhardCore::Application.routes.draw do
       end
     end
     resources :users
-    get 'heatmap' => 'heatmap#index', as: :heatmap
   end
 
   namespace :master do
@@ -50,7 +49,6 @@ PlayhardCore::Application.routes.draw do
         delete :remove_account
       end
     end
-    get 'heatmap' => 'heatmap#index', as: :heatmap
   end
 
   resources :locations, only: [:index]

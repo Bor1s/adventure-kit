@@ -10,10 +10,6 @@ FactoryGirl.define do
       role 2
     end
 
-    factory :player do
-      role 3
-    end
-
     factory :admin_with_vk_account do
       role 1
 
@@ -30,6 +26,14 @@ FactoryGirl.define do
       end
     end
     
+    factory :master_with_gplus_account do
+      role 2
+
+      after(:create) do |user, evaluator|
+        user.accounts.create(uid: '12345', name: 'ZIM', provider: 'gplus')
+      end
+    end
+
     factory :master_with_plain_account do
       after(:create) do |user, evaluator|
         user.create_plain_account(email: Faker::Internet.free_email, password: '12345678', password_confirmation: '12345678')
