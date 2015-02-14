@@ -43,7 +43,7 @@ PlayhardCore::Application.routes.draw do
   end
 
   namespace :master do
-    resources :games, only: [:index]
+    resources :games, only: [:index, :destroy]
     resource :profile, only: [:edit, :update] do
       collection do
         delete :remove_account

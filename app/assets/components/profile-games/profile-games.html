@@ -1,0 +1,33 @@
+<polymer-element name='profile-games' attributes='url games'>
+  <template>
+    <link rel="stylesheet" href="profile-games.css.scss" />
+
+    <paper-shadow z='1'>
+      <div layout vertical class='games-list'>
+        <h4>Мои игровые кампании</h4>
+       
+        <template repeat='{{game in games}}'>
+          <p>
+            <a on-click='{{showGame}}' data-game-url='{{game.url}}'>{{game.title}}</a>
+            <a on-click='{{deleteGame}}' data-game-id='{{game.id}}'><i class='fa fa-trash-o'></i></a>
+          </p>
+        </template>
+ 
+      </div>
+    </paper-shadow>
+
+    <core-ajax id='games_fetcher' url='{{url}}' method='GET'
+    handleAs='json' 
+    on-core-error='{{handleError}}'
+    on-core-response='{{handleSuccess}}'>
+    </core-ajax>
+
+    <core-ajax id='destroy_game' method='DELETE'
+    handleAs='json' 
+    on-core-error='{{handleGameError}}'
+    on-core-response='{{handleGameSuccess}}'>
+    </core-ajax>
+  </template>
+
+  <script src="profile-games.js.coffee"></script>
+</polymer-element>

@@ -20,8 +20,8 @@ module UserConcern
     end
   end
 
+  #Assigns another user account to session
   def handle_account_in_session(account)
-    #Assigns another user account to session
     if account == current_user_profile
       new_session_account = current_user.accounts.ne(uid: account.uid).first
       session[:account_id] = new_session_account.id

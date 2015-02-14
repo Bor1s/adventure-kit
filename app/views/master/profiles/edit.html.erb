@@ -1,2 +1,11 @@
-<profile-general user_url='<%= edit_master_profile_path %>' user_post_url='<%= master_profile_path %>'>
-</profile-general>
+<div layout horizontal>
+  <div>
+    <profile-general user_url='<%= edit_master_profile_path %>' user_post_url='<%= master_profile_path %>'>
+    </profile-general>
+  </div>
+
+  <div flex>
+    <profile-games url='<%= master_games_path %>' games='{{games}}'>
+    </profile-games>
+  </div>
+</div>

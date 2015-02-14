@@ -42,7 +42,6 @@ class User
     end
   end
 
-  #TODO write specs
   def has_vk_account?
     accounts.where(provider: 'vkontakte').exists?
   end

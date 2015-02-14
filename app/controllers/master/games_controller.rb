@@ -1,7 +1,15 @@
 class Master::GamesController < Master::BaseController
+  respond_to :json
 
   def index
-    game_ids = current_user.subscriptions.map(&:game_id)
-    @games = Game.where(:id.in => game_ids || []).all
+    @games = current_user.games
+    render json: @games
+  end
+
+  def destroy
+    @game = Game.find params[:id]
+    authorize! :destroy, @game
+    @game.destroy
+    render json: {success: true}
   end
 end

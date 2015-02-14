@@ -31,6 +31,14 @@ class GameSerializer < ActiveModel::Serializer
     object.id.to_s
   end
 
+  def url
+    Rails.application.routes.url_helpers.game_url(object, only_path: true)
+  end
+
+  def destroy_url
+    Rails.application.routes.url_helpers.master_game_url(object, only_path: true)
+  end
+
   attributes :id,
     :title,
     :next_event_date,
@@ -43,5 +51,7 @@ class GameSerializer < ActiveModel::Serializer
     :online_info,
     :players_amount,
     :has_poster,
-    :address
+    :address,
+    :url,
+    :destroy_url
 end

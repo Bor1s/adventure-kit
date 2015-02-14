@@ -67,5 +67,4 @@ describe Master::ProfilesController do
       expect(@user_with_plain_account.accounts.count).to eq 1
     end
   end
-
 end
