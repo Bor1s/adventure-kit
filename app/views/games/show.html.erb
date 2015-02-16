@@ -1,0 +1,62 @@
+<core-image class='poster-container' src='<%= @game.poster.url %>' sizing='cover'></core-image>
+
+<section class='body'>
+  <h2><%= @game.title %></h2>
+  <div layout horizontal>
+    <p>
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-calendar fa-stack-1x"></i>
+      </span>
+      <%= @game.next_session %>
+    </p>
+    <% if @game.online_game? %>
+      <p>
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-globe fa-stack-1x"></i>
+        </span>
+        <%= @game.online_info %>
+      </p>
+    <% else %>
+      <p>
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-map-marker fa-stack-1x"></i>
+        </span>
+        <%= link_to @game.address, "http://maps.google.com/?q=#{@game.address}", target: '_blank' %>
+      </p>
+    <% end %>
+    <p>
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-users fa-stack-1x"></i>
+      </span>
+      <%= @game.players.count %>
+    </p>
+  </div>
+  <p>
+    <% @game.players.each do |player| %>
+      <%= player.nickname %>
+    <% end %>
+  </p>
+  <p><%= @game.description %></p>
+  <hr />
+
+ <div id="disqus_thread"></div>
+  <script type="text/javascript">
+      var disqus_shortname = 'adventurerkit'; // required: replace example with your forum shortname
+      var disqus_title = '<%= @game.title %>';
+      var disqus_url = '<%= request.original_url %>';
+      var disqus_identifier = '<%= @game.title %>';
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</section>

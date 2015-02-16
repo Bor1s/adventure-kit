@@ -20,8 +20,10 @@
  *= require registrations
  *= require game_dashboard
  *= require layouts/game
+ *= require games
  */
 
 html,body {
   font-family: 'RobotoDraft', sans-serif;
+  color: #616161;
 }

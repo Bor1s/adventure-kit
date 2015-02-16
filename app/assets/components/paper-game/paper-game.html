@@ -2,9 +2,10 @@
   <template>
     <link rel="stylesheet" href="paper-game.css.scss" />
 
-    <paper-shadow z='0'>
-      <core-image src='{{data.poster.poster.medium.url}}' sizing='cover'></core-image>
-      <paper-ripple fit></paper-ripple>
+    <paper-shadow z='1'>
+      <div class='image-container'>
+        <core-image src='{{data.poster.poster.medium.url}}' sizing='cover'></core-image>
+      </div>
 
       <header layout horizontal center center-justified>
         <div flex>{{data.title}}</div>

@@ -20,9 +20,11 @@ class GamesController < ApplicationController
   end
 
   def show
-    @game = Game.find params[:id]
-    @comment = @game.comments.build
-    authorize! :read, @game
+    game = Game.find params[:id]
+    authorize! :read, game
+
+    @game = GameDecorator.new(game)
+    render layout: 'application'
   end
 
   def new
