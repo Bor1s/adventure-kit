@@ -35,25 +35,15 @@ class Ability
       can :manage, :all
     end
 
-    if user.master?
-      can :read, :all
-      can :create, [Game, Comment]
-      can [:update, :destroy], Game do |game|
-        user.creator? game
-      end
-      can :update, Tag
-
-      can [:update, :destroy], Comment do |comment|
-        user.commenter? comment
-      end
+    can :read, :all
+    can :create, [Game, Comment]
+    can [:update, :destroy], Game do |game|
+      user.creator? game
     end
 
-    if user.player?
-      can :read, [User, Game, Comment, Event]
-      can :create, Comment
-      can [:update, :destroy], Comment do |comment|
-        user.commenter? comment
-      end
+    can [:update, :destroy], Comment do |comment|
+      user.commenter? comment
     end
+
   end
 end

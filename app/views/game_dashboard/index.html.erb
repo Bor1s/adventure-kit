@@ -1,0 +1,48 @@
+<template is='auto-binding'>
+  <div id='game_container' layout horizontal center-justified wrap>
+    <template repeat='{{game in games}}'>
+      <paper-game data='{{game}}'></paper-game>
+    </template>
+  </div>
+
+  <template if='{{games.length == 0}}'>
+    <section layout horizontal center center-justified class='no-games'>
+      <i class='fa fa-5x fa-gamepad'></i>
+    </section>
+  </template>
+
+  <game-service games='{{games}}' searchText='{{searchText}}' url="<%= games_path %>"></game-service>
+  <paper-toast id='no_games_toast' text='<%= t('events.index.no_games') %>'></paper-toast>
+</template>
+
+<%= content_for :sidebar do %>
+  <aside class='search-bar'>
+    <paper-input-decorator floatingLabel label="<%= t('general.search') %>">
+      <input type='text' id='search' value='' is='core-input'>
+    </paper-input-decorator>
+  </aside>
+
+  <section>
+    <paper-radio-group selected='nothing'>
+      <paper-radio-button name='nothing' label='Все кампании'></paper-radio-button>
+      <paper-radio-button name='my' label='Мои кампании'></paper-radio-button>
+    </paper-radio-group>
+  </section>
+
+  <section>
+    <paper-radio-group selected="nothing">
+      <paper-radio-button name="nothing" label='Не учитывать тип'></paper-radio-button>
+      <paper-radio-button name="realtime" label='Живые кампании'></paper-radio-button>
+      <paper-radio-button name="online" label='Online кампании'></paper-radio-button>
+    </paper-radio-group>
+  </section>
+
+  <section>
+    <paper-radio-group selected='nothing'>
+      <paper-radio-button name="nothing" label='Не учитывать время'></paper-radio-button>
+      <paper-radio-button name='upcoming' label='Предстоящие'></paper-radio-button>
+      <paper-radio-button name='past' label='Прошедшие'></paper-radio-button>
+    </paper-radio-group>
+  </section>
+<% end %>
+

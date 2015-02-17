@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= t('site_name') %></title>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+  <%= favicon_link_tag %>
+
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <link href="/assets/paper-shadow/paper-shadow.css" rel="stylesheet" shim-shadowdom>
+  <link href="/assets/core-icon/core-icon.css" rel="stylesheet" shim-shadowdom>
+
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+
+  <%= html_import_tag "application", "data-turbolinks-track" => true %>
+
+  <%= csrf_meta_tags %>
+</head>
+
+<body unresolved fullbleed>
+
+  <core-header-panel id='main-header' flex>
+    <core-toolbar>
+      <span flex><%= link_to t('site_name'), root_path, class: 'logo-link' %></span>
+
+      <core-tooltip label='Мой профиль'>
+        <%= link_to path_to_current_user_profile do %>
+          <paper-shadow z='1' class='round'>
+            <%= image_tag current_user.avatar.medium.url, class: 'round' %>
+            <paper-ripple fit class="recenteringTouch circle white-ripple"></paper-ripple>
+          </paper-shadow>
+        <% end %>
+      </core-tooltip>
+
+      <core-tooltip label='Выход'>
+        <%= link_to signout_path do %>
+          <core-icon icon='exit-to-app'></core-icon>
+        <% end %>
+      </core-tooltip>
+    </core-toolbar>
+
+    <%= yield %>
+  </core-header-panel>  
+
+</body>
+</html>

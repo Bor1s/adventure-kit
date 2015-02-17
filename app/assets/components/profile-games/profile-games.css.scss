@@ -1,0 +1,23 @@
+@import 'common';
+@import 'imports';
+
+:host {
+  display: inline-block;
+  margin: 18px 18px 18px 0px;
+
+  paper-shadow {
+    padding: 18px;
+  }
+
+  .games-list {
+    max-height: 500px;
+    overflow: scroll;
+  }
+
+  a {
+    cursor: pointer;
+    &:hover {
+      color: $yellow;
+    }
+  }
+}

@@ -1,6 +1,7 @@
 class CoreNotificator < ActionMailer::Base
   default from: "playhard-core-noreply@gmail.com"
 
+  #TODO rewrite to use account_id, because email is now stored inside Account
   def event_created(event_id, user_id)
     @event = Event.find(event_id)
     @user = User.find(user_id)

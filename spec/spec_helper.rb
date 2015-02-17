@@ -50,7 +50,6 @@ RSpec.configure do |config|
   config.before(:suite) do
     User.destroy_all
     Game.destroy_all
-    Tag.destroy_all
     CoreNotification.destroy_all
   end
 end

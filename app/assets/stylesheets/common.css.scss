@@ -1,54 +1,64 @@
-$ph-orange: #FF8400;
-$ph-orange-dark: #DA7100;
-$ph-red: #E11012;
-$ph-blue: #3276b1;
-$ph-dark-blue: #285e8e;
+$yellow: #FBC02D;
+$grey: #616161;
+$mid-grey: #E0E0E0;
+$light-grey: #F5F5F5;
+$white: #FFF;
+$skyline: #03A9F4;
+$red: #F44336;
 
-@mixin fadeIn($sec, $delay) {
-  opacity: 0;
-  animation: fadein $sec;
-  -moz-animation: fadein $sec;
-  -webkit-animation: fadein $sec;
-  -o-animation: fadein $sec;
-
-  animation-delay: $delay;
-  -moz-animation-delay: $delay;
-  -webkit-animation-delay: $delay;
-  -o-animation-delay: $delay;
-
-  animation-fill-mode: forwards;
-  -webkit-animation-fill-mode: forwards;
-  -moz-animation-fill-mode: forwards;
-  -o-animation-fill-mode: forwards;
+// Firefox
+paper-radio-button #ink[checked] {
+  color: $yellow;
 }
 
-@-moz-keyframes fadein {
-  from { opacity:0; }
-  to { opacity:1; }
+paper-radio-button #onRadio {
+  background-color: $yellow;
 }
 
-@-webkit-keyframes fadein {
-  from { opacity:0; }
-  to { opacity:1; }
+paper-radio-button[checked] #offRadio, paper-radio-button #offRadio {
+  border-color: $yellow;
 }
 
-@-o-keyframes fadein {
-  from { opacity:0; }
-  to { opacity:1; }
+// Chrome
+paper-radio-button::shadow #ink[checked] {
+  color: $yellow;
 }
 
-@keyframes fadein {
-  from { opacity:0; }
-  to { opacity:1; }
+paper-radio-button::shadow #onRadio {
+  background-color: $yellow;
 }
 
-@mixin dark-tile {
-  background-color: rgba(0,0,0,0.4);
-  padding: 10px;
-  color: #fff;
+paper-radio-button[checked]::shadow #offRadio, paper-radio-button::shadow #offRadio {
+  border-color: $yellow;
+}
+// ---
+
+paper-button {
+  font-size: 14px;
 }
 
-@mixin shadowFont($font-color) {
-  color: $font-color;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+//Site name logo
+.logo-link {
+  color: $grey;
+  text-decoration: none;
+  &:hover {
+    color: $yellow;
+    text-decoration: none;
+  }
+}
+
+a {
+  color: $grey;
+  text-decoration: none;
+  border-bottom: 1px $mid-grey dashed;
+  &:hover {
+    color: $yellow;
+    border-bottom: 0;
+  }
+}
+
+hr {
+  margin: 32px 0px 32px 0px;
+  border: 0;
+  border-bottom: 1px solid $mid-grey;
 }

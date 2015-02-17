@@ -1,0 +1,29 @@
+<polymer-element layout vertical name="register-form" attributes='form_path'>
+  <template>
+    <link rel="stylesheet" href="register-form.css.scss" />
+
+      <paper-input-decorator id='email_decorator' floatingLabel label="E-mail">
+        <input id='email' type='email' value='{{emailValue}}' is="core-input">
+      </paper-input-decorator>
+
+      <paper-input-decorator id='password_decorator' floatingLabel label="Пароль">
+        <input id='password' value='{{passwordValue}}' type='password' is="core-input">
+      </paper-input-decorator>
+
+      <paper-input-decorator id='password_confirmation_decorator' floatingLabel label="Пароль еще раз">
+        <input id='password_confirmation' value='{{passwordConfirmValue}}' type='password' is="core-input">
+      </paper-input-decorator>
+
+      <paper-button class='register' recenteringTouch='true' on-click='{{submitForm}}'>Зарегистрируйте меня</paper-button>
+     
+      <core-ajax id='form_sender' url='{{form_path}}' method='POST'
+      handleAs='json' 
+      on-core-error='{{handleError}}'
+      on-core-response='{{handleSuccess}}'>
+      </core-ajax>
+
+  </template>
+
+  <script src="register-form.js.coffee"></script>
+
+</polymer-element>

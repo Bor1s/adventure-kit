@@ -49,26 +49,4 @@ describe Account do
       expect { described_class.find_or_create_by_auth_hash(vk_auth_hash) }.to change(Account, :count).by 0
     end
   end
-
-  context 'valid' do
-    it 'when #password present and it matches confirmation' do
-      account = described_class.new(password: '12345678')
-      expect(account).to be_valid
-      expect(account.authenticate('12345678')).to eq account
-    end
-  end
-
-  context 'invalid' do
-    it 'when #password_confirmation is blank' do
-      expect(described_class.new(password: '12345678', password_confirmation: '')).to be_invalid
-    end
-
-    it 'when #password less then 8 characters' do
-      expect(described_class.new(password: '123456')).to be_invalid
-    end
-
-    it 'when #password more then 16 characters' do
-      expect(described_class.new(password: '1234567890'*3)).to be_invalid
-    end
-  end
 end

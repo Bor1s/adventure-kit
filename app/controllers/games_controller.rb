@@ -1,41 +1,78 @@
 class GamesController < ApplicationController
+  layout 'single_panel'
   before_action :authenticate
-  respond_to :html
+  respond_to :json, :html
 
-  before_filter :extract_optional_params, only: [:new]
+  def index
+    authorize! :read, Game
+
+    if params[:game_id].present?
+      @game = Game.find(params[:game_id])
+    else
+      @games = fetch_games(params)
+    end
+
+    respond_with do |format|
+      format.json do
+        render json: @games
+      end
+    end
+  end
 
   def show
-    @game = Game.find params[:id]
-    @comment = @game.comments.build
-    authorize! :read, @game
+    game = Game.find params[:id]
+    authorize! :read, game
+
+    @game = GameDecorator.new(game)
+    render layout: 'application'
   end
 
   def new
     authorize! :create, Game
     @game = Game.new
-    @game.events.build(optional_params)
+    @game.events.build
     @game.build_location
   end
 
   def create
-    @game = Game.create normalize_params(game_params)
-    if @game.valid?
-      @game.subscribe(current_user, :master)
-      location = edit_game_path(@game)
+    #TODO refactor after specs
+    step = params[:step].to_i
+    service = GameWizardService.new(params[:cache_key], step, game_params)
+    service.persist_step
+    if service.valid?
+      if service.last_step?
+        builder = GameBuilderService.new(service.cache_key)
+        if builder.build
+          game = builder.game
+          game.subscribe(current_user, :master)
+          if game.private_game?
+            User.where(:id.in => builder.invitees).to_a.each do |u|
+              game.subscribe(u)
+            end
+          end
+          builder.clear_tmp(service.cache_key)
+          render json: {success: true, last_step: service.last_step?, cache_key: game.id.to_s}
+        else
+          render json: {success: false, errors: builder.game.errors}, status: 422
+        end
+      else
+        render json: {success: true, last_step: service.last_step?, cache_key: service.cache_key}
+      end
+    else
+      render json: {success: false, errors: service.errors}, status: 422
     end
-    respond_with(@game, location: location)
   end
 
   def edit
     @game = Game.find params[:id]
     authorize! :update, @game
-  end
 
-  def update
-    @game = Game.find params[:id]
-    authorize! :update, @game
-    @game.update_attributes normalize_params(game_params)
-    respond_with @game, location: edit_game_path(@game)
+    respond_with @game do |format|
+      format.html
+      format.json do
+        render json: @game, meta: {cache_key: @game.id.to_s}
+      end
+    end
   end
 
   def destroy
@@ -84,38 +121,34 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit(:title, :description, :tag_ids, :players_amount, :poster, :poster_cache, :remove_poster, events_attributes: [:title, :description, :_destroy, :id, :beginning_at], location_attributes: [:text_coordinates, :id])
-  end
-
-  def normalize_params(parameters)
-    tag_ids = parameters[:tag_ids].split(',')
-    new_tags_titles, tag_ids = tag_ids.partition { |t| t.ends_with? '_new' }
-    parameters[:tag_ids] = tag_ids
-    if new_tags_titles.present?
-      new_tags = new_tags_titles.map do |title|
-        Tag.where(title: title.chomp('_new')).first_or_create
-      end
-      parameters[:tag_ids] = tag_ids.concat(new_tags.map(&:id))
+    if params[:game].present? and params[:game][:events_attributes].present?
+      params[:game].merge!({events_attributes: preprocess_events_attributes})
     end
 
-    parameters
+    params.merge!({game: {events_attributes: {}}}) if params[:game].blank?
+
+    params.require(:game).permit(:title, :description, :players_amount, :private_game, :online_game, :address, :online_info,
+                                 :poster, invitees: [], events_attributes: [:beginning_at, :id, :_destroy], events_ui_ids: [])
   end
 
   def notifications
     ActiveSupport::Notifications
   end
 
-  def optional_params
-    @optional_params ||= {}
+  def preprocess_events_attributes
+    result = []
+    params[:game][:events_attributes].each_key do |key|
+      result << params[:game][:events_attributes][key]
+    end
+    result
   end
 
-  def extract_optional_params
-    if params[:date].present?
-      begin
-        optional_params.merge!({beginning_at: Date.parse(params[:date])})
-      rescue => e
-        warn "#{params[:date]} is not parsed properly!"
-      end
-    end
+  def fetch_games(params)
+    event_filter_service = GameFilterService.new(params[:q], filters, current_user)
+    filtered_events = event_filter_service.filter
+  end
+
+  def filters
+    params[:f].to_s.split(',')
   end
 end

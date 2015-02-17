@@ -7,6 +7,8 @@ set :repo_url, 'git@github.com:Bor1s/playhard-core.git'
 set :rbenv_type, :user
 set :rbenv_ruby, '2.1.2'
 
+set :branch, 'polymer'
+
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 
@@ -40,6 +42,9 @@ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public
 
 # Default value for keep_releases is 5
 set :keep_releases, 2
+
+set :bower_flags, '--quiet --config.interactive=false'
+set :bower_roles, :web
 
 namespace :deploy do
 

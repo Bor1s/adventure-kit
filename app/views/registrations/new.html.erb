@@ -1,29 +1,31 @@
-<%= form_for @user, url: registrations_path do |f| %>
-  <%= f.label :email %>
-  <%= f.email_field :email %><br />
-
-  <%= f.fields_for :accounts do |af| %>
-    <%= af.label :password %>
-    <%= af.password_field :password %><br />
-
-    <%= af.label :password_confirmation %>
-    <%= af.password_field :password_confirmation %><br />
-  <% end %>
-
-  <%= f.submit %>
-<% end %>
-
-<%= form_tag '/login' do %>
-  <%= label_tag :email %><br />
-  <%= text_field_tag :email %><br />
-
-  <%= label_tag :password %><br />
-  <%= password_field_tag :password %>
-
-  <%= submit_tag 'Login' %>
-<% end %>
-
-<div>
-  <%= link_to 'VK', '/login?provider=vkontakte' %>
-  <%= link_to 'GPlus', '/login?provider=gplus' %>
+<div id='login' horizontal layout center-justified>
+  <p self-center>Вход</p>
 </div>
+
+<core-collapse id='login-collapse' opened>
+  <login-form></login-form>
+
+  <aside>... или войдите через</aside>
+
+  <div id='providers' layout horizontal>
+    <paper-button flex noink>
+      <%= link_to "/login?provider=vkontakte" do %>
+        <i class="fa fa-3x fa-vk"></i>
+      <% end %>
+    </paper-button>
+
+    <paper-button flex noink> 
+      <%= link_to "/login?provider=glpus" do %>
+        <i class="fa fa-3x fa-google-plus"></i>
+      <% end %>
+    </paper-button>
+  </div>
+</core-collapse>
+
+<div id='register' layout horizontal center-justified>
+  <p self-center>Регистрация</p>
+</div>
+
+<core-collapse id='register-collapse'>
+  <register-form form_path="<%= registrations_path %>"></register-form>
+</core-collapse>

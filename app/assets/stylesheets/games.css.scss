@@ -1,92 +1,22 @@
-// Place all the styles related to the games controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
 @import 'common';
 
-.game {
-  margin-bottom: 10px;
-  @include dark-tile;
-
-  .title {
-    font-size: 2em;
-    font-weight: bold;
-  }
-
-  .description {
-    line-height: 1.5em;
-    white-space: pre-line;
-    margin-top: 2em;
-    margin-bottom: 2em;
-  }
-
-  a {
-    color: #5e5e5e;
-    &:hover {
-      color: #333333;
-    }
-  }
-
-  aside a {
-    margin-left: 10px;
-  }
-
+.poster-container {
+  width: 100%;
+  height: 300px;
 }
 
-.new {
-  color: #e11012;
-  &:hover {
-    color: black
-  }
+section.body {
+  margin: 32px;
 }
 
-.events {
-  margin-bottom: 4em;
-
-  textarea, input[type='text'] {
-    width: 300px;
-  }
-
-  .input-group-btn {
-    width: 0;
-  }
-
-  img.poster {
-    margin-right: 20px;
-    outline: 0;
-  }
-
-  .remove-poster {
-    margin-left: 10px;
-  }
-
-  .row {
-    margin-bottom: 5em;
-  }
-
-  .default-image {
-    margin-top: 0.6em;
-    color: #ddd;
-  }
+.fa-stack-1x {
+  color: $white;
 }
 
-.participant {
-  margin-bottom: 10px;
-  a:last-child {
-    margin-left: 10px;
-  }
+.fa-stack-2x {
+  color: $yellow;
 }
 
-.participants {
-  a {
-    text-decoration: none;
-  }
-}
-
-.darken {
-  @include dark-tile;
-}
-
-#event-map {
-  outline: 3px double #ddd;
+p {
+  margin-right: 16px;
 }

@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Good Games Group</title>
+  <title>Adventure Kit</title>
 
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-
-  <link href='http://fonts.googleapis.com/css?family=Lobster|Play&subset=cyrillic-ext,latin' rel='stylesheet' type='text/css'>
   <%= favicon_link_tag %>
   <%= stylesheet_link_tag    "application", media: "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="/assets/paper-shadow/paper-shadow.css" rel="stylesheet" shim-shadowdom>
+  <link href="/assets/core-icon/core-icon.css" rel="stylesheet" shim-shadowdom>
+  <link rel="stylesheet" href="/assets/core-collapse/core-collapse.css" shim-shadowdom>
+  <%= html_import_tag "application", "data-turbolinks-track" => true %>
+
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
 </head>
-<body>
+<body unresolved class='login-body'>
   <%= flash.alert %>
   <%= yield %>
 </body>

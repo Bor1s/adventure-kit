@@ -1,0 +1,25 @@
+@import 'common';
+
+:host {
+  display: block;
+  max-height: 300px;
+  overflow: scroll;
+
+  ul {
+    padding: 0;
+    padding-left: 8px;
+    list-style: none;
+
+    li {
+      padding: 8px 4px 8px 4px;
+      cursor: pointer;
+      border-bottom: 1px dashed #DDD;
+    }
+  }
+
+  .core-selected {
+    background-color: $yellow;
+    color: $white;
+  }
+}
+

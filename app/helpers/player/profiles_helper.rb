@@ -1,2 +1,0 @@
-module Player::ProfilesHelper
-end

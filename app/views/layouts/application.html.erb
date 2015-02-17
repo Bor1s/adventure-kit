@@ -1,46 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= yield :title %></title>
-
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-
-  <!-- Optional theme -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= t('site_name') %></title>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
   <%= favicon_link_tag %>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= html_import_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
-
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </head>
-<body>
 
-<%= render 'navigation_bar' if user_signed_in? %>
-
-<main class='container'>
-  <div class='row'>
-
-    <div class='col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-<%= content_for?(:sidebar) ? '8' : '12' %> col-md-offset-0'>
-
-      <%= render 'alerts' %>
+<body unresolved fullbleed>
+  <core-drawer-panel rightDrawer>
+    <core-header-panel main>
+      <core-toolbar>
+        <span flex><%= link_to t('site_name'), root_path, class: 'logo-link' %></span>
+        <core-icon-button icon="menu" core-drawer-toggle></core-icon-button>
+      </core-toolbar>
 
       <%= yield %>
-    </div>
+    </core-header-panel>
 
-    <% if content_for? :sidebar %>
-      <div class='col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-3 col-md-offset-1'>
-        <%= yield :sidebar %>
-      </div>
-    <% end %>
-  </div>
-</main>
+    <core-header-panel id='game_drawer' drawer>
+      <core-toolbar justify='end'>
+        <core-tooltip label='Мой профиль'>
+          <%= link_to path_to_current_user_profile do %>
+            <paper-shadow z='1' class='round'>
+              <%= image_tag current_user.avatar.medium.url, class: 'round' %>
+              <paper-ripple fit class="recenteringTouch circle white-ripple"></paper-ripple>
+            </paper-shadow>
+          <% end %>
+        </core-tooltip>
 
-<%= render 'footer' if user_signed_in? %>
+        <core-tooltip label='Выход'>
+          <%= link_to signout_path do %>
+            <core-icon icon='exit-to-app'></core-icon>
+          <% end %>
+        </core-tooltip>
+      </core-toolbar>
 
+      <%= yield :sidebar %>
+    </core-header-panel>
+
+  </core-drawer-panel>
 </body>
 </html>

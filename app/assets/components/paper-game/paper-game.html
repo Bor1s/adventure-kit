@@ -1,0 +1,53 @@
+<polymer-element name='paper-game' attributes='data'>
+  <template>
+    <link rel="stylesheet" href="paper-game.css.scss" />
+
+    <paper-shadow z='1'>
+      <div class='image-container'>
+        <core-image src='{{data.poster.poster.medium.url}}' sizing='cover'></core-image>
+      </div>
+
+      <header layout horizontal center center-justified>
+        <div flex>{{data.title}}</div>
+        <template if='{{data.events.length > 1}}'>
+          <core-tooltip position='left' label='Всего сессий'>
+            <div class='events'>{{data.events.length}}</div>
+          </core-tooltip>
+        </template>
+      </header>
+
+      <section>
+        <p layout horizontal>
+          <template if='{{data.next_event_date}}'>
+            <span flex>
+              <core-tooltip position='right' label='Следующая сессия'>
+                <core-icon icon='event' class='small'></core-icon> {{data.next_event_date}}
+              </core-tooltip>
+            </span>
+          </template>
+
+          <template if='{{!data.next_event_date}}'>
+            <span flex>Новых сессий не запланировано</span>
+          </template>
+
+          <template if='{{data.online == true}}'>
+            <core-tooltip position='left' label='Онлайн игра'>
+              <core-icon icon='language' class='small'></core-icon>
+            </core-tooltip>
+          </template>
+
+          <template if='{{data.online == false}}'>
+            <core-tooltip position='left' label='{{data.location.address}}'>
+              <core-icon icon='room' class='small'></core-icon>
+            </core-tooltip>
+          </template>
+        </p>
+        <p class='description'>{{data.description}}</p>
+      </section>
+
+    </paper-shadow>
+
+  </template>
+
+  <script src="paper-game.js.coffee"></script>
+</polymer-element>

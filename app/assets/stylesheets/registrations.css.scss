@@ -1,3 +1,57 @@
 // Place all the styles related to the registrations controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import 'common';
+
+.login-body {
+  margin: 0;
+  padding: 0;
+  background: url('/assets/dices.png') no-repeat right center fixed;
+  -webkit-background-size: 30%;
+  -moz-background-size: 30%;
+  -o-background-size: 30%;
+  background-size: 30%;
+}
+
+#register, #login {
+  cursor: pointer;
+  p {
+    font-size: 20px;
+  }
+}
+
+#login, #login-collapse, #register, #register-collapse {
+  background-color: $grey;
+  color: $white;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  height: 48px;
+}
+
+#register {
+  border-top: 1px solid #9E9E9E;
+}
+
+#login-collapse {
+  background-color: rgba($grey, 0.8);
+  aside {
+    text-align: center;
+    margin: 48px auto 28px auto;
+  }
+}
+
+#register-collapse {
+  background-color: rgba($grey, 0.8);
+}
+
+#providers {
+  margin-bottom: 48px;
+  a {
+    color: $white;
+    &:hover {
+      color: $skyline;
+    }
+  }
+}

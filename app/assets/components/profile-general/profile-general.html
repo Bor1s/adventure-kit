@@ -1,0 +1,96 @@
+<polymer-element name='profile-general' attributes='user_url user_post_url'>
+  <template>
+    <link rel="stylesheet" href="profile-general.css.scss" />
+
+    <paper-shadow z='1'>
+      <div layout horizontal>
+        <!-- Profile avatar -->
+        <div class='avatar-container'>
+          <template if='{{user.has_avatar}}'>
+            <div id='avatar-preview'>
+              <core-image style="width:100px; height:100px;" sizing="cover" src='{{user.avatar.avatar.medium.url}}'></core-image>
+            </div>
+          </template>
+
+          <template if='{{!user.has_avatar}}'>
+            <div id='avatar-preview'>
+              <i class='fa fa-5x fa-file-image-o'></i>
+            </div>
+          </template> <!-- profile avatar -->
+
+
+          <core-tooltip position='bottom' label='Сменить аватар'>
+            <file-input maxFiles='1' class='avatar-upload' extensions='["jpeg", "jpg", "png"]' maxSize='3000000'>
+              <i class='fa fa-lg fa-upload'></i>
+            </file-input>
+          </core-tooltip>
+        </div>
+
+        <div flex class='info'>
+          <div>
+            <paper-dropdown-menu label="Timezone">
+              <paper-dropdown class="dropdown">
+                <core-selector id='timezone' valueattr='label' selected='{{user.timezone}}' class="menu">
+                  <template repeat='{{t in timezones}}'>
+                    <paper-item label='{{t.system_name}}'>{{t.human_name}}</paper-item>
+                  </template>
+                </core-selector>
+              </paper-dropdown>
+            </paper-dropdown-menu>
+          </div>
+
+          <template if='{{user.has_plain_account}}'>
+            <paper-input-decorator id='email_decorator' floatingLabel label="E-Mail">
+              <input id='email' type='email' value='{{user.plain_account.email}}' is="core-input">
+            </paper-input-decorator>
+
+            <paper-input-decorator id='password_decorator' floatingLabel label="Новый пароль (оставьте пустым что бы не менять)">
+              <input id='password' type='password' value='{{user.plain_account.password}}' is="core-input">
+            </paper-input-decorator>
+
+            <paper-input-decorator id='password_confirmation_decorator' floatingLabel label="Повторите новый пароль">
+              <input id='password_confirmation' type='password' value='{{user.plain_account.password_confirmation}}' is="core-input">
+            </paper-input-decorator>
+          </template>
+
+          <paper-input-decorator id='nickname_decorator' floatingLabel label="Никнейм">
+            <input id='nickname' value='{{user.nickname}}' is="core-input">
+          </paper-input-decorator>
+
+          <paper-input-decorator id='bio_decorator' floatingLabel label="БИО">
+            <paper-autogrow-textarea rows='3' id="user_bio">
+              <textarea id='bio' value='{{user.bio}}' is="core-input"></textarea>
+            </paper-autogrow-textarea>
+          </paper-input-decorator>
+
+          <template if='{{processing}}'>
+            <div class='spinner'>
+              <i class="fa fa-2x fa-circle-o-notch fa-spin"></i>
+            </div>
+          </template>
+
+          <template if='{{!processing}}'>
+            <paper-button raised recenteringTouch='true' on-click='{{submitForm}}'>Сохранить</paper-button>
+          </template>
+        </div>
+      </div>
+
+      <paper-toast id='dataStatus' text='Профиль успешно обновлен.'></paper-toast>
+    </paper-shadow>
+
+
+    <core-ajax id='user_fetcher' url='{{user_url}}' method='GET'
+    handleAs='json' 
+    on-core-error='{{handleUserError}}'
+    on-core-response='{{handleUserSuccess}}'>
+    </core-ajax>
+
+    <core-ajax id='form_sender' url='{{user_post_url}}' method='PUT'
+    handleAs='json' 
+    on-core-error='{{handleError}}'
+    on-core-response='{{handleSuccess}}'>
+    </core-ajax>
+  </template>
+
+  <script src="profile-general.js.coffee"></script>
+</polymer-element>

@@ -19,6 +19,7 @@ describe StatisticsService do
   end
 
   it 'returns #top_games' do
+    pending 'Rework statistics service'
     expect(subject.top_games).to be_an_instance_of(Array)
     expect(subject.top_games.sample).to be_an_instance_of(GameDecorator)
   end

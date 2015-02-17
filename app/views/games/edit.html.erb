@@ -1,5 +1,5 @@
-<% content_for :title do %>
-  <%= @game.title %>
+<% content_for :game_edit_loader do %>
+  <game-edit-service game='{{game}}' url="<%= edit_game_path(@game) %>"></game-edit-service>
 <% end %>
 
 <%= render 'form' %>

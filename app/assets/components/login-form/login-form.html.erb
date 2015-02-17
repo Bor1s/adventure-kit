@@ -1,0 +1,26 @@
+<polymer-element layout vertical name="login-form">
+  <template>
+    <link rel="stylesheet" href="login-form.css.scss" />
+
+    <paper-input-decorator id='email_decorator' floatingLabel label="E-mail">
+    <input id='email' type='email' value='{{emailValue}}' is="core-input">
+    </paper-input-decorator>
+
+    <paper-input-decorator id='password_decorator' floatingLabel label="Пароль">
+    <input id='password' value='{{passwordValue}}' type='password' is="core-input">
+    </paper-input-decorator>
+
+    <paper-button class='enter' recenteringTouch='true' on-click='{{submitLoginForm}}'>Войти</paper-button>
+
+    <core-ajax id='form_sender' url='/login' method='POST'
+    handleAs='json' 
+    params='{"authenticity_token": "{{token}}", "email": "{{emailValue}}", "password": "{{passwordValue}}"}'
+    on-core-error='{{handleError}}'
+    on-core-response='{{handleSuccess}}'>
+    </core-ajax>
+
+  </template>
+
+  <script src="login-form.js.coffee"></script>
+
+</polymer-element>

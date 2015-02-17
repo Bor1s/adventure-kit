@@ -1,10 +1,14 @@
 class EventsController < ApplicationController
   before_action :authenticate
-  respond_to :html
+  respond_to :json
 
   def index
     authorize! :read, Event
-
-    @events = EventService.call(q: params[:q], f: params[:f], page: params[:page])
+    @events = Game.find(params[:game_id]).events
+    respond_with do |format|
+      format.json do
+        render json: @events
+      end
+    end
   end
 end

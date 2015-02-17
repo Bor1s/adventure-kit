@@ -1,0 +1,49 @@
+<div horizontal layout class='wizard-container'>
+  <div flex six>
+    <template if='{{gameCreated}}'>
+      <h3>Игра успешно сохранена.</h3>
+      <div class='links'>
+        <paper-button raised>
+          <a href='/games/{{game.id}}'>Посмотреть игру</a>
+        </paper-button>
+
+        <paper-button raised>
+          <%= link_to 'На главную', root_path %>
+        </paper-button raised>
+      </div>
+    </template>
+
+    <template if='{{!gameCreated}}'>
+      <h4>Шаг 4 из 4 (Изображение)</h4>
+      <template if='{{game && game.has_poster}}'>
+        <div id='poster-preview'>
+          <core-image style="width:300px; height:300px;" sizing="cover" src='{{game.poster.poster.medium.url}}'></core-image>
+        </div>
+      </template>
+
+      <template if='{{game && !game.has_poster}}'>
+        <div id='poster-preview'>
+          <i class='fa fa-5x fa-file-image-o'></i>
+        </div>
+      </template>
+
+      <file-input maxFiles='1' class='upload' extensions='["jpeg", "jpg", "png"]' maxSize='3000000'>
+        <core-icon icon='file-upload'></core-icon> Загрузить изображение
+      </file-input>
+
+      <template if='{{processing}}'>
+        <div class='spinner'>
+          <i class="fa fa-2x fa-circle-o-notch fa-spin"></i>
+        </div>
+      </template>
+
+      <template if='{{!processing}}'>
+        <paper-button raised id='step4-submit' recenteringTouch='true'>Завершить</paper-button>
+        <paper-button id='step4-prev' recenteringTouch='true'>Назад</paper-button>
+      </template>
+    </template>
+  </div>
+</div>
+
+
+

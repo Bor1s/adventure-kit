@@ -11,6 +11,10 @@ gem 'jbuilder', '~> 1.2'
 gem 'font-awesome-sass', '~> 4.2.0'
 gem 'warden'
 gem 'bcrypt'
+gem 'active_model_serializers'
+
+#Polymer Project
+gem 'emcee', github: 'Bor1s/emcee', branch: 'dev'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -47,12 +51,13 @@ group :test, :development do
   gem 'pry-rails'
   gem 'sunspot_solr'
   gem 'letter_opener'
-  #gem 'pry-debugger'
+  gem 'faker'
 end
 
 group :development do
   gem 'better_errors'
   gem 'capistrano'
+  gem 'capistrano-bower'
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
   gem 'capistrano-sidekiq'

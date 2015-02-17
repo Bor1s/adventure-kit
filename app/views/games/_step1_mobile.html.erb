@@ -1,0 +1,36 @@
+<div vertical layout class='wizard-container'>
+  <section>
+    <h4>Шаг 1 из 4 (Общее)</h4>
+    <paper-input-decorator id='title_decorator' floatingLabel label="<%= t('games.title') %>">
+      <input id='title' type='text' value='{{game.title}}' is="core-input">
+    </paper-input-decorator>
+
+    <paper-input-decorator id='description_decorator' floatingLabel label="<%= t('games.description') %>">
+      <paper-autogrow-textarea rows='10' id="game_desc">
+        <textarea id='description' value='{{game.description}}' is="core-input"></textarea>
+      <paper-autogrow-textarea>
+    </paper-input-decorator>
+
+    <paper-button raised id='step1-submit' recenteringTouch='true'>Далее</paper-button>
+  </section>
+
+  <section class='tips'>
+    <div layout vertical center>
+      <figure class='do'>
+        <div><%= image_tag asset_path('step1-valid.png'), size: '300x300' %></div>
+        <figcaption>
+          <p>Верно</p>
+          <p class='tip'>Описывайте игру подробнее, так игрокам будет проще понять о чем она.</p>
+        </figcaption>
+      </figure>
+
+      <figure class='dont'>
+        <div><%= image_tag asset_path('step1-invalid.png'), size: '300x300' %></div>
+        <figcaption>
+          <p>Неверно</p>
+          <p class='tip'>Название игры должно соответствовать её содержанию.</p>
+        </figcaption>
+      </figure>
+    </div>
+  </scetion>
+</div>

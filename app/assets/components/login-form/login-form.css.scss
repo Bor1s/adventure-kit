@@ -1,0 +1,57 @@
+@import 'common';
+$custom-grey: #BDBDBD;
+
+:host {
+  display: block;
+  padding-left: 18px;
+  padding-right: 18px;
+
+  paper-input-decorator /deep/ .label-text,
+  paper-input-decorator /deep/ .error {
+      /* inline label,  floating label, error message and error icon color when the input is unfocused */
+      color: $custom-grey;
+  }
+
+  paper-input-decorator /deep/ ::-webkit-input-placeholder {
+      /* platform specific rules for placeholder text */
+      color: $custom-grey;
+  }
+  paper-input-decorator /deep/ ::-moz-placeholder {
+      color: $custom-grey;
+  }
+  paper-input-decorator /deep/ :-ms-input-placeholder {
+      color: $custom-grey;
+  }
+
+  paper-input-decorator /deep/ .unfocused-underline {
+      /* line color when the input is unfocused */
+      background-color: $custom-grey;
+  }
+
+  paper-input-decorator[focused] /deep/ .floated-label .label-text {
+    /* floating label color when the input is focused */
+    color: $white;
+  }
+
+  paper-input-decorator /deep/ .focused-underline {
+      /* line color when the input is focused */
+      background-color: $white;
+  }
+
+  paper-input-decorator /deep/ .cursor {
+      /* floating cursor when the input is focused */
+      background-color: $white;
+  }
+
+}
+
+.enter::shadow #ripple {
+  color: $white;
+}
+
+.enter {
+  background-color: rgba($custom-grey, 0.8);
+  color: $grey;
+  margin-top: 28px;
+  margin-bottom: 28px;
+}

@@ -2,13 +2,14 @@ require 'sidekiq/web'
 require 'admin_constraint'
 
 PlayhardCore::Application.routes.draw do
+  get '/dashboard' => 'game_dashboard#index'
+
   get '/login' => 'sessions#authorize'
   post '/login' => 'sessions#authorize'
   get '/auth/:provider/callback', to: 'sessions#authorize'
   get '/signout', to: 'sessions#destroy', as: :signout
 
   #Registrations
-
   resources :registrations, only: [:new, :create, :destroy]
 
   resources :games do
@@ -18,6 +19,7 @@ PlayhardCore::Application.routes.draw do
       delete :remove_player
     end
     resources :comments, except: [:index, :new]
+    resources :events, only: [:index]
   end
 
   resources :users, only: [:index, :show]
@@ -38,21 +40,10 @@ PlayhardCore::Application.routes.draw do
       end
     end
     resources :users
-    get 'heatmap' => 'heatmap#index', as: :heatmap
   end
 
   namespace :master do
-    resources :games, only: [:index]
-    resource :profile, only: [:edit, :update] do
-      collection do
-        delete :remove_account
-      end
-    end
-    get 'heatmap' => 'heatmap#index', as: :heatmap
-  end
-
-  namespace :player do
-    resources :games, only: [:index]
+    resources :games, only: [:index, :destroy]
     resource :profile, only: [:edit, :update] do
       collection do
         delete :remove_account

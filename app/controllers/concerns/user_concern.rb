@@ -1,24 +1,27 @@
 module UserConcern
-
   def user_params
-    params.require(:user).permit(:email, :tag_ids, :want_to_be_master, :avatar, :avatar_cache, :nickname, :remove_avatar)
+    #TODO need to explicitly remove :password if :password_confirmation is blank
+    #because has_secure_password allow to update password field anyway on record update
+    if params[:user][:plain_account_attributes][:password_confirmation].blank?
+      params[:user][:plain_account_attributes].delete(:password)
+    end
+
+    params.require(:user).permit(:avatar, :timezone, :nickname, :bio,
+                                 plain_account_attributes: [:email, :password, :password_confirmation, :id])
   end
 
   def update(redirect_path: root_path, render_path: :edit)
     @profile = current_user
-    normalized_parameters = normalize_params(user_params)
-
-    yield(normalized_parameters) if block_given?
-
-    if @profile.update_attributes(normalized_parameters)
-      redirect_to redirect_path
+    if @profile.update_attributes(user_params)
+      render json: @profile
     else
-      render render_path
+      @profile.errors.messages.delete(:plain_account)
+      render json: {success: false, errors: @profile.errors.messages.merge(@profile.plain_account.errors.messages)}, status: 422
     end
   end
 
+  #Assigns another user account to session
   def handle_account_in_session(account)
-    #Assigns another user account to session
     if account == current_user_profile
       new_session_account = current_user.accounts.ne(uid: account.uid).first
       session[:account_id] = new_session_account.id
@@ -42,23 +45,5 @@ module UserConcern
     else
       render render_path
     end
-  end
-
-  private
-
-  def normalize_params(parameters, &block)
-    tag_ids = parameters[:tag_ids].split(',')
-    new_tags_titles, tag_ids = tag_ids.partition { |t| t.ends_with? '_new' }
-    parameters[:tag_ids] = tag_ids
-    if new_tags_titles.present?
-      new_tags = new_tags_titles.map do |title|
-        Tag.where(title: title.chomp('_new')).first_or_create
-      end
-      parameters[:tag_ids] = tag_ids.concat(new_tags.map(&:id))
-    end
-
-    block.call(parameters) if block_given?
-
-    parameters
   end
 end

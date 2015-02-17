@@ -1,0 +1,13 @@
+:host {
+  display: block;
+  margin-bottom: 20px;
+
+  paper-input-decorator {
+    display: inline-block !important;
+  }
+
+  paper-button {
+    font-size: 10px;
+    margin: 18px 0px 0px 0px;
+  }
+}

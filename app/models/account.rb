@@ -1,11 +1,9 @@
 class Account
   include Mongoid::Document
   include Mongoid::Timestamps
-  include ActiveModel::SecurePassword
-
-  attr_reader :password_confirmation
 
   # Mandatory fields
+  field :email, type: String
   field :provider, type: String
   field :uid, type: String
   field :name, type: String
@@ -15,11 +13,6 @@ class Account
   field :avatar_medium, type: String
   field :avatar_original, type: String
   field :social_network_link, type: String
-
-  field :password_digest
-
-  has_secure_password validations: false
-  validates :password, length: {minimum: 8, maximum: 16}, confirmation: true, if: Proc.new {|a| a.password.present?}
 
   belongs_to :user
 
@@ -34,5 +27,4 @@ class Account
       Account.create(account_data)
     end
   end
-
 end

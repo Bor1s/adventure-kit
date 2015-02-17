@@ -1,0 +1,158 @@
+@import 'common';
+
+#main-header {
+  height: 100%;
+  //background-color: $light-grey;
+
+  core-toolbar {
+    //color: $white;
+    background-color: $white;
+  }
+
+  a {
+    color: $grey;
+    &:hover {
+      color: $yellow;
+    }
+  }
+}
+
+// players amount dropdown styles
+paper-item {
+  display: block;
+  padding: 4px 16px 4px 16px;
+  cursor: pointer;
+  border-bottom: 1px dashed #DDD;
+  text-align: center;
+}
+
+paper-item.core-selected {
+  color: $white;
+  background-color: $yellow;
+}
+///////
+
+.wizard-container {
+  margin: 48px;
+}
+
+#step1-submit, #step2-submit, #step3-submit, #step4-submit {
+  background-color: $yellow;
+  color: $white;
+  margin-top: 18px;
+}
+
+#step2-submit {
+  margin-left: 12px;
+}
+
+#step1-submit, #step3-submit {
+  margin-left: 0;
+}
+
+// Step 1
+// Right sided tips
+.tips {
+  display: inline-block;
+
+  .do, .dont {
+    font-size: 12px;
+    .tip {
+      color: $grey;
+    }
+  }
+
+  figcaption {
+    max-width: 300px;
+  }
+
+  img {
+    margin-bottom: 16px;
+  }
+
+  .do {
+    display: inline-block;
+    color: green;
+    div { 
+      border-bottom: 12px solid green;
+    }
+  }
+
+  .dont {
+    display: inline-block;
+    color: red;
+    div { 
+      border-bottom: 12px solid red;
+    }
+  }
+}
+
+// Step 2
+.privacy {
+  margin-bottom: 58px;
+
+  .players {
+    padding-left: 14px;
+  }
+}
+
+.place {
+  #online_info_decorator, #address_decorator {
+    padding-left: 12px;
+  }
+}
+
+//Step 4
+#poster-preview {
+  width: 300px;
+  height: 300px;
+  text-align: center;
+  outline: 1px dashed $mid-grey;
+
+  i {
+    margin-top: 35%;
+    color: $mid-grey;
+  }
+
+  img {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+.upload {
+  width: 300px;
+  height: 50px;
+  background-color: $white;
+  border: 1px dashed #ddd;
+  border-top: 0px;
+  display: block;
+  margin-top: 18px 0px 28px 0px;
+  text-align: center;
+  padding-top: 22px;
+}
+
+// For Chrome
+file-input::shadow #fileInput {
+  cursor: pointer;
+}
+
+// For Firefox
+file-input #fileInput {
+  cursor: pointer;
+}
+
+.links {
+  margin-top: 48px;
+  a {
+    color: $grey !important;
+    text-decoration: none;
+  }
+}
+
+.spinner {
+  margin-top: 28px;
+  width: 300px;
+  color: $yellow;
+  text-align: center;
+}
