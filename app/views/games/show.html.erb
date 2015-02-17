@@ -43,20 +43,13 @@
   <p><%= @game.description %></p>
   <hr />
 
- <div id="disqus_thread"></div>
+  <div id="disqus_thread"></div>
   <script type="text/javascript">
-      var disqus_shortname = 'adventurerkit'; // required: replace example with your forum shortname
-      var disqus_title = '<%= @game.title %>';
-      var disqus_url = '<%= request.original_url %>';
-      var disqus_identifier = '<%= @game.title %>';
-
-      /* * * DON'T EDIT BELOW THIS LINE * * */
-      (function() {
-          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      })();
+    var disqus_shortname = 'adventurerkit';
+    var disqus_title = '<%= @game.title %>';
+    var disqus_url = '<%= request.original_url %>';
+    var disqus_identifier = '<%= @game.title %>';
+    loadDisqus(disqus_shortname, disqus_title, disqus_url, disqus_identifier);
   </script>
-  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
 </section>
