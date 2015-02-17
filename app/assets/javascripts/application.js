@@ -10,7 +10,7 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require webcomponentsjs/webcomponents
+//= require webcomponentsjs/webcomponents.min
 //= require jquery
 //= require jquery_ujs
 //= require jquery.datetimepicker
