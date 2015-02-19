@@ -1,43 +1,50 @@
-<core-image class='poster-container' src='<%= @game.poster.url %>' sizing='cover'></core-image>
+<core-image class='poster-container' src='<%= @game.poster.url %>' sizing='cover'>
+  <h1 class='game-header'><%= @game.title %></h1>
+</core-image>
 
 <section class='body'>
-  <h2><%= @game.title %></h2>
   <div layout horizontal>
-    <p>
+    <div>
       <span class="fa-stack fa-lg">
         <i class="fa fa-circle fa-stack-2x"></i>
         <i class="fa fa-calendar fa-stack-1x"></i>
       </span>
       <%= @game.next_session %>
-    </p>
-    <% if @game.online_game? %>
-      <p>
+      <% if @game.online_game? %>
         <span class="fa-stack fa-lg">
           <i class="fa fa-circle fa-stack-2x"></i>
           <i class="fa fa-globe fa-stack-1x"></i>
         </span>
         <%= @game.online_info %>
-      </p>
-    <% else %>
-      <p>
+      <% else %>
         <span class="fa-stack fa-lg">
           <i class="fa fa-circle fa-stack-2x"></i>
           <i class="fa fa-map-marker fa-stack-1x"></i>
         </span>
         <%= link_to @game.address, "http://maps.google.com/?q=#{@game.address}", target: '_blank' %>
-      </p>
-    <% end %>
-    <p>
+      <% end %>
       <span class="fa-stack fa-lg">
         <i class="fa fa-circle fa-stack-2x"></i>
         <i class="fa fa-users fa-stack-1x"></i>
       </span>
       <%= @game.players.count %>
-    </p>
+    </div>
   </div>
+
+  <hr />
+
   <p>
     <% @game.players.each do |player| %>
-      <%= player.nickname %>
+      <core-tooltip label='<%= player.nickname %>'>
+        <% if player.avatar? %>
+          <%= image_tag asset_path(player.avatar.tiny.url), class: 'avatar rounded', size: '39x39', alt: player.nickname %>
+        <% else %>
+          <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-user fa-stack-1x"></i>
+          </span>
+        <% end %>
+      </core-tooltip>
     <% end %>
   </p>
   <p><%= @game.description %></p>

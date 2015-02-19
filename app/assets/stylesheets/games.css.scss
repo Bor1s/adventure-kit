@@ -20,3 +20,21 @@ section.body {
 p {
   margin-right: 16px;
 }
+
+.game-header {
+  margin-left: 18px;
+  margin-right: 18px;
+  background-color: rgba(0,0,0, 0.4);
+  display: inline-block;
+  color: #fff;
+  padding: 4px;
+}
+
+.rounded {
+  border-radius: 100%;
+}
+
+.avatar {
+  vertical-align: middle;
+}
+
