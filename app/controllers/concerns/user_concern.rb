@@ -2,7 +2,7 @@ module UserConcern
   def user_params
     #TODO need to explicitly remove :password if :password_confirmation is blank
     #because has_secure_password allow to update password field anyway on record update
-    if params[:user][:plain_account_attributes][:password_confirmation].blank?
+    if params[:user][:plain_account_attributes].present? && params[:user][:plain_account_attributes][:password_confirmation].blank?
       params[:user][:plain_account_attributes].delete(:password)
     end
 

@@ -87,7 +87,7 @@ Warden::Strategies.add(:oauth) do
   def create_user_account(auth_hash)
     account = Account.find_or_create_by_auth_hash(auth_hash)
     if account.user.blank?
-      user = User.create({current_timezone_offset: Time.zone.now.utc_offset})
+      user = User.create
       user.accounts << account
     end
     account

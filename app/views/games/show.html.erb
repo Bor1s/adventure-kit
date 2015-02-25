@@ -5,25 +5,25 @@
 <section class='body'>
   <div layout horizontal>
     <div>
-      <span class="fa-stack fa-lg">
+      <span class="fa-stack">
         <i class="fa fa-circle fa-stack-2x"></i>
         <i class="fa fa-calendar fa-stack-1x"></i>
       </span>
       <%= @game.next_session %>
       <% if @game.online_game? %>
-        <span class="fa-stack fa-lg">
+        <span class="fa-stack">
           <i class="fa fa-circle fa-stack-2x"></i>
           <i class="fa fa-globe fa-stack-1x"></i>
         </span>
         <%= @game.online_info %>
       <% else %>
-        <span class="fa-stack fa-lg">
+        <span class="fa-stack">
           <i class="fa fa-circle fa-stack-2x"></i>
           <i class="fa fa-map-marker fa-stack-1x"></i>
         </span>
         <%= link_to @game.address, "http://maps.google.com/?q=#{@game.address}", target: '_blank' %>
       <% end %>
-      <span class="fa-stack fa-lg">
+      <span class="fa-stack">
         <i class="fa fa-circle fa-stack-2x"></i>
         <i class="fa fa-users fa-stack-1x"></i>
       </span>
@@ -47,7 +47,11 @@
       </core-tooltip>
     <% end %>
   </p>
+
+  <hr />
+
   <p><%= @game.description %></p>
+
   <hr />
 
   <div id="disqus_thread"></div>
