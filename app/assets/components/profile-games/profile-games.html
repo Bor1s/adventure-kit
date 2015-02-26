@@ -10,7 +10,9 @@
             <div class='games-list' layout horizontal>
               <div flex><a on-click='{{showGame}}' data-game-url='{{game.url}}'>{{game.title}}</a></div>
               <div class='actions'>
-                <a on-click='{{deleteGame}}' data-game-id='{{game.id}}'><i class='fa fa-trash danger'></i></a>
+                <template if='{{game.can_be_managed}}'>
+                  <a on-click='{{deleteGame}}' data-game-id='{{game.id}}'><i class='fa fa-trash danger'></i></a>
+                </template>
               </div>
             </div>
           </template>

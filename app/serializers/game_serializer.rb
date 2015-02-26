@@ -39,6 +39,11 @@ class GameSerializer < ActiveModel::Serializer
     Rails.application.routes.url_helpers.master_game_url(object, only_path: true)
   end
 
+  def can_be_managed
+    # scope is current_user
+    scope.creator?(object)
+  end
+
   attributes :id,
     :title,
     :next_event_date,
@@ -53,5 +58,6 @@ class GameSerializer < ActiveModel::Serializer
     :has_poster,
     :address,
     :url,
-    :destroy_url
+    :destroy_url,
+    :can_be_managed
 end
