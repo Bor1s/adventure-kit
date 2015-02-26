@@ -1,0 +1,9 @@
+$('#JS_participants').html('<%= j render(partial: 'participants') %>');
+
+<% if current_user.creator?(@game) %>
+  $('#JS_game_management').html('<%= j render(partial: 'owner_management') %>');
+<% else %>
+  $('#JS_game_management').html('<%= j render(partial: 'player_management') %>');
+<% end %>
+
+document.querySelector('#subscribed').show()

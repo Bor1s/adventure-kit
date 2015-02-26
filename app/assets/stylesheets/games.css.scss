@@ -1,5 +1,22 @@
 @import 'common';
 
+[drawer] {
+  background-color: $white;
+
+  core-toolbar {
+    background-color: $white;
+  }
+
+  aside, section {
+    padding-left: 8px;
+  }
+
+  section {
+    border-bottom: 1px solid $light-grey;
+    margin: 18px;
+  }
+}
+
 .poster-container {
   width: 100%;
   height: 300px;
@@ -7,6 +24,13 @@
 
 section.body {
   margin: 32px;
+
+  header {
+    margin-bottom: 18px;
+    font-size: 18px;
+    color: #000;
+    font-weight: bold;
+  }
 }
 
 .fa-stack-1x {
@@ -36,5 +60,26 @@ p {
 
 .avatar {
   vertical-align: middle;
+}
+
+.dm-sign {
+  border: 2px solid $red;
+}
+
+.game-management {
+  a {
+    font-size: 16px;
+  }
+}
+
+.danger {
+  color: $red;
+  &:hover {
+    color: $red;
+    border-bottom: 1px dashed $red;
+  }
+}
+
+.players-list {
 }
 

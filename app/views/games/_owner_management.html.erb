@@ -1,0 +1,5 @@
+<p><%= link_to 'Редактировать игру', edit_game_path(@game.slug) %></p>
+<p><%= link_to 'Удалить игру', game_path(@game.id),
+  class: 'danger',
+  method: :delete,
+  data: {confirm: 'Вы уверены? Удаление игры уничтожит все данные о ней!'} %></p>

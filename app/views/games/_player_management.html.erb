@@ -1,0 +1,6 @@
+<% if @game.subscribed?(current_user) %>
+  <p><%= link_to 'Покинуть игру', unenroll_game_path(@game.slug), method: :delete, class: 'danger', data: {confirm: 'Вы уверены, что хотите покинуть игру?'}, remote: true %></p>
+<% else %>
+  <p><%= link_to 'Принять участие', take_part_game_path(@game.slug), remote: true %></p>
+<% end %>
+

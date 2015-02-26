@@ -14,10 +14,29 @@
     overflow: scroll;
   }
 
-  a {
-    cursor: pointer;
-    &:hover {
-      color: $yellow;
+  header {
+    color: $black;
+    font-size: 18px;
+    margin-bottom: 14px;
+  }
+
+  ul {
+    list-style: circle;
+    line-height: 1.5em;
+  }
+
+  .danger {
+    color: $red;
+  }
+
+  .games-list {
+    div {
+      margin: 4px 0px;
+    }
+
+    .actions {
+      margin-left: 4px;
     }
   }
+
 }

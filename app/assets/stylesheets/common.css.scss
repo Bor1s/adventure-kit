@@ -5,6 +5,7 @@ $light-grey: #F5F5F5;
 $white: #FFF;
 $skyline: #03A9F4;
 $red: #F44336;
+$black: #000;
 
 // Firefox
 paper-radio-button #ink[checked] {
@@ -38,22 +39,14 @@ paper-button {
 }
 
 //Site name logo
-.logo-link {
-  color: $grey;
-  text-decoration: none;
-  &:hover {
-    color: $yellow;
-    text-decoration: none;
-  }
-}
 
 a {
-  color: $grey;
+  cursor: pointer;
+  color: $skyline;
   text-decoration: none;
-  border-bottom: 1px $mid-grey dashed;
   &:hover {
-    color: $yellow;
-    border-bottom: 0;
+    color: $skyline;
+    border-bottom: 1px $skyline dashed;
   }
 }
 

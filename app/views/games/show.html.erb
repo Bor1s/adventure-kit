@@ -4,54 +4,51 @@
 
 <section class='body'>
   <div layout horizontal>
-    <div>
-      <span class="fa-stack">
-        <i class="fa fa-circle fa-stack-2x"></i>
-        <i class="fa fa-calendar fa-stack-1x"></i>
-      </span>
-      <%= @game.next_session %>
-      <% if @game.online_game? %>
+    <div layout vertical flex six>
+      <header>Общая информация</header>
+      <div>
         <span class="fa-stack">
           <i class="fa fa-circle fa-stack-2x"></i>
-          <i class="fa fa-globe fa-stack-1x"></i>
+          <i class="fa fa-calendar fa-stack-1x"></i>
         </span>
-        <%= @game.online_info %>
-      <% else %>
+        <%= @game.next_session %>
+      </div>
+
+      <div>
         <span class="fa-stack">
           <i class="fa fa-circle fa-stack-2x"></i>
-          <i class="fa fa-map-marker fa-stack-1x"></i>
+          <i class="fa fa-users fa-stack-1x"></i>
         </span>
-        <%= link_to @game.address, "http://maps.google.com/?q=#{@game.address}", target: '_blank' %>
-      <% end %>
-      <span class="fa-stack">
-        <i class="fa fa-circle fa-stack-2x"></i>
-        <i class="fa fa-users fa-stack-1x"></i>
-      </span>
-      <%= @game.players.count %>
+        <%= @game.players.count %>
+      </div>
+
+      <div>
+        <% if @game.online_game? %>
+          <span class="fa-stack">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-globe fa-stack-1x"></i>
+          </span>
+          <%= @game.online_info %>
+        <% else %>
+          <span class="fa-stack">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-map-marker fa-stack-1x"></i>
+          </span>
+          <%= link_to @game.address, "http://maps.google.com/?q=#{@game.address}", target: '_blank' %>
+        <% end %>
+      </div>
+    </div>
+
+    <div flex six>
+      <header>Участники</header>
+      <div id='JS_participants'>
+        <%= render partial: 'participants' %>
+      </div>
     </div>
   </div>
 
   <hr />
-
-  <p>
-    <% @game.players.each do |player| %>
-      <core-tooltip label='<%= player.nickname %>'>
-        <% if player.avatar? %>
-          <%= image_tag asset_path(player.avatar.tiny.url), class: 'avatar rounded', size: '39x39', alt: player.nickname %>
-        <% else %>
-          <span class="fa-stack fa-lg">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-user fa-stack-1x"></i>
-          </span>
-        <% end %>
-      </core-tooltip>
-    <% end %>
-  </p>
-
-  <hr />
-
   <p><%= @game.description %></p>
-
   <hr />
 
   <div id="disqus_thread"></div>
@@ -62,5 +59,25 @@
     var disqus_identifier = '<%= @game.title %>';
     loadDisqus(disqus_shortname, disqus_title, disqus_url, disqus_identifier);
   </script>
-
 </section>
+
+
+<%= content_for :sidebar do %>
+  <% if current_user.creator?(@game) %>
+    <section id='JS_game_management' class='game-management'>
+      <%= render partial: 'owner_management' %>
+    </section>
+
+    <section id='JS_players_list' class='players-list'>
+      <%= render partial: 'players_list' %>
+    </section>
+  <% else %>
+    <section id='JS_game_management' class='game-management'>
+      <%= render partial: 'player_management' %>
+    </section>
+  <% end %>
+<% end %>
+
+<paper-toast id='subscribed' text='Вы приняли участие в игре.'></paper-toast>
+<paper-toast id='unenrolled' text='Вы покинули игру!'></paper-toast>
+<paper-toast id='player_removed' text='Игрок удален из игры!'></paper-toast>

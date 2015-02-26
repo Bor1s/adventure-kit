@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   #TODO rework all!
   def index
     authorize! :read, User
-    @users = UserSearchService.call(q: params[:q], f: params[:f], page: params[:page])
+    #@users = UserSearchService.call(q: params[:q], f: params[:f], page: params[:page])
     respond_with @users do |format|
       format.html
       format.json do

@@ -4,13 +4,19 @@
 
     <paper-shadow z='1'>
       <div layout vertical class='games-list'>
-        <h4>Мои игровые кампании</h4>
+        <header>Мои игровые кампании</header>
        
-        <template repeat='{{game in games}}'>
-          <p>
-            <a on-click='{{showGame}}' data-game-url='{{game.url}}'>{{game.title}}</a>
-            <a on-click='{{deleteGame}}' data-game-id='{{game.id}}'><i class='fa fa-trash-o'></i></a>
-          </p>
+          <template repeat='{{game in games}}'>
+            <div class='games-list' layout horizontal>
+              <div flex><a on-click='{{showGame}}' data-game-url='{{game.url}}'>{{game.title}}</a></div>
+              <div class='actions'>
+                <a on-click='{{deleteGame}}' data-game-id='{{game.id}}'><i class='fa fa-trash danger'></i></a>
+              </div>
+            </div>
+          </template>
+
+        <template if='{{games.length == 0}}'>
+          <p>Игр нет</p>
         </template>
  
       </div>

@@ -1,7 +1,7 @@
 class GamesController < ApplicationController
   layout 'single_panel'
   before_action :authenticate
-  respond_to :json, :html
+  respond_to :json, :js, :html
 
   def index
     authorize! :read, Game
@@ -46,8 +46,10 @@ class GamesController < ApplicationController
           game = builder.game
           game.subscribe(current_user, :master)
           if game.private_game?
-            User.where(:id.in => builder.invitees).to_a.each do |u|
-              game.subscribe(u)
+            if builder.invitees.present?
+              User.where(:id.in => builder.invitees).to_a.each do |u|
+                game.subscribe(u)
+              end
             end
           end
           builder.clear_tmp(service.cache_key)
@@ -88,8 +90,12 @@ class GamesController < ApplicationController
     notifications.instrument('join_game', payload) do
       CoreNotification.create(message: "#{current_user_profile.name} joined #{@game.title}")
     end
-    @game.subscribe current_user
-    redirect_to game_path(@game)
+
+    respond_with @game do |format|
+      @game.subscribe current_user
+      format.js
+      format.html {redirect_to game_path(@game)}
+    end
   end
 
   def unenroll
@@ -101,7 +107,11 @@ class GamesController < ApplicationController
         CoreNotification.create(message: "#{current_user_profile.name} left #{@game.title}")
       end
     end
-    redirect_to game_path(@game)
+
+    respond_with @game do |format|
+      format.js
+      format.html {redirect_to game_path(@game)}
+    end
   end
 
   def remove_player
@@ -115,7 +125,11 @@ class GamesController < ApplicationController
         CoreNotification.create(message: "#{current_user_profile.name} left #{@game.title}")
       end
     end
-    redirect_to game_path(@game)
+
+    respond_with @game do |format|
+      format.js
+      format.html {redirect_to game_path(@game)}
+    end
   end
 
   private

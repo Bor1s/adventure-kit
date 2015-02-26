@@ -45,4 +45,16 @@ class GameDecorator
   def players
     game.players
   end
+
+  def subscribers
+    game.subscribers
+  end
+
+  def slug
+    game.slug
+  end
+
+  def subscribed?(user)
+    game.subscribed?(user)
+  end
 end

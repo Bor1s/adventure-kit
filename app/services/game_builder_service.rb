@@ -38,7 +38,7 @@ class GameBuilderService
     end
     @game.private_game = data['private_game']
     if @game.private_game?
-      @invitees = JSON.parse(data['invitees'])
+      @invitees = JSON.parse(data['invitees']) if data['invitees']
     else
       @game.players_amount = data['players_amount'].to_i
     end

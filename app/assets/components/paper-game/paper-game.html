@@ -8,7 +8,7 @@
       </div>
 
       <header layout horizontal center center-justified>
-        <div flex>{{data.title}}</div>
+        <div flex class='header'>{{data.title}}</div>
         <template if='{{data.events.length > 1}}'>
           <core-tooltip position='left' label='Всего сессий'>
             <div class='events'>{{data.events.length}}</div>
@@ -42,7 +42,7 @@
             </core-tooltip>
           </template>
         </p>
-        <p class='description'>{{data.description}}</p>
+        <p>{{data.description}}</p>
       </section>
 
     </paper-shadow>
