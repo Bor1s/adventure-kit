@@ -57,4 +57,12 @@ class GameDecorator
   def subscribed?(user)
     game.subscribed?(user)
   end
+
+  def private_game?
+    game.private_game?
+  end
+
+  def allows_to_take_part?
+    game.allows_to_take_part?
+  end
 end

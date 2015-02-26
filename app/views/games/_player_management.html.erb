@@ -1,6 +1,13 @@
 <% if @game.subscribed?(current_user) %>
   <p><%= link_to 'Покинуть игру', unenroll_game_path(@game.slug), method: :delete, class: 'danger', data: {confirm: 'Вы уверены, что хотите покинуть игру?'}, remote: true %></p>
 <% else %>
-  <p><%= link_to 'Принять участие', take_part_game_path(@game.slug), remote: true %></p>
+  <% if !@game.private_game? %>
+    <% if @game.allows_to_take_part? %>
+      <p><%= link_to 'Принять участие', take_part_game_path(@game.slug), remote: true %></p>
+    <% else %>
+      <p>Принять участие в игре пока невозможно так как максимальное количество участников уже набрано.</p>
+    <% end %>
+  <% else %>
+    <p>В эту игру можно попасть только по приглашению мастера.</p>
+  <% end %>
 <% end %>
-
