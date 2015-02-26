@@ -44,5 +44,13 @@
       <paper-radio-button name='past' label='Прошедшие'></paper-radio-button>
     </paper-radio-group>
   </section>
+
+  <section class='centered'>
+    <core-tooltip label='Новая игра'>
+    <%= link_to new_game_path do %>
+      <paper-fab icon='add'></paper-fab>
+    <% end %>
+    </core-tooltip>
+  </section>
 <% end %>
 
