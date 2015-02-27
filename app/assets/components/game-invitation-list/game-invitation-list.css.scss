@@ -13,13 +13,13 @@
     li {
       padding: 8px 4px 8px 4px;
       cursor: pointer;
-      border-bottom: 1px dashed #DDD;
+      border-bottom: 1px dashed $divider;
     }
   }
 
   .core-selected {
-    background-color: $yellow;
-    color: $white;
+    background-color: $light-primary;
+    color: $text-icons;
   }
 }
 

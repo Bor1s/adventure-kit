@@ -11,6 +11,7 @@
     </core-selector>
 
     <core-ajax id='users_fetcher' url='/users'
+    params='{"cache": "0"}'
     handleAs='json'
     on-core-error='{{handleError}}'
     on-core-response='{{handleSuccess}}'>

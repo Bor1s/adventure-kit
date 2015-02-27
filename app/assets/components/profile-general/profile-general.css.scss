@@ -24,8 +24,8 @@
   }
 
   paper-button {
-    background-color: $yellow;
-    color: $white;
+    background-color: $accent;
+    color: $text-icons;
     margin-top: 18px;
     margin-right: 0px;
     float: right;
@@ -45,7 +45,7 @@
     margin-top: 8px;
     &:hover {
       i {
-        color: $yellow;
+        color: $accent;
       }
     }
   }
@@ -56,7 +56,7 @@
     text-align: center;
 
     i {
-      color: $mid-grey;
+      color: $divider;
     }
 
     img {
@@ -71,20 +71,20 @@
     display: block;
     padding: 4px 16px 4px 16px;
     cursor: pointer;
-    border-bottom: 1px dashed #DDD;
+    border-bottom: 1px dashed $divider;
     text-align: center;
   }
 
   paper-item.core-selected {
-    color: $white;
-    background-color: $yellow;
+    color: $text-icons;
+    background-color: $secondary-text;
   }
   ///////
 
   .spinner {
     margin-top: 18px;
     width: 300px;
-    color: $yellow;
+    color: $accent;
     text-align: center;
   }
 }

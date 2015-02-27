@@ -1,20 +1,15 @@
-<div horizontal layout class='wizard-container'>
-  <div flex six>
+<div horizontal layout center-justified class='wizard-container'>
+  <div class='centered'>
     <template if='{{gameCreated}}'>
-      <h3>Игра успешно сохранена.</h3>
+      <h2>Игра успешно сохранена</h2>
       <div class='links'>
-        <paper-button raised>
-          <a href='/games/{{game.id}}'>Посмотреть игру</a>
-        </paper-button>
-
-        <paper-button raised>
-          <%= link_to 'На главную', root_path %>
-        </paper-button raised>
+        <a href='/games/{{game.id}}'>Посмотреть игру</a>
+        <%= link_to 'На главную', root_path %>
       </div>
     </template>
 
     <template if='{{!gameCreated}}'>
-      <h4>Шаг 4 из 4 (Изображение)</h4>
+      <h2>Шаг 4 из 4 (Изображение)</h2>
       <template if='{{game && game.has_poster}}'>
         <div id='poster-preview'>
           <core-image style="width:300px; height:300px;" sizing="cover" src='{{game.poster.poster.medium.url}}'></core-image>

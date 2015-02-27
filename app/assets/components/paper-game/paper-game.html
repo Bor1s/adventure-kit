@@ -21,7 +21,7 @@
           <template if='{{data.next_event_date}}'>
             <span flex>
               <core-tooltip position='right' label='Следующая сессия'>
-                <core-icon icon='event' class='small'></core-icon> {{data.next_event_date}}
+              <i class='fa fa-clock-o fa-lg'></i> {{data.next_event_date}}
               </core-tooltip>
             </span>
           </template>
@@ -32,13 +32,13 @@
 
           <template if='{{data.online == true}}'>
             <core-tooltip position='left' label='Онлайн игра'>
-              <core-icon icon='language' class='small'></core-icon>
+              <i class='fa fa-globe fa-lg'></i></core-icon>
             </core-tooltip>
           </template>
 
           <template if='{{data.online == false}}'>
             <core-tooltip position='left' label='{{data.location.address}}'>
-              <core-icon icon='room' class='small'></core-icon>
+              <i class='fa fa-map-marker fa-lg'></i></core-icon>
             </core-tooltip>
           </template>
         </p>

@@ -1,22 +1,5 @@
 @import 'common';
 
-[drawer] {
-  background-color: $white;
-
-  core-toolbar {
-    background-color: $white;
-  }
-
-  aside, section {
-    padding-left: 8px;
-  }
-
-  section {
-    border-bottom: 1px solid $light-grey;
-    margin: 18px;
-  }
-}
-
 .poster-container {
   width: 100%;
   height: 300px;
@@ -28,17 +11,17 @@ section.body {
   header {
     margin-bottom: 18px;
     font-size: 18px;
-    color: #000;
+    color: $primary-text;
     font-weight: bold;
   }
 }
 
 .fa-stack-1x {
-  color: $white;
+  color: $text-icons;
 }
 
 .fa-stack-2x {
-  color: $yellow;
+  color: $dark-primary;
 }
 
 p {
@@ -50,7 +33,7 @@ p {
   margin-right: 18px;
   background-color: rgba(0,0,0, 0.4);
   display: inline-block;
-  color: #fff;
+  color: $text-icons;
   padding: 4px;
 }
 
@@ -63,23 +46,24 @@ p {
 }
 
 .dm-sign {
-  border: 2px solid $red;
+  border: 2px solid $accent;
 }
 
 .game-management {
   a {
-    font-size: 16px;
+    color: $light-primary;
+    text-decoration: none;
+    &:hover {
+      color: $light-primary;
+      border-bottom: 1px $light-primary dashed;
+    }
   }
 }
 
-.danger {
-  color: $red;
+a.danger {
+  color: $danger;
   &:hover {
-    color: $red;
-    border-bottom: 1px dashed $red;
+    color: $danger;
+    border-bottom: 1px dashed $danger;
   }
 }
-
-.players-list {
-}
-

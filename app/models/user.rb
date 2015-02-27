@@ -18,6 +18,10 @@ class User
 
   accepts_nested_attributes_for :plain_account
 
+  before_create do
+    self.nickname = "user#{rand(10000)}" if self.nickname.blank?
+  end
+
   def admin?
     role == 1
   end

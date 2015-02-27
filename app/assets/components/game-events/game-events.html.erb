@@ -20,6 +20,7 @@
 
     <!-- events fetcher -->
     <core-ajax id='events_fetcher' url='{{url}}'
+    params='{"cache": "0"}'
     handleAs='json'
     on-core-error='{{handleError}}'
     on-core-response='{{handleSuccess}}'>

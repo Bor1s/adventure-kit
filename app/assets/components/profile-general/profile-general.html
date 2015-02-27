@@ -81,12 +81,14 @@
 
     <core-ajax id='user_fetcher' url='{{user_url}}' method='GET'
     handleAs='json' 
+    params='{"cache": "0"}'
     on-core-error='{{handleUserError}}'
     on-core-response='{{handleUserSuccess}}'>
     </core-ajax>
 
     <core-ajax id='form_sender' url='{{user_post_url}}' method='PUT'
-    handleAs='json' 
+    handleAs='json'
+    params='{"cache": "0"}'
     on-core-error='{{handleError}}'
     on-core-response='{{handleSuccess}}'>
     </core-ajax>

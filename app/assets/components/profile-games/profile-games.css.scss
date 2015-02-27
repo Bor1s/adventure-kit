@@ -15,18 +15,13 @@
   }
 
   header {
-    color: $black;
+    color: $primary-text;
     font-size: 18px;
     margin-bottom: 14px;
   }
 
-  ul {
-    list-style: circle;
-    line-height: 1.5em;
-  }
-
   .danger {
-    color: $red;
+    color: $danger;
   }
 
   .games-list {
@@ -37,6 +32,15 @@
     .actions {
       margin-left: 4px;
     }
-  }
 
+    a {
+      cursor: pointer;
+      color: $secondary-text;
+      text-decoration: none;
+      &:hover {
+        color: $secondary-text;
+        border-bottom: 1px $secondary-text dashed;
+      }
+    }
+  }
 }

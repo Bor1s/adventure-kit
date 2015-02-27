@@ -1,6 +1,6 @@
-<div horizontal layout class='wizard-container'>
-  <div flex six>
-    <h4>Шаг 3 из 4 (Игровые сессии)</h4>
+<div horizontal layout center-justified class='wizard-container'>
+  <div class='centered'>
+    <h2>Шаг 3 из 4 (Игровые сессии)</h2>
     <% if @game.new_record? %>
       <game-events url=''></game-events>
     <% else %>
@@ -9,9 +9,6 @@
 
     <paper-button raised id='step3-submit' recenteringTouch='true'>Далее</paper-button>
     <paper-button id='step3-prev' recenteringTouch='true'>Назад</paper-button>
-  </div>
-
-  <div flex six>
   </div>
 </div>
 

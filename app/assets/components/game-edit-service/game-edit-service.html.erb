@@ -2,6 +2,7 @@
   <template>
     <core-ajax id='dispatcher' url='{{url}}'
       handleAs='json'
+      params='{"cache": "0"}'
       headers='{"Accept": "application/json"}'
       contentType='application/json'
       on-core-error='{{handleError}}'

@@ -80,5 +80,10 @@ describe User do
       expect(user.has_gplus_account?).to eq true
     end
 
+    it 'creates default #nickname if blank' do
+      user = FactoryGirl.create(:master_with_vk_account)
+      expect(user.nickname).not_to be_blank
+    end
+
   end
 end

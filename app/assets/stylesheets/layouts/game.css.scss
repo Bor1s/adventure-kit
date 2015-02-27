@@ -2,11 +2,10 @@
 
 #main-header {
   height: 100%;
-  //background-color: $light-grey;
-
+  background-color: $text-icons;
   core-toolbar {
-    //color: $white;
-    background-color: $white;
+    color: $text-icons;
+    background-color: $primary;
   }
 }
 
@@ -15,23 +14,27 @@ paper-item {
   display: block;
   padding: 4px 16px 4px 16px;
   cursor: pointer;
-  border-bottom: 1px dashed #DDD;
+  border-bottom: 1px dashed $divider;
   text-align: center;
 }
 
 paper-item.core-selected {
-  color: $white;
-  background-color: $yellow;
+  color: $text-icons;
+  background-color: $light-primary;
 }
 ///////
 
 .wizard-container {
   margin: 48px;
+
+  .centered {
+    text-align: center;
+  }
 }
 
-#step1-submit, #step2-submit, #step3-submit, #step4-submit {
-  background-color: $yellow;
-  color: $white;
+#step1-submit, #step2-submit, #step3-submit, #step4-submit, #step2-prev, #step3-prev, #step4-prev {
+  background-color: $accent;
+  color: $text-icons;
   margin-top: 18px;
 }
 
@@ -51,7 +54,7 @@ paper-item.core-selected {
   .do, .dont {
     font-size: 12px;
     .tip {
-      color: $grey;
+      color: $divider;
     }
   }
 
@@ -65,17 +68,17 @@ paper-item.core-selected {
 
   .do {
     display: inline-block;
-    color: green;
+    color: $accent;
     div { 
-      border-bottom: 12px solid green;
+      border-bottom: 12px solid $accent;
     }
   }
 
   .dont {
     display: inline-block;
-    color: red;
+    color: $danger;
     div { 
-      border-bottom: 12px solid red;
+      border-bottom: 12px solid $danger;
     }
   }
 }
@@ -100,11 +103,11 @@ paper-item.core-selected {
   width: 300px;
   height: 300px;
   text-align: center;
-  outline: 1px dashed $mid-grey;
+  outline: 1px dashed $divider;
 
   i {
     margin-top: 35%;
-    color: $mid-grey;
+    color: $divider;
   }
 
   img {
@@ -116,8 +119,8 @@ paper-item.core-selected {
 .upload {
   width: 300px;
   height: 50px;
-  background-color: $white;
-  border: 1px dashed #ddd;
+  background-color: $text-icons;
+  border: 1px dashed $divider;
   border-top: 0px;
   display: block;
   margin-top: 18px 0px 28px 0px;
@@ -138,14 +141,19 @@ file-input #fileInput {
 .links {
   margin-top: 48px;
   a {
-    color: $grey !important;
+    margin: 18px;
+    cursor: pointer;
+    color: $secondary-text;
     text-decoration: none;
+    &:hover {
+      color: $secondary-text;
+      border-bottom: 1px $secondary-text dashed;
+    }
   }
 }
 
 .spinner {
   margin-top: 28px;
-  width: 300px;
-  color: $yellow;
+  color: $accent;
   text-align: center;
 }
