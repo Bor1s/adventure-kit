@@ -1,120 +1,45 @@
 @import 'common';
 
-.overlay {
-  background: rgba(0,0,0,.4);
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-}
+.landing {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  text-align: center;
 
-#w-header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100px;
-  z-index: 1;
+  h1 {
+    color: $primary-text;
+    font-size: 48px;
+  }
+
+  p {
+    font-weight: 200;
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    margin-bottom: 18px;
+  }
+
+  i {
+    color: $primary;
+    vertical-align: middle;
+  }
 
   a {
-    padding: 0px 10px 0px 10px;
-    font-size: 18px;
-    color: #fff;
-    background-color: transparent;
-    float: right;
-    margin: 30px 50px 0px 0px;
-
+    color: $accent;
+    border: 2px dashed $accent;
+    border-radius: 10px;
+    font-size: 28px;
+    font-weight: 300;
+    padding: 4px 8px;
     &:hover {
-      text-decoration: none;
-      background-color: #fff;
-      color: #000;
+      border: 2px solid $accent;
+      color: $accent;
     }
   }
-}
-
-#w-video {
-  position: relative;
-  height: 700px;
-  overflow: hidden;
-
-  video {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 0;
-  }
-
-  h2 {
-    @include shadowFont(#fff);
-    font-size: 60px;
-    margin: 100px 0px 0px 50px;
-  }
-}
-
-#w-content {
-  min-height: 1000px;
-  font-size: 18px;
-  padding-top: 100px;
-  text-align: center;
 
   .description {
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-
-#w-footer {
-  background-color: #000;
-  min-height: 300px;
-  color: #fff;
-}
-
-#w-video header, #w-content header, #w-footer header {
-  text-align: center;
-}
-
-.btn-outline {
-  margin-top: 100px;
-  color: #fff;
-  border-color: $ph-orange;
-  background-color: $ph-orange;
-  &:hover {
-    color: #fff;
-    background-color: transparent;
-  }
-}
-
-#main-title {
-  color: #fff;
-  margin-top: 200px;
-}
-
-#reviews {
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 100px;
-  text-align: left;
-
-  .portrait {
-    float: left;
-    margin: 0px 20px;
-  }
-
-  .review {
-    margin-bottom: 100px;
-  }
-}
-
-#footer1, #footer2, #footer3 {
-  font-size: 16px;
-  margin-top: 50px;
-  text-align: center;
-
-  ul {
-    color: #838886;
+    padding-bottom: 48px;
   }
 }
