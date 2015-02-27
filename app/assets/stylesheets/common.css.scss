@@ -113,8 +113,17 @@ paper-fab {
   background-color: $accent;
 }
 
-//Site name logo
 a {
+  cursor: pointer;
+  color: $secondary-text;
+  text-decoration: none;
+  &:hover {
+    color: $secondary-text;
+    border-bottom: 1px $secondary-text dashed;
+  }
+}
+
+a.logo {
   cursor: pointer;
   color: $text-icons;
   text-decoration: none;
@@ -123,7 +132,6 @@ a {
     border-bottom: 1px $text-icons dashed;
   }
 }
-// ------------------
 
 hr {
   margin: 32px 0px 32px 0px;
@@ -134,4 +142,16 @@ hr {
 h3 {
   color: $text-icons;
   border-bottom: 1px solid $text-icons;
+}
+
+.signout {
+  font-size: 12px;
+  cursor: pointer;
+  color: $text-icons;
+  text-decoration: none;
+  &:hover {
+    color: $text-icons;
+    border-bottom: 1px $text-icons dashed;
+  }
+
 }

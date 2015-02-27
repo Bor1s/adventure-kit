@@ -18,7 +18,7 @@
 
   <core-header-panel id='main-header' flex>
     <core-toolbar>
-      <span flex><%= link_to t('site_name'), root_path, class: 'logo-link' %></span>
+      <span flex><%= link_to t('site_name'), root_path, class: 'logo' %></span>
 
       <core-tooltip label='Мой профиль'>
         <%= link_to path_to_current_user_profile do %>
@@ -29,11 +29,7 @@
         <% end %>
       </core-tooltip>
 
-      <core-tooltip label='Выход'>
-        <%= link_to signout_path do %>
-          <core-icon icon='exit-to-app'></core-icon>
-        <% end %>
-      </core-tooltip>
+      <%= link_to 'Выход', signout_path, class: 'signout' %>
     </core-toolbar>
 
     <%= yield %>
