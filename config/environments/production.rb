@@ -89,7 +89,14 @@ PlayhardCore::Application.configure do
     authentication:       'plain',
     enable_starttls_auto: true }
 
-  config.action_mailer.default_url_options = { host: 'playhardrpg.org' }
+  config.action_mailer.default_url_options = { host: 'adventurekit.org' }
   config.harvester.host = 'http://95.85.61.76:3001'
   config.solr_url = "http://localhost:8080/solr/core0" #Watch at local Solr on production
+
+  config.middleware.use ExceptionNotification::Rack,
+  :email => {
+    :email_prefix => "",
+    :sender_address => %{"notifier" <noreply.playhardrpg@gmail.com>},
+    :exception_recipients => %w{boris.bbk@gmail.com}
+  }
 end

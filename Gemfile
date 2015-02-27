@@ -41,6 +41,7 @@ gem 'rsolr'
 gem 'newrelic_rpm'
 gem 'whenever', require: false
 gem 'geocoder'
+gem 'exception_notification'
 
 group :test, :development do
   gem 'thin'
