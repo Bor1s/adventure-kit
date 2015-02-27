@@ -7,11 +7,6 @@
 .login-body {
   margin: 0;
   padding: 0;
-  background: url('/assets/dices.png') no-repeat right center fixed;
-  -webkit-background-size: 30%;
-  -moz-background-size: 30%;
-  -o-background-size: 30%;
-  background-size: 30%;
 }
 
 #register, #login {
@@ -22,20 +17,20 @@
 }
 
 #login, #login-collapse, #register, #register-collapse {
-  background-color: $grey;
-  color: $white;
+  background-color: $dark-primary;
+  color: $text-icons;
   margin-left: auto;
   margin-right: auto;
-  width: 90%;
+  width: 60%;
   height: 48px;
 }
 
 #register {
-  border-top: 1px solid #9E9E9E;
+  border-top: 1px solid $divider;
 }
 
 #login-collapse {
-  background-color: rgba($grey, 0.8);
+  background-color: rgba($primary, 0.8);
   aside {
     text-align: center;
     margin: 48px auto 28px auto;
@@ -43,15 +38,16 @@
 }
 
 #register-collapse {
-  background-color: rgba($grey, 0.8);
+  background-color: rgba($primary, 0.8);
 }
 
 #providers {
-  margin-bottom: 48px;
   a {
-    color: $white;
+    margin: 0px 28px 48px 28px;
+    color: $text-icons;
     &:hover {
-      color: $skyline;
+      color: $accent;
+      border: 0px;
     }
   }
 }

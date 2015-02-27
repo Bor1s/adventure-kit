@@ -1,5 +1,4 @@
 @import 'common';
-$custom-grey: #BDBDBD;
 
 :host {
   display: block;
@@ -9,48 +8,48 @@ $custom-grey: #BDBDBD;
   paper-input-decorator /deep/ .label-text,
   paper-input-decorator /deep/ .error {
       /* inline label,  floating label, error message and error icon color when the input is unfocused */
-      color: $custom-grey;
+      color: $light-primary;
   }
 
   paper-input-decorator /deep/ ::-webkit-input-placeholder {
       /* platform specific rules for placeholder text */
-      color: $custom-grey;
+      color: $light-primary;
   }
   paper-input-decorator /deep/ ::-moz-placeholder {
-      color: $custom-grey;
+      color: $light-primary;
   }
   paper-input-decorator /deep/ :-ms-input-placeholder {
-      color: $custom-grey;
+      color: $light-primary;
   }
 
   paper-input-decorator /deep/ .unfocused-underline {
       /* line color when the input is unfocused */
-      background-color: $custom-grey;
+      background-color: $light-primary;
   }
 
   paper-input-decorator[focused] /deep/ .floated-label .label-text {
     /* floating label color when the input is focused */
-    color: $white;
+    color: $text-icons;
   }
 
   paper-input-decorator /deep/ .focused-underline {
       /* line color when the input is focused */
-      background-color: $white;
+      background-color: $text-icons;
   }
 
   paper-input-decorator /deep/ .cursor {
       /* floating cursor when the input is focused */
-      background-color: $white;
+      background-color: $text-icons;
   }
 }
 
 .register::shadow #ripple {
-  color: $white;
+  color: $text-icons;
 }
 
 .register {
-  background-color: rgba($custom-grey, 0.8);
-  color: $grey;
+  background-color: rgba($text-icons, 0.8);
+  color: $primary-text;
   margin-top: 28px;
   margin-bottom: 28px;
 }

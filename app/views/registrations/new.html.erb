@@ -7,18 +7,14 @@
 
   <aside>... или войдите через</aside>
 
-  <div id='providers' layout horizontal>
-    <paper-button flex noink>
-      <%= link_to "/login?provider=vkontakte" do %>
-        <i class="fa fa-3x fa-vk"></i>
-      <% end %>
-    </paper-button>
+  <div id='providers' layout horizontal center-justified>
+    <%= link_to "/login?provider=vkontakte" do %>
+      <i class="fa fa-3x fa-vk"></i>
+    <% end %>
 
-    <paper-button flex noink> 
-      <%= link_to "/login?provider=glpus" do %>
-        <i class="fa fa-3x fa-google-plus"></i>
-      <% end %>
-    </paper-button>
+    <%= link_to "/login?provider=glpus" do %>
+      <i class="fa fa-3x fa-google-plus"></i>
+    <% end %>
   </div>
 </core-collapse>
 
