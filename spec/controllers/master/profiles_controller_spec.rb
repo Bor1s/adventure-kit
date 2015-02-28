@@ -44,27 +44,29 @@ describe Master::ProfilesController do
     end
   end
 
+  describe '#accounts' do
+    it 'returns account list for current user' do
+      @user_with_plain_account.accounts << FactoryGirl.build(:vk, user: @user_with_plain_account)
+      get :accounts, {format: :json}
+      json_response = JSON.parse(response.body)
+      expect(json_response).to include('profiles')
+      expect(json_response).to include('meta')
+      expect(json_response['profiles'].count).to eq 1
+    end
+  end
+
   describe '#remove_account' do
-    it 'renders :edit when name parameter is missing' do
-      delete :remove_account, {}
-      expect(response.status).to eq 200
+    it 'removes social network account' do
+      account = FactoryGirl.build(:vk, user: @user_with_plain_account)
+      @user_with_plain_account.accounts << account
+      delete :remove_account, {format: :json, id: account.id}
+      expect(JSON.parse(response.body)['success']).to be true
     end
 
-    it 'removes VK account' do
-      delete :remove_account, {name: 'vkontakte'}
-      expect(response.status).to eq 302
-    end
-
-    it 'removes GPlus account' do
-      add_account(@user_with_plain_account, 'gplus')
-      delete :remove_account, {name: 'gplus'}
-      expect(response.status).to eq 302
-    end
-
-    it 'does not remove last account' do
-      delete :remove_account, {name: 'vkontakte'}
-      expect(flash[:alert]).to eq 'You cannot delete last account'
-      expect(@user_with_plain_account.accounts.count).to eq 1
+    it 'prevents removing last account' do
+      user = FactoryGirl.create(:master_with_vk_account)
+      delete :remove_account, {format: :json, id: user.accounts.first.id}
+      expect(JSON.parse(response.body)['error']).to eq 'you cannot remove last account'
     end
   end
 end

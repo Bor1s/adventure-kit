@@ -1,0 +1,47 @@
+<polymer-element name='profile-accounts' attributes='accounts_url remove_account_url error_msg'>
+  <template>
+    <link rel="stylesheet" href="profile-accounts.css.scss" />
+
+    <paper-shadow z='1'>
+      <header>Логины через соц. сети</header>
+      <div layout vertical class='accounts-list'>
+        <template repeat='{{account in accounts}}'>
+          <div layout horizontal>
+            <template if='{{lastAccount}}'>
+              <div flex><a on-click='{{showAccount}}' data-account-url='{{account.social_network_link}}'>{{account.provider}}</a></div>
+            </template>
+
+            <template if='{{!lastAccount}}'>
+              <div flex><a on-click='{{showAccount}}' data-account-url='{{account.social_network_link}}'>{{account.provider}}</a></div>
+              <div class='actions'>
+                <a on-click='{{deleteAccount}}' data-account-id='{{account.id}}'><i class='fa fa-trash danger'></i></a>
+              </div>
+            </template>
+
+          </div>
+        </template>
+
+        <div>
+          <p><a href="/auth/vkontakte">Добавить аккаунт Вконтакте</a></p>
+          <p><a href="/auth/gplus">Добавить аккаунт Google +</a></p>
+        </div>
+      </div>
+    </paper-shadow>
+
+    <core-ajax id='accounts_fetcher' url='{{accounts_url}}' method='GET'
+    handleAs='json' 
+    on-core-error='{{handleError}}'
+    on-core-response='{{handleSuccess}}'>
+    </core-ajax>
+
+    <core-ajax id='destroy_account' url='{{remove_account_url}}' method='DELETE'
+    handleAs='json' 
+    on-core-error='{{handleRemoveAccountError}}'
+    on-core-response='{{handleRemoveAccountSuccess}}'>
+    </core-ajax>
+
+    <paper-toast id='notificator'></paper-toast>
+  </template>
+
+  <script src="profile-accounts.js.coffee"></script>
+</polymer-element>

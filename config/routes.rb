@@ -37,6 +37,7 @@ PlayhardCore::Application.routes.draw do
     resource :profile, only: [:edit, :update] do
       collection do
         delete :remove_account
+        get :accounts
       end
     end
     resources :users
@@ -47,6 +48,7 @@ PlayhardCore::Application.routes.draw do
     resource :profile, only: [:edit, :update] do
       collection do
         delete :remove_account
+        get :accounts
       end
     end
   end

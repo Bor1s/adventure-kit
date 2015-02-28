@@ -7,7 +7,12 @@ class SessionsController < ApplicationController
       warden.authenticate!(:plain)
       render json: {redirect_path: (session[:request_path] || dashboard_path)}
     else
-      add_account(request.env['omniauth.auth']) if user_signed_in?
+      if user_signed_in?
+        # Set return URI to profile edit page
+        session[:request_path] = request.env['HTTP_REFERER']
+        add_account(request.env['omniauth.auth']) if user_signed_in?
+      end
+
       warden.authenticate!
       redirect_to (session[:request_path] || dashboard_path) and return
     end
@@ -30,8 +35,6 @@ class SessionsController < ApplicationController
   end
 
   private
-
-  #TODO rewrite to send JSON response
 
   def add_account(auth_hash)
     account = Account.find_or_create_by_auth_hash(auth_hash)
