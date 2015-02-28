@@ -41,7 +41,7 @@ class ApplicationController < ActionController::Base
 
   def verfify_not_signed_in
     if warden.authenticated?
-      redirect_to dashboard_path, alert: 'please log out to before you can register new user'
+      redirect_to dashboard_path
     end 
   end
 

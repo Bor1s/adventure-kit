@@ -8,11 +8,15 @@
         <template repeat='{{account in accounts}}'>
           <div layout horizontal>
             <template if='{{lastAccount}}'>
-              <div flex><a on-click='{{showAccount}}' data-account-url='{{account.social_network_link}}'>{{account.provider}}</a></div>
+              <div flex>
+                <a on-click='{{showAccount}}' data-account-url='{{account.social_network_link}}'>{{account.human_provider}}</a>
+              </div>
             </template>
 
             <template if='{{!lastAccount}}'>
-              <div flex><a on-click='{{showAccount}}' data-account-url='{{account.social_network_link}}'>{{account.provider}}</a></div>
+              <div flex>
+                <a on-click='{{showAccount}}' data-account-url='{{account.social_network_link}}'>{{account.human_provider}}</a>
+              </div>
               <div class='actions'>
                 <a on-click='{{deleteAccount}}' data-account-id='{{account.id}}'><i class='fa fa-trash danger'></i></a>
               </div>

@@ -33,12 +33,12 @@ class Master::ProfilesController < Master::BaseController
         if params[:id].present?
           account = current_user.accounts.where(id: params[:id]).first
           if last_account?
-            json = {success: false, error: 'you cannot remove last account'}
+            json = {success: false, error: I18n.t('messages.cannot_remove_last_account')}
             status = 422
           else
             if account == current_user_profile
               status = 422
-              json = {success: false, error: 'you cannot remove current account'}
+              json = {success: false, error: I18n.t('messages.cannot_remove_current_account')}
             else
               account.destroy
               json = {success: true}
