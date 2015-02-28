@@ -12,14 +12,43 @@ class Master::ProfilesController < Master::BaseController
 
   def update
     redirect_path = edit_master_profile_path
-
     super(redirect_path: redirect_path) do |_params|
       _params[:role] = new_role if new_role.present?
     end
   end
 
+  def accounts
+    respond_with do |format|
+      format.json do
+        accounts = current_user.accounts.ne(provider: nil)
+        render json: accounts, meta: {last_account: accounts.count == 1}
+      end
+    end
+  end
+
+  #TODO refactor
   def remove_account
-    super(redirect_path: edit_master_profile_path)
+    respond_with do |format|
+      format.json do
+        if params[:id].present?
+          account = current_user.accounts.where(id: params[:id]).first
+          if last_account?
+            json = {success: false, error: 'you cannot remove last account'}
+            status = 422
+          else
+            if account == current_user_profile
+              status = 422
+              json = {success: false, error: 'you cannot remove current account'}
+            else
+              account.destroy
+              json = {success: true}
+              status = 200
+            end
+          end
+          render json: json, status: status
+        end
+      end
+    end
   end
 
   private
@@ -28,5 +57,9 @@ class Master::ProfilesController < Master::BaseController
     ActiveSupport::TimeZone.all.inject([]) do |result, tz|
       result << {system_name: tz.name, human_name: tz.to_s}
     end
+  end
+
+  def last_account?
+    current_user.accounts.count == 1
   end
 end

@@ -3,7 +3,8 @@
     <link rel="stylesheet" href="profile-general.css.scss" />
 
     <paper-shadow z='1'>
-      <div layout horizontal>
+      <header>Мой профиль</header>
+      <div layout vertical>
         <!-- Profile avatar -->
         <div class='avatar-container'>
           <template if='{{user.has_avatar}}'>
@@ -26,7 +27,7 @@
           </core-tooltip>
         </div>
 
-        <div flex class='info'>
+        <div class='info'>
           <div>
             <paper-dropdown-menu label="Timezone">
               <paper-dropdown class="dropdown">

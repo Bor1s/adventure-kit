@@ -4,19 +4,23 @@
 :host {
   display: inline-block;
   margin: 18px;
-  width: 600px;
+  width: 350px;
+  height: auto;
 
   .small {
     width: 18px;
     height: 18px;
   }
 
+  header {
+    font-size: 18px;
+    padding: 8px 14px;
+    background-color: $accent;
+    color: $text-icons;
+  }
+
   paper-shadow {
     width: inherit;
-
-    header {
-      font-weight: bold;
-    }
   }
 
   core-image {
@@ -37,7 +41,7 @@
   }
 
   .info {
-    margin: 0px 18px 18px 0px;
+    margin: 18px;
   }
 
   .avatar-upload {
@@ -51,8 +55,6 @@
   }
 
   #avatar-preview {
-    width: 100px;
-    height: 100px;
     text-align: center;
 
     i {

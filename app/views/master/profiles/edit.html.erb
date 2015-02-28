@@ -1,11 +1,15 @@
-<div layout horizontal>
+<div layout horizontal wrap>
   <div>
     <profile-general user_url='<%= edit_master_profile_path %>' user_post_url='<%= master_profile_path %>'>
     </profile-general>
   </div>
 
-  <div flex>
+  <div>
     <profile-games url='<%= master_games_path %>' games='{{games}}'>
     </profile-games>
+  </div>
+  
+  <div>
+    <profile-accounts accounts_url='<%= accounts_master_profile_path %>' remove_account_url='<%= remove_account_master_profile_path %>' error_msg='<%= flash.alert %>'>
   </div>
 </div>
