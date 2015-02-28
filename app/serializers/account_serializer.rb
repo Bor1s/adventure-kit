@@ -3,6 +3,10 @@ class AccountSerializer < ActiveModel::Serializer
     object.provider
   end
 
+  def human_provider
+    I18n.t("providers.#{object.provider}")
+  end
+
   def id
     object.id.to_s
   end
@@ -11,5 +15,5 @@ class AccountSerializer < ActiveModel::Serializer
     object.social_network_link
   end
 
-  attributes :id, :provider, :social_network_link
+  attributes :id, :provider, :social_network_link, :human_provider
 end

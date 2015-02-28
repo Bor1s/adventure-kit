@@ -66,7 +66,7 @@ describe Master::ProfilesController do
     it 'prevents removing last account' do
       user = FactoryGirl.create(:master_with_vk_account)
       delete :remove_account, {format: :json, id: user.accounts.first.id}
-      expect(JSON.parse(response.body)['error']).to eq 'you cannot remove last account'
+      expect(JSON.parse(response.body)['error']).to eq 'Вы неможете удалить единственный аккаунт'
     end
   end
 end
