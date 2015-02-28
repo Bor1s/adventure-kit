@@ -31,8 +31,8 @@ Polymer 'profile-general',
   sendForm: ->
     d = new FormData()
     d.append('authenticity_token', this.token)
-    d.append('user[nickname]', this.user.nickname)
-    d.append('user[bio]', this.user.bio)
+    d.append('user[nickname]', this.user.nickname) if this.user.nickname
+    d.append('user[bio]', this.user.bio) if this.user.bio
     d.append('user[timezone]', this.user.timezone) if this.user.timezone
     d.append('user[avatar]', this.user.avatar) if this.user.avatar_changed
     if this.user.has_plain_account
