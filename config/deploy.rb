@@ -47,6 +47,25 @@ set :bower_flags, '--quiet --config.interactive=false'
 set :bower_roles, :web
 
 namespace :deploy do
+  namespace :nginx do
+    desc 'Switch current project into maintenance mode'
+    task :lock do
+      on primary :db do
+        within release_path do
+          execute :touch, 'tmp/maintenance.txt'
+        end
+      end
+    end
+
+    desc 'Turn off current project maintenance mode'
+    task :unlock do
+      on primary :db do
+        within release_path do
+          execute :rm, '-f tmp/maintenance.txt'
+        end
+      end
+    end
+  end
 
  def run_unicorn
     within release_path do
@@ -94,8 +113,6 @@ namespace :deploy do
       end
     end
   end
-
-
 
   desc 'Reindex solr'
   task :reindex_solr do
