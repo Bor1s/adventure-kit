@@ -3,12 +3,10 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  #rescue_from ActionController::RoutingError,
-  #  ActionController::UnknownController,
-  #  ActionController::RoutingError,
-  #  ActionController::UnknownFormat,
-  #  Mongoid::Errors::DocumentNotFound, with: :not_found
-
+  rescue_from ActionController::RoutingError, with: :not_found
+  rescue_from ActionController::UnknownController, with: :not_found
+  rescue_from ActionController::UnknownFormat, with: :not_found
+  rescue_from Mongoid::Errors::DocumentNotFound, with: :not_found
   rescue_from CanCan::AccessDenied, with: :prohibited
 
   helper_method :current_user, :current_user_profile, :user_signed_in?
@@ -64,7 +62,7 @@ class ApplicationController < ActionController::Base
   end
 
   def prohibited
-    render '/public/prohibited.html', layout: false
+    render '/public/403.html', layout: false
   end
 
   def set_timezone
