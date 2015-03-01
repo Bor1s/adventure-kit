@@ -1,45 +1,58 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Вы не нашли то, что искали</title>
+  <title>404 AdventureKit</title>
+  <link href='http://fonts.googleapis.com/css?family=Roboto&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
   <style>
     body {
-      background: url('/assets/not_found.jpg') no-repeat center center fixed;
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
-      background-size: cover;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      font-family: 'Roboto', sans-serif;
     }
 
-    #dialog, #escape {
-      margin-top: 100px;
-      margin-left: auto;
-      margin-right: auto;
-      width: 90%;
-      color: #fff;
-      font-size: 40px;
+    .container {
+      position: relative;
+      top: 30%;
+      -webkit-transform: translateY(-30%);
+      -ms-transform: translateY(-30%);
+      transform: translateY(-30%);
+      text-align: center;
     }
 
-    #escape {
-      margin-top: 100px;
-      font-size: 20px;
+    h1 {
+      color: #212121;
+      font-size: 48px;
+    }
+
+    p {
+      font-weight: 200;
+      margin: 0;
+      padding: 0;
+      font-size: 18px;
+      margin-bottom: 18px;
     }
 
     a {
-      text-decoration: underline;
-      color: #fff;
+      cursor: pointer;
+      color: #727272;
+      text-decoration: none;
     }
+    
+    a:hover {
+      color: #727272;
+      border-bottom: 1px #727272 dashed;
+    }
+
   </style>
 </head>
 
 <body>
+<div class='container'>
   <!-- This file lives in public/404.html -->
-  <section id="dialog">
-    Вы не нашли то, за чем пришли ...
-  </section>
-
-  <section id='escape'>
-    <a href='/'>Вернуться на главную</a>
-  </section>
+  <h1>404</h1>
+  <p>Вы не нашли то, за чем пришли ...</p>
+  <p><a href='/'>Вернуться на главную</a></p>
+  </div>
 </body>
 </html>
