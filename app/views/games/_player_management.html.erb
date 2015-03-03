@@ -1,4 +1,4 @@
-<h3>Управление</h3>
+<h2>Управление</h2>
 <% if @game.subscribed?(current_user) %>
   <p><%= link_to 'Покинуть игру', unenroll_game_path(@game.slug), method: :delete, class: 'danger', data: {confirm: 'Вы уверены, что хотите покинуть игру?'}, remote: true %></p>
 <% else %>

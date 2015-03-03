@@ -38,6 +38,9 @@ ru:
 
     search: 'Поиск по названию игры'
 
+    today: 'сегодня'
+    tomorrow: 'завтра'
+
   games:
     title: 'Название'
     description: 'Описание'

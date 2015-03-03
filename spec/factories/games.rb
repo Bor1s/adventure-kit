@@ -19,6 +19,10 @@ FactoryGirl.define do
       events_attributes {[FactoryGirl.attributes_for(:finished_event)]}
     end
 
+    factory :game_with_closest_events do
+      events_attributes {[FactoryGirl.attributes_for(:closest_event)]}
+    end
+
     factory :game_with_location do
       after(:create) do |game, evaluator|
         game.create_location(attributes_for(:location))

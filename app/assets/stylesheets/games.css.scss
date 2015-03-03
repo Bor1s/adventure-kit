@@ -49,15 +49,8 @@ p {
   border: 2px solid $accent;
 }
 
-.game-management {
-  a {
-    color: $light-primary;
-    text-decoration: none;
-    &:hover {
-      color: $light-primary;
-      border-bottom: 1px $light-primary dashed;
-    }
-  }
+section.game-management {
+  margin-bottom: 48px;
 }
 
 a.danger {

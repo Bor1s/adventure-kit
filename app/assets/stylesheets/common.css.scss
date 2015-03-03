@@ -35,8 +35,21 @@ html,body {
     background-color: $primary;
   }
 
-  section, aside {
-    margin: 0px 16px 32px 16px;
+  section {
+    margin: 16px;
+  }
+
+  aside {
+    margin: 0px 16px 16px 16px;
+  }
+
+  a {
+    color: $light-primary;
+    text-decoration: none;
+    &:hover {
+      color: $light-primary;
+      border-bottom: 1px $light-primary dashed;
+    }
   }
 
   //Paper inputs with decorators
@@ -139,9 +152,8 @@ hr {
   border-bottom: 1px solid $divider;
 }
 
-h3 {
+h2 {
   color: $text-icons;
-  border-bottom: 1px solid $text-icons;
 }
 
 .signout {

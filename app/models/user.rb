@@ -39,11 +39,7 @@ class User
   end
 
   def games
-    if subscriptions.exists?
-      Game.where(:id.in => subscriptions.map(&:game_id))
-    else
-      []
-    end
+    Game.where(:id.in => subscriptions.map(&:game_id))
   end
 
   def has_vk_account?
