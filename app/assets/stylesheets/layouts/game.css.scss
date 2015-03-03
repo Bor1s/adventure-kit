@@ -30,6 +30,10 @@ paper-item.core-selected {
   .centered {
     text-align: center;
   }
+
+  h2 {
+    color: $primary-text;
+  }
 }
 
 #step1-submit, #step2-submit, #step3-submit, #step4-submit, #step2-prev, #step3-prev, #step4-prev {

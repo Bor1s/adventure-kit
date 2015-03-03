@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :event do
-    beginning_at { Time.now.tomorrow }
+    beginning_at { Time.now.next_week }
 
     factory :today_event do
       beginning_at { Time.now + 1.hour }
@@ -14,6 +14,10 @@ FactoryGirl.define do
 
     factory :finished_event do
       beginning_at { Time.now.yesterday }
+    end
+
+    factory :closest_event do
+      beginning_at { Time.now + 3.hours}
     end
   end
 end

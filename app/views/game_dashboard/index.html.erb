@@ -22,6 +22,14 @@
     </paper-input-decorator>
   </aside>
 
+  <section class='centered'>
+    <core-tooltip label='Новая игра'>
+    <%= link_to new_game_path do %>
+      <paper-fab mini icon='add'></paper-fab>
+    <% end %>
+    </core-tooltip>
+  </section>
+
   <section>
     <paper-radio-group selected='nothing'>
       <paper-radio-button name='nothing' label='Все кампании'></paper-radio-button>
@@ -45,12 +53,13 @@
     </paper-radio-group>
   </section>
 
-  <section class='centered'>
-    <core-tooltip label='Новая игра'>
-    <%= link_to new_game_path do %>
-      <paper-fab icon='add'></paper-fab>
-    <% end %>
-    </core-tooltip>
-  </section>
+  <% if @upcoming_events.present? %>
+    <section>
+      <h2>Ближайшие ивенты</h2>
+      <% @upcoming_events.each do |event| %>
+        <p><%= link_to event.title, game_path(event) %> &ndash; <%= will_be_at(event) %></p>
+      <% end %>
+    </section>
+  <% end %>
 <% end %>
 
