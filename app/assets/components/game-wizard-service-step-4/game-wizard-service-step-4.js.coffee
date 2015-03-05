@@ -60,6 +60,7 @@ Polymer 'game-wizard-service-step-4',
       validFiles = event.detail.valid
       if validFiles.length
         reader = new FileReader()
+        that.fileData = validFiles[0]
         reader.onload = (e)->
           previewArea = document.querySelector('#poster-preview')
           previewArea.innerHTML = ''
