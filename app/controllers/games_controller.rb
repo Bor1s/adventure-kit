@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   layout 'single_panel'
-  before_action :authenticate
+  before_action :authenticate, :set_timezone
   respond_to :json, :js, :html
 
   def index
