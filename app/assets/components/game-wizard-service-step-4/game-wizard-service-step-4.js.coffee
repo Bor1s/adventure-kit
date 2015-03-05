@@ -66,9 +66,8 @@ Polymer 'game-wizard-service-step-4',
           img = new Image()
           img.src = reader.result
           previewArea.appendChild(img)
-          that.fileData = reader.result
 
-        #actually read file
+        #Actually read file
         reader.readAsDataURL(validFiles[0])
       else
         console.log 'file not supported'

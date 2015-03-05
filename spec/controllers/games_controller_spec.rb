@@ -138,7 +138,7 @@ RSpec.describe GamesController, type: :controller do
         it 'successful' do
           allow_any_instance_of(GameBuilderService).to receive(:build).and_return(true)
           allow_any_instance_of(GameBuilderService).to receive(:game).and_return(double(Game, subscribe: true, id: 1, 'private_game?' => false))
-          post :create, {format: :json, step: 4, game: {poster: 'data:image/png;base64,iisudfhisfh778'}}
+          post :create, {format: :json, step: 4, game: {poster: Rack::Test::UploadedFile.new(Rails.root.join('spec','support', 'files', 'image.png'), 'image/png')}}
           expect(JSON.parse(response.body)['cache_key']).not_to be_empty
           expect(JSON.parse(response.body)['success']).to be true
         end

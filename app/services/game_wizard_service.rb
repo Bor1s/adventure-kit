@@ -84,32 +84,16 @@ class GameWizardService
       end
       cache_key
     when 4
-      #If user uploaded new poster
       if poster.present?
-        raw_ext = extract_poster_ext(poster)
-        if raw_ext
-          poster_ext = raw_ext.split('/').last
-        else
-          #Specially to cause error on poster validation (wrong format)
-          poster_ext = 'txt'
+        poster_tmp_url = Rails.root.join('tmp', 'cache', poster.original_filename)
+        File.open(poster_tmp_url ,'w') do |file|
+          file.write poster.tempfile.read.force_encoding('UTF-8')
         end
-
-        poster_tmp_url = tmpfilename = Rails.root.join('tmp', 'cache', "#{cache_key}_poster.#{poster_ext}")
-        File.open(tmpfilename,'w') do |file|
-          file.write Base64.decode64(poster.sub("data:#{raw_ext};base64,",'')).force_encoding('UTF-8')
-        end
-
         Sidekiq.redis do |conn|
           conn.hset(cache_key, 'poster_url', poster_tmp_url)
         end
       end
       cache_key
     end
-  end
-
-  private
-
-  def extract_poster_ext(poster)
-    poster.scan(BASE64_TOKEN_REGEXP).flatten.first
   end
 end
