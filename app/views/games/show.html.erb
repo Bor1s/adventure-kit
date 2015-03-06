@@ -51,16 +51,19 @@
   <p><%= @game.description %></p>
   <hr />
 
-  <div id="disqus_thread"></div>
-  <script type="text/javascript">
-    var disqus_shortname = 'adventurerkit';
-    var disqus_title = '<%= @game.title %>';
-    var disqus_url = '<%= request.original_url %>';
-    var disqus_identifier = '<%= @game.title %>';
-    loadDisqus(disqus_shortname, disqus_title, disqus_url, disqus_identifier);
-  </script>
+  <% if browser.chrome? %>
+    <disqus-comments shortname="adventurerkit" title='<%= @game.title %>' url='<%= request.original_url %>' identifier='<%= @game.title %>'></disqus-comments>
+  <% else %>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+      var disqus_shortname = 'adventurerkit';
+      var disqus_title = '<%= @game.title %>';
+      var disqus_url = '<%= request.original_url %>';
+      var disqus_identifier = '<%= @game.title %>';
+      loadDisqus(disqus_shortname, disqus_title, disqus_url, disqus_identifier);
+    </script>
+  <% end %>
 </section>
-
 
 <%= content_for :sidebar do %>
   <% if current_user.creator?(@game) %>

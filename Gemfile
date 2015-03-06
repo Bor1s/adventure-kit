@@ -42,6 +42,7 @@ gem 'newrelic_rpm'
 gem 'whenever', require: false
 gem 'geocoder'
 gem 'exception_notification'
+gem 'browser'
 
 group :test, :development do
   gem 'thin'
