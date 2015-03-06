@@ -52,6 +52,7 @@ html,body {
     }
   }
 
+  //--- Chrome ---
   //Paper inputs with decorators
   paper-input-decorator /deep/ .label-text,
   paper-input-decorator /deep/ .error {
@@ -86,6 +87,46 @@ html,body {
   }
 
   paper-input-decorator /deep/ .cursor {
+      /* floating cursor when the input is focused */
+      background-color: $accent;
+  }
+
+
+  //--- Rest browsers ---
+  //Paper inputs with decorators
+  paper-input-decorator .label-text,
+  paper-input-decorator .error {
+      /* inline label,  floating label, error message and error icon color when the input is unfocused */
+      color: $text-icons;
+  }
+
+  paper-input-decorator ::-webkit-input-placeholder {
+      /* platform specific rules for placeholder text */
+      color: $text-icons;
+  }
+  paper-input-decorator ::-moz-placeholder {
+      color: $text-icons;
+  }
+  paper-input-decorator :-ms-input-placeholder {
+      color: $text-icons;
+  }
+
+  paper-input-decorator .unfocused-underline {
+      /* line color when the input is unfocused */
+      background-color: $text-icons;
+  }
+
+  paper-input-decorator[focused] .floated-label .label-text {
+    /* floating label color when the input is focused */
+    color: $accent;
+  }
+
+  paper-input-decorator .focused-underline {
+      /* line color when the input is focused */
+      background-color: $accent;
+  }
+
+  paper-input-decorator .cursor {
       /* floating cursor when the input is focused */
       background-color: $accent;
   }
@@ -144,6 +185,10 @@ a.logo {
     color: $text-icons;
     border-bottom: 1px $text-icons dashed;
   }
+}
+
+a.clean-link {
+  border: 0 !important;
 }
 
 hr {
