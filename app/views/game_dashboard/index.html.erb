@@ -11,7 +11,13 @@
     </section>
   </template>
 
-  <game-service games='{{games}}' searchText='{{searchText}}' url="<%= games_path %>"></game-service>
+  <div class='show-more' hidden?='{{isHidden}}'>
+    <%= link_to 'javascript:void(0);', id: 'loadMore' do %>
+      <%= t('general.show_more') %> <i class='fa fa-arrow-circle-down fa-lg'></i>
+    <% end %>
+  </div>
+
+  <game-service games='{{games}}' searchText='{{searchText}}' isHidden='{{isHidden}}' url="<%= games_path %>"></game-service>
   <paper-toast id='no_games_toast' text='<%= t('events.index.no_games') %>'></paper-toast>
 </template>
 

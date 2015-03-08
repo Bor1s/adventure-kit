@@ -1,10 +1,11 @@
 class GameFilterService
-  attr_reader :user, :query, :filters
+  attr_reader :user, :query, :filters, :page
 
-  def initialize(query, filters, user)
+  def initialize(query, filters, user, page=1)
     @query = query.presence
     @user = user
     @filters = filters.presence || []
+    @page = page
   end
 
   def filter
@@ -37,9 +38,9 @@ class GameFilterService
 
     #If nil is returned then none of IDs criteria is triggered
     if result_ids.nil?
-      criteria
+      criteria.asc(:created_at).page(page)
     else
-      criteria.where(:id.in => result_ids)
+      criteria.asc(:created_at).where(:id.in => result_ids).page(page)
     end
   end
 
