@@ -14,7 +14,8 @@ class GamesController < ApplicationController
 
     respond_with do |format|
       format.json do
-        render json: @games
+        can_load_more = @games.total_count > (@games.limit_value + @games.offset_value)
+        render json: @games, meta: {can_load_more: can_load_more }
       end
     end
   end
@@ -158,7 +159,7 @@ class GamesController < ApplicationController
   end
 
   def fetch_games(params)
-    event_filter_service = GameFilterService.new(params[:q], filters, current_user)
+    event_filter_service = GameFilterService.new(params[:q], filters, current_user, params[:page])
     filtered_events = event_filter_service.filter
   end
 

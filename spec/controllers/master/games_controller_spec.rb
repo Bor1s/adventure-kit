@@ -16,8 +16,8 @@ RSpec.describe Master::GamesController, type: :controller do
 
       xhr :get, :index
 
-      result = JSON.parse(response.body)['games'].map {|g| g['id']}
-      expected_result = games.map {|g| g.id.to_s}
+      result = JSON.parse(response.body)['games'].map {|g| g['id']}.sort
+      expected_result = games.map {|g| g.id.to_s}.sort
 
       expect(result).to eq expected_result
     end
