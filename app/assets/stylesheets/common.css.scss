@@ -18,10 +18,12 @@ html,body {
     color: $text-icons;
     background-color: $primary;
   }
-  #game_container {
+
+  #game_container, #user_container {
     margin-top: 32px;
   }
-  .no-games {
+
+  .no-games, .no-users {
     color: $divider;
     opacity: 0.1;
   }
@@ -181,9 +183,17 @@ a.logo {
   cursor: pointer;
   color: $text-icons;
   text-decoration: none;
+  border: 1px solid $text-icons;
+  padding: 4px;
+  text-transform: uppercase;
+}
+
+a.header-link {
+  color: $light-primary;
+  font-size: 16px;
   &:hover {
-    color: $text-icons;
-    border-bottom: 1px $text-icons dashed;
+    color: $light-primary;
+    border-bottom: 1px $light-primary dashed;
   }
 }
 
@@ -204,11 +214,11 @@ h2 {
 .signout {
   font-size: 12px;
   cursor: pointer;
-  color: $text-icons;
+  color: $light-primary;
   text-decoration: none;
   &:hover {
-    color: $text-icons;
-    border-bottom: 1px $text-icons dashed;
+    color: $light-primary;
+    border-bottom: 1px $light-primary dashed;
   }
 
 }

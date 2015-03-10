@@ -1,0 +1,29 @@
+<polymer-element name='paper-user' attributes='data'>
+  <template>
+    <link rel="stylesheet" href="paper-user.css.scss" />
+
+    <paper-shadow z='1'>
+      <template if='{{data.has_avatar}}'>
+        <div class='image-container'>
+          <core-image src='{{data.avatar.avatar.medium.url}}' sizing='cover'></core-image>
+        </div>
+      </template>
+
+      <template if='{{!data.has_avatar}}'>
+        <div class='image-container'>
+          <core-image src='{{data.avatar.avatar.medium.url}}' sizing='contain'></core-image>
+        </div>
+      </template>
+
+      <section>
+        <p class='nick'>{{data.nickname}}</p>
+        <p class='stats'>Всего игр: {{data.stats}}</p>
+        <p class='bio'>{{data.bio}}</p>
+      </section>
+
+    </paper-shadow>
+
+  </template>
+
+  <script src="paper-user.js.coffee"></script>
+</polymer-element>

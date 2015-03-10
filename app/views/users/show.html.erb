@@ -1,1 +1,28 @@
+<div class='profile-container' layout horizontal center-justified wrap>
+  <paper-shadow z='1'>
+    <header>Мой профиль</header>
+    <div layout vertical>
+      <div class='avatar'>
+        <core-image style="width:100px; height:100px;" sizing="cover" src='<%= @user.avatar.medium.url %>'></core-image>
+        <h3><%= @user.nickname %></h3>
+      </div>
 
+      <div class='info'>
+        <p>Всего игр: <b><%= @user.games.count %></b></p>
+        <p>Зарегистрирован: <b><%= @user.created_at.strftime('%Y-%m-%d') %></b></p>
+        <p><%= @user.bio %></p>
+      </div>
+    </div>
+  </paper-shadow>
+
+  <paper-shadow z='1'>
+    <header>Мои игровые кампании</header>
+    <div layout vertical>
+      <div class='games-list'>
+        <% @user.games.each do |game| %>
+          <p><%= link_to game.title, game_path(game) %></p>
+        <% end %>
+      </div>
+    </div>
+  </paper-shadow>
+</div>

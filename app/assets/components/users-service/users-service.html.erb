@@ -1,0 +1,15 @@
+<polymer-element name="users-service" attributes='users url searchText isHidden'>
+  <template>
+
+    <core-ajax id='dispatcher' url='{{url}}'
+      handleAs='json'
+      headers='{"Accept": "application/json"}'
+      contentType='application/json'
+      params='{"q": "{{searchText}}", "cache": "0", "page": "{{page}}"}'
+      on-core-error='{{handleError}}'
+      on-core-response='{{handleSuccess}}'>
+    </core-ajax>
+
+    </template>
+  <script src="users-service.js.coffee"></script>
+</polymer-element>

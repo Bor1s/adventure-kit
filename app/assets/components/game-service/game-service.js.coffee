@@ -12,7 +12,7 @@ Polymer 'game-service',
   ready: ->
     that = this
     # Listening for games filter radios changes
-    document.querySelector('#game_drawer').addEventListener 'change', (e)->
+    document.querySelector('#content_drawer').addEventListener 'change', (e)->
       that.resetGamesPaging()
       filterOptions = that.pickFilterOptions(e, this)
       that.sendData(filterOptions)
@@ -57,10 +57,10 @@ Polymer 'game-service',
     this.optionsToSend = optionValues
     this.$.dispatcher.go()
 
-  pickFilterOptions: (e, game_drawer)->
+  pickFilterOptions: (e, content_drawer)->
     # Get values from all 'checked' radio buttons and push them into array
     # to send via AJAX 
-    allRadioGroups = game_drawer.querySelectorAll('paper-radio-group')
+    allRadioGroups = content_drawer.querySelectorAll('paper-radio-group')
     otherRadioGroups = []
     for i in allRadioGroups
       otherRadioGroups.push(i) unless i == e.target.parentElement
@@ -72,7 +72,7 @@ Polymer 'game-service',
 
   fetchGames: ->
     filterOptions = []
-    for radio in document.querySelector('#game_drawer').querySelectorAll('paper-radio-button[aria-checked="true"]')
+    for radio in document.querySelector('#content_drawer').querySelectorAll('paper-radio-button[aria-checked="true"]')
       filterOptions.push(radio.attributes.name.value)
     this.sendData(filterOptions)
 

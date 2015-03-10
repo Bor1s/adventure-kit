@@ -9,8 +9,14 @@ class UsersController < ApplicationController
     respond_with @users do |format|
       format.html
       format.json do
-        users = User.ne(id: current_user.id)
-        render json: users
+        if params[:without_me].present?
+          users = User.ne(id: current_user.id)
+        else
+          service = UserFilterService.new(params[:q], params[:page])
+          users = service.filter
+        end
+        can_load_more = users.total_count > (users.limit_value + users.offset_value)
+        render json: users, meta: { can_load_more: can_load_more }
       end
     end
   end
@@ -18,5 +24,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     authorize! :read, @user
+    render layout: 'single_panel'
   end
 end

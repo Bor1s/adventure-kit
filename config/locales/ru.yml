@@ -1,5 +1,8 @@
 ru:
   site_name: 'Adventure Kit'
+  site_games: 'Игры'
+  site_users: 'Люди'
+  
   general:
     games_heatmap: 'Карта игр'
     day_info: 'Информация на день'
@@ -36,7 +39,8 @@ ru:
     November: 'Ноябрь'
     December: 'Декабрь'
 
-    search: 'Поиск по названию игры'
+    search_games: 'Поиск по названию игры'
+    search_users: 'Введите имя для поиска'
 
     today: 'сегодня'
     tomorrow: 'завтра'
@@ -66,6 +70,10 @@ ru:
       format: 'Выберите дату нажав на поле'
     index:
       no_games: 'Ищем игры ...'
+
+  users:
+    index:
+      no_users: 'Ищем людей ...'
 
   core_notificator:
     event_created:

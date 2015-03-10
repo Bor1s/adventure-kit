@@ -14,19 +14,21 @@
   <core-drawer-panel rightDrawer>
     <core-header-panel main>
       <core-toolbar>
-        <span flex><%= link_to t('site_name'), root_path, class: 'logo' %></span>
+        <span><%= link_to t('site_name'), root_path, class: 'logo' %></span>
+        <span><%= link_to t('site_games'), root_path, class: 'header-link' %></span>
+        <span flex><%= link_to t('site_users'), users_path, class: 'header-link' %></span>
         <core-icon-button icon="menu" core-drawer-toggle></core-icon-button>
       </core-toolbar>
 
       <%= yield %>
     </core-header-panel>
 
-    <core-header-panel id='game_drawer' drawer>
+    <core-header-panel id='content_drawer' drawer>
       <core-toolbar justify='end'>
         <core-tooltip label='Мой профиль'>
           <%= link_to path_to_current_user_profile do %>
             <paper-shadow z='1' class='round'>
-              <%= image_tag current_user.avatar.medium.url, class: 'round' %>
+              <%= image_tag current_user.avatar.tiny.url, class: 'round' %>
               <paper-ripple fit class="recenteringTouch circle white-ripple"></paper-ripple>
             </paper-shadow>
           <% end %>

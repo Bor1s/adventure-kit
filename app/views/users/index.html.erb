@@ -1,1 +1,31 @@
+<template is='auto-binding'>
+  <div id='user_container' layout horizontal center-justified wrap>
+    <template repeat='{{user in users}}'>
+      <paper-user data='{{user}}'></paper-user>
+    </template>
+  </div>
+
+  <template if='{{users.length == 0}}'>
+    <section layout horizontal center center-justified class='no-users'>
+      <i class='fa fa-5x fa-users'></i>
+    </section>
+  </template>
+
+  <div class='show-more' hidden?='{{isHidden}}'>
+    <%= link_to 'javascript:void(0);', id: 'loadMore' do %>
+      <%= t('general.show_more') %> <i class='fa fa-arrow-circle-down fa-lg'></i>
+    <% end %>
+  </div>
+
+  <users-service users='{{users}}' searchText='{{searchText}}' isHidden='{{isHidden}}' url="<%= users_path %>"></users-service>
+  <paper-toast id='no_users_toast' text='<%= t('users.index.no_users') %>'></paper-toast>
+</template>
+
+<%= content_for :sidebar do %>
+  <aside class='search-bar'>
+    <paper-input-decorator floatingLabel label="<%= t('general.search_users') %>">
+      <input type='text' id='search' value='' is='core-input'>
+    </paper-input-decorator>
+  </aside>
+<% end %>
 

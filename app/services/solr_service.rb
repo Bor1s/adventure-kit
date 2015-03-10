@@ -29,6 +29,11 @@ class SolrService
     @search_result = response['response']['docs'].map {|doc| BSON::ObjectId.from_string(doc['id'])}
   end
 
+  def search_users(text, page: 1)
+    response = @solr.paginate page, PER_PAGE, 'select', params: {q: "usertext:\"#{text}\""}
+    @search_result = response['response']['docs'].map {|doc| BSON::ObjectId.from_string(doc['id'])}
+  end
+
   def delete_index
     @solr.delete_by_query '*:*'
   end
@@ -47,7 +52,7 @@ class SolrService
           base.solr.add(document.solr_index_data)
         rescue => e
           Rails.logger.warn('=== Solr is down ===')
-          Rails.logger.warn("Cannot add #{document.id} event")
+          Rails.logger.warn("Cannot add #{document.id}")
         end
       end
 
@@ -57,7 +62,7 @@ class SolrService
           base.solr.add(document.solr_index_data)
         rescue => e
           Rails.logger.warn('=== Solr is down ===')
-          Rails.logger.warn("Cannot add #{document.id} event")
+          Rails.logger.warn("Cannot add #{document.id}")
         end
       end
 
@@ -66,7 +71,7 @@ class SolrService
           base.solr.delete(document.id.to_s)
         rescue => e
           Rails.logger.warn('=== Solr is down ===')
-          Rails.logger.warn("Cannot add #{document.id} event")
+          Rails.logger.warn("Cannot add #{document.id}")
         end
       end
     end

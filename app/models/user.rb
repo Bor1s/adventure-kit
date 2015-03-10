@@ -1,6 +1,8 @@
 class User
   include Mongoid::Document
   include Mongoid::Timestamps
+  include SolrService::MongoidHooks
+
   ROLES = {admin: 1}
 
   # General settings to be used in all user's accounts
@@ -20,6 +22,13 @@ class User
 
   before_create do
     self.nickname = "user#{rand(10000)}" if self.nickname.blank?
+  end
+
+  # Fileds to be indexed by SOLR
+  def solr_index_data(options={})
+    data = {id: id}
+    data[:usertext] = nickname
+    data
   end
 
   def admin?

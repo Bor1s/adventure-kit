@@ -13,5 +13,13 @@ class UserSerializer < ActiveModel::Serializer
     object.avatar?
   end
 
-  attributes :id, :nickname, :bio, :has_plain_account, :has_avatar, :avatar, :timezone
+  def stats
+    object.games.count
+  end
+
+  def url
+    Rails.application.routes.url_helpers.user_url(object, only_path: true)
+  end
+
+  attributes :id, :nickname, :bio, :has_plain_account, :has_avatar, :avatar, :timezone, :stats, :url
 end

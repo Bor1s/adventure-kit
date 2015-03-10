@@ -77,6 +77,17 @@
         <!--<filter class="solr.EdgeNGramFilterFactory" minGramSize="5" maxGramSize="10" side="back" />-->
       </analyzer>
     </fieldType>
+
+    <fieldType name="usertext" class="solr.TextField" omitNorms="false">
+      <analyzer>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.StandardFilterFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.EdgeNGramFilterFactory" minGramSize="2" maxGramSize="10" side="front" />-->
+        <!--<filter class="solr.EdgeNGramFilterFactory" minGramSize="5" maxGramSize="10" side="back" />-->
+      </analyzer>
+    </fieldType>
+
     <!-- *** This fieldType is used by Sunspot! *** -->
     <fieldType name="boolean" class="solr.BoolField" omitNorms="true"/>
     <!-- *** This fieldType is used by Sunspot! *** -->
@@ -138,6 +149,7 @@
     <!-- *** This field is used by Sunspot! *** -->
     <field name="lng" stored="true" type="tdouble" multiValued="false" indexed="true"/>
     <field name="ctext" stored="true" type="ctext" multiValued="true" indexed="true"/>
+    <field name="usertext" stored="true" type="usertext" multiValued="true" indexed="true"/>
     <!-- *** This dynamicField is used by Sunspot! *** -->
     <dynamicField name="random_*" stored="false" type="rand" multiValued="false" indexed="true"/>
     <!-- *** This dynamicField is used by Sunspot! *** -->
@@ -249,6 +261,7 @@
     <dynamicField name="*_llms" stored="true" type="location" multiValued="true" indexed="true"/>
     <!--Custom fields -->
     <dynamicField name="*_ctext" stored="true" type="ctext" multiValued="true" indexed="true"/>
+    <dynamicField name="*_usertext" stored="true" type="usertext" multiValued="true" indexed="true"/>
     
     <!-- required by Solr 4 -->
     <field name="_version_" type="string" indexed="true" stored="true" multiValued="false" />

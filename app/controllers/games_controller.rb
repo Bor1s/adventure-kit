@@ -15,7 +15,7 @@ class GamesController < ApplicationController
     respond_with do |format|
       format.json do
         can_load_more = @games.total_count > (@games.limit_value + @games.offset_value)
-        render json: @games, meta: {can_load_more: can_load_more }
+        render json: @games, meta: { can_load_more: can_load_more }
       end
     end
   end

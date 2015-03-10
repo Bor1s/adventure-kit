@@ -1,0 +1,46 @@
+@import 'common';
+
+.profile-container {
+
+  header {
+    font-size: 18px;
+    padding: 8px 14px;
+    background-color: $accent;
+    color: $text-icons;
+  }
+
+  core-image {
+    border-radius: 100%;
+  }
+
+  paper-shadow {
+    margin: 18px;
+  }
+
+  .avatar {
+    margin: 18px;
+    text-align: center;
+  }
+
+  .info {
+    margin: 18px;
+    width: 400px;
+  }
+
+  .games-list {
+    padding: 18px;
+    max-height: 400px;
+    overflow: scroll;
+
+    a {
+      cursor: pointer;
+      color: $secondary-text;
+      text-decoration: none;
+      &:hover {
+        color: $secondary-text;
+        border-bottom: 1px $secondary-text dashed;
+      }
+    }
+  }
+}
+
