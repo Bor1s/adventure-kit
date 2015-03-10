@@ -1,12 +1,14 @@
 class GameWizardService
   NUMBER_OF_STEPS = 4
-  BASE64_TOKEN_REGEXP = /\Adata:(.+);/
 
   include ActiveModel::Model
+  include ActiveModel::Validations
+
   attr_accessor :title, :description, :players_amount, :address, :online_info, :private_game, :invitees, :online_game, :events_attributes, :events_ui_ids, :poster, :poster_tmp_url, :step
   attr_reader :cache_key
 
   validates :title, :description, presence: true, if: :step1?
+  validates_with GameWizardStep1Validator
   validates_with GameWizardStep2Validator
   validates_with GameWizardStep3Validator
 
