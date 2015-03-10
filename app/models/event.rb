@@ -1,7 +1,6 @@
 class Event
   include Mongoid::Document
   include Mongoid::Timestamps
-  include Notification
 
   field :beginning_at, type: DateTime
 
