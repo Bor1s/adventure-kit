@@ -15,8 +15,16 @@
     <core-header-panel main>
       <core-toolbar>
         <span><%= link_to t('site_name'), root_path, class: 'logo' %></span>
-        <span><%= link_to t('site_games'), root_path, class: 'header-link' %></span>
-        <span flex><%= link_to t('site_users'), users_path, class: 'header-link' %></span>
+        <span>
+          <%= link_to root_path, class: 'header-link clean-link' do %>
+            <i class='fa fa-gamepad fa-2x'></i>
+          <% end %>
+        </span>
+        <span flex>
+          <%= link_to users_path, class: 'header-link clean-link' do %>
+            <i class='fa fa-users fa-lg'></i>
+          <% end %>
+        </span>
         <core-icon-button icon="menu" core-drawer-toggle></core-icon-button>
       </core-toolbar>
 
@@ -34,7 +42,7 @@
           <% end %>
         </core-tooltip>
 
-        <%= link_to 'Выход', signout_path, class: 'signout' %>
+        <%= link_to 'Выход', signout_path, class: 'signout clean-link' %>
       </core-toolbar>
 
       <%= yield :sidebar %>

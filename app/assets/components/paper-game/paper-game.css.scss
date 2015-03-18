@@ -1,5 +1,5 @@
-@import 'common';
-@import 'imports';
+@import 'common/colors';
+@import 'font_awesome';
 
 :host {
   width: 340px;
@@ -19,23 +19,27 @@
     overflow: hidden;
   }
 
+  core-tooltip {
+    cursor: pointer;
+  }
+
   paper-shadow {
     width: inherit;
     height: inherit;
-    cursor: pointer;
 
     header {
       text-align: center;
-      background-color: rgba(0,0,0, 0.4);
+      background-color: rgba(255,255,255, 0.9);
       position: absolute;
       top: 0px;
       width: 100%;
       height: 28px;
-      color: $text-icons;
+      color: $primary-text;
       font-weight: bold;
     }
 
     core-image {
+      cursor: pointer;
       width: 100%;
       height: 100%;
       position: absolute;
@@ -61,8 +65,8 @@
       max-height: 200px;
       overflow: hidden;
       text-overflow: ellipsis;
-      background-color: rgba(0,0,0, 0.4);
-      color: $text-icons;
+      background-color: rgba(255,255,255, 0.9);
+      color: $primary-text;
 
       p {
         margin: 8px;
@@ -79,6 +83,7 @@
     position: relative;
     font-size: 12px;
     background-color: $accent;
+    color: $text-icons;
     padding: 3px;
     margin-right: 4px;
     border-radius: 20%;

@@ -61,7 +61,7 @@
 
   <% if @upcoming_events.present? %>
     <section>
-      <h2>Ближайшие ивенты</h2>
+      <h2><%= t('games.closest_events')%></h2>
       <% @upcoming_events.each do |event| %>
         <p><%= link_to event.title, game_path(event) %> &ndash; <%= will_be_at(event) %></p>
       <% end %>

@@ -1,12 +1,5 @@
-$dark-primary: #5D4037;
-$primary: #795548;
-$light-primary: #D7CCC8;
-$text-icons: #FFFFFF;
-$accent: #4CAF50;
-$primary-text: #212121;
-$secondary-text: #727272;
-$divider: #B6B6B6;
-$danger: #FF5252;
+@import 'common/colors';
+@import 'common/links';
 
 html,body {
   color: $secondary-text;
@@ -43,15 +36,6 @@ html,body {
 
   aside {
     margin: 0px 16px 16px 16px;
-  }
-
-  a {
-    color: $light-primary;
-    text-decoration: none;
-    &:hover {
-      color: $light-primary;
-      border-bottom: 1px $light-primary dashed;
-    }
   }
 
   //--- Chrome ---
@@ -169,38 +153,6 @@ paper-fab {
   background-color: $accent;
 }
 
-a {
-  cursor: pointer;
-  color: $secondary-text;
-  text-decoration: none;
-  &:hover {
-    color: $secondary-text;
-    border-bottom: 1px $secondary-text dashed;
-  }
-}
-
-a.logo {
-  cursor: pointer;
-  color: $text-icons;
-  text-decoration: none;
-  border: 1px solid $text-icons;
-  padding: 4px;
-  text-transform: uppercase;
-}
-
-a.header-link {
-  color: $light-primary;
-  font-size: 16px;
-  &:hover {
-    color: $light-primary;
-    border-bottom: 1px $light-primary dashed;
-  }
-}
-
-a.clean-link {
-  border: 0 !important;
-}
-
 hr {
   margin: 32px 0px 32px 0px;
   border: 0;
@@ -209,18 +161,7 @@ hr {
 
 h2 {
   color: $text-icons;
-}
-
-.signout {
-  font-size: 12px;
-  cursor: pointer;
-  color: $light-primary;
-  text-decoration: none;
-  &:hover {
-    color: $light-primary;
-    border-bottom: 1px $light-primary dashed;
-  }
-
+  text-decoration: underline;
 }
 
 .show-more {

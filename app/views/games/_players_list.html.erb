@@ -1,11 +1,11 @@
-<h2>Список игроков</h2>
+<h2><%= t('games.players')%></h2>
 <% @game.players.each do |player| %>
   <p>
     <%= player.nickname %>
     <%= link_to remove_player_game_path(id: @game.id, user_id: player.id),
       class: 'danger',
       method: :delete,
-      data: {confirm: 'Вы уверены, что хотите удалить этого игрока из игры?'}, remote: true do %>
+      data: {confirm: t('games.remove_player_confirm')}, remote: true do %>
       <i class='fa fa-trash'></i>
     <% end %>
   </p>

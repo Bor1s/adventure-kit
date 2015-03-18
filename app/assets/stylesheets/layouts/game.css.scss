@@ -1,4 +1,4 @@
-@import 'common';
+@import "./common/colors";
 
 #main-header {
   height: 100%;
@@ -33,6 +33,7 @@ paper-item.core-selected {
 
   h2 {
     color: $primary-text;
+    text-decoration: none;
   }
 }
 

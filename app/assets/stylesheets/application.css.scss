@@ -10,13 +10,11 @@
  *
  * require_self
  * require_tree .
- * require select2
- * require select2-bootstrap
- * require_tree ./responsive
 
- *= require imports
+ *= require font_awesome
  *= require jquery.datetimepicker
 
+ *= require common/general
  *= require welcome
  *= require registrations
  *= require game_dashboard

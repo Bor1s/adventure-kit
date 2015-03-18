@@ -1,14 +1,14 @@
-<h2>Управление</h2>
+<h2><%= t('games.management') %></h2>
 <% if @game.subscribed?(current_user) %>
-  <p><%= link_to 'Покинуть игру', unenroll_game_path(@game.slug), method: :delete, class: 'danger', data: {confirm: 'Вы уверены, что хотите покинуть игру?'}, remote: true %></p>
+  <p><%= link_to t('games.unenroll'), unenroll_game_path(@game.slug), method: :delete, class: 'danger', data: {confirm: t('games.unenroll_confirmation')}, remote: true %></p>
 <% else %>
   <% if !@game.private_game? %>
     <% if @game.allows_to_take_part? %>
-      <p><%= link_to 'Принять участие', take_part_game_path(@game.slug), remote: true %></p>
+      <p><%= link_to t('games.enroll'), take_part_game_path(@game.slug), remote: true %></p>
     <% else %>
-      <p>Принять участие в игре пока невозможно так как максимальное количество участников уже набрано.</p>
+      <p><%= t('games.no_place') %></p>
     <% end %>
   <% else %>
-    <p>В эту игру можно попасть только по приглашению мастера.</p>
+    <p><%= t('games.invitation_only') %></p>
   <% end %>
 <% end %>

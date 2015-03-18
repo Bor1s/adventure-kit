@@ -1,0 +1,53 @@
+[drawer] {
+  a {
+    color: $light-primary;
+    text-decoration: none;
+    &:hover {
+      color: $light-primary;
+      border-bottom: 1px $light-primary dashed;
+    }
+  }
+}
+
+a {
+  cursor: pointer;
+  color: $secondary-text;
+  text-decoration: none;
+  &:hover {
+    color: $secondary-text;
+    border-bottom: 1px $secondary-text dashed;
+  }
+}
+
+a.signout {
+  font-size: 12px;
+  cursor: pointer;
+  color: $light-primary;
+  &:hover {
+    color: $text-icons;
+  }
+}
+
+a.logo {
+  cursor: pointer;
+  color: $light-primary;
+  text-decoration: none;
+  border: 1px solid $light-primary;
+  padding: 4px;
+  text-transform: uppercase;
+  &:hover {
+    color: $text-icons;
+  }
+}
+
+a.header-link {
+  color: $light-primary;
+  font-size: 16px;
+  &:hover {
+    color: $text-icons;
+  }
+}
+
+a.clean-link {
+  border: 0 !important;
+}

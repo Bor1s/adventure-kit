@@ -1,6 +1,6 @@
-<h2>Управление</h2>
-<p><%= link_to 'Редактировать игру', edit_game_path(@game.slug) %></p>
-<p><%= link_to 'Удалить игру', game_path(@game.id),
+<h2><%= t('games.management') %></h2>
+<p><%= link_to t('games.edit'), edit_game_path(@game.slug) %></p>
+<p><%= link_to t('games.delete'), game_path(@game.id),
   class: 'danger',
   method: :delete,
-  data: {confirm: 'Вы уверены? Удаление игры уничтожит все данные о ней!'} %></p>
+  data: {confirm: t('games.delete_confirmation')} %></p>

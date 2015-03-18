@@ -1,6 +1,6 @@
 <% @game.subscribers.each do |user| %>
-  <core-tooltip label='<%= user.nickname %> <%= '(DM)' if user.creator?(@game) %>'>
-    <%= link_to user_path(user) do %>
+  <core-tooltip label='<%= user.nickname %> <%= '(GM)' if user.creator?(@game) %>'>
+    <%= link_to user_path(user), class: 'clean-link' do %>
       <% if user.avatar? %>
         <%= image_tag asset_path(user.avatar.tiny.url),
           class: "avatar rounded #{'dm-sign' if user.creator?(@game)}", size: '39x39', alt: user.nickname %>

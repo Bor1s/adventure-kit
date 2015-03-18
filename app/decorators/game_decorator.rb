@@ -65,4 +65,8 @@ class GameDecorator
   def allows_to_take_part?
     game.allows_to_take_part?
   end
+
+  def players_amount
+    game.players_amount
+  end
 end

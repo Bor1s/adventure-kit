@@ -14,13 +14,15 @@
         <%= @game.next_session %>
       </div>
 
-      <div>
-        <span class="fa-stack">
-          <i class="fa fa-circle fa-stack-2x"></i>
-          <i class="fa fa-users fa-stack-1x"></i>
-        </span>
-        <%= @game.players.count %>
-      </div>
+      <% unless @game.private_game? %>
+        <div>
+          <span class="fa-stack">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-users fa-stack-1x"></i>
+          </span>
+          <span><%= @game.players.count %> / <%= @game.players_amount %></span>
+        </div>
+      <% end %>
 
       <div>
         <% if @game.online_game? %>
@@ -51,18 +53,14 @@
   <p><%= @game.description %></p>
   <hr />
 
-  <% if browser.chrome? %>
-    <disqus-comments shortname="adventurerkit" title='<%= @game.title %>' url='<%= request.original_url %>' identifier='<%= @game.title %>'></disqus-comments>
-  <% else %>
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-      var disqus_shortname = 'adventurerkit';
-      var disqus_title = '<%= @game.title %>';
-      var disqus_url = '<%= request.original_url %>';
-      var disqus_identifier = '<%= @game.title %>';
-      loadDisqus(disqus_shortname, disqus_title, disqus_url, disqus_identifier);
-    </script>
-  <% end %>
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'adventurerkit';
+    var disqus_title = '<%= @game.title %>';
+    var disqus_url = '<%= request.original_url %>';
+    var disqus_identifier = '<%= @game.title %>';
+    loadDisqus(disqus_shortname, disqus_title, disqus_url, disqus_identifier);
+  </script>
 </section>
 
 <%= content_for :sidebar do %>
