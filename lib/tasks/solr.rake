@@ -5,5 +5,9 @@ namespace :solr do
     Game.each do |g|
       Game.solr.add(g.solr_index_data)
     end
+
+    User.each do |u|
+      User.solr.add(u.solr_index_data)
+    end
   end
 end
