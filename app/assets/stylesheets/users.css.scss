@@ -3,9 +3,9 @@
 .profile-container {
 
   header {
-    font-size: 18px;
+    font-size: 14px;
     padding: 8px 14px;
-    background-color: $accent;
+    background-color: $divider;
     color: $text-icons;
   }
 
@@ -31,16 +31,6 @@
     padding: 18px;
     max-height: 400px;
     overflow: scroll;
-
-    a {
-      cursor: pointer;
-      color: $secondary-text;
-      text-decoration: none;
-      &:hover {
-        color: $secondary-text;
-        border-bottom: 1px $secondary-text dashed;
-      }
-    }
   }
 }
 

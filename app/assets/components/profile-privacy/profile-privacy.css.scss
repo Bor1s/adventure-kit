@@ -1,5 +1,4 @@
 @import 'common/colors';
-@import 'common/links';
 @import 'font_awesome';
 
 :host {
@@ -8,6 +7,10 @@
   width: 350px;
   height: auto;
 
+  .account-list {
+    padding: 18px;
+  }
+
   header {
     font-size: 14px;
     padding: 8px 14px;
@@ -15,19 +18,11 @@
     color: $text-icons;
   }
 
-  .danger {
-    color: $danger;
+  paper-shadow {
+    width: inherit;
   }
 
-  .accounts-list {
-    padding: 18px;
-
-    div {
-      margin: 4px 0px;
-    }
-
-    .actions {
-      margin-left: 4px;
-    }
+  paper-checkbox {
+    vertical-align: middle;
   }
 }

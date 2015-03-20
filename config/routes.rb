@@ -44,6 +44,7 @@ PlayhardCore::Application.routes.draw do
   end
 
   namespace :master do
+    resources :accounts, only: [:index, :update]
     resources :games, only: [:index, :destroy]
     resource :profile, only: [:edit, :update] do
       collection do

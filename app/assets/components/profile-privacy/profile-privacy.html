@@ -1,0 +1,41 @@
+<polymer-element name='profile-privacy' attributes='accounts_url'>
+  <template>
+    <link rel="stylesheet" href="profile-privacy.css.scss" />
+
+    <paper-shadow z='1'>
+      <header>Настройки приватности</header>
+      <div layout vertical class='account-list'>
+        <div>
+          <p>Отмеченные контакты будут видны другим пользователям</p>
+        </div>
+
+        <div>
+          <template repeat='{{account in accounts}}'>
+            <p>
+              <paper-checkbox data-url='{{account.update_url}}' checked?={{account.open_to_others}}>
+              </paper-checkbox>
+              <span>{{account.human_provider}}</span>
+            </p>
+          </template>
+        </div>
+      </div>
+
+      <paper-toast id='notificator'></paper-toast>
+    </paper-shadow>
+
+    <core-ajax id='accounts_fetcher' url='{{accounts_url}}' method='GET'
+    handleAs='json' 
+    on-core-error='{{handleError}}'
+    on-core-response='{{handleSuccess}}'>
+    </core-ajax>
+
+    <core-ajax id='form_sender' method='PUT'
+    handleAs='json'
+    params='{"cache": "0"}'
+    on-core-error='{{handleUpdateError}}'
+    on-core-response='{{handleUpdateSuccess}}'>
+    </core-ajax>
+  </template>
+
+  <script src="profile-privacy.js.coffee"></script>
+</polymer-element>

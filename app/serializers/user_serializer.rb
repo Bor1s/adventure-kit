@@ -1,5 +1,6 @@
 class UserSerializer < ActiveModel::Serializer
   has_one :plain_account
+  has_many :accounts
 
   def id
     object.id.to_s

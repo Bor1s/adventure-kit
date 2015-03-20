@@ -10,6 +10,15 @@
       <div class='info'>
         <p>Всего игр: <b><%= @user.games.count %></b></p>
         <p>Зарегистрирован: <b><%= @user.created_at.strftime('%Y-%m-%d') %></b></p>
+        <% @user.accounts.each do |account| %>
+          <% if account.open_to_others? %>
+            <% if account.plain_account? %>
+              <p><%= mail_to account.email, account.email %></p>
+            <% else %>
+              <p><%= link_to t("providers.#{account.provider}"), account.social_network_link || account.email, target: '_blank' %></p>
+            <% end %>
+          <% end %>
+        <% end %>
         <p><%= @user.bio %></p>
       </div>
     </div>

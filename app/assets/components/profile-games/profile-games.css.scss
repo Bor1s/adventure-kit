@@ -1,4 +1,5 @@
 @import 'common/colors';
+@import 'common/links';
 @import 'font_awesome';
 
 :host {
@@ -8,9 +9,9 @@
   height: auto;
 
   header {
-    font-size: 18px;
+    font-size: 14px;
     padding: 8px 14px;
-    background-color: $accent;
+    background-color: $divider;
     color: $text-icons;
   }
 
@@ -29,16 +30,6 @@
 
     .actions {
       margin-left: 4px;
-    }
-
-    a {
-      cursor: pointer;
-      color: $secondary-text;
-      text-decoration: none;
-      &:hover {
-        color: $secondary-text;
-        border-bottom: 1px $secondary-text dashed;
-      }
     }
   }
 }

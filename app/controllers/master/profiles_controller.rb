@@ -1,4 +1,5 @@
 class Master::ProfilesController < Master::BaseController
+  before_action :authenticate
   include UserConcern
 
   def edit

@@ -25,6 +25,10 @@ ru:
     playhard: 'Play Hard'
     no_tags: 'Тегов нет'
     no_nearby_games: 'Рядом с вами игр не обнаружено'
+    profile_settings: 'Настройки профиля'
+    my_games: 'Мои игры'
+    social: 'Мои аккаунты'
+    privacy: 'Приватность'
 
     January: 'Январь'
     February: 'Февраль'

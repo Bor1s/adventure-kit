@@ -1,15 +1,36 @@
-<div layout horizontal wrap>
-  <div>
-    <profile-general user_url='<%= edit_master_profile_path %>' user_post_url='<%= master_profile_path %>'>
-    </profile-general>
-  </div>
+<template is='auto-binding'>
+  <div layout horizontal>
+    <div>
+      <core-menu id='profile-menu' valueattr='dataname' selected="0" selectedItem="{{item}}">
+        <core-item dataname='profile' label="<%= t('general.profile_settings')%>"></core-item>
+        <core-item dataname='games' label="<%= t('general.my_games')%>"></core-item>
+        <core-item dataname='social' label="<%= t('general.social')%>"></core-item>
+        <core-item dataname='privacy' label="<%= t('general.privacy')%>"></core-item>
+      </core-menu>
+      <profile-menu-switcher>
+      </profile-menu-switcher>
+    </div>
 
-  <div>
-    <profile-games url='<%= master_games_path %>' games='{{games}}'>
-    </profile-games>
+    <div flex layout horizontal center center-justified>
+      <div>
+        <template if='{{item.dataname == "profile" || !item.dataname}}'>
+          <profile-general user_url='<%= edit_master_profile_path %>' user_post_url='<%= master_profile_path %>'>
+          </profile-general>
+        </template>
+
+        <template if='{{item.dataname == "games"}}'>
+          <profile-games url='<%= master_games_path %>' games='{{games}}'>
+          </profile-games>
+        </template>
+
+        <template if='{{item.dataname == "social"}}'>
+          <profile-accounts accounts_url='<%= accounts_master_profile_path %>' remove_account_url='<%= remove_account_master_profile_path %>' error_msg='<%= flash.alert %>'>
+        </template>
+
+        <template if='{{item.dataname == "privacy"}}'>
+          <profile-privacy accounts_url='<%= master_accounts_path %>'></profile-privacy>
+        </template>
+      </div>
+    </div>
   </div>
-  
-  <div>
-    <profile-accounts accounts_url='<%= accounts_master_profile_path %>' remove_account_url='<%= remove_account_master_profile_path %>' error_msg='<%= flash.alert %>'>
-  </div>
-</div>
+</template>

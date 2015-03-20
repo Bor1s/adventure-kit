@@ -1,4 +1,5 @@
-@import "./common/colors";
+@import "common/colors";
+@import "common/links";
 
 #main-header {
   height: 100%;
@@ -147,13 +148,6 @@ file-input #fileInput {
   margin-top: 48px;
   a {
     margin: 18px;
-    cursor: pointer;
-    color: $secondary-text;
-    text-decoration: none;
-    &:hover {
-      color: $secondary-text;
-      border-bottom: 1px $secondary-text dashed;
-    }
   }
 }
 

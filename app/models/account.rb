@@ -13,6 +13,7 @@ class Account
   field :avatar_medium, type: String
   field :avatar_original, type: String
   field :social_network_link, type: String
+  field :open_to_others, type: Mongoid::Boolean, default: false
 
   belongs_to :user
 
@@ -26,5 +27,9 @@ class Account
     else
       Account.create(account_data)
     end
+  end
+
+  def plain_account?
+    provider.nil?
   end
 end

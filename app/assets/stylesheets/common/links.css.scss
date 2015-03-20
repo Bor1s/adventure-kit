@@ -11,11 +11,11 @@
 
 a {
   cursor: pointer;
-  color: $secondary-text;
+  color: $links;
   text-decoration: none;
   &:hover {
-    color: $secondary-text;
-    border-bottom: 1px $secondary-text dashed;
+    color: $links;
+    border-bottom: 1px $links dashed;
   }
 }
 
