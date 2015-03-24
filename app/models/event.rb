@@ -10,7 +10,7 @@ class Event
 
   #NOTE Scopes uses additional sum for utc_offset because of Mongoid bug
   scope :upcoming, -> {
-    where(:beginning_at.gte => Time.zone.now, :beginning_at.lte => (Time.zone.now + 1.month).beginning_of_day).asc(:beginning_at)
+    where(:beginning_at.gte => Time.zone.now).asc(:beginning_at)
   }
 
   scope :finished, -> {
