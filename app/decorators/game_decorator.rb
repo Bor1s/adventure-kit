@@ -1,4 +1,6 @@
 class GameDecorator
+  include ActionView::Helpers
+
   attr_reader :game
 
   def initialize(game)
@@ -22,12 +24,16 @@ class GameDecorator
   end
 
   def next_session
-    event = game.events.upcoming.asc(:beginning_at).first
-    if event.present?
-      event.beginning_at.strftime('%d-%m-%Y %H:%M')
+    if has_next_session?
+      event = game.events.upcoming.asc(:beginning_at).first
+      link_to event.beginning_at.strftime('%d-%m-%Y %H:%M'), Rails.application.routes.url_helpers.ics_game_path(@game)
     else
       I18n.t('events.no_future_events')
     end
+  end
+
+  def has_next_session?
+    game.events.upcoming.asc(:beginning_at).exists?
   end
 
   def address

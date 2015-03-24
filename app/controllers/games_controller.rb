@@ -23,7 +23,6 @@ class GamesController < ApplicationController
   def show
     game = Game.find params[:id]
     authorize! :read, game
-
     @game = GameDecorator.new(game)
     render layout: 'application'
   end
@@ -131,6 +130,10 @@ class GamesController < ApplicationController
       format.js
       format.html {redirect_to game_path(@game)}
     end
+  end
+
+  def ics
+    send_data(IcsService.call(params[:id]), filename: 'game.ics', content_type: 'text/calendar')
   end
 
   private

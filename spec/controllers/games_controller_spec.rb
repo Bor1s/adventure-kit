@@ -219,4 +219,12 @@ RSpec.describe GamesController, type: :controller do
       end
     end
   end
+
+  describe 'GET #ics' do
+    it 'responds with attached .ics file' do
+      game = User.first.games.first
+      get :ics, {id: game.id}
+      expect(response.content_type).to eq 'text/calendar'
+    end
+  end
 end

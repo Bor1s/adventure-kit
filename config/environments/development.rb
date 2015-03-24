@@ -41,4 +41,6 @@ PlayhardCore::Application.configure do
 
   config.harvester.host = 'http://localhost:3001'
   config.solr_url = "http://localhost:8983/solr/development"
+
+  Rails.application.routes.default_url_options[:host] = 'localhost:3000'
 end

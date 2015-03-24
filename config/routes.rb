@@ -17,6 +17,7 @@ PlayhardCore::Application.routes.draw do
       get :take_part
       delete :unenroll
       delete :remove_player
+      get :ics
     end
     resources :comments, except: [:index, :new]
     resources :events, only: [:index]

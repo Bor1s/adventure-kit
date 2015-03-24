@@ -99,4 +99,6 @@ PlayhardCore::Application.configure do
     :sender_address => %{"notifier" <noreply.playhardrpg@gmail.com>},
     :exception_recipients => %w{boris.bbk@gmail.com}
   }
+
+  Rails.application.routes.default_url_options[:host] = 'http://adventurekit.org'
 end

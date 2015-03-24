@@ -43,6 +43,7 @@ gem 'whenever', require: false
 gem 'geocoder'
 gem 'exception_notification'
 gem 'browser'
+gem 'icalendar', '~> 2.2.2'
 
 group :test, :development do
   gem 'thin'
