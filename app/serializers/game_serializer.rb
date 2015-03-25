@@ -44,6 +44,10 @@ class GameSerializer < ActiveModel::Serializer
     scope.creator?(object)
   end
 
+  def allows_to_take_part
+    object.allows_to_take_part?
+  end
+
   attributes :id,
     :title,
     :next_event_date,
@@ -59,5 +63,6 @@ class GameSerializer < ActiveModel::Serializer
     :address,
     :url,
     :destroy_url,
-    :can_be_managed
+    :can_be_managed,
+    :allows_to_take_part
 end

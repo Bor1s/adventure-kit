@@ -1,9 +1,8 @@
-<h2><%= t('games.players')%></h2>
+<header><%= t('games.players')%></header>
 <% @game.players.each do |player| %>
   <p>
     <%= player.nickname %>
     <%= link_to remove_player_game_path(id: @game.id, user_id: player.id),
-      class: 'danger',
       method: :delete,
       data: {confirm: t('games.remove_player_confirm')}, remote: true do %>
       <i class='fa fa-trash'></i>

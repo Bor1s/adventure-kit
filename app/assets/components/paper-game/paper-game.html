@@ -30,6 +30,12 @@
             <span flex>Новых сессий не запланировано</span>
           </template>
 
+          <template if='{{!data.allows_to_take_part}}'>
+            <core-tooltip position='left' label='Команда игроков уже набрана'>
+              <i class='fa fa-exclamation-triangle fa-lg'></i>&nbsp;
+            </core-tooltip>
+          </template>
+
           <template if='{{data.private_game == true}}'>
             <core-tooltip position='left' label='Участие только по приглашению мастера'>
               <i class='fa fa-lock fa-lg'></i>&nbsp;

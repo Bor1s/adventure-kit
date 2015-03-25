@@ -1,6 +1,5 @@
-<h2><%= t('games.management') %></h2>
+<header><%= t('games.management') %></header>
 <p><%= link_to t('games.edit'), edit_game_path(@game.slug) %></p>
 <p><%= link_to t('games.delete'), game_path(@game.id),
-  class: 'danger',
   method: :delete,
   data: {confirm: t('games.delete_confirmation')} %></p>

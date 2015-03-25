@@ -1,6 +1,6 @@
-<h2><%= t('games.management') %></h2>
+<header><%= t('games.management') %></header>
 <% if @game.subscribed?(current_user) %>
-  <p><%= link_to t('games.unenroll'), unenroll_game_path(@game.slug), method: :delete, class: 'danger', data: {confirm: t('games.unenroll_confirmation')}, remote: true %></p>
+  <p><%= link_to t('games.unenroll'), unenroll_game_path(@game.slug), method: :delete, data: {confirm: t('games.unenroll_confirmation')}, remote: true %></p>
 <% else %>
   <% if !@game.private_game? %>
     <% if @game.allows_to_take_part? %>

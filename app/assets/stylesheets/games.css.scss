@@ -49,8 +49,11 @@ p {
   border: 2px solid $accent;
 }
 
-section.game-management {
-  margin-bottom: 48px;
+.game-management, .players-list {
+  header {
+    text-align: center;
+    color: $text-icons;
+  }
 }
 
 a.danger {
