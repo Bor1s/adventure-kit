@@ -6,7 +6,7 @@ class Game
 
   field :title, type: String
   field :description, type: String
-  field :players_amount, type: Integer
+  field :players_amount, type: Integer, default: 0
   field :private_game, type: Mongoid::Boolean, default: false
   field :online_game, type: Mongoid::Boolean, default: false
   field :online_info, type: String

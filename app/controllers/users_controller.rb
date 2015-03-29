@@ -14,9 +14,9 @@ class UsersController < ApplicationController
         else
           service = UserFilterService.new(params[:q], params[:page])
           users = service.filter
+          meta = { can_load_more: users.total_count > (users.limit_value + users.offset_value) }
         end
-        can_load_more = users.total_count > (users.limit_value + users.offset_value)
-        render json: users, meta: { can_load_more: can_load_more }
+        render json: users, meta: meta || {}
       end
     end
   end
