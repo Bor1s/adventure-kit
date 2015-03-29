@@ -29,7 +29,7 @@
   </aside>
 
   <section class='centered'>
-    <core-tooltip label='Новая игра'>
+    <core-tooltip label='<%= t('game_dashboard.new_game') %>'>
     <%= link_to new_game_path, class: 'clean-link' do %>
       <paper-fab mini icon='add'></paper-fab>
     <% end %>
@@ -38,24 +38,24 @@
 
   <section>
     <paper-radio-group selected='nothing'>
-      <paper-radio-button name='nothing' label='Все кампании'></paper-radio-button>
-      <paper-radio-button name='my' label='Мои кампании'></paper-radio-button>
+      <paper-radio-button name='nothing' label='<%= t('game_dashboard.filter.all_games') %>'></paper-radio-button>
+      <paper-radio-button name='my' label='<%= t('game_dashboard.filter.my_games') %>'></paper-radio-button>
     </paper-radio-group>
   </section>
 
   <section>
     <paper-radio-group selected="nothing">
-      <paper-radio-button name="nothing" label='Не учитывать тип'></paper-radio-button>
-      <paper-radio-button name="realtime" label='Живые кампании'></paper-radio-button>
-      <paper-radio-button name="online" label='Online кампании'></paper-radio-button>
+      <paper-radio-button name="nothing" label='<%= t('game_dashboard.filter.no_type') %>'></paper-radio-button>
+      <paper-radio-button name="realtime" label='<%= t('game_dashboard.filter.live_games') %>'></paper-radio-button>
+      <paper-radio-button name="online" label='<%= t('game_dashboard.filter.online_games') %>'></paper-radio-button>
     </paper-radio-group>
   </section>
 
   <section>
     <paper-radio-group selected='nothing'>
-      <paper-radio-button name="nothing" label='Не учитывать время'></paper-radio-button>
-      <paper-radio-button name='upcoming' label='Предстоящие'></paper-radio-button>
-      <paper-radio-button name='past' label='Прошедшие'></paper-radio-button>
+      <paper-radio-button name="nothing" label='<%= t('game_dashboard.filter.no_time') %>'></paper-radio-button>
+      <paper-radio-button name='upcoming' label='<%= t('game_dashboard.filter.future') %>'></paper-radio-button>
+      <paper-radio-button name='past' label='<%= t('game_dashboard.filter.past') %>'></paper-radio-button>
     </paper-radio-group>
   </section>
 

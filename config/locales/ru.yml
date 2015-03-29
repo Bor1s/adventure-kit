@@ -115,3 +115,15 @@ ru:
   providers:
     vkontakte: 'Вконтакте'
     gplus: 'Google +'
+
+  game_dashboard:
+    new_game: 'Новая игровая кампания'
+    filter:
+      all_games: 'Все кампании'
+      my_games: 'Мои кампании'
+      no_type: 'Не учитывать тип'
+      live_games: 'Живые встречи'
+      online_games: 'Онлайн встречи'
+      no_time: 'Не учитывать время'
+      future: 'Предстоящие'
+      past: 'Прошедшие'
