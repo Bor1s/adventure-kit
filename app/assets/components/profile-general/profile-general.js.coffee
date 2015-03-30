@@ -8,6 +8,7 @@ Polymer 'profile-general',
   domReady: ->
     this.$.user_fetcher.headers = {"Accept": "application/json"}
     this.$.user_fetcher.go()
+    this.handlePublicProfileLink()
 
   _image_uploader: ->
     this.shadowRoot.querySelector('file-input')
@@ -104,5 +105,9 @@ Polymer 'profile-general',
         element.setCustomValidity('')
         validity = element.checkValidity()
         this.shadowRoot.querySelector("##{field}_decorator").isInvalid = !validity
+
+  handlePublicProfileLink: ->
+    this.shadowRoot.querySelector('#public_profile_link').addEventListener 'click', =>
+      window.location.href = this.user.url
     
 

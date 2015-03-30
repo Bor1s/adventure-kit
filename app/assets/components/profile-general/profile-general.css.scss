@@ -1,10 +1,11 @@
 @import 'common/colors';
+@import 'common/links';
 @import 'font_awesome';
 
 :host {
   display: inline-block;
   margin: 18px;
-  width: 350px;
+  width: auto;
   height: auto;
 
   .small {
@@ -36,11 +37,13 @@
   }
 
   .avatar-container {
+    width: 150px;
     margin: 18px;
     text-align: center;
   }
 
   .info {
+    width: 500px;
     margin: 18px;
   }
 

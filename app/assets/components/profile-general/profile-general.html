@@ -4,7 +4,7 @@
 
     <paper-shadow z='1'>
       <header>Мой профиль</header>
-      <div layout vertical>
+      <div layout horizontal>
         <!-- Profile avatar -->
         <div class='avatar-container'>
           <template if='{{user.has_avatar}}'>
@@ -19,12 +19,15 @@
             </div>
           </template> <!-- profile avatar -->
 
-
           <core-tooltip position='bottom' label='Сменить аватар'>
             <file-input maxFiles='1' class='avatar-upload' extensions='["jpeg", "jpg", "png"]' maxSize='3000000'>
               <i class='fa fa-lg fa-upload'></i>
             </file-input>
           </core-tooltip>
+
+          <p>
+            <a href='#' id='public_profile_link'>Публичный профиль</a>
+          </p>
         </div>
 
         <div class='info'>
@@ -45,7 +48,7 @@
               <input id='email' type='email' value='{{user.plain_account.email}}' is="core-input">
             </paper-input-decorator>
 
-            <paper-input-decorator id='password_decorator' floatingLabel label="Новый пароль (оставьте пустым что бы не менять)">
+            <paper-input-decorator id='password_decorator' floatingLabel label="Новый пароль (пустой - не меняем)">
               <input id='password' type='password' value='{{user.plain_account.password}}' is="core-input">
             </paper-input-decorator>
 
@@ -59,7 +62,7 @@
           </paper-input-decorator>
 
           <paper-input-decorator id='bio_decorator' floatingLabel label="БИО">
-            <paper-autogrow-textarea rows='3' id="user_bio">
+            <paper-autogrow-textarea rows='10' id="user_bio">
               <textarea id='bio' value='{{user.bio}}' class='pre' is="core-input"></textarea>
             </paper-autogrow-textarea>
           </paper-input-decorator>
